@@ -1,0 +1,11 @@
+#root {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.app-header {
+  min-height: 100vh;
+}
