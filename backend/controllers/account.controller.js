@@ -29,49 +29,99 @@ exports.remove = async (req, res) => {
 exports.checkEmail = async (req, res) => {
   try {
     const { email } = req.body;
-    
-    if (!email) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Email is required' 
-      });
-    }
-    
-    const user = await Account.findOne({ email });
-    
-    if (!user) {
-      return res.status(200).json({ 
-        success: true, 
-        exists: false, 
-        message: 'Email is available for registration' 
-      });
-    }
-    
-  
-    if (user.password) {
-      return res.status(200).json({ 
-        success: true, 
-        exists: true,
-       data: user,
-        type: 'normal',
-        
-        message: 'User exists with normal authentication'
-      });
-    } else {
-      return res.status(200).json({ 
-        success: true, 
-        exists: true,
-        data: user, 
 
-        type: 'google',
-        message: 'User exists with Google authentication'
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        message: 'Email is required'
       });
     }
-    
+
+    const user = await Account.find({ email: email });
+
+    if (user.length >= 2) {
+      return res.status(200).json({
+        success: true,
+        existsNormal: true,
+        existsGoogle: true,
+        allowRegister: false,
+      });
+    } else if (user.length == 1) {
+      if (user[0].password) {
+        return res.status(200).json({
+          success: true,
+          existsNormal: true,
+          existsGoogle: false,
+          allowRegister: false,
+        });
+      } else {
+        return res.status(200).json({
+          success: true,
+          existsNormal: false,
+          existsGoogle: true,
+          allowRegister: true,
+        });
+      }
+    } else {
+      return res.status(200).json({
+        success: true,
+        existsNormal: false,
+        existsGoogle: false,
+        allowRegister: true,
+      });
+    }
+
   } catch (error) {
     console.error('Error checking email:', error);
-    return res.status(500).json({ 
-      success: false, 
+    return res.status(500).json({
+      success: false,
+      message: 'Internal server error',
+      error: error.message
+    });
+  }
+};
+
+exports.authentication = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: 'Email and password are required'
+      });
+    }
+
+    const user = await Account.find({ email: email });
+
+    if (user.length <= 0) {
+      return res.status(200).json({
+        success: true,
+        allowLogin: false,
+      });
+    } else {
+      for (let i = 0; i < user.length; i++) {
+        const isMatch = password == user[i].password;
+
+        if (isMatch) {
+          return res.status(200).json({
+            success: true,
+            allowLogin: true,
+            userInfo: user[i],
+          });
+        }
+
+        return res.status(200).json({
+          success: true,
+          allowLogin: false,
+        });
+      }
+    }
+
+  } catch (error) {
+    console.error('Error checking email:', error);
+    return res.status(500).json({
+      success: false,
       message: 'Internal server error',
       error: error.message
     });

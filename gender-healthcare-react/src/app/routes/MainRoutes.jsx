@@ -10,14 +10,14 @@ export default function MainRoutes() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<div>Home Page (Coming Soon)</div>} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/forum" element={<ForumPage />} />
           <Route
             path="/profile"
             element={<div>Profile Page (Coming Soon)</div>}
           />
         </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
