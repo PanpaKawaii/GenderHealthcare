@@ -7,7 +7,8 @@ const commentSchema = new Schema({
   status:       { type: String, enum: ['Visible', 'Hidden', 'Reported'], default: 'Visible' },
   createDate:   { type: Date, default: Date.now },
   accountId:    { type: Schema.Types.ObjectId, ref: 'Account', required: true },
-  questionId:   { type: Schema.Types.ObjectId, ref: 'Question', required: true }
+  questionId:   { type: Schema.Types.ObjectId, ref: 'Question', required: true },
+   parentCommentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Comment', default: null }
 },{
   timestamps: true
 });
