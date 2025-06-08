@@ -7,10 +7,10 @@ export const api = axios.create({
 });
 
 export const accountAPI = {
-  login: (credentials) => api.post('/accounts/login', credentials),
-  register: (userData) => api.post('/accounts/register', userData),
-  getCurrentUser: () => api.get('/accounts/me'),
-  updateProfile: (data) => api.put('/accounts/me', data),
+  // login: (credentials) => api.post('/accounts/login', credentials),
+  // register: (userData) => api.post('/accounts/register', userData),
+  // getCurrentUser: () => api.get('/accounts/me'),
+  // updateProfile: (data) => api.put('/accounts/me', data),
 };
 
 export const customerAPI = {

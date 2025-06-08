@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchData } from './api_register.js';
+import { postData } from './api_register.js';
 import './LoginRegister.css';
 
 export default function Register() {
@@ -116,20 +116,34 @@ export default function Register() {
             password: password,
             role: 'Customer'
         };
-        // const customer = {
-        //     accountId: accountId,
-        //     dateOfBirth: date,
-        //     address: '',
-        // };
         console.log('Sign Up Data:', account);
 
         const token = '';
         try {
-            const result = await fetchData('/counselors', token);
-            // const result = await fetchData('/accounts', token);
+            const result = await postData('/accounts/check-email', token, { email: email });
             console.log('result', result);
+            console.log('allowRegister', result.allowRegister);
 
-            setSuccessSignUp('Sign up success!');
+            if (result.allowRegister) {
+                const resultAccount = await postData('/accounts', token, account);
+                console.log('resultAccount', resultAccount);
+
+                if (resultAccount) {
+                    const customer = {
+                        accountId: resultAccount._id,
+                        dateOfBirth: date,
+                        address: '',
+                    };
+
+                    const resultCustomer = await postData('/customers', token, customer);
+                    console.log('resultCustomer', resultCustomer);
+
+                    setSuccessSignUp('Sign up success!');
+                }
+
+            } else {
+                setErrorSignUp('Your email has been signed in');
+            }
         } catch (error) {
             setError('Failed to fetch data: ', error);
         } finally {
