@@ -3,6 +3,7 @@ import Layout from "../pages/ForumPage/ForumComponents/Layout/Layout";
 import ForumPage from "../pages/ForumPage/ForumPage";
 import Login from "../pages/LoginRegister/Login";
 import Register from "../pages/LoginRegister/Register";
+import Blog from '../pages/blog/Blog'
 
 export default function MainRoutes() {
   return (
@@ -13,6 +14,7 @@ export default function MainRoutes() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forum" element={<ForumPage />} />
+            <Route path='/blog' element= {<Blog/>}/>
           <Route
             path="/profile"
             element={<div>Profile Page (Coming Soon)</div>}
