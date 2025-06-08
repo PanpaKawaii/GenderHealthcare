@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Login.css';
+import './LoginRegister.css';
 import { Link } from 'react-router-dom';
 
 export default function Login() {
@@ -7,12 +7,11 @@ export default function Login() {
     const [Remember, setRemember] = useState(false);
 
     const handleRemember = () => {
+        console.log(!Remember);
         setRemember(p => !p);
-        console.log(Remember);
-        // console.log('ABC');
     };
 
-    const handleUpdate = (e) => {
+    const handleSignIn = (e) => {
         e.preventDefault();
         console.log('Submit');
     }
@@ -23,11 +22,11 @@ export default function Login() {
                 <div className='card-heading'>
                     <i className='fa-regular fa-heart'></i>
                     <div className='welcome'>Welcome back</div>
-                    <div className='text'>Sign in to your GenderCare account</div>
+                    <div className='text'>Sign in to your HeartHealing account</div>
                 </div>
 
                 <div className='card-body'>
-                    <form onSubmit={handleUpdate}>
+                    <form onSubmit={handleSignIn}>
                         <div className='form-email form-group'>
                             <label htmlFor='email'>Email</label>
                             <input type='text' id='email' name='email'
@@ -53,7 +52,7 @@ export default function Login() {
                                 </label>
                             </div>
 
-                            <a href='https://hotro.tiki.vn/s/article/dieu-khoan-su-dung' target='_blank'>Forgot password?</a>
+                            <a href='https://hotro.tiki.vn/s/article/dieu-khoan-su-dung' className='forgot-password' target='_blank'>Forgot password?</a>
                         </div>
 
                         <button className='btn'>SIGN IN</button>
@@ -67,7 +66,7 @@ export default function Login() {
 
                     <button className='btn-google'>Login with Google</button>
 
-                    <div className='signup-link link'>Don't have any account? <Link to='/'>Sign up here!</Link></div>
+                    <div className='signup-link link'>Don't have any account? <Link to='/register'>Sign up here!</Link></div>
                 </div>
             </div>
         </div>
