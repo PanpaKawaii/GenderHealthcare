@@ -10,6 +10,10 @@ const questionRoutes = require('./routes/question.routes');
 const commentRoutes = require('./routes/comment.routes');
 const cycleRoutes = require('./routes/cycle.routes');
 const reminderRoutes = require('./routes/reminder.routes');
+const consultationBookingRoutes = require('./routes/consultationBooking.route')
+const consultationScheduleRoutes = require('./routes/consultationSchedule.routes');
+const blog = require('./routes/blog.routes');
+
 
 const app = express();
 app.use(cors({
@@ -29,6 +33,10 @@ app.use('/api/questions', questionRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/cycles', cycleRoutes);
 app.use('/api/reminders', reminderRoutes);
+app.use('/api/consultationbooking',consultationBookingRoutes )
+app.use('/api/schedules', consultationScheduleRoutes);
+app.use('/api/blogs', blog);
+
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`API runninng at http://localhost:${PORT}`));
