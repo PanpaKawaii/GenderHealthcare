@@ -11,6 +11,12 @@ const commentRoutes = require('./routes/comment.routes');
 const cycleRoutes = require('./routes/cycle.routes');
 const reminderRoutes = require('./routes/reminder.routes');
 
+const parameterRoutes = require('./routes/parameter.routes');
+const testBookingRoutes = require('./routes/testbooking.routes');
+const testResultRoutes = require('./routes/testresult.routes');
+const testResultDetailRoutes = require('./routes/testresultdetail.routes');
+const testServiceParameterRoutes = require('./routes/testserviceparameter.routes');
+
 const app = express();
 app.use(cors({
   origin: 'http://localhost:5173', 
@@ -29,6 +35,12 @@ app.use('/api/questions', questionRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/cycles', cycleRoutes);
 app.use('/api/reminders', reminderRoutes);
+
+app.use('/api/parameters', parameterRoutes);
+app.use('/api/testbookings', testBookingRoutes);
+app.use('/api/testresults', testResultRoutes);
+app.use('/api/testresultdetails', testResultDetailRoutes);
+app.use('/api/testserviceparameters', testServiceParameterRoutes);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`API runninng at http://localhost:${PORT}`));
