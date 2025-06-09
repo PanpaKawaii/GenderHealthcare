@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -13,7 +14,7 @@ const reminderRoutes = require('./routes/reminder.routes');
 const consultationBookingRoutes = require('./routes/consultationBooking.route')
 const consultationScheduleRoutes = require('./routes/consultationSchedule.routes');
 const blog = require('./routes/blog.routes');
-
+const doctorRoutes = require("./routes/doctor.routes");
 
 const parameterRoutes = require('./routes/parameter.routes');
 const testBookingRoutes = require('./routes/testbooking.routes');
@@ -22,11 +23,12 @@ const testResultDetailRoutes = require('./routes/testresultdetail.routes');
 const testServiceParameterRoutes = require('./routes/testserviceparameter.routes');
 
 const app = express();
-app.use(cors({
-  origin: 'http://localhost:5173', 
-  credentials: true               
-}));
-
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
@@ -42,6 +44,7 @@ app.use('/api/reminders', reminderRoutes);
 app.use('/api/consultationbooking',consultationBookingRoutes )
 app.use('/api/schedules', consultationScheduleRoutes);
 app.use('/api/blogs', blog);
+app.use("/api/doctors", doctorRoutes);
 
 
 app.use('/api/parameters', parameterRoutes);
