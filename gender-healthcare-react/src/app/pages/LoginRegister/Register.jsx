@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './LoginRegister.css';
 import { Link } from 'react-router-dom';
+import { postData } from './api_register.js';
+import './LoginRegister.css';
 
 export default function Register() {
 
@@ -10,40 +11,12 @@ export default function Register() {
         setAccept(p => !p);
     };
 
-    // const [formData, setFormData] = useState({
-    //     name: '',
-    //     image: '',
-    //     gender: '',
-    //     email: '',
-    //     phone: '',
-    //     password: '',
-    //     role: '',
-    //     accountId: '',
-    //     dateOfBirth: '',
-    //     address: '',
-    // });
-
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData((prevState) => ({
-    //         ...prevState,
-    //         [name]: value,
-    //     }));
-    // };
-
-    // const handleGenderChange = (e) => {
-    //     setFormData((prevState) => ({
-    //         ...prevState,
-    //         gender: e.target.value,
-    //     }));
-    // };
-
     const [errorSignUp, setErrorSignUp] = useState(null);
     const [successSignUp, setSuccessSignUp] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
-
-    const SignUp = async (name, email, phone, date, gender, password, confirm) => {
-
+    const Register = async (name, email, phone, date, gender, password, confirm) => {
         console.log('Accept: ', Accept);
 
         if (!name) {
@@ -52,33 +25,29 @@ export default function Register() {
             return;
         }
 
+
         if (!email) {
             console.error('Invalid email');
             setErrorSignUp('Invalid email');
             return;
         }
 
+
         if (!phone) {
             console.error('Invalid phone number');
             setErrorSignUp('Invalid phone number');
             return;
-        }
-        if (!/^\d+$/.test(phone)) {
+        } else if (!/^\d+$/.test(phone)) {
             console.error('Phone number must contain only digits');
             setErrorSignUp('Phone number must contain only digits');
             return;
-        }
-        if (phone.length !== 10) {
+        } else if (phone.length !== 10) {
             console.error('Phone number must contain exactly 10 digits');
             setErrorSignUp('Phone number must contain exactly 10 digits');
             return;
         }
 
-        if (!date) {
-            console.error('Invalid date of birth');
-            setErrorSignUp('Invalid date of birth');
-            return;
-        }
+
         const isOver16 = (dateOfBirth) => {
             const birthDate = new Date(dateOfBirth);
             const currentDate = new Date();
@@ -91,11 +60,16 @@ export default function Register() {
             }
             return age >= 16;
         }
-        if (!isOver16(date)) {
+        if (!date) {
+            console.error('Invalid date of birth');
+            setErrorSignUp('Invalid date of birth');
+            return;
+        } else if (!isOver16(date)) {
             console.error('You must be at least 16');
             setErrorSignUp('You must be at least 16');
             return;
         }
+
 
         if (!gender) {
             console.error('Invalid gender');
@@ -103,33 +77,35 @@ export default function Register() {
             return;
         }
 
+
         if (!password) {
             console.error('Invalid password');
             setErrorSignUp('Invalid password');
             return;
-        }
-        if (password.length < 6) {
+        } else if (password.length < 6) {
             console.error('Password must be at least 6 characters long');
             setErrorSignUp('Password must be at least 6 characters long');
             return;
         }
 
+
         if (!confirm) {
             console.error('Invalid password confirmation');
             setErrorSignUp('Invalid password confirmation');
             return;
-        }
-        if (password != confirm) {
+        } else if (password != confirm) {
             console.error('Wrong password confirmation');
             setErrorSignUp('Wrong password confirmation');
             return;
         }
+
 
         if (Accept === false) {
             console.error('You must accept the provision to sign up');
             setErrorSignUp('You must accept the provision to sign up');
             return;
         }
+
 
         const account = {
             name: name,
@@ -140,23 +116,43 @@ export default function Register() {
             password: password,
             role: 'Customer'
         };
-        // const customer = {
-        //     accountId: accountId,
-        //     dateOfBirth: date,
-        //     address: '',
-        // };
         console.log('Sign Up Data:', account);
 
-        // const isExist = localStorage.getItem(`id${SignUpPhoneNumber}`);
-        // if (isExist == SignUpPhoneNumber) {
-        //     setErrorSignUp('Your email has been signed in');
-        //     return;
-        // }
+        const token = '';
+        try {
+            const result = await postData('/accounts/check-email', token, { email: email });
+            console.log('result', result);
+            console.log('allowRegister', result.allowRegister);
 
-        setSuccessSignUp('Sign up success!');
+            if (result.allowRegister) {
+                const resultAccount = await postData('/accounts', token, account);
+                console.log('resultAccount', resultAccount);
+
+                if (resultAccount) {
+                    const customer = {
+                        accountId: resultAccount._id,
+                        dateOfBirth: date,
+                        address: '',
+                    };
+
+                    const resultCustomer = await postData('/customers', token, customer);
+                    console.log('resultCustomer', resultCustomer);
+
+                    setSuccessSignUp('Sign up success!');
+                }
+
+            } else {
+                setErrorSignUp('Your email has been signed in');
+            }
+        } catch (error) {
+            setError('Failed to fetch data: ', error);
+        } finally {
+            setLoading(false);
+        }
+
         const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
         await sleep(1500);
-        console.log('Sign up success!');
+        console.log('Back to login!');
     };
 
     const handleSignUp = (e) => {
@@ -180,7 +176,7 @@ export default function Register() {
             password,
             confirm,
         });
-        SignUp(
+        Register(
             name,
             email,
             phone,
@@ -218,13 +214,13 @@ export default function Register() {
                             <input type='text' id='email' name='email' placeholder='Enter your email'
                                 style={{
                                     border: errorSignUp && (
-                                        errorSignUp == 'Invalid email'
+                                        errorSignUp == 'Invalid email' ||
+                                        errorSignUp == 'Your email has been signed in'
                                     ) && '1px solid #dc3545',
                                 }} />
                         </div>
 
                         <div className='form-phone form-group'>
-                            {/* <i className='fa-solid fa-phone'></i> */}
                             <label htmlFor='phone'>Phone Number</label>
                             <input type='text' id='phone' name='phone' placeholder='Enter your phone number'
                                 style={{
@@ -319,7 +315,16 @@ export default function Register() {
                             </div>
                         </div>
 
-                        <button className='btn'>CREATE ACCOUNT</button>
+                        {errorSignUp ?
+                            <div className='error-status status-box'>*{errorSignUp}</div>
+                            :
+                            (successSignUp ? <div className='success-status status-box'>{successSignUp}</div>
+                                :
+                                <div className='status-box'></div>
+                            )
+                        }
+
+                        <button className='btn register-btn'>CREATE ACCOUNT</button>
                     </form>
 
                     <div className='or'>

@@ -9,25 +9,25 @@ const Layout = () => {
   const [loading, setLoading] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
-  useEffect(() => {
-    const fetchCurrentUser = async () => {
-      try {
-        const response = await accountAPI.getCurrentUser();
-        setUser(response.data);
-      } catch (error) {
-        console.error('Failed to fetch user:', error);
-        // If token is invalid, redirect to login
-        if (error.response?.status === 401) {
-          localStorage.removeItem('token');
-          navigate('/login');
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchCurrentUser = async () => {
+  //     try {
+  //       const response = await accountAPI.getCurrentUser();
+  //       setUser(response.data);
+  //     } catch (error) {
+  //       console.error('Failed to fetch user:', error);
+  //       // If token is invalid, redirect to login
+  //       if (error.response?.status === 401) {
+  //         localStorage.removeItem('token');
+  //         navigate('/login');
+  //       }
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
     
-    fetchCurrentUser();
-  }, [navigate]);
+  //   fetchCurrentUser();
+  // }, [navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -40,9 +40,9 @@ const Layout = () => {
     { name: 'Reminders', path: '/reminders' }
   ];
   
-  if (loading) {
-    return <div className="flex justify-center items-center h-screen">Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  // }
 
   return (
     <div className="min-h-screen flex flex-col">
