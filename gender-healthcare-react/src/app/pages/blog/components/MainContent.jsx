@@ -1,56 +1,41 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { blogAPI } from '../../../services/api';
+import { useNavigate } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 
-export const blogPosts = [
-    {
-        id: 1,
-        title: "Introducing Our New Product Line Introducing Our New Product Line",
-        content: "We're excited to announce the launch of our brand new product line...",
-        image: "https://picsum.photos/800/450?random=1",
-        author: "Alice Nguyen",
-        category: "Product",
-        postedDate: "2025-06-01",
-        lastEdited: "2025-06-03"
-    },
-    {
-        id: 2,
-        title: "Designing for Accessibility",
-        content: "Accessibility is more than a feature, it's a fundamental right...",
-        image: "https://picsum.photos/800/450?random=2",
-        author: "David Tran",
-        category: "Design",
-        postedDate: "2025-05-15",
-        lastEdited: "2025-05-16"
-    },
-    {
-        id: 3,
-        title: "Engineering Challenges We Overcame",
-        content: "Here's how our engineering team tackled some tough issues. Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta aliquam quibusdam omnis illo sit labore quasi odio minus iusto, libero commodi, repudiandae dolore, mollitia numquam voluptates perferendis natus sapiente architecto.arem",
-        image: "https://picsum.photos/800/450?random=3",
-        author: "Linh Pham",
-        category: "Engineering",
-        postedDate: "2025-05-28",
-        lastEdited: "2025-05-30"
-    },
-    {
-        id: 4,
-        title: "How We Built a Strong Company Culture",
-        content: "Creating a thriving workplace takes intentional effort...",
-        image: "https://picsum.photos/800/450?random=4",
-        author: "Minh Le",
-        category: "Company",
-        postedDate: "2025-06-05",
-        lastEdited: "2025-06-06"
-    }
-];
-
-const categories = ["All categories", "Company", "Product", "Design", "Engineering"];
+const categories = ["All categories", "Psychology", "Mental Health", "Gender", "STI Testing"];
 
 export default function MainContent() {
     const [selectedCategory, setSelectedCategory] = useState("All categories");
     const [searchText, setSearchText] = useState("");
+    const [blogPosts, setBlogPosts] = useState([]);
     const [filteredPosts, setFilteredPosts] = useState(blogPosts);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
+
+    const fetchBlog = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await blogAPI.getAll();
+            setBlogPosts(response.data);
+            setFilteredPosts(response.data);
+        } catch (err) {
+            setError("Failed to load blogs.");
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchBlog();
+    }, []);
+
     const filterPosts = (category, search) => {
         const filtered = blogPosts.filter(post => {
             const inCategory = category === "All categories" || post.category === category;
@@ -71,6 +56,11 @@ export default function MainContent() {
         setFilteredPosts(filtered);
     };
 
+    // Lấy 6 blog có postedDate gần nhất
+    const latestPosts = [...blogPosts]
+        .sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate))
+        .slice(0, 6);
+
     return (
         <div>
             <div className='text-5xl font-semibold py-4'>
@@ -83,7 +73,6 @@ export default function MainContent() {
                 <div>
                     {categories.map(ca => (
                         <button
-
                             key={ca}
                             onClick={() => {
                                 setSelectedCategory(ca);
@@ -94,7 +83,6 @@ export default function MainContent() {
                                 }`}>
                             {ca}
                         </button>
-
                     ))} </div>
                 {/* Search Bar */}
                 <div className="relative w-[250px]">
@@ -113,7 +101,6 @@ export default function MainContent() {
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
                             height="16"
-
                             fill="currentColor"
                             viewBox="0 0 16 16"
                         >
@@ -126,7 +113,9 @@ export default function MainContent() {
             <div className='card'>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {filteredPosts.map(post => (
-                        <div key={post.id} className="rounded-lg border border-gray-300 cursor-pointer">
+                        <div key={post._id}
+                            onClick={() => navigate(`/blog/${post._id}`)}
+                            className="rounded-lg border border-gray-300 cursor-pointer">
                             <img src={post.image} alt={post.title} className="w-full h-52 object-cover bg-gray-300 rounded-t-lg" />
                             <div className="p-5 ">
                                 <p className="text-sm text-gray-800">{post.category}</p>
@@ -134,14 +123,40 @@ export default function MainContent() {
                                 <p className="text-gray-600 text-sm mb-4 min-h-10  line-clamp-2 text-ellipsis">{post.content}</p>
                                 <div className="flex justify-between items-center text-sm">
                                     <span className="text-gray-800">{post.author}</span>
-                                    <span className="text-gray-800">{post.postedDate}</span>
+                                    <span className="text-gray-800">
+                                        {dayjs(post.postedDate).format('MMM D, YYYY')}
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
-
+            <div className='latest'>
+                <h2 className="text-5xl font-semibold py-4">Latest</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {latestPosts.map(post => (
+                        <div key={post._id}
+                            // onClick={() => navigate(`/blog/${post._id}`)}
+                            className="rounded-lg  bg-gray-100 hover:bg-white">
+                            <div className="p-4">
+                                <p className="text-xs text-gray-600">{post.category}</p>
+                                <h3 onClick={() => navigate(`/blog/${post._id}`)} className="text-base cursor-pointer font-semibold line-clamp-2 text-ellipsis mt-1 mb-2 flex items-center justify-between group">
+                                    <span>{post.title}</span>
+                                    <span className="text-lg text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200">&rsaquo;</span>
+                                </h3>
+                                <div className='text-gray-600 text-sm mb-4 min-h-10  line-clamp-2 text-ellipsis'>{post.content}</div>
+                                <div className="flex justify-between items-center text-xs">
+                                    <span className="text-gray-700">{post.author}</span>
+                                    <span className="text-gray-700">
+                                        {dayjs(post.postedDate).format('MMM D, YYYY')}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     )
 }

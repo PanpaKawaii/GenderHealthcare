@@ -51,3 +51,14 @@ export const reminderAPI = {
   update: (id, data) => api.put(`/reminders/${id}`, data),
   delete: (id) => api.delete(`/reminders/${id}`),
 };
+
+export const blogAPI = {
+  getAll: () => api.get('/blogs'),
+  create: (data) => api.post('/blogs', data),
+  update: (id, data) => api.put(`/blogs/${id}`, data),
+  delete: (id) => api.delete(`/blogs/${id}`),
+
+  getById: (id) => api.get(`/blogs/${id}`), 
+
+};
+
