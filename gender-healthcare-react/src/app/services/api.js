@@ -32,8 +32,9 @@ export const questionAPI = {
 };
 
 export const commentAPI = {
-  getByQuestionId: (questionId) => api.get(`/comments/question/${questionId}`),
-  create: (data) => api.post('/comments', data),
+  getByQuestionId: (questionId) => api.get(`/questions/${questionId}/comments`),
+  create: ( data) => api.post(`/questions/${data.questionId}/comments`, data),
+  
   update: (id, data) => api.put(`/comments/${id}`, data),
   delete: (id) => api.delete(`/comments/${id}`),
 };

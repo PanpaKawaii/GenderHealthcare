@@ -7,13 +7,38 @@ const QuestionDetail = ({ question, onClose }) => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [questionId, setQuestionId] = useState(question._id);
+  const [replyingTo, setReplyingTo] = useState(null);
+//  console.log('Rendering QuestionDetail with question:', question);
   const loadComments = async () => {
     setLoading(true);
     setError(null);
     try {
       const response = await commentAPI.getByQuestionId(question._id);
+      setQuestionId(question._id);
       setComments(response.data);
+       const commentMap = {};
+      const rootComments = [];
+      // console.log('Loaded comments:', response.data);
+      response.data.forEach(comment => {
+        commentMap[comment._id] = {...comment, replies: []};
+      });
+      response.data.forEach(comment => {
+        if (comment.parentCommentId) {
+          // This is a reply to another comment
+          if (commentMap[comment.parentCommentId]) {
+            commentMap[comment.parentCommentId].replies.push(commentMap[comment._id]);
+          } else {
+            rootComments.push(commentMap[comment._id]);
+          }
+        } else {
+          // This is a root comment (directly on the question)
+          rootComments.push(commentMap[comment._id]);
+        }
+      });
+      
+      setComments(rootComments);
+      console.log('Loaded hierarchical comments:', rootComments);
     } catch (err) {
       setError('Failed to load comments');
       console.error('Error loading comments:', err);
@@ -21,12 +46,19 @@ const QuestionDetail = ({ question, onClose }) => {
       setLoading(false);
     }
   };
+  const handleReply = (commentId) => {
+    setReplyingTo(commentId);
+  };
+  
+  const cancelReply = () => {
+    setReplyingTo(null);
+  };
   useEffect(() => { 
     loadComments(); 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [question._id]);
 
-  return (
+   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
       <div className="bg-white rounded shadow-lg p-5 max-w-lg w-full relative max-h-[90vh] overflow-y-auto">
         <button 
@@ -70,14 +102,26 @@ const QuestionDetail = ({ question, onClose }) => {
             </div>
           ) : (
             comments.length > 0 ? (
-              <CommentList comments={comments} />
+              <CommentList 
+                comments={comments} 
+                onReply={handleReply} 
+                replyingTo={replyingTo}
+                cancelReply={cancelReply}
+                refreshComments={loadComments}
+              />
             ) : (
               <p className="text-gray-500 italic">No responses yet. Be the first to respond!</p>
             )
           )}
           
           <div className="mt-6">
-            <CommentForm questionId={question._id} refreshComments={loadComments} />
+            {!replyingTo && (
+              <CommentForm 
+                questionId={questionId} 
+                refreshComments={loadComments} 
+                parentCommentId={null} 
+              />
+            )}
           </div>
         </div>
       </div>
