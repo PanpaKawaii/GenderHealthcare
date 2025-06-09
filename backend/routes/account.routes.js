@@ -7,5 +7,6 @@ r.get('/', ctrl.getAll);
 r.get('/:id', ctrl.getOne);
 r.put('/:id', ctrl.update);
 r.delete('/:id', ctrl.remove);
-r.post('/check-email', ctrl.checkEmail); 
+r.post('/check-email', ctrl.checkEmail);
+r.post('/authentication', ctrl.authentication);
 module.exports = r;

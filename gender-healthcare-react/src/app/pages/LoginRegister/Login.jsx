@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { postData } from './api_register.js';
 import './LoginRegister.css';
 
 export default function Login() {
@@ -9,6 +10,8 @@ export default function Login() {
         console.log(!Remember);
         setRemember(p => !p);
     };
+
+    const navigate = useNavigate();
 
     const [errorSignIn, setErrorSignIn] = useState(null);
     const [successSignIn, setSuccessSignIn] = useState(null);
@@ -33,40 +36,25 @@ export default function Login() {
             email: email,
             password: password,
         };
-        console.log('Sign Ip Data:', account);
-        return;
+        console.log('Sign In Data:', account);
 
+        const token = '';
         try {
-            const response = await fetch('https://localhost:7166/api/Login/authenticate',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        password: password,
-                    }),
-                }
-            );
+            console.log('ready to fetch');
+            const result = await postData('/accounts/authentication', token, account);
+            console.log('result', result);
+            console.log('allowLogin', result.allowLogin);
 
-            if (!response.ok) throw new Error('Network response was not ok');
-            const data = await response.json();
-            if (data.role && data.role === 'User') {
-                navigate('/user/information');
+            if (result.allowLogin) {
+                // setSuccessSignIn('Sign up success!');
+                // if (result.userInfo.role == 'Customer') {
+                    // navigate('http://localhost:5173/register');
+                // } else {
+                    navigate('/');
+                // }
             } else {
-                navigate('/');
+                setErrorSignIn('Incorrect email or password');
             }
-
-            // if (data.role && data.role === 'User') {
-            //     window.location.href = 'http://localhost:5173/user/information';
-            // }
-            // if (data.role && data.role === 'Staff') {
-            //     window.location.href = 'http://localhost:5173';
-            // }
-            // if (data.role && data.role === 'Admin') {
-            //     window.location.href = 'http://localhost:5173';
-            // }
         } catch (error) {
             setError('Failed to fetch data: ', error);
         } finally {
@@ -107,7 +95,8 @@ export default function Login() {
                             <input type='text' id='email' name='email' placeholder='Enter your email'
                                 style={{
                                     border: errorSignIn && (
-                                        errorSignIn == 'Invalid email'
+                                        errorSignIn == 'Invalid email' ||
+                                        errorSignIn == 'Incorrect email or password'
                                     ) && '1px solid #dc3545',
                                 }} />
                         </div>
@@ -116,7 +105,8 @@ export default function Login() {
                             <input type='password' id='password' name='password' placeholder='Enter your password'
                                 style={{
                                     border: errorSignIn && (
-                                        errorSignIn == 'Invalid password'
+                                        errorSignIn == 'Invalid password' ||
+                                        errorSignIn == 'Incorrect email or password'
                                     ) && '1px solid #dc3545',
                                 }} />
                         </div>

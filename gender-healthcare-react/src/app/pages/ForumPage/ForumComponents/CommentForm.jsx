@@ -1,60 +1,73 @@
 import React, { useState } from 'react';
-import { commentAPI } from '../../../services/api'; 
+import { commentAPI } from '../../../services/api';
 
-const CommentForm = ({ questionId, refreshComments }) => {
+const CommentForm = ({ questionId, parentCommentId = null, refreshComments, onCancel }) => {
   const [content, setContent] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     if (!content.trim()) return;
     
-    setLoading(true);
+    setSubmitting(true);
     setError(null);
     
     try {
-      await commentAPI.create({ 
-        questionId, 
-        content 
+      await commentAPI.create({
+        questionId,
+        content,
+        parentCommentId
       });
+      
       setContent('');
       refreshComments();
+      if (onCancel) onCancel();
     } catch (err) {
-      setError('Failed to post your comment');
-      console.error('Error posting comment:', err);
+      setError('Failed to submit your comment');
+      console.error('Error submitting comment:', err);
     } finally {
-      setLoading(false);
+      setSubmitting(false);
     }
   };
-
+  
   return (
-    <form onSubmit={handleSubmit} className="mt-4">
+    <form onSubmit={handleSubmit} className="space-y-3">
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded mb-3 text-sm">
+        <div className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded">
           {error}
         </div>
       )}
       
-      <div className="flex flex-col">
+      <div>
         <textarea
-          className="border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200"
-          placeholder="Write your response here..."
           value={content}
-          onChange={e => setContent(e.target.value)}
-          rows={3}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder={parentCommentId ? "Write a reply..." : "Add a response..."}
+          className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          rows="3"
           required
         />
-        <div className="flex justify-end mt-2">
-          <button 
-            type="submit"
-            disabled={loading || !content.trim()}
-            className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 disabled:opacity-50"
+      </div>
+      
+      <div className="flex justify-end space-x-2">
+        {onCancel && (
+          <button
+            type="button"
+            onClick={onCancel}
+            className="px-4 py-1 border border-gray-300 rounded text-gray-700 hover:bg-gray-100"
+            disabled={submitting}
           >
-            {loading ? 'Posting...' : 'Post Response'}
+            Cancel
           </button>
-        </div>
+        )}
+        <button
+          type="submit"
+          className="px-4 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-blue-400"
+          disabled={submitting}
+        >
+          {submitting ? 'Submitting...' : parentCommentId ? 'Reply' : 'Post Response'}
+        </button>
       </div>
     </form>
   );
