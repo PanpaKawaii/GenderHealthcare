@@ -37,7 +37,9 @@ const Layout = () => {
   const navItems = [
     { name: 'Forum', path: '/forum' },
     { name: 'Menstrual Tracker', path: '/menstrual-tracker' },
-    { name: 'Reminders', path: '/reminders' }
+    { name: 'Reminders', path: '/reminders' },
+    { name: 'Blogs', path: '/blog' },
+
   ];
   
   // if (loading) {
