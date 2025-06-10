@@ -9,9 +9,9 @@ exports.create = async (req, res) => {
     res.status(400).json({ message: e.message });
   }
 };
-exports.getAll = async (req, res) => res.json(await TestServiceParameter.find().populate('accountId'));
+exports.getAll = async (req, res) => res.json(await TestServiceParameter.find().populate('testServiceId').populate('parameterId'));
 exports.getOne = async (req, res) => {
-  const testserviceparameter = await TestServiceParameter.findById(req.params.id).populate('accountId');
+  const testserviceparameter = await TestServiceParameter.findById(req.params.id).populate('testServiceId').populate('parameterId');
   if (!testserviceparameter) return res.sendStatus(404);
   res.json(testserviceparameter);
 };
