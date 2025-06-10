@@ -9,7 +9,7 @@ import CounselorBlog from '../pages/Counselor/Content/Blog'
 import CounselorSchedule from '../pages/Counselor/Content/Schedule'
 import HomePage from "../pages/Home/HomePage";
 import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
-import Blog from '../pages/blog/Blog'
+
 
 
 export default function MainRoutes() {
