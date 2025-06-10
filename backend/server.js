@@ -41,7 +41,7 @@ app.use('/api/questions', questionRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/cycles', cycleRoutes);
 app.use('/api/reminders', reminderRoutes);
-app.use('/api/consultationbooking',consultationBookingRoutes )
+app.use('/api/consultationbookings',consultationBookingRoutes )
 app.use('/api/schedules', consultationScheduleRoutes);
 app.use('/api/blogs', blog);
 app.use("/api/doctors", doctorRoutes);
