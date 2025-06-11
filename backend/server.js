@@ -36,6 +36,7 @@ app.use(express.json());
 
 connectDB(process.env.MONGO_URI);
 
+
 app.use("/api/accounts", accountRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/counselors", counselorRoutes);
@@ -46,6 +47,7 @@ app.use("/api/reminders", reminderRoutes);
 app.use("/api/consultationbooking", consultationBookingRoutes);
 app.use("/api/schedules", consultationScheduleRoutes);
 app.use("/api/blogs", blog);
+
 app.use("/api/doctors", doctorRoutes);
 
 app.use("/api/parameters", parameterRoutes);

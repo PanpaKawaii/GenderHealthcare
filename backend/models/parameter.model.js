@@ -5,7 +5,7 @@ const parameterSchema = new Schema({
   name:           { type: String, required: true },
   unit:           { type: String, required: true },
   referenceMin:   Number,
-  referenceMin:   Number
+  referenceMax:   Number
 },{
   timestamps: true
 });

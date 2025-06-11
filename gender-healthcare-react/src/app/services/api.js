@@ -52,7 +52,20 @@ export const reminderAPI = {
   delete: (id) => api.delete(`/reminders/${id}`),
 };
 
-// doctor
+
+
+export const blogAPI = {
+  getAll: () => api.get('/blogs'),
+  create: (data) => api.post('/blogs', data),
+  update: (id, data) => api.put(`/blogs/${id}`, data),
+  delete: (id) => api.delete(`/blogs/${id}`),
+
+  getById: (id) => api.get(`/blogs/${id}`), 
+
+};
+
+
+// dotor
 export const doctorAPI = {
   getAll: () => api.get("/doctors"),
   create: (data) => api.post("/doctors", data),
@@ -83,3 +96,41 @@ export const doctortestserviceAPI = {
   update: (id, data) => api.put(`/doctortestservices/${id}`, data),
   delete: (id) => api.delete(`/doctortestservices/${id}`),
 };
+
+
+export const parameterAPI = {
+  getAll: () => api.get('/parameters'),
+  getById: (id) => api.get(`/parameters/${id}`), 
+  create: (data) => api.post('/parameters', data),
+  update: (id, data) => api.put(`/parameters/${id}`, data),
+  delete: (id) => api.delete(`/parameters/${id}`),
+};
+// export const testbookingAPI = {
+//   getAll: () => api.get('/testbookings'),
+//   getById: (id) => api.get(`/testbookings/${id}`), 
+//   create: (data) => api.post('/testbookings', data),
+//   update: (id, data) => api.put(`/testbookings/${id}`, data),
+//   delete: (id) => api.delete(`/testbookings/${id}`),
+// };
+export const testresultAPI = {
+  getAll: () => api.get('/testresults'),
+  getById: (id) => api.get(`/testresults/${id}`), 
+  create: (data) => api.post('/testresults', data),
+  update: (id, data) => api.put(`/testresults/${id}`, data),
+  delete: (id) => api.delete(`/testresults/${id}`),
+};
+export const testresultdetailAPI = {
+  getAll: () => api.get('/testresultdetails'),
+  getById: (id) => api.get(`/testresultdetails/${id}`), 
+  create: (data) => api.post('/testresultdetails', data),
+  update: (id, data) => api.put(`/testresultdetails/${id}`, data),
+  delete: (id) => api.delete(`/testresultdetails/${id}`),
+};
+// export const testserviceparameterAPI = {
+//   getAll: () => api.get('/testserviceparameters'),
+//   getById: (id) => api.get(`/testserviceparameters/${id}`), 
+//   create: (data) => api.post('/testserviceparameters', data),
+//   update: (id, data) => api.put(`/testserviceparameters/${id}`, data),
+//   delete: (id) => api.delete(`/testserviceparameters/${id}`),
+// };
+

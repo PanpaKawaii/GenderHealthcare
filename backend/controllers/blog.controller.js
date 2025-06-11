@@ -10,6 +10,18 @@ exports.getAllPosts = async (req, res) => {
   }
 };
 
+// Get post by ID
+exports.getPostById = async (req, res) => {
+  try {
+    const post = await Blog.findById(req.params.id);
+    if (!post) return res.status(404).json({ error: 'Post not found' });
+    res.json(post);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
 // Create a post
 exports.createPost = async (req, res) => {
   try {
