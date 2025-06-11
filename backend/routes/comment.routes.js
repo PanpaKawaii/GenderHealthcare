@@ -1,10 +1,11 @@
 const express = require('express');
-const ctrl = require('../controllers/comment.controller');
-const r = express.Router();
+const commentCtrl = require('../controllers/comment.controller');
+const router = express.Router();
 
-// r.post('/', ctrl.create);
-r.get('/:id', ctrl.getOne);
-r.put('/:id', ctrl.update);
-r.delete('/:id', ctrl.remove);
+router.post('/:commentId/replies', commentCtrl.replyToComment );
+router.post('/:commentId/vote', commentCtrl.voteComment);
+// router.get('/:id', commentCtrl.getOne);
+// router.put('/:id', commentCtrl.update);
+// router.delete('/:id', commentCtrl.remove);
 
-module.exports = r;
+module.exports = router;
