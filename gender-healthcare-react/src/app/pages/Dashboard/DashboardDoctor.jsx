@@ -9,18 +9,24 @@ import {
   Switch,
   message,
   Popconfirm,
+  Select,
 } from "antd";
-import { doctorAPI } from "../../services/api";
+import { doctorAPI, medicalfacilitiesAPI } from "../../services/api";
 
 function DashboardDoctor() {
   const [doctors, setDoctors] = useState([]);
+  const [medicalFacilities, setMedicalFacilities] = useState([]);
   const [editingDoctor, setEditingDoctor] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [isCreate, setIsCreate] = useState(false);
   const [form] = Form.useForm();
 
+  console.log("lỗiiiiiiiiiiiiiiiiii:", doctors);
+  console.log("lỗiiiiiiiiiiiiiiiiii:", medicalFacilities);
+
   useEffect(() => {
     fetchDoctors();
+    fetchMedicalFacilities();
   }, []);
 
   const fetchDoctors = async () => {
@@ -28,12 +34,17 @@ function DashboardDoctor() {
     setDoctors(respone.data);
   };
 
+  const fetchMedicalFacilities = async () => {
+    const response = await medicalfacilitiesAPI.getAll();
+    setMedicalFacilities(response.data);
+  };
+
   // Mở modal edit
-  const handleEdit = (doctor) => {
-    setEditingDoctor(doctor);
+  const handleEdit = (record) => {
+    setEditingDoctor(record);
     setIsCreate(false);
     setModalVisible(true);
-    form.setFieldsValue(doctor);
+    form.setFieldsValue(record);
   };
 
   // Mở modal create
@@ -47,24 +58,28 @@ function DashboardDoctor() {
 
   // Xóa bác sĩ
   const handleDelete = async (doctor) => {
-    await doctorAPI.delete(doctor._id);
-    message.success("Đã xóa bác sĩ.");
+    await doctorAPI.delete(doctor._id); // _id là id bth tại vì trong database đặt biển id là _id, tại vì ban đầu tạo mẫu nó để như z, có thể zô sửa lại
+    message.success("Deleted doctor.");
     fetchDoctors();
   };
 
   // Lưu chỉnh sửa hoặc tạo mới
   const handleSave = async () => {
+    console.log("handleSave called");
     try {
       const values = await form.validateFields();
       if (isCreate) {
+        console.log("11111111111111111111111111111");
         await doctorAPI.create(values);
-        message.success("Đã tạo mới bác sĩ.");
+        console.log("Created new doctor123333333333333333333:", values);
+        message.success("Created new doctor.");
       } else {
         await doctorAPI.update(editingDoctor._id, values);
-        message.success("Cập nhật thành công.");
+        message.success("Updated succesfully.");
       }
       setModalVisible(false);
       setEditingDoctor(null);
+      setIsCreate(false);
       fetchDoctors();
     } catch (err) {
       // Xử lý lỗi validate hoặc API
@@ -73,39 +88,69 @@ function DashboardDoctor() {
 
   const columns = [
     {
+      title: "Avatar",
+      dataIndex: "avatar",
+      key: "avatar",
+      render: (avatar) => (
+        <img
+          src={avatar || "https://via.placeholder.com/50"}
+          alt="Avatar"
+          style={{ width: 50, height: 50, borderRadius: "50%" }}
+        />
+      ),
+      width: "5%",
+    },
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+      width: "10%",
+    },
+    {
       title: "Degree",
       dataIndex: "degree",
       key: "degree",
+      width: "10%",
     },
     {
       title: "Experience",
       dataIndex: "experience",
       key: "experience",
+      width: "15%",
     },
     {
       title: "Bio",
       dataIndex: "bio",
       key: "bio",
+      width: "25%",
+    },
+    {
+      title: "Phone",
+      dataIndex: "phone",
+      key: "phone",
+      width: "10%",
     },
     {
       title: "Active",
       dataIndex: "isActive",
       key: "isActive",
-      render: (isActive) => (isActive ? "Hoạt động" : "Không hoạt động"),
+      width: "10%",
+      render: (isActive) => (isActive ? "Active" : "Inactive"),
     },
     {
       title: "Actions",
       key: "actions",
+      width: "15%",
       render: (_, record) => (
         <>
           <Button type="link" onClick={() => handleEdit(record)}>
             Edit
           </Button>
           <Popconfirm
-            title="Bạn chắc chắn muốn xóa?"
+            title="Do you want to delete?"
             onConfirm={() => handleDelete(record)}
-            okText="Xóa"
-            cancelText="Hủy"
+            okText="Delete"
+            cancelText="Cancel"
           >
             <Button type="link" danger>
               Delete
@@ -118,7 +163,7 @@ function DashboardDoctor() {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar active="users" />
       <div style={{ marginLeft: 240, padding: 32 }}>
         <div style={{ marginBottom: 16 }}>
           <Button type="primary" onClick={handleCreate}>
@@ -141,6 +186,13 @@ function DashboardDoctor() {
         >
           <Form form={form} layout="vertical">
             <Form.Item
+              name="name"
+              label="Name"
+              rules={[{ required: true, message: "Input name , please" }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
               name="degree"
               label="Degree"
               rules={[{ required: true, message: "Input degree , please" }]}
@@ -161,8 +213,37 @@ function DashboardDoctor() {
             >
               <Input />
             </Form.Item>
+            <Form.Item
+              name="phone"
+              label="Phone"
+              rules={[{ required: true, message: "Input phone , please" }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="avatar"
+              label="Avatar URL"
+              rules={[{ required: true, message: "Add avatar , please" }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="medicalfacilityId" // medicalfacilityId là id của medical facility là foreign key trong bảng doctor nếu không truyền vào thì sẽ không lưu được
+              label="Medical Facility"
+              rules={[
+                { required: true, message: "Please select medical facility" },
+              ]}
+            >
+              <Select placeholder="Select facility">
+                {medicalFacilities.map((med) => (
+                  <Select.Option key={med._id} value={med._id}>
+                    {med.name}
+                  </Select.Option>
+                ))}
+              </Select>
+            </Form.Item>
             <Form.Item name="isActive" label="Active" valuePropName="checked">
-              <Switch checkedChildren="Active" unCheckedChildren="no Active" />
+              <Switch checkedChildren="Active" unCheckedChildren="Inactive" />
             </Form.Item>
           </Form>
         </Modal>

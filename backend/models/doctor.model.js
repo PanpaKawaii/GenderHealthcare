@@ -7,10 +7,12 @@ const doctorSchema = new Schema(
     experience: { type: String, required: true },
     bio: { type: String },
     isActive: { type: Boolean, default: true },
+    avatar: String,
+    name: { type: String, required: true },
+    phone: String,
     medicalfacilityId: {
       type: Schema.Types.ObjectId,
       ref: "MedicalFacilities",
-      //   unique: true,
       required: true,
     },
   },
