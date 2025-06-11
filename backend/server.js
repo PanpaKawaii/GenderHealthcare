@@ -6,8 +6,9 @@ const connectDB = require("./config/db");
 const accountRoutes = require("./routes/account.routes");
 const customerRoutes = require("./routes/customer.routes");
 const counselorRoutes = require("./routes/counselor.routes");
-const questionRoutes = require("./routes/question.routes");
+const postRoutes = require('./routes/post.routes');
 const commentRoutes = require("./routes/comment.routes");
+const moderationRoutes = require('./routes/moderation.routes');
 const cycleRoutes = require("./routes/cycle.routes");
 const reminderRoutes = require("./routes/reminder.routes");
 const consultationBookingRoutes = require("./routes/consultationBooking.route");
@@ -37,10 +38,13 @@ app.use(express.json());
 connectDB(process.env.MONGO_URI);
 
 
+
+
 app.use("/api/accounts", accountRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/counselors", counselorRoutes);
-app.use("/api/questions", questionRoutes);
+app.use("/api/posts", postRoutes);
+app.use('/api/moderation', moderationRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/cycles", cycleRoutes);
 app.use("/api/reminders", reminderRoutes);
