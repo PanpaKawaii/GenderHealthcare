@@ -11,33 +11,6 @@ function HomePage() {
         fontFamily: "Inter, Arial, sans-serif",
       }}
     >
-      {/* thanh navbar fake */}
-      <a
-        href="/login"
-        style={{
-          margin: "0 16px",
-          color: "#fff",
-          background: "#457b9d",
-          padding: "8px 20px",
-          borderRadius: 8,
-        }}
-      >
-        Login
-      </a>
-
-      <a
-        href="/dashboardDoctor"
-        style={{
-          margin: "0 16px",
-          color: "#fff",
-          background: "#457b9d",
-          padding: "8px 20px",
-          borderRadius: 8,
-        }}
-      >
-        Dashboard
-      </a>
-
       {/* Hero Section */}
       <section style={{ background: "#a8dadc", padding: "54px 0 36px 0" }}>
         <div

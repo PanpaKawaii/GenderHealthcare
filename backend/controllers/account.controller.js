@@ -1,7 +1,10 @@
 const Account = require('../models/account.model');
+const Post = require('../models/post.model');
 
 exports.create = async (req, res) => {
   try {
+    // Không cho phép client can thiệp isVerified
+    delete req.body.isVerified;
     const account = new Account(req.body);
     await account.save();
     res.status(201).json(account);
@@ -125,5 +128,15 @@ exports.authentication = async (req, res) => {
       message: 'Internal server error',
       error: error.message
     });
+  }
+};
+
+exports.getAccountPosts = async (req, res) => {
+  try {
+    const accountId = req.params.accountId;
+    const posts = await Post.find({ account: accountId });
+    res.json(posts);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };

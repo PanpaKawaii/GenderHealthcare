@@ -1,37 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import Sidebar from "../../components/sidebar/sidebarStyle";
 import {
-  Table,
   Button,
-  Modal,
-  Form,
-  Input,
-  Switch,
   message,
+  Modal,
   Popconfirm,
+  Table,
+  Form,
+  Switch,
+  Input,
   Select,
 } from "antd";
-import { doctorAPI, medicalfacilitiesAPI } from "../../services/api";
+import { medicalfacilitiesAPI, testserviceAPI } from "../../services/api";
 
-function DashboardDoctor() {
-  const [doctors, setDoctors] = useState([]);
-  const [medicalFacilities, setMedicalFacilities] = useState([]);
-  const [editingDoctor, setEditingDoctor] = useState(null);
+function DashboardTestservice() {
+  const [testservices, setTestservices] = useState([]);
+  const [editingTestservice, setEditingTestservice] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [isCreate, setIsCreate] = useState(false);
   const [form] = Form.useForm();
+  const [medicalFacilities, setMedicalFacilities] = useState([]);
 
-  console.log("lỗiiiiiiiiiiiiiiiiii:", doctors);
-  console.log("lỗiiiiiiiiiiiiiiiiii:", medicalFacilities);
-
-  useEffect(() => {
-    fetchDoctors();
-    fetchMedicalFacilities();
-  }, []);
-
-  const fetchDoctors = async () => {
-    const respone = await doctorAPI.getAll();
-    setDoctors(respone.data);
+  const fetchTestservices = async () => {
+    const respone = await testserviceAPI.getAll();
+    setTestservices(respone.data);
   };
 
   const fetchMedicalFacilities = async () => {
@@ -39,103 +32,93 @@ function DashboardDoctor() {
     setMedicalFacilities(response.data);
   };
 
-  // Mở modal edit
+  useEffect(() => {
+    fetchTestservices();
+    fetchMedicalFacilities();
+  }, []);
+
   const handleEdit = (record) => {
-    setEditingDoctor(record);
+    setEditingTestservice(record);
     setIsCreate(false);
     setModalVisible(true);
     form.setFieldsValue(record);
   };
 
-  // Mở modal create
   const handleCreate = () => {
-    setEditingDoctor(null);
+    setEditingTestservice(null);
     setIsCreate(true);
     setModalVisible(true);
     form.resetFields();
     form.setFieldsValue({ isActive: true });
   };
 
-  // Xóa bác sĩ
-  const handleDelete = async (doctor) => {
-    await doctorAPI.delete(doctor._id); // _id là id bth tại vì trong database đặt biển id là _id, tại vì ban đầu tạo mẫu nó để như z, có thể zô sửa lại
-    message.success("Deleted doctor.");
-    fetchDoctors();
+  const handleDelete = async (testservice) => {
+    await testserviceAPI.delete(testservice._id); // _id is the default id field in MongoDB
+    message.success("Deleted test service.");
+    fetchTestservices();
   };
 
-  // Lưu chỉnh sửa hoặc tạo mới
   const handleSave = async () => {
-    console.log("handleSave called");
     try {
       const values = await form.validateFields();
       if (isCreate) {
-        console.log("11111111111111111111111111111");
-        await doctorAPI.create(values);
-        console.log("Created new doctor123333333333333333333:", values);
-        message.success("Created new doctor.");
+        await testserviceAPI.create(values);
+        message.success("Created new test service.");
       } else {
-        await doctorAPI.update(editingDoctor._id, values);
-        message.success("Updated succesfully.");
+        await testserviceAPI.update(editingTestservice._id, values);
+        message.success("Updated test service.");
       }
       setModalVisible(false);
-      setEditingDoctor(null);
+      setEditingTestservice(null);
       setIsCreate(false);
-      fetchDoctors();
-    } catch (err) {
-      console.error("Error saving doctor:", err);
-      message.error("Failed to save doctor.");
+      fetchTestservices();
+    } catch (error) {
+      console.error("Validation failed:", error);
     }
   };
 
   const columns = [
     {
-      title: "Avatar",
-      dataIndex: "avatar",
-      key: "avatar",
-      render: (avatar) => (
-        <img
-          src={avatar || "https://via.placeholder.com/50"}
-          alt="Avatar"
-          style={{ width: 50, height: 50, borderRadius: "50%" }}
-        />
-      ),
-      width: "5%",
-    },
-    {
-      title: "Name",
+      title: "Test Service Name",
       dataIndex: "name",
       key: "name",
-      width: "10%",
-    },
-    {
-      title: "Degree",
-      dataIndex: "degree",
-      key: "degree",
-      width: "10%",
-    },
-    {
-      title: "Experience",
-      dataIndex: "experience",
-      key: "experience",
       width: "15%",
     },
     {
-      title: "Bio",
-      dataIndex: "bio",
-      key: "bio",
-      width: "25%",
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
+      width: "20%",
     },
     {
-      title: "Phone",
-      dataIndex: "phone",
-      key: "phone",
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
+      width: "5%",
+    },
+    {
+      title: "Processing Time (mins)",
+      dataIndex: "processingTime",
+      key: "processingTime",
       width: "10%",
+    },
+    {
+      title: "Sample Type",
+      dataIndex: "sampleType",
+      key: "sampleType",
+      width: "10%",
+    },
+    {
+      title: "Instructions",
+      dataIndex: "instructions",
+      key: "instructions",
+      width: "20%",
     },
     {
       title: "Active",
       dataIndex: "isActive",
       key: "isActive",
-      width: "10%",
+      width: "5%",
       render: (isActive) => (isActive ? "Active" : "Inactive"),
     },
     {
@@ -161,10 +144,9 @@ function DashboardDoctor() {
       ),
     },
   ];
-
   return (
     <>
-      <Sidebar active="users" />
+      <Sidebar active="testservice" />
       <div style={{ marginLeft: 240, padding: 32 }}>
         <div
           style={{
@@ -174,21 +156,25 @@ function DashboardDoctor() {
             color: "#a8dadc",
           }}
         >
-          Manage Doctors
+          Manage Test Services
         </div>
         <div style={{ marginBottom: 16 }}>
           <Button type="primary" onClick={handleCreate}>
-            Add new doctor
+            Add new test service
           </Button>
         </div>
         <Table
           columns={columns}
-          dataSource={doctors}
+          dataSource={testservices}
           rowKey="_id"
           pagination={{ pageSize: 10 }}
         />
         <Modal
-          title={isCreate ? "Add new doctor" : "Update doctor's information"}
+          title={
+            isCreate
+              ? "Add new test service"
+              : "Update test service's information"
+          }
           open={modalVisible}
           onCancel={() => setModalVisible(false)}
           onOk={handleSave}
@@ -198,45 +184,63 @@ function DashboardDoctor() {
           <Form form={form} layout="vertical">
             <Form.Item
               name="name"
-              label="Name"
-              rules={[{ required: true, message: "Input name , please" }]}
+              label="Test Service Name"
+              rules={[{ required: true, message: "Please enter the name!" }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
-              name="degree"
-              label="Degree"
-              rules={[{ required: true, message: "Input degree , please" }]}
+              name="description"
+              label="Description"
+              rules={[
+                { required: true, message: "Please enter the description!" },
+              ]}
+            >
+              <Input.TextArea rows={4} />
+            </Form.Item>
+            <Form.Item
+              name="price"
+              label="Price"
+              rules={[
+                {
+                  type: "number",
+                  required: true,
+                  message: "Please enter the price!",
+                },
+              ]}
             >
               <Input />
             </Form.Item>
             <Form.Item
-              name="experience"
-              label="Experience"
-              rules={[{ required: true, message: "Input experience, please" }]}
+              name="processingTime"
+              label="Processing Time (minutes)"
+              rules={[
+                {
+                  type: "number",
+                  required: true,
+                  message: "Please enter the processing time!",
+                },
+              ]}
             >
               <Input />
             </Form.Item>
             <Form.Item
-              name="bio"
-              label="Bio"
-              rules={[{ required: true, message: "Input bio, please" }]}
+              name="sampleType"
+              label="Sample Type"
+              rules={[
+                { required: true, message: "Please enter the sample type!" },
+              ]}
             >
               <Input />
             </Form.Item>
             <Form.Item
-              name="phone"
-              label="Phone"
-              rules={[{ required: true, message: "Input phone , please" }]}
+              name="instructions"
+              label="Instructions"
+              rules={[
+                { required: true, message: "Please enter the instructions!" },
+              ]}
             >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name="avatar"
-              label="Avatar URL"
-              rules={[{ required: true, message: "Add avatar , please" }]}
-            >
-              <Input />
+              <Input.TextArea rows={4} />
             </Form.Item>
             <Form.Item
               name="medicalfacilityId" // medicalfacilityId là id của medical facility là foreign key trong bảng doctor nếu không truyền vào thì sẽ không lưu được
@@ -263,4 +267,4 @@ function DashboardDoctor() {
   );
 }
 
-export default DashboardDoctor;
+export default DashboardTestservice;
