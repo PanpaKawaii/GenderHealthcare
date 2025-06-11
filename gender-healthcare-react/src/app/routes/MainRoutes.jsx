@@ -10,6 +10,7 @@ import CounselorSchedule from "../pages/Counselor/Content/Schedule";
 import HomePage from "../pages/Home/HomePage";
 import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
 import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
+import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
 
 export default function MainRoutes() {
   return (
@@ -34,6 +35,10 @@ export default function MainRoutes() {
         <Route
           path="/dashboardTestservice"
           element={<DashboardTestservice />}
+        />
+        <Route
+          path="/dashboardMedicalfacility"
+          element={<DashboardMedicalfacility />}
         />
 
         <Route path="*" element={<Navigate to="/" replace />} />
