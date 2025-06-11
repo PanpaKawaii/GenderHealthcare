@@ -22,11 +22,11 @@ function HomePage() {
           borderRadius: 8,
         }}
       >
-        Đăng nhập
+        Login
       </a>
 
       <a
-        href="/dashboardDoctor"
+        href="/DashboardDoctor"
         style={{
           margin: "0 16px",
           color: "#fff",
@@ -51,13 +51,13 @@ function HomePage() {
         >
           <div>
             <h1 style={{ fontSize: 38, color: "#1d3557", marginBottom: 16 }}>
-              Quản lý dịch vụ chăm sóc sức khỏe giới tính <br /> Toàn diện &
-              Nhân văn
+              Management of Gender Healthcare Services <br /> Comprehensive &
+              Humane
             </h1>
             <p style={{ fontSize: 20, color: "#1d3557", maxWidth: 540 }}>
-              Hỗ trợ đặt lịch, tư vấn, quản lý hồ sơ sức khỏe và kết nối chuyên
-              gia. Bảo mật, cá nhân hóa, đồng hành cùng bạn trên hành trình chăm
-              sóc sức khỏe giới tính.
+              Support for appointment booking, consultations, health record
+              management, and specialist connections. Secure, personalized, and
+              your companion on your gender healthcare journey.
             </p>
             <div style={{ marginTop: 32 }}>
               <a
@@ -71,7 +71,7 @@ function HomePage() {
                   fontSize: 18,
                 }}
               >
-                Đăng ký ngay
+                Join Now
               </a>
             </div>
           </div>
@@ -98,7 +98,7 @@ function HomePage() {
               marginBottom: 36,
             }}
           >
-            Dịch vụ nổi bật
+            Featured Services
           </h2>
           <div
             style={{
@@ -109,23 +109,23 @@ function HomePage() {
           >
             <ServiceCard
               icon="📅"
-              title="Đặt lịch khám"
-              desc="Chọn chuyên gia, đặt lịch nhanh chóng, nhận nhắc nhở tự động."
+              title="Appointment Booking"
+              desc="Select a specialist, book appointments quickly, and receive automated reminders."
             />
             <ServiceCard
               icon="📝"
-              title="Quản lý hồ sơ sức khỏe"
-              desc="Truy cập, cập nhật và tải về hồ sơ sức khỏe cá nhân an toàn."
+              title="Health Record Management"
+              desc="Securely access, update, and download personal health records."
             />
             <ServiceCard
               icon="💬"
-              title="Tư vấn trực tuyến"
-              desc="Kết nối với chuyên gia qua chat/video call, bảo mật tuyệt đối."
+              title="Online Consultation"
+              desc="Connect with specialists via chat/video call, with absolute privacy."
             />
             <ServiceCard
               icon="🔔"
-              title="Nhắc nhở & Theo dõi"
-              desc="Nhận nhắc nhở dùng thuốc, tái khám, theo dõi tiến trình điều trị."
+              title="Reminders & Tracking"
+              desc="Receive medication reminders, follow-up appointment notifications, and treatment progress tracking."
             />
           </div>
         </div>
@@ -149,15 +149,21 @@ function HomePage() {
           />
           <div>
             <h3 style={{ color: "#1d3557", fontSize: 24, marginBottom: 18 }}>
-              Vì một hệ sinh thái sức khỏe giới tính toàn diện
+              Building a Complete Gender Health Ecosystem
             </h3>
             <ul style={{ color: "#457b9d", fontSize: 18, lineHeight: 1.7 }}>
               <li>
-                Chăm sóc cá nhân hóa, tôn trọng bản dạng giới và quyền riêng tư.
+                Personalized care, respecting gender identity and privacy.
               </li>
-              <li>Thông tin minh bạch, dễ tiếp cận, hỗ trợ đa kênh.</li>
-              <li>Giao diện thân thiện, tối ưu cho mọi thiết bị.</li>
-              <li>Đội ngũ chuyên gia đồng hành, hỗ trợ tận tâm.</li>
+              <li>
+                Transparent information, easy accessibility, and multi-channel
+                support.
+              </li>
+              <li>User-friendly interface, optimized for all devices.</li>
+              <li>
+                Dedicated team of accompanying experts, providing compassionate
+                support.
+              </li>
             </ul>
           </div>
         </div>

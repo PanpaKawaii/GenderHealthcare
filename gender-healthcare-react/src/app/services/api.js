@@ -7,12 +7,10 @@ export const api = axios.create({
 });
 
 export const accountAPI = {
-
   // login: (credentials) => api.post('/accounts/login', credentials),
   // register: (userData) => api.post('/accounts/register', userData),
   // getCurrentUser: () => api.get('/accounts/me'),
   // updateProfile: (data) => api.put('/accounts/me', data),
-
 };
 
 export const customerAPI = {
@@ -35,7 +33,7 @@ export const questionAPI = {
 
 export const commentAPI = {
   getByQuestionId: (questionId) => api.get(`/questions/${questionId}/comments`),
-  create: ( data) => api.post(`/questions/${data.questionId}/comments`, data),
+  create: (data) => api.post(`/questions/${data.questionId}/comments`, data),
   update: (id, data) => api.put(`/comments/${id}`, data),
   delete: (id) => api.delete(`/comments/${id}`),
 };
@@ -53,6 +51,7 @@ export const reminderAPI = {
   update: (id, data) => api.put(`/reminders/${id}`, data),
   delete: (id) => api.delete(`/reminders/${id}`),
 };
+
 
 
 export const blogAPI = {
@@ -73,4 +72,65 @@ export const doctorAPI = {
   update: (id, data) => api.put(`/doctors/${id}`, data),
   delete: (id) => api.delete(`/doctors/${id}`),
 };
+
+// testservice
+export const testserviceAPI = {
+  getAll: () => api.get("/testservices"),
+  create: (data) => api.post("/testservices", data),
+  update: (id, data) => api.put(`/testservices/${id}`, data),
+  delete: (id) => api.delete(`/testservices/${id}`),
+};
+
+// medicalfacilities
+export const medicalfacilitiesAPI = {
+  getAll: () => api.get("/medicalfacilities"),
+  create: (data) => api.post("/medicalfacilities", data),
+  update: (id, data) => api.put(`/medicalfacilities/${id}`, data),
+  delete: (id) => api.delete(`/medicalfacilities/${id}`),
+};
+
+// doctortestservice
+export const doctortestserviceAPI = {
+  getAll: () => api.get("/doctortestservices"),
+  create: (data) => api.post("/doctortestservices", data),
+  update: (id, data) => api.put(`/doctortestservices/${id}`, data),
+  delete: (id) => api.delete(`/doctortestservices/${id}`),
+};
+
+
+export const parameterAPI = {
+  getAll: () => api.get('/parameters'),
+  getById: (id) => api.get(`/parameters/${id}`), 
+  create: (data) => api.post('/parameters', data),
+  update: (id, data) => api.put(`/parameters/${id}`, data),
+  delete: (id) => api.delete(`/parameters/${id}`),
+};
+// export const testbookingAPI = {
+//   getAll: () => api.get('/testbookings'),
+//   getById: (id) => api.get(`/testbookings/${id}`), 
+//   create: (data) => api.post('/testbookings', data),
+//   update: (id, data) => api.put(`/testbookings/${id}`, data),
+//   delete: (id) => api.delete(`/testbookings/${id}`),
+// };
+export const testresultAPI = {
+  getAll: () => api.get('/testresults'),
+  getById: (id) => api.get(`/testresults/${id}`), 
+  create: (data) => api.post('/testresults', data),
+  update: (id, data) => api.put(`/testresults/${id}`, data),
+  delete: (id) => api.delete(`/testresults/${id}`),
+};
+export const testresultdetailAPI = {
+  getAll: () => api.get('/testresultdetails'),
+  getById: (id) => api.get(`/testresultdetails/${id}`), 
+  create: (data) => api.post('/testresultdetails', data),
+  update: (id, data) => api.put(`/testresultdetails/${id}`, data),
+  delete: (id) => api.delete(`/testresultdetails/${id}`),
+};
+// export const testserviceparameterAPI = {
+//   getAll: () => api.get('/testserviceparameters'),
+//   getById: (id) => api.get(`/testserviceparameters/${id}`), 
+//   create: (data) => api.post('/testserviceparameters', data),
+//   update: (id, data) => api.put(`/testserviceparameters/${id}`, data),
+//   delete: (id) => api.delete(`/testserviceparameters/${id}`),
+// };
 
