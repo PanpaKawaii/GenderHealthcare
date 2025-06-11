@@ -166,7 +166,14 @@ function DashboardDoctor() {
     <>
       <Sidebar active="users" />
       <div style={{ marginLeft: 240, padding: 32 }}>
-        <div style={{ fontSize: "30px", fontWeight: "bold", marginBottom: 16 }}>
+        <div
+          style={{
+            fontSize: "30px",
+            fontWeight: "bold",
+            marginBottom: 16,
+            color: "#a8dadc",
+          }}
+        >
           Manage Doctors
         </div>
         <div style={{ marginBottom: 16 }}>

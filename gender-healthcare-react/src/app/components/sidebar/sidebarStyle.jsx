@@ -68,10 +68,16 @@ function Sidebar({ active }) {
           <span style={iconStyle}>👥</span> Manage doctors
         </a>
         <a
-          href="/DashboardTestservice"
+          href="/dashboardTestservice"
           style={navItemStyle(active === "testservice")}
         >
           <span style={iconStyle}>🩺</span> Manage test services
+        </a>
+        <a
+          href="/dashboardMedicalfacility"
+          style={navItemStyle(active === "medicalfacility")}
+        >
+          <span style={iconStyle}>🏥</span> Manage medical facility
         </a>
       </nav>
       <div style={{ flex: 1 }} />

@@ -148,7 +148,14 @@ function DashboardTestservice() {
     <>
       <Sidebar active="testservice" />
       <div style={{ marginLeft: 240, padding: 32 }}>
-        <div style={{ fontSize: "30px", fontWeight: "bold", marginBottom: 16 }}>
+        <div
+          style={{
+            fontSize: "30px",
+            fontWeight: "bold",
+            marginBottom: 16,
+            color: "#a8dadc",
+          }}
+        >
           Manage Test Services
         </div>
         <div style={{ marginBottom: 16 }}>
@@ -194,7 +201,13 @@ function DashboardTestservice() {
             <Form.Item
               name="price"
               label="Price"
-              rules={[{ required: true, message: "Please enter the price!" }]}
+              rules={[
+                {
+                  type: "number",
+                  required: true,
+                  message: "Please enter the price!",
+                },
+              ]}
             >
               <Input />
             </Form.Item>
@@ -203,6 +216,7 @@ function DashboardTestservice() {
               label="Processing Time (minutes)"
               rules={[
                 {
+                  type: "number",
                   required: true,
                   message: "Please enter the processing time!",
                 },
