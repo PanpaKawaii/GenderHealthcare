@@ -26,7 +26,7 @@ function HomePage() {
       </a>
 
       <a
-        href="/dashboardDoctor"
+        href="/DashboardDoctor"
         style={{
           margin: "0 16px",
           color: "#fff",

@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 const sidebarStyle = {
   width: 240,
   minHeight: "100vh",
-  background: "#2D3A8C",
-  color: "#fff",
+  background: "#a8dadc",
+  color: "black",
   display: "flex",
   flexDirection: "column",
   padding: "32px 0",
@@ -36,7 +36,7 @@ const navItemStyle = (active) => ({
   display: "flex",
   alignItems: "center",
   padding: "12px 32px",
-  color: active ? "#F9A826" : "#fff",
+  color: active ? "#F9A826" : "black",
   background: active ? "rgba(249,168,38,0.12)" : "transparent",
   borderLeft: active ? "4px solid #F9A826" : "4px solid transparent",
   fontWeight: active ? 700 : 500,
@@ -66,6 +66,12 @@ function Sidebar({ active }) {
       <nav style={navStyle}>
         <a href="/dashboardDoctor" style={navItemStyle(active === "users")}>
           <span style={iconStyle}>👥</span> Manage doctors
+        </a>
+        <a
+          href="/DashboardTestservice"
+          style={navItemStyle(active === "testservice")}
+        >
+          <span style={iconStyle}>🩺</span> Manage test services
         </a>
       </nav>
       <div style={{ flex: 1 }} />
