@@ -51,7 +51,7 @@ const iconStyle = {
   fontSize: 20,
 };
 
-function Sidebar({ active = "users" }) {
+function Sidebar({ active }) {
   const navigate = useNavigate();
   return (
     <aside style={sidebarStyle}>
@@ -65,7 +65,7 @@ function Sidebar({ active = "users" }) {
       </div>
       <nav style={navStyle}>
         <a href="/dashboardDoctor" style={navItemStyle(active === "users")}>
-          <span style={iconStyle}>👥</span> Quản lý bác sĩ
+          <span style={iconStyle}>👥</span> Manage doctors
         </a>
       </nav>
       <div style={{ flex: 1 }} />

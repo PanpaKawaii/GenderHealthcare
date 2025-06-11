@@ -7,12 +7,10 @@ export const api = axios.create({
 });
 
 export const accountAPI = {
-
   // login: (credentials) => api.post('/accounts/login', credentials),
   // register: (userData) => api.post('/accounts/register', userData),
   // getCurrentUser: () => api.get('/accounts/me'),
   // updateProfile: (data) => api.put('/accounts/me', data),
-
 };
 
 export const customerAPI = {
@@ -35,7 +33,7 @@ export const questionAPI = {
 
 export const commentAPI = {
   getByQuestionId: (questionId) => api.get(`/questions/${questionId}/comments`),
-  create: ( data) => api.post(`/questions/${data.questionId}/comments`, data),
+  create: (data) => api.post(`/questions/${data.questionId}/comments`, data),
   update: (id, data) => api.put(`/comments/${id}`, data),
   delete: (id) => api.delete(`/comments/${id}`),
 };
@@ -55,6 +53,7 @@ export const reminderAPI = {
 };
 
 
+
 export const blogAPI = {
   getAll: () => api.get('/blogs'),
   create: (data) => api.post('/blogs', data),
@@ -72,6 +71,30 @@ export const doctorAPI = {
   create: (data) => api.post("/doctors", data),
   update: (id, data) => api.put(`/doctors/${id}`, data),
   delete: (id) => api.delete(`/doctors/${id}`),
+};
+
+// testservice
+export const testserviceAPI = {
+  getAll: () => api.get("/testservices"),
+  create: (data) => api.post("/testservices", data),
+  update: (id, data) => api.put(`/testservices/${id}`, data),
+  delete: (id) => api.delete(`/testservices/${id}`),
+};
+
+// medicalfacilities
+export const medicalfacilitiesAPI = {
+  getAll: () => api.get("/medicalfacilities"),
+  create: (data) => api.post("/medicalfacilities", data),
+  update: (id, data) => api.put(`/medicalfacilities/${id}`, data),
+  delete: (id) => api.delete(`/medicalfacilities/${id}`),
+};
+
+// doctortestservice
+export const doctortestserviceAPI = {
+  getAll: () => api.get("/doctortestservices"),
+  create: (data) => api.post("/doctortestservices", data),
+  update: (id, data) => api.put(`/doctortestservices/${id}`, data),
+  delete: (id) => api.delete(`/doctortestservices/${id}`),
 };
 
 
@@ -110,3 +133,4 @@ export const testresultdetailAPI = {
 //   update: (id, data) => api.put(`/testserviceparameters/${id}`, data),
 //   delete: (id) => api.delete(`/testserviceparameters/${id}`),
 // };
+
