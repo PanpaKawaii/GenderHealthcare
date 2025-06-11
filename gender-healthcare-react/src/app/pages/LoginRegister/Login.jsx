@@ -14,7 +14,6 @@ export default function Login() {
     const navigate = useNavigate();
 
     const [errorSignIn, setErrorSignIn] = useState(null);
-    const [successSignIn, setSuccessSignIn] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
@@ -40,7 +39,6 @@ export default function Login() {
 
         const token = '';
         try {
-            console.log('ready to fetch');
             const result = await postData('/accounts/authentication', token, account);
             console.log('result', result);
             console.log('allowLogin', result.allowLogin);
@@ -48,9 +46,9 @@ export default function Login() {
             if (result.allowLogin) {
                 // setSuccessSignIn('Sign up success!');
                 // if (result.userInfo.role == 'Customer') {
-                    // navigate('http://localhost:5173/register');
+                // navigate('http://localhost:5173/register');
                 // } else {
-                    navigate('/');
+                navigate('/');
                 // }
             } else {
                 setErrorSignIn('Incorrect email or password');
@@ -65,7 +63,6 @@ export default function Login() {
     const handleSignIn = (e) => {
         e.preventDefault();
         console.log('Sign In');
-        setSuccessSignIn(null);
         setErrorSignIn(null);
         const email = e.target.email.value;
         const password = e.target.password.value;
@@ -121,6 +118,12 @@ export default function Login() {
 
                             <a href='https://hotro.tiki.vn/s/article/dieu-khoan-su-dung' className='forgot-password' target='_blank'>Forgot password?</a>
                         </div>
+
+                        {errorSignIn ?
+                            <div className='error-status status-box'>*{errorSignIn}</div>
+                            :
+                            <div className='status-box'></div>
+                        }
 
                         <button className='btn login-btn'>SIGN IN</button>
                     </form>

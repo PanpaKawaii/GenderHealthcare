@@ -9,9 +9,9 @@ exports.create = async (req, res) => {
     res.status(400).json({ message: e.message });
   }
 };
-exports.getAll = async (req, res) => res.json(await Parameter.find().populate('accountId'));
+exports.getAll = async (req, res) => res.json(await Parameter.find());
 exports.getOne = async (req, res) => {
-  const parameter = await Parameter.findById(req.params.id).populate('accountId');
+  const parameter = await Parameter.findById(req.params.id);
   if (!parameter) return res.sendStatus(404);
   res.json(parameter);
 };
