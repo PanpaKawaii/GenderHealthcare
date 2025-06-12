@@ -1,22 +1,40 @@
 const Comment = require('../models/comment.model');
 
-exports.replyToComment = async (req, res) => {
+// exports.replyToComment = async (req, res) => {
+//   try {
+//     const parentCommentId = req.params.commentId;
+//     const { content, accountId } = req.body;
+//     const parentComment = await Comment.findById(parentCommentId);
+//     if (!parentComment) {
+//       return res.status(404).json({ message: 'Comment gốc không tồn tại' });
+//     }
+
+//     const reply = new Comment({
+//        postId: parentComment.postId, // Kế thừa post từ comment gốc
+//      parentCommentId,  
+//       content,
+//       accountId,
+//     });
+    
+//     await reply.save();
+    exports.replyToComment = async (req, res) => {
   try {
     const parentCommentId = req.params.commentId;
-    const { content, user } = req.body;
+    const { content, accountId } = req.body;
     const parentComment = await Comment.findById(parentCommentId);
     if (!parentComment) {
       return res.status(404).json({ message: 'Comment gốc không tồn tại' });
     }
 
     const reply = new Comment({
-      post: parentComment.post,        // Kế thừa post từ comment gốc
-      parentComment: parentCommentId,  // Đánh dấu đây là reply của comment gốc
+       postId: parentComment.postId, // Kế thừa post từ comment gốc
+     parentCommentId,  
       content,
-      user,
+      accountId,
     });
-    await reply.save();
-    res.status(201).json(reply);
+      await reply.save();
+    const populatedReply = await Comment.findById(reply._id).populate('accountId parentCommentId');
+res.status(201).json(populatedReply);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -24,18 +42,25 @@ exports.replyToComment = async (req, res) => {
 exports.voteComment = async (req, res) => {
   try {
     const commentId = req.params.commentId;
-    const { voteType } = req.body; // 'up' hoặc 'down'
-    const update = {};
-    if (voteType === 'up') {
-      update.$inc = { upvotes: 1 };
-    } else if (voteType === 'down') {
-      update.$inc = { downvotes: 1 };
-    } else {
-      return res.status(400).json({ message: 'Loại vote không hợp lệ' });
-    }
-    const comment = await Comment.findByIdAndUpdate(commentId, update, { new: true });
-    if (!comment) return res.status(404).json({ message: 'Comment không tồn tại' });
-    res.json(comment);
+    const { voteType, accountId } = req.body; // 'up' hoặc 'down'
+const comment = await Comment.findById(commentId);
+    if (!comment) return res.status(404).json({ message: 'Bình luận không tồn tại' });
+    
+      comment.voteUp = comment.voteUp.filter(id => id.toString() !== accountId);
+    comment.voteDown = comment.voteDown.filter(id => id.toString() !== accountId);
+
+    if (voteType === 'up') comment.voteUp.push(accountId);
+    else if (voteType === 'down') comment.voteDown.push(accountId);
+    else return res.status(400).json({ message: 'Loại vote không hợp lệ' });
+    await comment.save();
+   res.json({
+      comment,
+      voteStats: {
+        upvotes: comment.voteUp.length,
+        downvotes: comment.voteDown.length,
+        total: comment.voteUp.length - comment.voteDown.length
+      }
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
