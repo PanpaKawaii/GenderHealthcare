@@ -5,12 +5,14 @@ import Login from "../pages/LoginRegister/Login";
 import Register from "../pages/LoginRegister/Register";
 import Blog from "../pages/blog/Blog";
 import BlogDetail from "../pages/blog/components/BlogDetail";
-import CounselorBlog from "../pages/Counselor/Content/Blog";
-import CounselorSchedule from "../pages/Counselor/Content/Schedule";
+import CounselorBlog from "../pages/Counselor/components/Blog";
+import CounselorSchedule from "../pages/Counselor/components/Schedule";
 import HomePage from "../pages/Home/HomePage";
 import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
 import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
 import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
+
+import CounselorHome from '../pages/Counselor/Home';
 
 export default function MainRoutes() {
   return (
@@ -27,6 +29,7 @@ export default function MainRoutes() {
           />
         </Route>
 
+        <Route path="/counselorhome" element={<CounselorHome />} />
         <Route path="/counselorblog" element={<CounselorBlog />} />
         <Route path="/counselorschedule" element={<CounselorSchedule />} />
         <Route path="/login" element={<Login />} />
