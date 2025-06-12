@@ -9,3 +9,6 @@ router.post('/:commentId/vote', commentCtrl.voteComment);
 // router.delete('/:id', commentCtrl.remove);
 
 module.exports = router;
+// 684a2d5ae6b262908479eb15 pót
+//684a1ac7dfae966e9818e257 acc
+//684a2e9de6b262908479eb25 comment
