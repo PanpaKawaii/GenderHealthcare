@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { postData } from './api_register.js';
 import './LoginRegister.css';
 
@@ -10,6 +10,8 @@ export default function Register() {
         console.log(!Accept);
         setAccept(p => !p);
     };
+
+    const navigate = useNavigate();
 
     const [errorSignUp, setErrorSignUp] = useState(null);
     const [successSignUp, setSuccessSignUp] = useState(null);
@@ -139,6 +141,10 @@ export default function Register() {
                     console.log('resultCustomer', resultCustomer);
 
                     setSuccessSignUp('Sign up success!');
+
+                    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+                    await sleep(2000);
+                    navigate('/login');
                 }
 
             } else {
@@ -149,10 +155,6 @@ export default function Register() {
         } finally {
             setLoading(false);
         }
-
-        const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-        await sleep(1500);
-        console.log('Back to login!');
     };
 
     const handleSignUp = (e) => {
