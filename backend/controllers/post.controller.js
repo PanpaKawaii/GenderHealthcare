@@ -3,8 +3,8 @@ const Comment = require('../models/comment.model');
 
 exports.createPost = async (req, res) => {
   try {
-    const { title, content, category, tags, user } = req.body;
-    const post = new Post({ title, content, category, tags, user });
+    const { title, content, category, tags, accountId } = req.body;
+    const post = new Post({ title, content, category, tags, accountId });
     await post.save();
     res.status(201).json(post);
   } catch (error) {
@@ -18,7 +18,9 @@ exports.getPosts = async (req, res) => {
     const filter = {};
     if (category) filter.category = category;
     if (tag) filter.tags = tag;  // Giả sử tags là mảng, giá trị đơn sẽ tìm phần tử mảng
+    
     const posts = await Post.find(filter)
+       .populate('accountId category')
       .skip((page - 1) * limit)
       .limit(parseInt(limit))
       .sort({ createdAt: -1 });
@@ -36,11 +38,14 @@ exports.getPosts = async (req, res) => {
 exports.getPostById = async (req, res) => {
   try {
     const postId = req.params.postId;
-    const post = await Post.findById(postId);
+    const post = await Post.findById(postId).populate('accountId category');
     if (!post) return res.status(404).json({ message: 'Bài viết không tồn tại' });
 
     // Lấy comment cấp 1 (chưa có parent)
-    const comments = await Comment.find({ post: postId, parentComment: null });
+    const comments = await Comment.find({ postId, parentCommentId: null })
+      .populate('accountId')
+      .sort({ createdAt: 1 });
+
     res.json({ post, comments });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -70,24 +75,24 @@ exports.deletePost = async (req, res) => {
   }
 };
 // Nested comment routes
-exports.getComments = async (req, res) => {
-  try {
-    const postId = req.params.id;
+// exports.getComments = async (req, res) => {
+//   try {
+//     const postId = req.params.id;
     
-    const postExists = await Post.exists({ _id: postId });
-    if (!postExists) {
-      return res.status(404).json({ message: 'Post not found' });
-    }
+//     const postExists = await Post.exists({ _id: postId });
+//     if (!postExists) {
+//       return res.status(404).json({ message: 'Post not found' });
+//     }
 
-    const comments = await Comment.find({ postId })
-      .populate('accountId')
-      .sort({ createDate: 1 });
+//     const comments = await Comment.find({ postId })
+//       .populate('accountId')
+//       .sort({ createDate: 1 });
     
-    res.json(comments);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+//     res.json(comments);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
 
 // exports.createComment = async (req, res) => {
 //   try {
@@ -131,18 +136,21 @@ exports.getComments = async (req, res) => {
 exports.addComment = async (req, res) => {
   try {
     const postId = req.params.postId;
-    const { content, user } = req.body;
+    const { content, accountId, parentCommentId = null } = req.body;
     const post = await Post.findById(postId);
     if (!post) return res.status(404).json({ message: 'Bài viết không tồn tại' });
-
-    const comment = new Comment({ post: postId, content, user });
+ // Nếu có parentCommentId thì kiểm tra hợp lệ
+    if (parentCommentId) {
+      const parent = await Comment.findOne({ _id: parentCommentId, postId });
+      if (!parent) return res.status(404).json({ message: 'Bình luận cha không tồn tại hoặc không hợp lệ' });
+    }
+    const comment = new Comment({  postId, content, accountId, parentCommentId });
     await comment.save();
 
-    // Thêm tham chiếu comment vào bài viết (nếu có mảng comments)
-    post.comments.push(comment._id);
-    await post.save();
-
-    res.status(201).json(comment);
+    await Post.findByIdAndUpdate(postId, { $inc: { answerCount: 1 } });
+    
+    const populated = await Comment.findById(comment._id).populate('accountId');
+    res.status(201).json(populated);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -152,44 +160,54 @@ exports.addComment = async (req, res) => {
 exports.votePost = async (req, res) => {
   try {
     const postId = req.params.postId;
-    const { voteType } = req.body; // 'up' hoặc 'down'
-    const update = {};
-    if (voteType === 'up') {
-      update.$inc = { upvotes: 1 };
-    } else if (voteType === 'down') {
-      update.$inc = { downvotes: 1 };
-    } else {
-      return res.status(400).json({ message: 'Loại vote không hợp lệ' });
-    }
-    const post = await Post.findByIdAndUpdate(postId, update, { new: true });
+    const { voteType, accountId } = req.body; // 'up' hoặc 'down'
+    const post = await Post.findById(postId);
     if (!post) return res.status(404).json({ message: 'Bài viết không tồn tại' });
-    res.json(post);
+    post.voteUp = post.voteUp.filter(id => id.toString() !== accountId);
+    post.voteDown = post.voteDown.filter(id => id.toString() !== accountId);
+if (voteType === 'up') {
+      post.voteUp.push(accountId);
+    } else if (voteType === 'down') {
+      post.voteDown.push(accountId);
+    } else {
+      return res.status(400).json({ message: 'Loại vote không hợp lệ (chỉ up hoặc down)' });
+    }
+
+    await post.save();
+     res.json({
+      post,
+      voteStats: {
+        upvotes: post.voteUp.length,
+        downvotes: post.voteDown.length,
+        total: post.voteUp.length - post.voteDown.length
+      }
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-exports.incrementAnswerCount = async (req, res) => {
-  try {
-    const postId = req.params.postId;
-    const post = await Post.findByIdAndUpdate(
-      postId,
-      { $inc: { answerCount: 1 } },
-      { new: true }
-    );
-    if (!post) return res.status(404).json({ message: 'Bài viết không tồn tại' });
-    res.json(post);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+// exports.incrementAnswerCount = async (req, res) => {
+//   try {
+//     const postId = req.params.postId;
+//     const post = await Post.findByIdAndUpdate(
+//       postId,
+//       { $inc: { answerCount: 1 } },
+//       { new: true }
+//     );
+//     if (!post) return res.status(404).json({ message: 'Bài viết không tồn tại' });
+//     res.json(post);
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// };
 
 exports.incrementView = async (req, res) => {
   try {
     const postId = req.params.postId;
     const post = await Post.findByIdAndUpdate(
       postId,
-      { $inc: { views: 1 } },
+      { $inc: { viewCount: 1 } },
       { new: true }
     );
     if (!post) return res.status(404).json({ message: 'Bài viết không tồn tại' });

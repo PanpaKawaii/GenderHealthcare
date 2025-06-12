@@ -24,12 +24,16 @@ const Layout = () => {
               <Link to="/contact" className="text-gray-600 hover:text-gray-900">Contact</Link>
             </div>
             <div className="flex items-center gap-2">
-              <Button variant="outline" asChild>
-                <Link to="/login">Login</Link>
+               <Link to="/login">
+              <Button  variant="outline" asChild>
+               Login
               </Button>
+              </Link>
+               <Link to="/dashboardDoctor">
               <Button asChild>
-                <Link to="/dashboardDoctor">Dashboard</Link>
+               Dashboard
               </Button>
+              </Link>
             </div>
           </div>
         </div>
