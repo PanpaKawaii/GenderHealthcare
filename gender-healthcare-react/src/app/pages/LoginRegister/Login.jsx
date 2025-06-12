@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { UserAuth } from '../../hooks/Context/AuthContext.jsx';
 import { postData } from './api_register.js';
 import './LoginRegister.css';
 
@@ -12,6 +13,7 @@ export default function Login() {
     };
 
     const navigate = useNavigate();
+    const { login } = UserAuth();
 
     const [errorSignIn, setErrorSignIn] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -48,6 +50,16 @@ export default function Login() {
                 // if (result.userInfo.role == 'Customer') {
                 // navigate('http://localhost:5173/register');
                 // } else {
+
+                // localStorage.removeItem('Token');
+                // localStorage.setItem('Token', data.token);
+                localStorage.removeItem('UserId');
+                localStorage.setItem('UserId', result.userInfo._id);
+                localStorage.removeItem('UserRole');
+                localStorage.setItem('UserRole', result.userInfo.role);
+                localStorage.removeItem('isLogIn');
+                localStorage.setItem('IsLogIn', 'true');
+                login();
                 navigate('/');
                 // }
             } else {

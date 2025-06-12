@@ -105,13 +105,13 @@ export const parameterAPI = {
   update: (id, data) => api.put(`/parameters/${id}`, data),
   delete: (id) => api.delete(`/parameters/${id}`),
 };
-// export const testbookingAPI = {
-//   getAll: () => api.get('/testbookings'),
-//   getById: (id) => api.get(`/testbookings/${id}`), 
-//   create: (data) => api.post('/testbookings', data),
-//   update: (id, data) => api.put(`/testbookings/${id}`, data),
-//   delete: (id) => api.delete(`/testbookings/${id}`),
-// };
+export const testbookingAPI = {
+  getAll: () => api.get('/testbookings'),
+  getById: (id) => api.get(`/testbookings/${id}`), 
+  create: (data) => api.post('/testbookings', data),
+  update: (id, data) => api.put(`/testbookings/${id}`, data),
+  delete: (id) => api.delete(`/testbookings/${id}`),
+};
 export const testresultAPI = {
   getAll: () => api.get('/testresults'),
   getById: (id) => api.get(`/testresults/${id}`), 
@@ -126,11 +126,11 @@ export const testresultdetailAPI = {
   update: (id, data) => api.put(`/testresultdetails/${id}`, data),
   delete: (id) => api.delete(`/testresultdetails/${id}`),
 };
-// export const testserviceparameterAPI = {
-//   getAll: () => api.get('/testserviceparameters'),
-//   getById: (id) => api.get(`/testserviceparameters/${id}`), 
-//   create: (data) => api.post('/testserviceparameters', data),
-//   update: (id, data) => api.put(`/testserviceparameters/${id}`, data),
-//   delete: (id) => api.delete(`/testserviceparameters/${id}`),
-// };
+export const testserviceparameterAPI = {
+  getAll: () => api.get('/testserviceparameters'),
+  getById: (id) => api.get(`/testserviceparameters/${id}`), 
+  create: (data) => api.post('/testserviceparameters', data),
+  update: (id, data) => api.put(`/testserviceparameters/${id}`, data),
+  delete: (id) => api.delete(`/testserviceparameters/${id}`),
+};
 
