@@ -5,7 +5,7 @@ const questionSchema = new Schema(
   {
     title: { type: String, required: true },
     content: { type: String, required: true },
-    category: { type: Schema.Types.ObjectId, ref: "Category" },
+    category: { type: String, required: true },
     tags: [String],
     accountId: { type: Schema.Types.ObjectId, ref: "Account", required: true },
     voteUp: [{ type: Schema.Types.ObjectId, ref: "Account" }],

@@ -21,6 +21,7 @@ import { Textarea } from "./ui/textarea"
 
 
 export function PostCard({ post }) {
+  // console.log("PostCard props:", post)
   const [isExpanded, setIsExpanded] = useState(false)
   const [showComments, setShowComments] = useState(false)
   const [newComment, setNewComment] = useState("")
@@ -63,9 +64,10 @@ export function PostCard({ post }) {
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
               <Avatar className="h-12 w-12">
-                <AvatarImage src={post.authorAvatar || "/placeholder.svg"} />
+                <AvatarImage src={post.accountId?.image|| "/placeholder.svg"} />
                 <AvatarFallback className="bg-blue-100 text-blue-700">
-                  {post.author
+                  {post.accountId?.name
+
                     .split(" ")
                     .map((n) => n[0])
                     .join("")}
@@ -73,21 +75,22 @@ export function PostCard({ post }) {
               </Avatar>
               <div>
                 <div className="flex items-center gap-2">
-                  <h4 className="font-semibold text-gray-900">{post.author}</h4>
-                  {post.isExpertVerified && (
+                  <h4 className="font-semibold text-gray-900">{post.accountId?.name
+}</h4>
+                  {post?.accountId?.isVerified && (
                     <Badge variant="secondary" className="bg-green-100 text-green-700 text-xs">
                       <Shield className="h-3 w-3 mr-1" />
                       Verified Expert
                     </Badge>
                   )}
                 </div>
-                <p className="text-sm text-gray-600">{post.authorRole}</p>
+                {/* <p className="text-sm text-gray-600">{post.accountId.role}</p> */}
                 <div className="flex items-center gap-2 text-xs text-gray-500 mt-1">
                   <Clock className="h-3 w-3" />
-                  <span>{post.timeAgo}</span>
+                  <span>{post.accountId?.createdAt}</span>
                   <span>•</span>
                   <Eye className="h-3 w-3" />
-                  <span>{post.views} views</span>
+                  <span>{post.viewCount} views</span>
                 </div>
               </div>
             </div>
@@ -104,8 +107,9 @@ export function PostCard({ post }) {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-
+          {/*///////////////////////yet//////////////////// */}
           <div className="flex items-center gap-2 mb-3">
+      
             <Badge className={getCategoryColor(post.category)}>{post.category}</Badge>
             {post.tags.map((tag) => (
               <Badge key={tag} variant="outline" className="text-xs" >
@@ -191,7 +195,7 @@ export function PostCard({ post }) {
               </Button>
             </div>
 
-            {post.isExpertVerified && (
+            {post.accountId?.role === "Counselor" && post.accountId?.isVerified === true && (
               <Badge variant="secondary" className="bg-yellow-100 text-yellow-700">
                 <Award className="h-3 w-3 mr-1" />
                 Expert Answer
