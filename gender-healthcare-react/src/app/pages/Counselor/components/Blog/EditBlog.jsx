@@ -1,22 +1,42 @@
-import { useState } from "react"
+import { useState, useEffect } from 'react';
+import { blogAPI } from '../../../services/api';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
-export default function BlogBlog() {
+// import dayjs from 'dayjs';
+
+export default function EditBlog() {
+const { id } = useParams();
+const [blogPost, setBlogPost] = useState(null);
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const [author, setAuthor] = useState("")
   const [category, setCategory] = useState("")
   const [image, setImage] = useState(null)
+  const navigate = useNavigate();
+  const counselorId = localStorage.getItem("UserId");
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log({
-      title,
-      content,
-      image,
-      author,
-      category,
-    })
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const blogData = {
+  title,
+  content,
+  author,
+  category,
+  image: typeof image === "string" ? image : null,
+  counselorId,
+};
+console.log(blogData);
+    const res = await blogAPI.create(blogData);
+    alert("Blog created successfully!");
+    navigate("/your-blog-list-page"); // change to your actual blog list route
+  } catch (err) {
+    alert("Failed to create blog!");
+    console.error(err);
   }
+};
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {

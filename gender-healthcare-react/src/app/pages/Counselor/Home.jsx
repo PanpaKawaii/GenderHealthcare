@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Sidebar from './components/Sidebar';
-import Dashboard from './components/Dashboard'; // NEW: dashboard content
-import Schedule from './components/Schedule';
-import Blog from './components/Blog';
-import Users from './components/ManageAuth';
-import Settings from './components/Settings';
+import Sidebar from './pages/Sidebar';
+import Dashboard from './pages/Dashboard'; // NEW: dashboard content
+import Schedule from './pages/Schedule';
+import Blog from './pages/Blog';
+import Users from './pages/ManageAuth';
+import Settings from './pages/Settings';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -27,7 +27,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex ">
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="flex-1 overflow-y-auto p-6 bg-gray-50">
         {renderContent()}

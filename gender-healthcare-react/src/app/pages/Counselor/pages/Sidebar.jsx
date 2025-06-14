@@ -18,7 +18,7 @@ const navItems = [
 
 export default function Sidebar({ activeTab, setActiveTab }) {
   return (
-    <aside className="w-64 h-screen bg-white border-r flex flex-col justify-between">
+    <aside className="w-64 h-screen bg-white border-r border-gray-300 flex flex-col justify-between">
       {/* Header */}
       <div>
         <div className="p-6 text-xl font-bold flex items-center gap-2">
@@ -46,16 +46,7 @@ export default function Sidebar({ activeTab, setActiveTab }) {
         </nav>
       </div>
 
-      {/* User Info */}
-      <div className="p-4 border-t flex items-center gap-3">
-        <div className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-semibold">
-          JD
-        </div>
-        <div>
-          <div className="text-sm font-medium">John Doe</div>
-          <div className="text-xs text-gray-500">Counselor</div>
-        </div>
-      </div>
+     
     </aside>
   );
 }
