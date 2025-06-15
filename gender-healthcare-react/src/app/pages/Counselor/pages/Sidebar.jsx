@@ -1,52 +1,35 @@
-import React from 'react';
-import {
-  Home,
-  CalendarDays,
-  FileText,
-  Users,
-  Settings,
-} from 'lucide-react';
-import clsx from 'clsx';
+import { NavLink } from 'react-router-dom';
+import { Home, Calendar, FileText, Users, Settings } from 'lucide-react';
 
-const navItems = [
-  { key: 'dashboard', label: 'Dashboard', icon: <Home size={18} /> },
-  { key: 'schedule', label: 'Schedule', icon: <CalendarDays size={18} /> },
-  { key: 'blog', label: 'Blog', icon: <FileText size={18} /> },
-  { key: 'users', label: 'Users', icon: <Users size={18} /> },
-  { key: 'settings', label: 'Settings', icon: <Settings size={18} /> },
-];
+export default function Sidebar() {
+  const menuItems = [
+    { label: 'Dashboard', icon: <Home />, path: '/counselor/dashboard' },
+    { label: 'Schedule', icon: <Calendar />, path: '/counselor/schedule' },
+    { label: 'Blog', icon: <FileText />, path: '/counselor/blog' },
+    { label: 'Users', icon: <Users />, path: '/counselor/users' },
+    { label: 'Settings', icon: <Settings />, path: '/counselor/settings' },
+  ];
 
-export default function Sidebar({ activeTab, setActiveTab }) {
   return (
-    <aside className="w-64 h-screen bg-white border-r border-gray-300 flex flex-col justify-between">
-      {/* Header */}
-      <div>
-        <div className="p-6 text-xl font-bold flex items-center gap-2">
-          <CalendarDays size={22} />
-          <span>Counselor</span>
-        </div>
-
-        {/* Navigation */}
-        <nav className="px-2 space-y-1">
-          {navItems.map(({ key, label, icon }) => (
-            <button
-              key={key}
-              onClick={() => setActiveTab(key)}
-              className={clsx(
-                'flex items-center w-full px-4 py-2 rounded-lg transition-all',
-                activeTab === key
-                  ? 'bg-gray-100 text-black font-semibold'
-                  : 'hover:bg-gray-100 text-gray-600'
-              )}
+    <div className="p-4 w-64 bg-white border-r">
+      <h2 className="text-xl font-bold mb-6">Counselor</h2>
+      <ul className="space-y-2">
+        {menuItems.map((item) => (
+          <li key={item.label}>
+            <NavLink
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-4 py-2 rounded-md ${
+                  isActive ? 'bg-gray-200 font-semibold' : 'text-gray-600 hover:bg-gray-100'
+                }`
+              }
             >
-              {icon}
-              <span className="ml-3">{label}</span>
-            </button>
-          ))}
-        </nav>
-      </div>
-
-     
-    </aside>
+              {item.icon}
+              {item.label}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

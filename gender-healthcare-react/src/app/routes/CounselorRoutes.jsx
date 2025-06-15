@@ -6,20 +6,22 @@ import Login from "../pages/LoginRegister/Login";
 import Home from "../pages/Counselor/Home"
 import Dashboard from "../pages/Counselor/pages/Dashboard";
 import NewBlog from "../pages/Counselor/components/Blog/NewBlog";
+import EditBlog from "../pages/Counselor/components/Blog/EditBlog";
+
 
 export default function CounselorRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/counselorblog" element={<CounselorBlog />} />
-          <Route path="/newblog" element={<NewBlog />} />
-          <Route path="/counselorschedule" element={<CounselorSchedule />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
+         <Route path="/login" element={<Login />} />
+        <Route path="counselor" element={<Layout />}>
+          <Route path="blog" element={<CounselorBlog />} />
+          <Route path="newblog" element={<NewBlog />} />
+          <Route path="editblog/:id" element={<EditBlog />} />
+          <Route path="schedule" element={<CounselorSchedule />} />
+          <Route path="" element={<Home />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" replace />} />
-        <Route path="/" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/counselor" replace />} />
 
       </Routes>
     </BrowserRouter>

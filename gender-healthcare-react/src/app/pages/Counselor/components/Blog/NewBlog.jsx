@@ -1,45 +1,40 @@
 import { useState, useEffect } from 'react';
-import { blogAPI } from '../../../services/api';
+import { blogAPI } from '../../../../services/api';
 import { useNavigate } from 'react-router-dom';
-import { FileEdit, Plus } from "lucide-react"
+
 // import dayjs from 'dayjs';
 
 export default function NewBlog() {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const [author, setAuthor] = useState("")
-  const [category, setCategory] = useState("")
+  const [category, setCategory] = useState("Psychology")
   const [image, setImage] = useState(null)
   const navigate = useNavigate();
   const counselorId = localStorage.getItem("UserId");
 
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const blogData = {
-  title,
-  content,
-  author,
-  category,
-  image: typeof image === "string" ? image : null,
-  counselorId,
-};
-console.log(blogData);
-    const res = await blogAPI.create(blogData);
-    alert("Blog created successfully!");
-    navigate("/your-blog-list-page"); // change to your actual blog list route
-  } catch (err) {
-    alert("Failed to create blog!");
-    console.error(err);
-  }
-};
-
-  const handleImageChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setImage(e.target.files[0])
+    e.preventDefault();
+    try {
+      const blogData = {
+        title,
+        content,
+        author,
+        category,
+        image: typeof image === "string" ? image : null,
+        counselorId,
+      };
+      console.log(blogData);
+      const res = await blogAPI.create(blogData);
+      alert("Blog created successfully!");
+      navigate("/your-blog-list-page"); // change to your actual blog list route
+    } catch (err) {
+      alert("Failed to create blog!");
+      console.error(err);
     }
-  }
+  };
+
 
   // State to control the image URL modal
   const [showImageUrlModal, setShowImageUrlModal] = useState(false)
@@ -124,24 +119,24 @@ console.log(blogData);
                   }}
                 />
               </div>
-             
-                <div className="mb-4">
-                  <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
-                    Category *
-                  </label>
-                  <select
-                    id="category"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-gray-400 focus:border-transparent outline-none"
-                  >
-                    <option value="Psychology">Psychology</option>
-                    <option value="Mental Health">Mental Health</option>
-                    <option value="Gender">Gender</option>
-                    <option value="STI Testing">STI Testing</option>
-                  </select>
-                </div>
+
+              <div className="mb-4">
+                <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
+                  Category *
+                </label>
+                <select
+                  id="category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-gray-400 focus:border-transparent outline-none"
+                >
+                  <option value="Psychology">Psychology</option>
+                  <option value="Mental Health">Mental Health</option>
+                  <option value="Gender">Gender</option>
+                  <option value="STI Testing">STI Testing</option>
+                </select>
               </div>
+            </div>
           </div>
           <div>
             <div className="space-y-6 sticky top-6 z-10 ">
@@ -172,26 +167,31 @@ console.log(blogData);
               </div>
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                 <h2 className="text-xl font-semibold text-gray-900 mb-4">Thumbnail</h2>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors cursor-pointer">
-                  <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                    <path
-                      d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <div className="mt-4">
-                    <button
-                      type="button"
-                      className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium
+                {!image && (
+
+                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors cursor-pointer">
+                    <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                      <path
+                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <div className="mt-4">
+
+                      <button
+                        type="button"
+                        className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium
                        text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer"
-                      onClick={handleOpenImageUrlModal}
-                    >
-                      Upload Image
-                    </button>
+                        onClick={handleOpenImageUrlModal}
+                      >
+                        Upload Image
+                      </button>
+                    </div>
                   </div>
-                </div>
+                )}
+
                 {typeof image === "string" && image && (
                   <div className="mt-4">
                     <img src={image} alt="Selected" className="w-full max-h-48 object-contain rounded" />

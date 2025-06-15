@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <div className="flex ">
-      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+      {/* <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} /> */}
       <main className="flex-1 overflow-y-auto p-6 bg-gray-50">
         {renderContent()}
       </main>

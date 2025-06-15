@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-// import EditBlog from '../components/Blog/EditBlog';
 import { useState, useEffect } from 'react';
 import { blogAPI } from '../../../services/api';
 import { useNavigate } from 'react-router-dom';
@@ -68,10 +67,10 @@ export default function Blog() {
           </span>
         </div>
         <div className=''>
-          <Link to="/newblog" >
+          <Link to="/counselor/newblog" >
             <button className=' bg-gray-800 flex text-white py-2 px-4 rounded'>
               <Plus className="h-4 mt-1 " />
-             <span>New Post</span> 
+              <span>New Post</span>
             </button>
           </Link>
         </div>
@@ -124,7 +123,7 @@ export default function Blog() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {filteredPosts.map(post => (
               <div key={post._id}
-                onClick={() => navigate(`/blog/${post._id}`)}
+                onClick={() => navigate(`/counselor/blog/${post._id}`)}
                 className="rounded-lg border border-gray-300 cursor-pointer">
                 <img src={post.image} alt={post.title} className="w-full h-52 object-cover bg-gray-300 rounded-t-lg" />
                 <div className="p-5 ">
@@ -138,12 +137,16 @@ export default function Blog() {
                     </span>
 
                   </div>
+
+                </div>
+                <Link to={`/counselor/editblog/${post._id}`}
+                onClick={(e) => e.stopPropagation()}>
                   <button
                     className="text-gray-800 border border-gray-300 mt-3 rounded w-full p-2  text-md font-medium"
                   >
                     Edit Post
                   </button>
-                </div>
+                </Link>
               </div>
             ))}
           </div>
