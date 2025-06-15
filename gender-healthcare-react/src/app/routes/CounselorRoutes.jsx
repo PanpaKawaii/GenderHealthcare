@@ -7,6 +7,7 @@ import Home from "../pages/Counselor/Home"
 import Dashboard from "../pages/Counselor/pages/Dashboard";
 import NewBlog from "../pages/Counselor/components/Blog/NewBlog";
 import EditBlog from "../pages/Counselor/components/Blog/EditBlog";
+import BlogDetail from "../pages/blog/components/BlogDetail";
 
 
 export default function CounselorRoutes() {
@@ -16,6 +17,7 @@ export default function CounselorRoutes() {
          <Route path="/login" element={<Login />} />
         <Route path="counselor" element={<Layout />}>
           <Route path="blog" element={<CounselorBlog />} />
+          <Route path="blog/:id" element={<BlogDetail />} />
           <Route path="newblog" element={<NewBlog />} />
           <Route path="editblog/:id" element={<EditBlog />} />
           <Route path="schedule" element={<CounselorSchedule />} />
