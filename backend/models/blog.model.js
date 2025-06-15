@@ -8,6 +8,7 @@ const blogSchema = new Schema({
   image: String,
   author: String,
   category: String,
+  status:{type: String, enum: ['deleted', 'active'], default: 'active'},
   postedDate: { type: Date,  },
   lastEdited: { type: Date, }
 }, {

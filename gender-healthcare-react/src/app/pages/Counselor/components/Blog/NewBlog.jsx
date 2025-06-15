@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { blogAPI } from '../../../../services/api';
+import { blogAPI } from '../../../services/api';
 import { useNavigate } from 'react-router-dom';
+import { FileEdit, Plus } from "lucide-react"
 // import dayjs from 'dayjs';
 
 export default function NewBlog() {

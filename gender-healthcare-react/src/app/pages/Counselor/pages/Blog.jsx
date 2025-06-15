@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { blogAPI } from '../../../services/api';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
+import { FileEdit, Plus } from "lucide-react"
 
 const categories = ["All categories", "Psychology", "Mental Health", "Gender", "STI Testing"];
 
@@ -66,8 +67,13 @@ export default function Blog() {
             Create and manage your blog posts.
           </span>
         </div>
-        <div className='flex items-center gap-4'>
-          <Link to="/newblog" ><button className=' bg-gray-800 text-white py-2 px-4 rounded'>+ New Post</button></Link>
+        <div className=''>
+          <Link to="/newblog" >
+            <button className=' bg-gray-800 flex text-white py-2 px-4 rounded'>
+              <Plus className="h-4 mt-1 " />
+             <span>New Post</span> 
+            </button>
+          </Link>
         </div>
       </div>
       <div>
@@ -130,13 +136,13 @@ export default function Blog() {
                     <span className="text-gray-800">
                       {dayjs(post.postedDate).format('MMM D, YYYY')}
                     </span>
-                    
+
                   </div>
                   <button
-                      className="text-gray-800 border border-gray-300 mt-3 rounded w-full p-2  text-md font-medium"
-                    >
-                      Edit Post
-                    </button>
+                    className="text-gray-800 border border-gray-300 mt-3 rounded w-full p-2  text-md font-medium"
+                  >
+                    Edit Post
+                  </button>
                 </div>
               </div>
             ))}
