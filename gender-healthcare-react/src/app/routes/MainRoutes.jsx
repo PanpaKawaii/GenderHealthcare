@@ -10,6 +10,7 @@ import CounselorSchedule from "../pages/Counselor/Content/Schedule";
 import HomePage from "../pages/Home/HomePage";
 import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
 import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
 
 export default function MainRoutes() {
   return (
@@ -22,7 +23,7 @@ export default function MainRoutes() {
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route
             path="/profile"
-            element={<div>Profile Page (Coming Soon)</div>}
+            element={<ProfilePage />}
           />
         </Route>
 
