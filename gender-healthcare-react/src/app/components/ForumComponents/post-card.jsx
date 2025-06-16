@@ -19,7 +19,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Textarea } from "./ui/textarea"
 
 
-
 export function PostCard({ post }) {
   // console.log("PostCard props:", post)
   const [isExpanded, setIsExpanded] = useState(false)
