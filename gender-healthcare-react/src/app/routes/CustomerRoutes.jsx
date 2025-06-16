@@ -5,12 +5,13 @@ import Login from "../pages/LoginRegister/Login";
 import Register from "../pages/LoginRegister/Register";
 import Blog from "../pages/blog/Blog";
 import BlogDetail from "../pages/blog/components/BlogDetail";
-import CounselorBlog from "../pages/Counselor/Content/Blog";
-import CounselorSchedule from "../pages/Counselor/Content/Schedule";
+import CounselorBlog from "../pages/Counselor/pages/Blog";
+import CounselorSchedule from "../pages/Counselor/pages/Schedule";
 import HomePage from "../pages/Home/HomePage";
 import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
 import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
 import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
 
 export default function CustomerRoutes() {
   return (
@@ -23,7 +24,7 @@ export default function CustomerRoutes() {
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route
             path="/profile"
-            element={<div>Profile Page (Coming Soon)</div>}
+            element={<ProfilePage/>}
           />
         </Route>
 

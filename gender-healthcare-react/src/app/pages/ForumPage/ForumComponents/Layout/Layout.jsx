@@ -20,7 +20,7 @@ const Layout = () => {
               <Link to="/" className="text-gray-600 hover:text-gray-900">Home</Link>
               <Link to="/forum" className="text-gray-600 hover:text-gray-900">Forum</Link>
               <Link to="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
-              <Link to="/counselors" className="text-gray-600 hover:text-gray-900">Counselors</Link>
+         
               <Link to="/contact" className="text-gray-600 hover:text-gray-900">Contact</Link>
             </div>
             <div className="flex items-center gap-2">

@@ -1,6 +1,7 @@
 import './App.css';
 import MainRoutes from './app/routes/MainRoutes';
 import CounselorRoutes from './app/routes/CounselorRoutes';
+import CustomerRoutes from './app/routes/CustomerRoutes.jsx';
 import { UserAuth } from './app/hooks/Context/AuthContext.jsx';
 import { useEffect } from 'react';
 import { api } from './app/services/api';
