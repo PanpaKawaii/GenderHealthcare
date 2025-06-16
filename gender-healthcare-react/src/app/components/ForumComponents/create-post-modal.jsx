@@ -6,6 +6,8 @@ import { Textarea } from "../ForumComponents/ui/textarea"
 import { Badge } from "../ForumComponents/ui/badge"
 import * as Dialog from "@radix-ui/react-dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ForumComponents/ui/select"
+import { forumAPI } from "../../services/api"
+
 
 const categories = [
   "General Health",
@@ -35,12 +37,13 @@ const suggestedTags = [
 ]
 
 export function CreatePostModal({ isOpen, onClose }) {
-  console.log("Dialog isOpen:", isOpen); 
+  // console.log("Dialog isOpen:", isOpen); 
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const [category, setCategory] = useState("")
   const [tags, setTags] = useState([])
-  const [isAnonymous, setIsAnonymous] = useState(false)
+  const [loading, setLoading] = useState(false);
+
 
   const addTag = (tag) => {
     if (!tags.includes(tag) && tags.length < 5) {
@@ -52,10 +55,31 @@ export function CreatePostModal({ isOpen, onClose }) {
     setTags(tags.filter((tag) => tag !== tagToRemove))
   }
 
-  const handleSubmit = () => {
-    // Handle post creation
-    console.log({ title, content, category, tags, isAnonymous })
-    onClose()
+  const handleSubmit =  async () => {
+      setLoading(true);
+    try{
+      const accountId = "684a1ac7dfae966e9818e257";
+      const postData = {
+        title,
+        content,
+        category,
+        tags,
+        accountId
+      }
+      const response = await forumAPI.createPost(postData)
+      console.log("Post created successfully:", response.data);
+      onClose()
+      setTitle("")
+      setContent("")
+      setCategory("")
+      setTags([])
+      // alert("Bài viết đã được tạo thành công!")
+    }catch (error) {
+      console.error("Error creating post:", error);
+      alert("Đã xảy ra lỗi khi tạo bài viết. Vui lòng thử lại sau.")
+    }
+
+    
   }
 
   return (
@@ -84,21 +108,25 @@ export function CreatePostModal({ isOpen, onClose }) {
       />
     </div>
     
-    <div>
-      <label htmlFor="category" className="block text-sm font-medium mb-1">
-        Danh mục
-      </label>
-      <Select value={category} onValueChange={setCategory}>
-        <SelectTrigger>
-          <SelectValue placeholder="Chọn danh mục" />
-        </SelectTrigger>
-        <SelectContent>
-          {categories.map((cat) => (
-            <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </div>
+   <div>
+  <label htmlFor="category" className="block text-sm font-medium mb-1">
+    Danh mục
+  </label>
+<Select value={category} onValueChange={setCategory}>
+  <SelectTrigger className="w-full">
+    <SelectValue placeholder="Chọn danh mục" />
+  </SelectTrigger>
+  <SelectContent position="popper" sideOffset={5} className="z-[100]">
+    {categories.map((cat) => (
+      <SelectItem key={cat} value={cat}>
+        {cat}
+      </SelectItem>
+    ))}
+  </SelectContent>
+</Select>
+
+</div>
+
     
     <div>
       <label htmlFor="content" className="block text-sm font-medium mb-1">
@@ -161,7 +189,7 @@ export function CreatePostModal({ isOpen, onClose }) {
       </div>
     </div>
     
-    <div className="flex items-center">
+    {/* <div className="flex items-center">
       <input
         type="checkbox"
         id="anonymous"
@@ -172,7 +200,7 @@ export function CreatePostModal({ isOpen, onClose }) {
       <label htmlFor="anonymous" className="text-sm">
         Đăng ẩn danh
       </label>
-    </div>
+    </div> */}
     
     <div className="flex justify-end gap-2">
       <Dialog.Close asChild>
