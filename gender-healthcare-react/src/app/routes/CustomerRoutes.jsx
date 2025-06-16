@@ -10,10 +10,10 @@ import CounselorSchedule from "../pages/Counselor/Content/Schedule";
 import HomePage from "../pages/Home/HomePage";
 import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
 import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
-import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
 
-export default function MainRoutes() {
+export default function CustomerRoutes() {
   return (
     <BrowserRouter>
       <Routes>
@@ -24,7 +24,7 @@ export default function MainRoutes() {
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route
             path="/profile"
-            element={<ProfilePage />}
+            element={<ProfilePage/>}
           />
         </Route>
 

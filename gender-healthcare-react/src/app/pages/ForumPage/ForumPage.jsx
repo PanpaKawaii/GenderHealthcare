@@ -10,110 +10,6 @@ import { PostCard } from "../../components/ForumComponents/post-card"
 import { CreatePostModal } from "../../components/ForumComponents/create-post-modal"
 
 import { forumAPI } from "../../services/api"
-// const samplePosts = [
-//   {
-//     id: 1,
-//     title: "First-time gynecological exam - what should I expect?",
-//     content:
-//       "I'm 22 and scheduled for my first gynecological exam next week. I'm feeling quite anxious about it and would love to hear from others about their experiences. What questions should I prepare? What happens during the exam? Any tips to help me feel more comfortable? I've been putting this off for too long due to anxiety, but I know it's important for my health. Thank you for any advice you can share!",
-//     author: "Sarah_M",
-//     authorRole: "Community Member",
-//     authorAvatar: "/placeholder.svg?height=40&width=40",
-//     category: "General Health",
-//     votes: 24,
-//     replies: 18,
-//     views: 342,
-//     timeAgo: "2 hours ago",
-//     isExpertVerified: false,
-//     tags: ["first-visit", "anxiety", "gynecology", "advice"],
-//     hasUserVoted: false,
-//     comments: [
-//       {
-//         id: 1,
-//         author: "Dr. Jennifer Liu",
-//         authorRole: "Gynecologist",
-//         content:
-//           "It's completely normal to feel anxious about your first exam! The most important thing to remember is that this is a routine medical procedure designed to keep you healthy. During the exam, we'll discuss your medical history, perform a physical examination, and possibly do a Pap smear depending on your age and risk factors. Feel free to ask questions and communicate any discomfort.",
-//         timeAgo: "1 hour ago",
-//         votes: 15,
-//         replies: [
-//           {
-//             id: 1,
-//             author: "Sarah_M",
-//             content:
-//               "Thank you so much Dr. Liu! This really helps ease my anxiety. Should I prepare any specific questions beforehand?",
-//             timeAgo: "45 minutes ago",
-//           },
-//         ],
-//       },
-//       {
-//         id: 2,
-//         author: "HealthAdvocate_2024",
-//         authorRole: "Community Member",
-//         content:
-//           "I was terrified for my first exam too! What helped me was writing down all my questions beforehand and letting the doctor know I was nervous. Most healthcare providers are very understanding and will take extra time to explain everything. You've got this! 💪",
-//         timeAgo: "30 minutes ago",
-//         votes: 8,
-//       },
-//     ],
-//   },
-//   {
-//     id: 2,
-//     title: "Understanding Birth Control Options - Need Expert Advice",
-//     content:
-//       "I'm 25 and looking to start birth control but feeling overwhelmed by all the options available. I've heard about pills, IUDs, implants, and patches, but I'm not sure which would be best for my lifestyle and health needs. I have a history of migraines and I'm concerned about hormonal side effects. I'd love to hear from both healthcare professionals and people who have experience with different methods. What questions should I ask my doctor during my consultation?",
-//     author: "Anonymous",
-//     authorRole: "Community Member",
-//     category: "Pregnancy & Family Planning",
-//     votes: 31,
-//     replies: 25,
-//     views: 567,
-//     timeAgo: "4 hours ago",
-//     isExpertVerified: true,
-//     tags: ["birth-control", "contraception", "hormones", "consultation"],
-//     hasUserVoted: true,
-//     voteType: "up",
-//     comments: [
-//       {
-//         id: 1,
-//         author: "Dr. Maria Rodriguez",
-//         authorRole: "Family Planning Specialist",
-//         content:
-//           "Great question! Given your history of migraines, we'll want to be careful about estrogen-containing methods as they can potentially worsen migraines in some people. Non-hormonal options like the copper IUD or barrier methods might be worth considering. I'd recommend scheduling a consultation to discuss your complete medical history, lifestyle preferences, and concerns. We can then create a personalized plan that works best for you.",
-//         timeAgo: "3 hours ago",
-//         votes: 22,
-//       },
-//     ],
-//   },
-//   {
-//     id: 3,
-//     title: "STI Testing - How Often and What Tests Should I Get?",
-//     content:
-//       "I'm sexually active and want to be responsible about my sexual health, but I'm confused about STI testing recommendations. How often should I get tested? What tests are included in a standard STI panel? Should my partner and I get tested together? I'm also wondering about the cost and whether insurance typically covers these tests. Any guidance would be really helpful!",
-//     author: "HealthConscious_23",
-//     authorRole: "Community Member",
-//     category: "STI Prevention",
-//     votes: 18,
-//     replies: 12,
-//     views: 289,
-//     timeAgo: "6 hours ago",
-//     isExpertVerified: true,
-//     tags: ["sti-testing", "sexual-health", "prevention", "insurance"],
-//     hasUserVoted: false,
-//     comments: [
-//       {
-//         id: 1,
-//         author: "TestingSupportTeam",
-//         authorRole: "Healthcare Provider",
-//         content:
-//           "Excellent question about staying on top of your sexual health! The CDC recommends annual testing for sexually active individuals, but frequency can vary based on your risk factors and number of partners. A standard panel typically includes tests for chlamydia, gonorrhea, syphilis, HIV, and sometimes herpes and hepatitis B. Most insurance plans do cover preventive STI screening. I'd recommend discussing your specific situation with a healthcare provider who can give you personalized recommendations.",
-//         timeAgo: "5 hours ago",
-//         votes: 14,
-//       },
-//     ],
-//   },
-// ]
-
 const trendingTopics = [
   { name: "Birth Control Options", posts: 45, trend: "+12%" },
   { name: "First Gynecologist Visit", posts: 32, trend: "+8%" },
@@ -130,30 +26,93 @@ export default function ForumPage() {
   const [activeTab, setActiveTab] = useState("all")
   const [Posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [hasMore, setHasMore] = useState(true)
+  const postsPerPage = 10
 
- 
-    const fetchPosts =async () => {
-      try{
-    const response = await forumAPI.getAllPosts();
-      setPosts(response.data);
-      console.log("Fetched posts:", response.data)
-      setLoading(false)
-  
-       } catch (error) {
+  const fetchPosts = async (page = 1, reset = false) => {
+    try {
+      setLoading(true);
+      const params = {
+        page,
+        limit: postsPerPage,
+      }
+
+      if (filterBy !== "all" && filterBy !== "following") {
+        params.category = filterBy;
+      }
+
+      if (sortBy === "recent") {
+        params.sort = "-createdAt"; // Newest first
+      } else if (sortBy === "popular") {
+        params.sort = "-viewCount"; // Most viewed
+      } else if (sortBy === "votes") {
+        params.sort = "-votes"; // Most voted
+      } else if (sortBy === "replies") {
+        params.sort = "answerCount"; // Most comments
+      }
+
+      // Add search query if applicable
+      if (searchQuery) {
+        params.search = searchQuery;
+      }
+
+      const response = await forumAPI.getAllPosts(params);
+      console.log("Fetched posts:", response.data);
+      
+      
+      if (reset || page === 1) {
+        setPosts(response.data);
+      } else {
+        setPosts(prev => [...prev, ...response.data]);
+      }
+
+      
+      setHasMore(response.data.length === postsPerPage);
+      // console.log("Fetched posts:", response.data);
+    } catch (error) {
       console.error("Error fetching posts:", error);
     } finally {
       setLoading(false);
     }
-  };
+  };  
   
-     useEffect(() => {
-        fetchPosts();
-      }, []);
+  useEffect(() => {
+    fetchPosts(1, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Effect to refetch posts when filters or sort change
+  useEffect(() => {
+    fetchPosts(1, true);
+    setCurrentPage(1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterBy, sortBy]);
 
 
- const handlePostCreated = () => {
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (searchQuery !== undefined) {
+        fetchPosts(1, true);
+      }
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery]);
+
+  const handleLoadMore = () => {
+    if (!loading && hasMore) {
+      const nextPage = currentPage + 1;
+      setCurrentPage(nextPage);
+      fetchPosts(nextPage);
+    }
+  };
+
+  const handlePostCreated = () => {
     setLoading(true);
-    fetchPosts();
+    fetchPosts(1, true);
+    setCurrentPage(1);
   };
   return (
     <div className="min-h-screen bg-gray-50">
@@ -221,8 +180,7 @@ export default function ForumPage() {
                   Trending Topics
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
-                {trendingTopics.map((topic, index) => (
+              <CardContent className="space-y-3">                {trendingTopics.map((topic) => (
                   <div
                     key={topic.name}
                     className="flex items-center justify-between p-2 hover:bg-gray-50 rounded-lg cursor-pointer"
@@ -349,8 +307,8 @@ export default function ForumPage() {
 
             {/* Load More */}
             <div className="text-center">
-              <Button variant="outline" size="lg">
-                Load More Discussions
+              <Button variant="outline" size="lg" onClick={handleLoadMore} disabled={loading || !hasMore}>
+                {loading ? "Loading..." : "Load More Discussions"}
               </Button>
             </div>
           </div>

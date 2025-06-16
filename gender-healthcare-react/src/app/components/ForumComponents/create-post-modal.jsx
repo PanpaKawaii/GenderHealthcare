@@ -36,7 +36,7 @@ const suggestedTags = [
   "relationships",
 ]
 
-export function CreatePostModal({ isOpen, onClose }) {
+export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
   // console.log("Dialog isOpen:", isOpen); 
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
@@ -58,7 +58,12 @@ export function CreatePostModal({ isOpen, onClose }) {
   const handleSubmit =  async () => {
       setLoading(true);
     try{
-      const accountId = "684a1ac7dfae966e9818e257";
+      const accountId = localStorage.getItem('UserId ');
+      if (!accountId) {
+        alert("Bạn cần đăng nhập để đăng bài viết.");
+        setLoading(false);
+        return;
+      }
       const postData = {
         title,
         content,
@@ -68,18 +73,24 @@ export function CreatePostModal({ isOpen, onClose }) {
       }
       const response = await forumAPI.createPost(postData)
       console.log("Post created successfully:", response.data);
-      onClose()
+      
+      // Clear form
       setTitle("")
       setContent("")
       setCategory("")
       setTags([])
-      // alert("Bài viết đã được tạo thành công!")
-    }catch (error) {
+      
+      // Close modal and notify parent
+      onClose();
+      if (onPostCreated) {
+        onPostCreated();
+      }
+    } catch (error) {
       console.error("Error creating post:", error);
-      alert("Đã xảy ra lỗi khi tạo bài viết. Vui lòng thử lại sau.")
+      alert("Đã xảy ra lỗi khi tạo bài viết. Vui lòng thử lại sau.");
+    } finally {
+      setLoading(false);
     }
-
-    
   }
 
   return (
@@ -200,13 +211,13 @@ export function CreatePostModal({ isOpen, onClose }) {
       <label htmlFor="anonymous" className="text-sm">
         Đăng ẩn danh
       </label>
-    </div> */}
-    
-    <div className="flex justify-end gap-2">
+    </div> */}            <div className="flex justify-end gap-2">
       <Dialog.Close asChild>
-        <Button variant="outline">Hủy</Button>
+        <Button variant="outline" disabled={loading}>Hủy</Button>
       </Dialog.Close>
-      <Button onClick={handleSubmit}>Đăng bài</Button>
+      <Button onClick={handleSubmit} disabled={loading || !title || !content || !category}>
+        {loading ? "Đang xử lý..." : "Đăng bài"}
+      </Button>
     </div>
   </div>
   
