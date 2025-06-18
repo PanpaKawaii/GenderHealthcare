@@ -1,0 +1,465 @@
+/* Cycle.css - Enhanced Version */
+
+/* Container và Layout chính */
+.cycle-wrapper {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0;
+  background: linear-gradient(135deg, #ffeef8 0%, #f8e8ff 50%, #fff0f9 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(233, 30, 99, 0.15);
+  overflow: hidden;
+  min-height: 600px;
+}
+
+/* Header */
+.cycle-header {
+  background: linear-gradient(135deg, #e91e63, #ad1457);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cycle-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>')
+    repeat;
+  opacity: 0.3;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.title::before {
+  content: "🌸";
+  margin-right: 0.5rem;
+}
+
+.instruction {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+/* Content Area */
+.cycle-content {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+/* Form Controls */
+.form-section {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(233, 30, 99, 0.1);
+  box-shadow: 0 8px 32px rgba(233, 30, 99, 0.08);
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  color: #e91e63;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #f0f0f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #e91e63;
+  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+  background: white;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #e91e63, #ad1457);
+  color: white;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+  color: white;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn-success:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+/* Calendar Container */
+.calendar-container {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(233, 30, 99, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* React Calendar Overrides */
+.react-calendar {
+  width: 100% !important;
+  max-width: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  font-family: inherit !important;
+  line-height: 1.4 !important;
+}
+
+.react-calendar__navigation {
+  display: flex !important;
+  height: 50px !important;
+  margin-bottom: 1rem !important;
+}
+
+.react-calendar__navigation button {
+  background: linear-gradient(135deg, #e91e63, #ad1457) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  margin: 0 2px !important;
+}
+
+.react-calendar__navigation button:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3) !important;
+}
+
+.react-calendar__navigation button:disabled {
+  opacity: 0.5 !important;
+  transform: none !important;
+}
+
+.react-calendar__month-view__weekdays {
+  font-weight: 600 !important;
+  color: #666 !important;
+  font-size: 0.9rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  padding: 0.75rem 0.25rem !important;
+  text-align: center !important;
+}
+
+.react-calendar__month-view__days {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 4px !important;
+}
+
+.react-calendar__tile {
+  aspect-ratio: 1 !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  color: #333 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 2px !important;
+  position: relative !important;
+}
+
+.react-calendar__tile:hover {
+  background: rgba(233, 30, 99, 0.1) !important;
+  transform: scale(1.05) !important;
+  z-index: 2 !important;
+}
+
+.react-calendar__tile--active {
+  background: #e91e63 !important;
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+.react-calendar__tile--now {
+  background: rgba(255, 215, 0, 0.2) !important;
+  border: 2px solid #ffd700 !important;
+  font-weight: 700 !important;
+}
+
+.react-calendar__tile--neighboringMonth {
+  color: #ccc !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Custom Day Styles */
+.period-day {
+  background: linear-gradient(135deg, #ff6b9d, #e91e63) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4) !important;
+}
+
+.fertile-day {
+  background: linear-gradient(135deg, #66bb6a, #4caf50) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(102, 187, 106, 0.4) !important;
+}
+
+.fertile-high {
+  background: linear-gradient(135deg, #4caf50, #2e7d32) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  border: 3px solid #1b5e20 !important;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.5) !important;
+  animation: pulse 2s infinite !important;
+}
+
+.predicted-period-day {
+  background: rgba(255, 107, 157, 0.15) !important;
+  border: 2px solid #ff6b9d !important;
+  color: #e91e63 !important;
+  font-weight: 600 !important;
+  border-style: dashed !important;
+}
+
+.predicted-fertile-day {
+  background: rgba(76, 175, 80, 0.15) !important;
+  border: 2px solid #4caf50 !important;
+  color: #388e3c !important;
+  font-weight: 600 !important;
+  border-style: dashed !important;
+}
+
+.today {
+  border: 3px solid #ffd700 !important;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Loading States */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  color: #e91e63;
+  font-size: 1.1rem;
+}
+
+.loading::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #e91e63;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 1rem;
+}
+
+/* Status Messages */
+.status-message {
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  border: 1px solid;
+}
+
+.status-success {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.status-error {
+  background: rgba(244, 67, 54, 0.1);
+  color: #c62828;
+  border-color: rgba(244, 67, 54, 0.3);
+}
+
+/* Animations */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cycle-wrapper {
+    margin: 1rem;
+    border-radius: 16px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .cycle-content {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-group {
+    min-width: 100%;
+  }
+
+  .react-calendar__tile {
+    font-size: 0.85rem !important;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cycle-wrapper {
+    margin: 0.5rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .cycle-content {
+    padding: 1rem;
+  }
+
+  .react-calendar__tile {
+    font-size: 0.8rem !important;
+    aspect-ratio: 0.9 !important;
+  }
+
+  .form-section {
+    padding: 1rem;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .cycle-wrapper {
+    background: linear-gradient(135deg, #2a1a2e 0%, #1a1a2e 50%, #2a1a2e 100%);
+  }
+
+  .cycle-content {
+    background: rgba(40, 40, 40, 0.95);
+    color: #e0e0e0;
+  }
+
+  .form-section {
+    background: rgba(50, 50, 50, 0.8);
+    border-color: rgba(233, 30, 99, 0.2);
+  }
+
+  .form-input {
+    background: rgba(60, 60, 60, 0.9);
+    border-color: #555;
+    color: #e0e0e0;
+  }
+
+  .react-calendar__tile {
+    background: rgba(60, 60, 60, 0.6) !important;
+    color: #e0e0e0 !important;
+  }
+}

@@ -1,0 +1,79 @@
+.reminder-list-container {
+  background: #fff0f6;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 0 auto 32px auto;
+  max-width: 420px;
+  box-shadow: 0 4px 24px #ffe0ef;
+}
+
+.reminder-list-container h3 {
+  color: #e75480;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.reminder-list-container input {
+  padding: 8px 12px;
+  border: 1px solid #ffb6c1;
+  border-radius: 6px;
+  margin-right: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.reminder-list-container input:focus {
+  border: 1.5px solid #e75480;
+}
+
+.reminder-list-container button {
+  background: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 4px;
+  transition: background 0.2s;
+}
+
+.reminder-list-container button:hover {
+  background: #e75480;
+}
+
+.reminder-list-container ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 16px;
+}
+
+.reminder-list-container li {
+  background: #ffe0ef;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #e75480;
+  font-size: 1rem;
+}
+
+.reminder-list-container li button {
+  background: #fff0f6;
+  color: #e75480;
+  border: 1px solid #e75480;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.95rem;
+  margin-left: 12px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.reminder-list-container li button:hover {
+  background: #e75480;
+  color: #fff;
+}

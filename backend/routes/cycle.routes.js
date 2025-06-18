@@ -1,14 +1,20 @@
-const express = require('express');
-const ctrl = require('../controllers/cycle.controller');
+const express = require("express");
+const ctrl = require("../controllers/cycle.controller");
 const r = express.Router();
 
-// Thêm mới cycle cho customer
-r.post('/', ctrl.create);
-// Lấy tất cả cycle của 1 customer
-r.get('/customer/:customerId', ctrl.getByCustomer);
-// Lấy, update, xóa cycle theo id
-r.get('/:id', ctrl.getOne);
-r.put('/:id', ctrl.update);
-r.delete('/:id', ctrl.remove);
+// POST /api/cycles/
+r.post("/", ctrl.create);
+
+// GET /api/cycles/by-customer/:customerId
+r.get("/by-customer/:customerId", ctrl.getByCustomer);
+
+// GET /api/cycles/by-id/:id
+r.get("/by-id/:id", ctrl.getOne);
+
+// PUT /api/cycles/by-id/:id
+r.put("/by-id/:id", ctrl.update);
+
+// DELETE /api/cycles/by-id/:id
+r.delete("/by-id/:id", ctrl.remove);
 
 module.exports = r;
