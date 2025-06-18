@@ -5,13 +5,15 @@ import Login from "../pages/LoginRegister/Login";
 import Register from "../pages/LoginRegister/Register";
 import Blog from "../pages/blog/Blog";
 import BlogDetail from "../pages/blog/components/BlogDetail";
-import CounselorBlog from "../pages/Counselor/Content/Blog";
-import CounselorSchedule from "../pages/Counselor/Content/Schedule";
+import CounselorBlog from "../pages/Counselor/pages/Blog";
+import CounselorSchedule from "../pages/Counselor/pages/Schedule";
 import HomePage from "../pages/Home/HomePage";
 import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
 import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
 import Cycle from "../pages/Cycle/Cycle";
+import CounselorHome from "../pages/Counselor/Home";
 
 export default function MainRoutes() {
   return (
@@ -22,12 +24,10 @@ export default function MainRoutes() {
           <Route path="/forum" element={<ForumPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
-          <Route
-            path="/profile"
-            element={<div>Profile Page (Coming Soon)</div>}
-          />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
 
+        <Route path="/counselorhome" element={<CounselorHome />} />
         <Route path="/counselorblog" element={<CounselorBlog />} />
         <Route path="/counselorschedule" element={<CounselorSchedule />} />
         <Route path="/login" element={<Login />} />

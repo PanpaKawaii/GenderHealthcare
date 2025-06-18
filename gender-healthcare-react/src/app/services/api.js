@@ -102,13 +102,13 @@ export const parameterAPI = {
   update: (id, data) => api.put(`/parameters/${id}`, data),
   delete: (id) => api.delete(`/parameters/${id}`),
 };
-// export const testbookingAPI = {
-//   getAll: () => api.get('/testbookings'),
-//   getById: (id) => api.get(`/testbookings/${id}`),
-//   create: (data) => api.post('/testbookings', data),
-//   update: (id, data) => api.put(`/testbookings/${id}`, data),
-//   delete: (id) => api.delete(`/testbookings/${id}`),
-// };
+export const testbookingAPI = {
+  getAll: () => api.get("/testbookings"),
+  getById: (id) => api.get(`/testbookings/${id}`),
+  create: (data) => api.post("/testbookings", data),
+  update: (id, data) => api.put(`/testbookings/${id}`, data),
+  delete: (id) => api.delete(`/testbookings/${id}`),
+};
 export const testresultAPI = {
   getAll: () => api.get("/testresults"),
   getById: (id) => api.get(`/testresults/${id}`),
@@ -123,10 +123,42 @@ export const testresultdetailAPI = {
   update: (id, data) => api.put(`/testresultdetails/${id}`, data),
   delete: (id) => api.delete(`/testresultdetails/${id}`),
 };
-// export const testserviceparameterAPI = {
-//   getAll: () => api.get('/testserviceparameters'),
-//   getById: (id) => api.get(`/testserviceparameters/${id}`),
-//   create: (data) => api.post('/testserviceparameters', data),
-//   update: (id, data) => api.put(`/testserviceparameters/${id}`, data),
-//   delete: (id) => api.delete(`/testserviceparameters/${id}`),
-// };
+export const testserviceparameterAPI = {
+  getAll: () => api.get("/testserviceparameters"),
+  getById: (id) => api.get(`/testserviceparameters/${id}`),
+  create: (data) => api.post("/testserviceparameters", data),
+  update: (id, data) => api.put(`/testserviceparameters/${id}`, data),
+  delete: (id) => api.delete(`/testserviceparameters/${id}`),
+};
+
+//forum api
+export const forumAPI = {
+  // ===== POSTS =====
+  getAllPosts: (params) => api.get("/posts", { params }), // ?page=1&limit=10&tag=x
+  getPostById: (id) => api.get(`/posts/${id}`),
+  createPost: (data) => api.post("/posts", data),
+  updatePost: (id, data) => api.patch(`/posts/${id}`, data),
+  deletePost: (id) => api.delete(`/posts/${id}`),
+
+  // View + Vote
+  incrementPostView: (id) => api.patch(`/posts/${id}/view`),
+  votePost: (id, data) => api.post(`/posts/${id}/vote`, data), // { voteType: "up", accountId }
+
+  // ===== COMMENTS =====
+  // Tạo bình luận hoặc trả lời (gộp chung)
+  createComment: (postId, data) => api.post(`/posts/${postId}/comments`, data),
+  // data = { content, accountId, parentCommentId (optional) }
+
+  // (Nếu cần cập nhật comment)
+  // updateComment: (commentId, data) => api.put(`/comments/${commentId}`, data),
+  // deleteComment: (commentId) => api.delete(`comments/${commentId}`),
+
+  // (Nếu cần gọi riêng replies của một comment)
+  getRepliesByCommentId: (commentId) =>
+    api.get(`comments/${commentId}/replies`),
+
+  // Vote comment
+  voteComment: (commentId, data) =>
+    api.post(`/comments/${commentId}/vote`, data),
+  // data = { voteType, accountId }
+};

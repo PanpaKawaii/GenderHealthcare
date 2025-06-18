@@ -1,46 +1,74 @@
-"use client"
-
 import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "../../components/ui/Card"
-import Button from "../../components/ui/Button"
-import Badge from "../../components/ui/Badge"
-import Modal from "../../components/ui/Modal"
-import Input from "../../components/ui/Input"
-import Label from "../../components/ui/Label"
-import Select, { SelectItem } from "../../components/ui/Select"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ForumComponents/ui/card"
+import { Button } from "../../components/ForumComponents/ui/button"
+import { Switch } from "../../components/ForumComponents/ui/switch"
+import { Bell, Calendar, Clock, Pill, Trash2, Plus } from "lucide-react"
+import { Badge } from "../../components/ForumComponents/ui/badge"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../../components/ForumComponents/ui/dialog"
+import { Input } from "../../components/ForumComponents/ui/input"
+import { Label } from "../../components/ForumComponents/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/ForumComponents/ui/select"
 
-const RemindersList = () => {
-  const [reminders, setReminders] = useState([
-    {
-      id: 1,
-      title: "Take Contraceptive Pill",
-      time: "8:00 PM",
-      days: "Daily",
-      icon: "💊",
-      active: true,
-      type: "medication",
-    },
-    {
-      id: 2,
-      title: "Log Symptoms",
-      time: "9:00 PM",
-      days: "Daily",
-      icon: "📝",
-      active: true,
-      type: "tracking",
-    },
-    {
-      id: 3,
-      title: "Gynecologist Appointment",
-      time: "10:00 AM",
-      days: "June 12, 2025",
-      icon: "👩‍⚕️",
-      active: true,
-      type: "appointment",
-    },
-  ])
+// Mock data for reminders
+const initialReminders = [
+  {
+    id: 1,
+    title: "Take Contraceptive Pill",
+    time: "8:00 PM",
+    days: "Daily",
+    icon: "pill",
+    active: true,
+    type: "medication",
+  },
+  {
+    id: 2,
+    title: "Log Symptoms",
+    time: "9:00 PM",
+    days: "Daily",
+    icon: "calendar",
+    active: true,
+    type: "tracking",
+  },
+  {
+    id: 3,
+    title: "Gynecologist Appointment",
+    time: "10:00 AM",
+    days: "June 12, 2025",
+    icon: "calendar",
+    active: true,
+    type: "appointment",
+  },
+  {
+    id: 4,
+    title: "STI Test Results",
+    time: "2:00 PM",
+    days: "June 15, 2025",
+    icon: "calendar",
+    active: true,
+    type: "test",
+  },
+  {
+    id: 5,
+    title: "Refill Prescription",
+    time: "Any time",
+    days: "June 20, 2025",
+    icon: "pill",
+    active: true,
+    type: "medication",
+  },
+]
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
+export default function RemindersList() {
+  const [reminders, setReminders] = useState(initialReminders)
+  const [open, setOpen] = useState(false)
 
   const toggleReminder = (id) => {
     setReminders(
@@ -52,16 +80,31 @@ const RemindersList = () => {
     setReminders(reminders.filter((reminder) => reminder.id !== id))
   }
 
-  const getBadgeVariant = (type) => {
+  const getIcon = (icon) => {
+    switch (icon) {
+      case "pill":
+        return <Pill className="h-5 w-5" />
+      case "calendar":
+        return <Calendar className="h-5 w-5" />
+      case "clock":
+        return <Clock className="h-5 w-5" />
+      default:
+        return <Bell className="h-5 w-5" />
+    }
+  }
+
+  const getBadgeStyle = (type) => {
     switch (type) {
       case "medication":
-        return "default"
+        return "bg-blue-100 text-blue-800 hover:bg-blue-200"
       case "tracking":
-        return "success"
+        return "bg-green-100 text-green-800 hover:bg-green-200"
       case "appointment":
-        return "secondary"
+        return "bg-purple-100 text-purple-800 hover:bg-purple-200"
+      case "test":
+        return "bg-amber-100 text-amber-800 hover:bg-amber-200"
       default:
-        return "outline"
+        return "bg-gray-100 text-gray-800 hover:bg-gray-200"
     }
   }
 
@@ -73,21 +116,87 @@ const RemindersList = () => {
             <CardTitle>Reminders</CardTitle>
             <CardDescription>Manage your health reminders</CardDescription>
           </div>
-          <Button onClick={() => setIsModalOpen(true)}>
-            <span className="mr-2">+</span>
-            Add Reminder
-          </Button>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <Button>
+                <Plus className="mr-2 h-4 w-4" />
+                Add Reminder
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Create Reminder</DialogTitle>
+                <DialogDescription>Set up a new reminder for your health needs</DialogDescription>
+              </DialogHeader>
+              <div className="grid gap-4 py-4">
+                <div className="grid gap-2">
+                  <Label htmlFor="title">Title</Label>
+                  <Input id="title" placeholder="Take medication" />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="type">Type</Label>
+                  <Select>
+                    <SelectTrigger id="type">
+                      <SelectValue placeholder="Select type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="medication">Medication</SelectItem>
+                      <SelectItem value="tracking">Tracking</SelectItem>
+                      <SelectItem value="appointment">Appointment</SelectItem>
+                      <SelectItem value="test">Test</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="time">Time</Label>
+                  <Input id="time" type="time" />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="frequency">Frequency</Label>
+                  <Select>
+                    <SelectTrigger id="frequency">
+                      <SelectValue placeholder="Select frequency" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="daily">Daily</SelectItem>
+                      <SelectItem value="weekly">Weekly</SelectItem>
+                      <SelectItem value="monthly">Monthly</SelectItem>
+                      <SelectItem value="once">One time</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <DialogFooter>
+                <Button variant="outline" onClick={() => setOpen(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={() => setOpen(false)}>Save Reminder</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             {reminders.map((reminder) => (
               <div key={reminder.id} className="flex items-center justify-between p-3 border rounded-lg">
                 <div className="flex items-center gap-3">
-                  <div className="text-2xl">{reminder.icon}</div>
+                  <div
+                    className={`p-2 rounded-full ${
+                      reminder.type === "medication"
+                        ? "bg-blue-100"
+                        : reminder.type === "tracking"
+                          ? "bg-green-100"
+                          : reminder.type === "appointment"
+                            ? "bg-purple-100"
+                            : "bg-amber-100"
+                    }`}
+                  >
+                    {getIcon(reminder.icon)}
+                  </div>
                   <div>
                     <h4 className="font-medium">{reminder.title}</h4>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <span>🕐</span>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Clock className="h-3 w-3" />
                       <span>{reminder.time}</span>
                       <span>•</span>
                       <span>{reminder.days}</span>
@@ -95,26 +204,12 @@ const RemindersList = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Badge variant={getBadgeVariant(reminder.type)}>
+                  <Badge variant="outline" className={getBadgeStyle(reminder.type)}>
                     {reminder.type.charAt(0).toUpperCase() + reminder.type.slice(1)}
                   </Badge>
-                  <label className="flex items-center cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={reminder.active}
-                      onChange={() => toggleReminder(reminder.id)}
-                      className="sr-only"
-                    />
-                    <div
-                      className={`w-11 h-6 rounded-full transition-colors ${reminder.active ? "bg-teal-600" : "bg-gray-300"}`}
-                    >
-                      <div
-                        className={`w-5 h-5 bg-white rounded-full shadow transform transition-transform ${reminder.active ? "translate-x-5" : "translate-x-0.5"} mt-0.5`}
-                      ></div>
-                    </div>
-                  </label>
-                  <Button variant="ghost" size="sm" onClick={() => deleteReminder(reminder.id)}>
-                    🗑️
+                  <Switch checked={reminder.active} onCheckedChange={() => toggleReminder(reminder.id)} />
+                  <Button variant="ghost" size="icon" onClick={() => deleteReminder(reminder.id)}>
+                    <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
               </div>
@@ -132,26 +227,23 @@ const RemindersList = () => {
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <h4 className="font-medium">Push Notifications</h4>
-              <p className="text-sm text-gray-500">Receive notifications on your device</p>
+              <p className="text-sm text-muted-foreground">Receive notifications on your device</p>
             </div>
-            <label className="flex items-center cursor-pointer">
-              <input type="checkbox" defaultChecked className="sr-only" />
-              <div className="w-11 h-6 bg-teal-600 rounded-full">
-                <div className="w-5 h-5 bg-white rounded-full shadow transform translate-x-5 mt-0.5"></div>
-              </div>
-            </label>
+            <Switch defaultChecked />
           </div>
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <h4 className="font-medium">Email Notifications</h4>
-              <p className="text-sm text-gray-500">Receive reminders via email</p>
+              <p className="text-sm text-muted-foreground">Receive reminders via email</p>
             </div>
-            <label className="flex items-center cursor-pointer">
-              <input type="checkbox" className="sr-only" />
-              <div className="w-11 h-6 bg-gray-300 rounded-full">
-                <div className="w-5 h-5 bg-white rounded-full shadow transform translate-x-0.5 mt-0.5"></div>
-              </div>
-            </label>
+            <Switch />
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="space-y-0.5">
+              <h4 className="font-medium">SMS Notifications</h4>
+              <p className="text-sm text-muted-foreground">Receive reminders via text message</p>
+            </div>
+            <Switch />
           </div>
         </CardContent>
         <CardFooter>
@@ -160,43 +252,6 @@ const RemindersList = () => {
           </Button>
         </CardFooter>
       </Card>
-
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title="Create Reminder"
-        description="Set up a new reminder for your health needs"
-      >
-        <div className="space-y-4">
-          <div>
-            <Label htmlFor="title">Title</Label>
-            <Input id="title" placeholder="Take medication" />
-          </div>
-          <div>
-            <Label htmlFor="type">Type</Label>
-            <Select placeholder="Select type">
-              <SelectItem value="medication">Medication</SelectItem>
-              <SelectItem value="tracking">Tracking</SelectItem>
-              <SelectItem value="appointment">Appointment</SelectItem>
-              <SelectItem value="test">Test</SelectItem>
-            </Select>
-          </div>
-          <div>
-            <Label htmlFor="time">Time</Label>
-            <Input id="time" type="time" />
-          </div>
-          <div className="flex gap-2 pt-4">
-            <Button variant="outline" onClick={() => setIsModalOpen(false)} className="flex-1">
-              Cancel
-            </Button>
-            <Button onClick={() => setIsModalOpen(false)} className="flex-1">
-              Save Reminder
-            </Button>
-          </div>
-        </div>
-      </Modal>
     </div>
   )
 }
-
-export default RemindersList
