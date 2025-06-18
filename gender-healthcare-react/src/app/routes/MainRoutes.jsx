@@ -11,6 +11,7 @@ import HomePage from "../pages/Home/HomePage";
 import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
 import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
 import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
+import Cycle from "../pages/Cycle/Cycle";
 
 export default function MainRoutes() {
   return (
@@ -42,6 +43,7 @@ export default function MainRoutes() {
         />
 
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/cycle" element={<Cycle />} />
       </Routes>
     </BrowserRouter>
   );
