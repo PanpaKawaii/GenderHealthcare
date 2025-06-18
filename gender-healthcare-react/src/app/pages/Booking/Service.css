@@ -15,14 +15,55 @@
             border: 2px solid #ddd;
             box-sizing: border-box;
             border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
 
             display: flex;
             flex-direction: column;
             align-items: center;
 
-            i {
-                font-size: 80px;
-                margin: 0 auto 24px;
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                list-style-type: disc;
+            }
+
+            .ul-1 li::marker {
+                color: #2563EB;
+            }
+
+            .ul-2 li::marker {
+                color: #16A34A;
+            }
+
+            .icon {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &.icon-stethoscope {
+                    background-color: #E6F1FF;
+                }
+
+                &.icon-hospital {
+                    background-color: #E9FDEF;
+                }
+
+                i {
+                    font-size: 40px;
+
+                    &.fa-stethoscope {
+                        color: #2563EB;
+                    }
+
+                    &.fa-hospital {
+                        color: #16A34A;
+                    }
+                }
             }
 
             h2 {
@@ -41,10 +82,71 @@
                 margin: 32px 0;
                 background-color: #ccc;
             }
+
+            .price-1 {
+                font-size: 18px;
+                font-weight: 500;
+                color: #555;
+
+                span {
+                    font-size: 30px;
+                    font-weight: bold;
+                    color: #2563EB;
+                }
+            }
+
+            .price-2 {
+                font-size: 18px;
+                font-weight: 500;
+                color: #555;
+
+                span {
+                    font-size: 30px;
+                    font-weight: bold;
+                    color: #16A34A;
+                }
+            }
+
+            .convenient {
+                margin: 0 0 12px;
+                color: #777;
+                font-size: 14px;
+            }
+
+            .note-1 {
+                padding: 2px 12px;
+                height: fit-content;
+                color: #2563EB;
+                background-color: #E6F1FF;
+                font-size: 12px;
+                font-weight: bold;
+                border-radius: 11px;
+            }
+
+            .note-2 {
+                padding: 2px 6px;
+                height: fit-content;
+                color: #16A34A;
+                background-color: #E9FDEF;
+                font-size: 12px;
+                font-weight: bold;
+                border-radius: 11px;
+            }
+        }
+
+        .card-stethoscope:hover {
+            border-color: #CDE3FE;
+            box-shadow: 0 12px 12px 0 #00000020;
+        }
+
+        .card-hospital:hover {
+            border-color: #CAFADA;
+            box-shadow: 0 12px 12px 0 #00000020;
         }
     }
 
     .why-choose {
+        margin: 32px 0 0;
         padding: 24px;
         width: 100%;
         display: flex;
@@ -67,9 +169,42 @@
                 flex-direction: column;
                 align-items: center;
 
-                i {
-                    font-size: 48px;
-                    margin: 0 0 12px;
+                .icon {
+                    width: 48px;
+                    height: 48px;
+                    margin: 0 0 8px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    &.icon-stethoscope {
+                        background-color: #E6F1FF;
+                    }
+
+                    &.icon-hospital {
+                        background-color: #E9FDEF;
+                    }
+
+                    &.icon-bolt {
+                        background-color: #F3E8FF;
+                    }
+
+                    i {
+                        font-size: 20px;
+
+                        &.fa-stethoscope {
+                            color: #2563EB;
+                        }
+
+                        &.fa-hospital {
+                            color: #16A34A;
+                        }
+
+                        &.fa-bolt {
+                            color: #ffd700;
+                        }
+                    }
                 }
 
                 .name {
@@ -79,6 +214,7 @@
                 }
 
                 p {
+                    color: #777;
                     text-align: center;
                 }
             }
