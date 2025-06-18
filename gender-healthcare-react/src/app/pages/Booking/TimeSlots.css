@@ -1,0 +1,75 @@
+.timeslots-content {
+
+    .timeslots-form {
+        width: 100%;
+        max-width: 680px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 24px;
+        background: #fff;
+        margin: 20px auto;
+
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+
+            .time-slot {
+                /* width: 140px; */
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                background: white;
+                color: #333;
+                cursor: pointer;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                /* gap: 20px; */
+                transition: background 0.2s;
+
+                &.booked {
+                    background: #e5e7eb;
+                    color: #999;
+                    cursor: not-allowed;
+                }
+
+                &:hover:not(:disabled) {
+                    background: #f0f8ff;
+                }
+
+                &:disabled {
+                    pointer-events: none;
+                }
+            }
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            font-size: 14px;
+            color: #666;
+
+            .box {
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                margin-right: 6px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                vertical-align: middle;
+
+                &.available {
+                    background: #fff;
+                }
+
+                &.booked {
+                    background: #e5e7eb;
+                }
+            }
+        }
+    }
+}

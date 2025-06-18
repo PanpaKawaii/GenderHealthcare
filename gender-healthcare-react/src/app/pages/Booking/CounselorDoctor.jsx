@@ -3,10 +3,9 @@ import './CounselorDoctor.css';
 
 export default function CounselorDoctor() {
     return (
-        <div className='counselor-doctor-content'>
+        <div className='counselor-doctor-content booking-content'>
             <h1 className='title'>Choose Your Consultant</h1>
             <p className='script'>Select from our qualified healthcare professionals</p>
-            <span>Showing 4-6 of 6 providers</span>
             <div className='cards'>
                 {[...Array(5)].map((_, i) => (
                     <div key={i} className='card'>
@@ -19,7 +18,7 @@ export default function CounselorDoctor() {
                                 <div className='available'>Available Today</div>
                             </div>
                             <div className='row2'>
-                                <i className='fa-solid fa-circle-check'></i>
+                                <i className='fa-regular fa-calendar'></i>
                                 <div>Next available: Today</div>
                             </div>
                         </div>
