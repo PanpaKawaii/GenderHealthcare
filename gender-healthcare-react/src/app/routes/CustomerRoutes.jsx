@@ -12,6 +12,7 @@ import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
 import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
 import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import TestBooking from "../pages/Booking/TestBooking";
 
 export default function CustomerRoutes() {
   return (
@@ -32,7 +33,7 @@ export default function CustomerRoutes() {
         <Route path="/counselorschedule" element={<CounselorSchedule />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboardDoctor" element={<DashboardDoctor />} />
+        <Route path="/testbooking" element={<TestBooking />} />
         <Route
           path="/dashboardTestservice"
           element={<DashboardTestservice />}

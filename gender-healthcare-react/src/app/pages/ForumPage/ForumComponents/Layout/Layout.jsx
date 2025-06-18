@@ -36,7 +36,7 @@ const Layout = () => {
               <Link to="/" className="text-gray-600 hover:text-gray-900">Home</Link>
               <Link to="/forum" className="text-gray-600 hover:text-gray-900">Forum</Link>
               <Link to="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
-
+              <Link to="/testbooking" className="text-gray-600 hover:text-gray-900">Booking</Link>
               <Link to="/contact" className="text-gray-600 hover:text-gray-900">Contact</Link>
             </div>
             {!Role ?
