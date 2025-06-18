@@ -39,19 +39,20 @@ export const commentAPI = {
 };
 
 export const cycleAPI = {
-  getAll: () => api.get("/cycles"),
+  getByCustomer: (customerId) => api.get(`/cycles/by-customer/${customerId}`),
   create: (data) => api.post("/cycles", data),
-  update: (id, data) => api.put(`/cycles/${id}`, data),
-  delete: (id) => api.delete(`/cycles/${id}`),
-  getByCustomer: (customerId) => api.get(`/cycles/${customerId}`),
+  update: (id, data) => api.put(`/cycles/by-id/${id}`, data),
+  delete: (id) => api.delete(`/cycles/by-id/${id}`),
+  getOne: (id) => api.get(`/cycles/by-id/${id}`),
 };
 
 export const reminderAPI = {
-  getAll: () => api.get("/reminders"),
+  getByCustomer: (customerId) =>
+    api.get(`/reminders/by-customer/${customerId}`),
   create: (data) => api.post("/reminders", data),
-  update: (id, data) => api.put(`/reminders/${id}`, data),
-  delete: (id) => api.delete(`/reminders/${id}`),
-  getByCustomer: (customerId) => api.get(`/reminders/${customerId}`),
+  update: (id, data) => api.put(`/reminders/by-id/${id}`, data),
+  delete: (id) => api.delete(`/reminders/by-id/${id}`),
+  getOne: (id) => api.get(`/reminders/by-id/${id}`),
 };
 
 export const blogAPI = {

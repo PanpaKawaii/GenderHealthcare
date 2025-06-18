@@ -1,33 +1,69 @@
 .calendar-container {
   background: #fff0f6;
-  border-radius: 16px;
-  padding: 32px;
-  margin: 24px auto;
+  border-radius: 18px;
+  padding: 32px 24px 24px 24px;
+  margin: 0 auto 32px auto;
   max-width: 420px;
   box-shadow: 0 4px 24px #ffe0ef;
+  text-align: center;
 }
+
+.calendar-container h2 {
+  color: #e75480;
+  margin-bottom: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.react-calendar {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+.react-calendar__tile {
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500;
+}
+
 .period-day {
   background: #ffb6c1 !important;
   color: white !important;
-  border-radius: 50%;
+  border-radius: 50% !important;
 }
+
 .period-start {
   background: #ff69b4 !important;
   color: white !important;
   border: 2px solid #e75480 !important;
-  border-radius: 50%;
+  border-radius: 50% !important;
 }
+
+.react-calendar__tile--now {
+  box-shadow: 0 0 0 2px #e75480;
+  position: relative;
+}
+
+.react-calendar__tile--active {
+  background: #e75480 !important;
+  color: #fff !important;
+}
+
 .save-btn {
   margin-top: 20px;
-  background: #ff69b4;
+  background: linear-gradient(90deg, #ff69b4 60%, #ffb6c1 100%);
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 10px 24px;
+  padding: 10px 28px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 2px 8px #ffe0ef;
   transition: background 0.2s;
 }
+
 .save-btn:hover {
-  background: #e75480;
+  background: linear-gradient(90deg, #e75480 60%, #ffb6c1 100%);
 }

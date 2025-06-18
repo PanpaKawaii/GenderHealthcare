@@ -12,7 +12,9 @@ exports.create = async (req, res) => {
 
 exports.getByCustomer = async (req, res) => {
   try {
-    const reminders = await Reminder.find({ userId: req.query.userId }).sort({
+    const reminders = await Reminder.find({
+      customerId: req.params.customerId,
+    }).sort({
       date: 1,
     });
     res.json(reminders);

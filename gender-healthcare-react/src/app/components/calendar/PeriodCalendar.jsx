@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from "react";
-import Calendar from "react-calendar";
-import moment from "moment";
-import "./PeriodCalendar.css";
+import { useEffect } from "react";
+import { useState } from "react";
 import { cycleAPI } from "../../services/api";
+import moment from "moment";
+import Calendar from "react-calendar";
+import "./PeriodCalendar.css";
 
-function PeriodCalendar({ userId, onCycleChange }) {
+function PeriodCalendar({ customerId, onCycleChange }) {
   const [cycles, setCycles] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   useEffect(() => {
-    cycleAPI.getByCustomer(userId).then((res) => setCycles(res.data));
-  }, [userId]);
+    if (customerId) {
+      cycleAPI.getByCustomer(customerId).then((res) => setCycles(res.data));
+    }
+  }, [customerId]);
 
   const handleDayClick = (date) => setSelectedDate(date);
 
   const handleSave = () => {
     cycleAPI
       .create({
-        userId,
+        customerId,
         periodStart: selectedDate,
         periodLength: 7,
       })
@@ -27,7 +30,6 @@ function PeriodCalendar({ userId, onCycleChange }) {
       });
   };
 
-  // Highlight logic: hồng, xanh, khoanh tròn, v.v.
   const tileClassName = ({ date, view }) => {
     if (view !== "month") return "";
     for (let cycle of cycles) {
@@ -38,7 +40,6 @@ function PeriodCalendar({ userId, onCycleChange }) {
         return "period-day";
       }
     }
-    // Logic dự báo, thụ thai, v.v. có thể bổ sung thêm ở đây
     return "";
   };
 
