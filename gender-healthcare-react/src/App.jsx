@@ -2,6 +2,7 @@ import "./App.css";
 import MainRoutes from "./app/routes/MainRoutes";
 import CounselorRoutes from "./app/routes/CounselorRoutes";
 import CustomerRoutes from "./app/routes/CustomerRoutes.jsx";
+import AdminRoutes from './app/routes/AdminRoutes.jsx';
 import { UserAuth } from "./app/hooks/Context/AuthContext.jsx";
 import { useEffect } from "react";
 import { api } from "./app/services/api";
@@ -28,7 +29,6 @@ export default function App() {
   //     api.interceptors.response.eject(interceptor);
   //   };
   // }, []);
-
   const { Id, Token, Role, IsLogIn } = UserAuth();
   console.log("Id", Id);
   console.log("Token", Token);
@@ -40,5 +40,8 @@ export default function App() {
     return <CounselorRoutes />;
   } else if (Role == "Customer") {
     return <CustomerRoutes />;
+  }
+  else if (Role == 'Admin') {
+    return <AdminRoutes />;
   } else return <MainRoutes />;
 }
