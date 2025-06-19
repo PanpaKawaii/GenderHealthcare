@@ -1,0 +1,39 @@
+.testbooking-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fdfdfd;
+    padding: 32px 0 0;
+
+    .booking-content {
+        width: 100%;
+        max-width: 900px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto 0;
+        padding: 0 20px;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-weight: bold;
+    }
+
+    .title {
+        font-size: 36px;
+        text-align: center;
+        margin: 0 0 16px;
+    }
+
+    .script {
+        max-width: 800px;
+        text-align: center;
+        font-size: 20px;
+        color: #555;
+        font-weight: 500;
+    }
+}

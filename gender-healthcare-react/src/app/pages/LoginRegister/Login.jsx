@@ -90,6 +90,11 @@ export default function Login() {
 
     return (
         <div className='login-container'>
+
+            <div className='back-arrow'>
+                <i className='fa-solid fa-arrow-left'></i>
+            </div>
+
             <div className='login-card'>
                 <div className='card-heading'>
                     <i className='fa-regular fa-heart'></i>

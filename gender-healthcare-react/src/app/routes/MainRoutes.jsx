@@ -12,8 +12,8 @@ import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
 import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
-import CounselorHome from '../pages/Counselor/Home';
 
+import CounselorHome from "../pages/Counselor/Home";
 
 export default function MainRoutes() {
   return (
@@ -24,10 +24,7 @@ export default function MainRoutes() {
           <Route path="/forum" element={<ForumPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
-          <Route
-            path="/profile"
-            element={<ProfilePage />}
-          />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
 
         <Route path="/counselorhome" element={<CounselorHome />} />

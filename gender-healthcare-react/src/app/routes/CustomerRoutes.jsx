@@ -12,6 +12,8 @@ import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
 import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
 import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import TestBooking from "../pages/Booking/TestBooking";
+import Cycle from "../pages/Cycle/Cycle";
 
 export default function CustomerRoutes() {
   return (
@@ -22,17 +24,14 @@ export default function CustomerRoutes() {
           <Route path="/forum" element={<ForumPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
-          <Route
-            path="/profile"
-            element={<ProfilePage/>}
-          />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
 
         <Route path="/counselorblog" element={<CounselorBlog />} />
         <Route path="/counselorschedule" element={<CounselorSchedule />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboardDoctor" element={<DashboardDoctor />} />
+        <Route path="/testbooking" element={<TestBooking />} />
         <Route
           path="/dashboardTestservice"
           element={<DashboardTestservice />}
@@ -43,6 +42,7 @@ export default function CustomerRoutes() {
         />
 
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/cycle" element={<Cycle />} />
       </Routes>
     </BrowserRouter>
   );

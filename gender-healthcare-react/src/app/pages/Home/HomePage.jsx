@@ -1,6 +1,7 @@
 import React from "react";
 import heroesImage from "../../assets/heroes.jpg";
 import doctorImage from "../../assets/doctor.jpg";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
@@ -115,6 +116,7 @@ function HomePage() {
             gap: 48,
           }}
         >
+          <Link to="/cycle">My cycle</Link>
           <img
             src={doctorImage}
             alt="Inclusive"
