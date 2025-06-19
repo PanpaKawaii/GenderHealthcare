@@ -1,9 +1,23 @@
-const Post = require('../models/post.model');
-const Comment = require('../models/comment.model');
+const mongoose = require("mongoose");
+const Post = require("../models/post.model");
+const Comment = require("../models/comment.model");
+const bannedWords = require("../utils/filterWords");
+
+function containsBannedWords(content) {
+  if (!content) return false;
+  const lower = content.toLowerCase();
+  const hasBannedWord = bannedWords.some((word) => lower.includes(word));
+  return hasBannedWord;
+}
 
 exports.createPost = async (req, res) => {
   try {
     const { title, content, category, tags, accountId } = req.body;
+    if (!title.trim() || !content.trim()) {
+      return res
+        .status(400)
+        .json({ message: "Tiêu đề và nội dung không được để trống" });
+    }
     const post = new Post({ title, content, category, tags, accountId });
     await post.save();
     res.status(201).json(post);
@@ -11,42 +25,219 @@ exports.createPost = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-// exports.getAll = async (req, res) => res.json(await Post.find().populate('accountId'));
+
 exports.getPosts = async (req, res) => {
   try {
-    const { page = 1, limit = 10, category, tag } = req.query;
-    const filter = {};
+    const {
+      page = 1,
+      limit = 10,
+      category,
+      tag,
+      search,
+      sort = "newest",
+      type = "all",
+      accountId,
+    } = req.query;
+
+    const filter = { status: "approved" };
+
     if (category) filter.category = category;
-    if (tag) filter.tags = tag;  // Giả sử tags là mảng, giá trị đơn sẽ tìm phần tử mảng
-    
-    const posts = await Post.find(filter)
-       .populate('accountId category')
+    if (tag) filter.tags = tag;
+    if (search) filter.title = { $regex: search, $options: "i" };
+    if (type === "questions") {
+    } else if (type === "expert") {
+    } else if (type === "following" && accountId) {
+      filter.voteUp = accountId;
+    }
+
+    let sortOption = { createdAt: -1 };
+    if (sort === "popular") {
+      sortOption = { viewCount: -1 };
+    }
+    // else if (sort === 'votes') {
+    //   // We'll handle this after the query since it's a derived field
+
+    // }
+
+    let posts = await Post.find(filter)
+      .populate("accountId category")
       .skip((page - 1) * limit)
       .limit(parseInt(limit))
-      .sort({ createdAt: -1 });
-    res.json(posts);
+      .sort(sortOption);
+    if (sort === "votes") {
+      posts = posts.sort(
+        (a, b) =>
+          b.voteUp.length -
+          b.voteDown.length -
+          (a.voteUp.length - a.voteDown.length)
+      );
+    }
+
+    const postIds = posts.map((post) => post._id);
+
+    const counselorComments = await Comment.aggregate([
+      {
+        $match: {
+          postId: { $in: postIds },
+          status: "approved",
+        },
+      },
+      {
+        $lookup: {
+          from: "accounts",
+          localField: "accountId",
+          foreignField: "_id",
+          as: "account",
+        },
+      },
+      { $unwind: "$account" },
+      { $match: { "account.role": "Counselor" } },
+      { $group: { _id: "$postId" } },
+    ]);
+
+    const expertPostIds = counselorComments.map((item) => item._id.toString());
+
+    posts = posts.map((post) => {
+      const postObj = post.toObject ? post.toObject() : { ...post };
+      postObj.hasExpertAnswer = expertPostIds.includes(post._id.toString());
+      return postObj;
+    });
+
+    if (type === "questions") {
+      posts = posts.filter((post) => !post.hasExpertAnswer);
+    }
+
+    if (type === "expert") {
+      const postIds = await Post.find(filter).distinct("_id");
+      const counselorComments = await Comment.aggregate([
+        {
+          $match: {
+            postId: { $in: postIds },
+            status: "approved",
+          },
+        },
+        {
+          $lookup: {
+            from: "accounts",
+            localField: "accountId",
+            foreignField: "_id",
+            as: "account",
+          },
+        },
+        { $unwind: "$account" },
+        { $match: { "account.role": "Counselor" } },
+        { $group: { _id: "$postId" } },
+      ]);
+
+      const expertPostIds = counselorComments.map((item) =>
+        item._id.toString()
+      );
+
+      posts = await Post.find({
+        ...filter,
+        _id: { $in: counselorComments.map((item) => item._id) },
+      })
+        .populate("accountId category")
+        .skip((page - 1) * limit)
+        .limit(parseInt(limit))
+        .sort(sortOption);
+      posts = posts.map((post) => {
+        const postObj = post.toObject ? post.toObject() : { ...post };
+        postObj.hasExpertAnswer = true;
+        return postObj;
+      });
+    }
+    posts = posts.map((post) => {
+      const postObj = post.toObject ? post.toObject() : { ...post };
+
+      const voteCount =
+        (post.voteUp?.length || 0) - (post.voteDown?.length || 0);
+
+      const displayVoteCount = Math.max(0, voteCount);
+      return { ...postObj, voteCount, displayVoteCount };
+    });
+
+    const totalPosts = await Post.countDocuments(filter);
+
+    res.json({
+      posts,
+      pagination: {
+        total: totalPosts,
+        page: parseInt(page),
+        limit: parseInt(limit),
+        pages: Math.ceil(totalPosts / limit),
+      },
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
-// exports.getOne = async (req, res) => {
-//   const post = await Post.findById(req.params.id).populate('accountId');
-//   if (!post) return res.sendStatus(404);
-//   const comments = await Comment.find({ postId: post._id }).populate('accountId').sort({ createDate: 1 });
-//   res.json({ post, comments });
-// };
+
 exports.getPostById = async (req, res) => {
   try {
     const postId = req.params.postId;
-    const post = await Post.findById(postId).populate('accountId category');
-    if (!post) return res.status(404).json({ message: 'Bài viết không tồn tại' });
-
-    // Lấy comment cấp 1 (chưa có parent)
-    const comments = await Comment.find({ postId, parentCommentId: null })
-      .populate('accountId')
+    const post = await Post.findById(postId).populate("accountId category");
+    if (!post)
+      return res.status(404).json({ message: "Bài viết không tồn tại" }); // Get only approved comments for this post and populate the account info
+    const allComments = await Comment.find({
+      postId,
+      status: "approved",
+    })
+      .populate("accountId")
       .sort({ createdAt: 1 });
 
-    res.json({ post, comments });
+    const approvedCommentsCount = allComments.length;
+
+    if (post.answerCount !== approvedCommentsCount) {
+      post.answerCount = approvedCommentsCount;
+      await post.save();
+    }
+
+    const rootComments = allComments.filter(
+      (comment) => !comment.parentCommentId
+    );
+    const replies = allComments.filter((comment) => comment.parentCommentId);
+
+    const buildCommentTree = (comment) => {
+      const commentObj = comment.toObject();
+
+      const children = replies
+        .filter(
+          (reply) => reply.parentCommentId.toString() === comment._id.toString()
+        )
+        .map(buildCommentTree);
+
+      if (children.length > 0) {
+        commentObj.children = children;
+      }
+
+      commentObj.voteCount = comment.voteUp.length - comment.voteDown.length;
+      commentObj.displayVoteCount = Math.max(0, commentObj.voteCount);
+
+      if (comment.accountId && comment.accountId.role === "Counselor") {
+        commentObj.isExpertComment = true;
+      } else {
+        commentObj.isExpertComment = false;
+      }
+
+      return commentObj;
+    };
+
+    const commentTree = rootComments.map(buildCommentTree);
+
+    const postObj = post.toObject();
+    postObj.voteCount = post.voteUp.length - post.voteDown.length;
+    postObj.displayVoteCount = Math.max(0, postObj.voteCount);
+
+    const hasExpertAnswer = allComments.some(
+      (comment) => comment.accountId && comment.accountId.role === "Counselor"
+    );
+    postObj.hasExpertAnswer = hasExpertAnswer;
+
+    res.json({
+      post: postObj,
+      comments: commentTree,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -55,8 +246,11 @@ exports.getPostById = async (req, res) => {
 exports.updatePost = async (req, res) => {
   try {
     const postId = req.params.postId;
-    const updatedPost = await Post.findByIdAndUpdate(postId, req.body, { new: true });
-    if (!updatedPost) return res.status(404).json({ message: 'Post not found!' });
+    const updatedPost = await Post.findByIdAndUpdate(postId, req.body, {
+      new: true,
+    });
+    if (!updatedPost)
+      return res.status(404).json({ message: "Post not found!" });
     res.json(updatedPost);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -66,141 +260,120 @@ exports.deletePost = async (req, res) => {
   try {
     const postId = req.params.postId;
     const deletedPost = await Post.findByIdAndDelete(postId);
-    if (!deletedPost) return res.status(404).json({ message: 'Post not found!' });
-    // Xoá luôn cái comment có trong post này
-    await Comment.deleteMany({ post: postId });
-    res.json({ message: 'Đã xoá bài viết và các comment liên quan' });
+    if (!deletedPost)
+      return res.status(404).json({ message: "Post not found!" }); // Xoá luôn các comment có trong post này
+    await Comment.deleteMany({ postId: postId });
+    res.json({ message: "Đã xoá bài viết và các comment liên quan" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
-// Nested comment routes
-// exports.getComments = async (req, res) => {
-//   try {
-//     const postId = req.params.id;
-    
-//     const postExists = await Post.exists({ _id: postId });
-//     if (!postExists) {
-//       return res.status(404).json({ message: 'Post not found' });
-//     }
 
-//     const comments = await Comment.find({ postId })
-//       .populate('accountId')
-//       .sort({ createDate: 1 });
-    
-//     res.json(comments);
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// };
-
-// exports.createComment = async (req, res) => {
-//   try {
-//     const postId = req.params.id;
-    
-//     // Kiểm tra question có tồn tại không
-//     const postExists = await Post.exists({ _id: postId });
-//     if (!postExists) {
-//       return res.status(404).json({ message: 'Post not found' });
-//     }
-
-//     // Nếu là reply cho comment khác, kiểm tra parent comment có tồn tại không
-//     if (req.body.parentCommentId) {
-//       const parentCommentExists = await Comment.exists({ 
-//         _id: req.body.parentCommentId,
-//        postId: postId // Đảm bảo parent comment thuộc cùng post
-//       });
-      
-//       if (!parentCommentExists) {
-//         return res.status(404).json({ message: 'Parent comment not found' });
-//       }
-//     }
-
-    // Tạo comment
-//     const comment = new Comment({
-//       postId: postId,
-//       content: req.body.content,
-//       accountId: req.body.accountId || "6650fe8e8f3a8d6ff13d22a1", // Sử dụng id của user hiện tại
-//       parentCommentId: req.body.parentCommentId || null
-//     });
-
-//     await comment.save();
-    
-//     // Trả về comment đã populate
-//     const populatedComment = await Comment.findById(comment._id).populate('accountId');
-//     res.status(201).json(populatedComment);
-//   } catch (error) {
-//     res.status(400).json({ message: error.message });
-//   }
-// };
 exports.addComment = async (req, res) => {
   try {
     const postId = req.params.postId;
     const { content, accountId, parentCommentId = null } = req.body;
+    if (!content?.trim()) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "Nội dung bình luận không được để trống hoặc chỉ có khoảng trắng",
+        });
+    }
     const post = await Post.findById(postId);
-    if (!post) return res.status(404).json({ message: 'Bài viết không tồn tại' });
- // Nếu có parentCommentId thì kiểm tra hợp lệ
+    if (!post)
+      return res.status(404).json({ message: "Bài viết không tồn tại" });
+    // Nếu có parentCommentId thì kiểm tra hợp lệ
     if (parentCommentId) {
       const parent = await Comment.findOne({ _id: parentCommentId, postId });
-      if (!parent) return res.status(404).json({ message: 'Bình luận cha không tồn tại hoặc không hợp lệ' });
+      if (!parent)
+        return res
+          .status(404)
+          .json({ message: "Bình luận cha không tồn tại hoặc không hợp lệ" });
     }
-    const comment = new Comment({  postId, content, accountId, parentCommentId });
+
+    const hasBannedWords = containsBannedWords(content);
+    const status = hasBannedWords ? "pending" : "approved";
+    console.log("Comment status:", status, "Has banned words:", hasBannedWords);
+
+    const comment = new Comment({
+      postId,
+      content,
+      accountId,
+      parentCommentId,
+      status,
+    });
     await comment.save();
+    console.log("Saved comment with status:", comment.status);
+    if (status === "approved") {
+      console.log("Comment approved, incrementing answer count");
+      const updateData = { $inc: { answerCount: 1 } };
 
-    await Post.findByIdAndUpdate(postId, { $inc: { answerCount: 1 } });
-    
-    const populated = await Comment.findById(comment._id).populate('accountId');
-    res.status(201).json(populated);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+      const account = await mongoose.model("Account").findById(accountId);
+      if (account && account.role === "Counselor") {
+        updateData.hasExpertAnswer = true;
+        console.log("Expert answer detected, updating post");
+      }
 
-
-exports.votePost = async (req, res) => {
-  try {
-    const postId = req.params.postId;
-    const { voteType, accountId } = req.body; // 'up' hoặc 'down'
-    const post = await Post.findById(postId);
-    if (!post) return res.status(404).json({ message: 'Bài viết không tồn tại' });
-    post.voteUp = post.voteUp.filter(id => id.toString() !== accountId);
-    post.voteDown = post.voteDown.filter(id => id.toString() !== accountId);
-if (voteType === 'up') {
-      post.voteUp.push(accountId);
-    } else if (voteType === 'down') {
-      post.voteDown.push(accountId);
-    } else {
-      return res.status(400).json({ message: 'Loại vote không hợp lệ (chỉ up hoặc down)' });
+      await Post.findByIdAndUpdate(postId, updateData);
     }
 
-    await post.save();
-     res.json({
-      post,
-      voteStats: {
-        upvotes: post.voteUp.length,
-        downvotes: post.voteDown.length,
-        total: post.voteUp.length - post.voteDown.length
-      }
+    const populated = await Comment.findById(comment._id).populate("accountId");
+    res.status(201).json({
+      message:
+        status === "approved"
+          ? "Bình luận đã được đăng"
+          : "Bình luận đang chờ duyệt",
+      comment: populated,
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-// exports.incrementAnswerCount = async (req, res) => {
-//   try {
-//     const postId = req.params.postId;
-//     const post = await Post.findByIdAndUpdate(
-//       postId,
-//       { $inc: { answerCount: 1 } },
-//       { new: true }
-//     );
-//     if (!post) return res.status(404).json({ message: 'Bài viết không tồn tại' });
-//     res.json(post);
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// };
+exports.votePost = async (req, res) => {
+  try {
+    const postId = req.params.postId;
+    const { voteType, accountId } = req.body;
+    const post = await Post.findById(postId);
+    if (!post)
+      return res.status(404).json({ message: "Bài viết không tồn tại" });
+
+    post.voteUp = post.voteUp.filter((id) => id.toString() !== accountId);
+    post.voteDown = post.voteDown.filter((id) => id.toString() !== accountId);
+
+    if (voteType === "up") {
+      post.voteUp.push(accountId);
+    } else if (voteType === "down") {
+      post.voteDown.push(accountId);
+    } else if (voteType !== null) {
+      return res
+        .status(400)
+        .json({ message: "Loại vote không hợp lệ (chỉ up, down, hoặc null)" });
+    }
+
+    await post.save();
+
+    const upvotes = post.voteUp.length;
+    const downvotes = post.voteDown.length;
+    const rawTotal = upvotes - downvotes;
+
+    const displayTotal = Math.max(0, rawTotal);
+
+    res.json({
+      post,
+      voteStats: {
+        upvotes,
+        downvotes,
+        rawTotal,
+        displayTotal,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 exports.incrementView = async (req, res) => {
   try {
@@ -210,8 +383,125 @@ exports.incrementView = async (req, res) => {
       { $inc: { viewCount: 1 } },
       { new: true }
     );
-    if (!post) return res.status(404).json({ message: 'Bài viết không tồn tại' });
+    if (!post)
+      return res.status(404).json({ message: "Bài viết không tồn tại" });
     res.json(post);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+exports.getCommentsByPostId = async (req, res) => {
+  try {
+    const postId = req.params.postId;
+    const { accountId, page = 1, limit = 10 } = req.query;
+
+    const post = await Post.findById(postId);
+    if (!post) return res.status(404).json({ message: "Post not found" });
+
+    const allComments = await Comment.find({
+      postId,
+      status: "approved",
+    })
+      .populate("accountId")
+      .sort({ createdAt: 1 });
+
+    const rootComments = allComments.filter(
+      (comment) => !comment.parentCommentId
+    );
+    const replies = allComments.filter((comment) => comment.parentCommentId);
+
+    const buildCommentTree = (comment) => {
+      const commentObj = comment.toObject();
+
+      const children = replies
+        .filter(
+          (reply) => reply.parentCommentId.toString() === comment._id.toString()
+        )
+        .map(buildCommentTree);
+
+      if (children.length > 0) {
+        commentObj.replies = children;
+      } else {
+        commentObj.replies = [];
+      }
+
+      commentObj.voteCount = comment.voteUp.length - comment.voteDown.length;
+      commentObj.displayVoteCount = Math.max(0, commentObj.voteCount);
+
+      if (comment.accountId && comment.accountId.role === "Counselor") {
+        commentObj.isExpertComment = true;
+      } else {
+        commentObj.isExpertComment = false;
+      }
+
+      if (accountId) {
+        if (comment.voteUp.includes(accountId)) {
+          commentObj.userVote = "up";
+        } else if (comment.voteDown.includes(accountId)) {
+          commentObj.userVote = "down";
+        } else {
+          commentObj.userVote = null;
+        }
+      }
+
+      return commentObj;
+    };
+
+    const pageNum = parseInt(page);
+    const limitNum = parseInt(limit);
+    const startIndex = (pageNum - 1) * limitNum;
+    const endIndex = pageNum * limitNum;
+
+    const paginatedRootComments = rootComments.slice(startIndex, endIndex);
+
+    const commentTree = paginatedRootComments.map(buildCommentTree);
+
+    res.json({
+      comments: commentTree,
+      pagination: {
+        total: allComments.length,
+        totalRootComments: rootComments.length,
+        page: pageNum,
+        limit: limitNum,
+        pages: Math.ceil(rootComments.length / limitNum),
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.approveComment = async (req, res) => {
+  try {
+    const commentId = req.params.commentId;
+    const comment = await Comment.findById(commentId);
+
+    if (!comment) {
+      return res.status(404).json({ message: "Comment not found" });
+    }
+
+    if (comment.status !== "approved") {
+      comment.status = "approved";
+      await comment.save();
+
+      await Post.findByIdAndUpdate(comment.postId, {
+        $inc: { answerCount: 1 },
+      });
+
+      const account = await mongoose
+        .model("Account")
+        .findById(comment.accountId);
+      if (account && account.role === "Counselor") {
+        await Post.findByIdAndUpdate(comment.postId, {
+          hasExpertAnswer: true,
+        });
+      }
+    }
+
+    res.json({
+      message: "Comment approved successfully",
+      comment: await Comment.findById(commentId).populate("accountId"),
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

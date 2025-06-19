@@ -11,5 +11,6 @@ router.delete('/:postId', postCtrl.deletePost);
 router.post('/:postId/comments', postCtrl.addComment);
 router.post('/:postId/vote', postCtrl.votePost);
 router.patch('/:postId/view', postCtrl.incrementView);
+router.get('/:postId/comments', postCtrl.getCommentsByPostId);
 
 module.exports = router;
