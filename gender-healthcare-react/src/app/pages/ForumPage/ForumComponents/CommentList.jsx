@@ -8,7 +8,7 @@ const Comment = ({ comment, level = 0, onReply, replyingTo, cancelReply, refresh
     <div className={`mb-4 ${level > 0 ? 'ml-6 pl-3 border-l-2 border-gray-200' : ''}`}>
       <div className="bg-gray-50 p-3 rounded">
         <div className="text-sm text-gray-600 mb-1">
-          {comment.accountId?.name || 'Anonymous'} · {new Date(comment.createDate).toLocaleDateString()}
+          {comment.isAnonymous ? "Ẩn danh" : (comment.accountId?.name || 'Anonymous')} · {new Date(comment.createDate).toLocaleDateString()}
         </div>
         <p className="text-gray-800">{comment.content}</p>
         <div className="mt-2 flex justify-end">

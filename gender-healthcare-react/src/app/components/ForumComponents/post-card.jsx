@@ -576,25 +576,25 @@ export function PostCard({ post }) {
         <div className="p-6 pb-4">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
-              <Avatar className="h-12 w-12">
-                <AvatarImage
-                  src={post.accountId?.image || "/placeholder.svg"}
+              <Avatar className="h-12 w-12">                <AvatarImage
+                  src={post.isAnonymous ? "/avatar.jpg" : (post.accountId?.image || "/placeholder.svg")}
                 />
                 <AvatarFallback className="bg-blue-100 text-blue-700">
-                  {post.accountId?.name
-                    ? post.accountId.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")
-                    : "U"}
+                  {post.isAnonymous 
+                    ? "A" 
+                    : (post.accountId?.name
+                        ? post.accountId.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")
+                        : "U")}
                 </AvatarFallback>
               </Avatar>
-              <div>
-                <div className="flex items-center gap-2">
+              <div>                <div className="flex items-center gap-2">
                   <h4 className="font-semibold text-gray-900">
-                    {post.accountId?.name || "Anonymous"}
+                    {post.isAnonymous ? "Ẩn danh" : (post.accountId?.name || "Anonymous")}
                   </h4>
-                  {post.accountId?.isVerified && (
+                  {!post.isAnonymous && post.accountId?.isVerified && (
                     <Badge
                       variant="secondary"
                       className="bg-green-100 text-green-700 text-xs"

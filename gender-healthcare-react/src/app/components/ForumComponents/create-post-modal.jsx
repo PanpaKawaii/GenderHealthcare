@@ -49,6 +49,7 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
   const [tags, setTags] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [isAnonymous, setIsAnonymous] = useState(false);
 
   const addTag = (tag) => {
     if (!tags.includes(tag) && tags.length < 5) {
@@ -84,14 +85,14 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
         category,
         tags,
         accountId,
+        isAnonymous,
       };
       const response = await forumAPI.createPost(postData);
-      console.log("Post created successfully:", response.data);
-
-      setTitle("");
+      console.log("Post created successfully:", response.data);      setTitle("");
       setContent("");
       setCategory("");
       setTags([]);
+      setIsAnonymous(false);
 
       setShowSuccessMessage(true);
       setTimeout(() => {
@@ -247,6 +248,22 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
                       )
                   )}
                 </div>
+              </div>
+
+              
+              <div className="flex items-center gap-2 mt-4">
+                <input
+                  type="checkbox"
+                  id="anonymous"
+                  checked={isAnonymous}
+                  onChange={(e) => setIsAnonymous(e.target.checked)}
+                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                />
+                <label
+                  htmlFor="anonymous"
+                  className="text-sm text-gray-700"
+                >                  Đăng ẩn danh
+                </label>
               </div>
 
               <div className="flex justify-end gap-2">
