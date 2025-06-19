@@ -1,10 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import { Home, Calendar, FileText, Users, Settings } from 'lucide-react';
 
+
 export default function Sidebar() {
   const menuItems = [
     { label: 'Dashboard', icon: <Home />, path: '/counselor/dashboard' },
     { label: 'Schedule', icon: <Calendar />, path: '/counselor/schedule' },
+    { label: 'Forum', icon: <FileText />, path: '/counselor/forum' },
     { label: 'Blog', icon: <FileText />, path: '/counselor/blog' },
     { label: 'Users', icon: <Users />, path: '/counselor/users' },
     { label: 'Settings', icon: <Settings />, path: '/counselor/settings' },
