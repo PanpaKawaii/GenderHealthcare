@@ -12,13 +12,13 @@ function containsBannedWords(content) {
 
 exports.createPost = async (req, res) => {
   try {
-    const { title, content, category, tags, accountId } = req.body;
+    const { title, content, category, tags, accountId, isAnonymous } = req.body;
     if (!title.trim() || !content.trim()) {
       return res
         .status(400)
         .json({ message: "Tiêu đề và nội dung không được để trống" });
     }
-    const post = new Post({ title, content, category, tags, accountId });
+    const post = new Post({ title, content, category, tags, accountId, isAnonymous });
     await post.save();
     res.status(201).json(post);
   } catch (error) {

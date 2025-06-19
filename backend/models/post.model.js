@@ -13,13 +13,17 @@ const questionSchema = new Schema(
     viewCount: { type: Number, default: 0 },
     answerCount: { type: Number, default: 0 },
 
+    isAnonymous: {
+    type: Boolean,
+    default: false
+  },
+
     //bài post cần có admin duyệt
     status: {
       type: String,
       enum: ["pending", "approved", "rejected"],
       default: "pending",
     },
-    // accountId: { type: Schema.Types.ObjectId, ref: "Account", required: true },
   },
   {
     timestamps: true,

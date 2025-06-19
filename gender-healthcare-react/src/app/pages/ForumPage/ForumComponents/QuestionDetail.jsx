@@ -74,7 +74,7 @@ const QuestionDetail = ({ question, onClose }) => {
           <h2 className="text-xl font-semibold mb-2">{question.title}</h2>
           <p className="text-gray-700">{question.content}</p>
           <div className="mt-2 text-sm text-gray-500">
-            Posted by {question.accountId?.name || 'Anonymous'} on {new Date(question.createDate).toLocaleDateString()}
+            Posted by {question.isAnonymous ? "Ẩn danh" : (question.accountId?.name || 'Anonymous')} on {new Date(question.createDate).toLocaleDateString()}
           </div>
           <div className="mt-1">
             <span className={`px-2 py-1 rounded text-xs ${
