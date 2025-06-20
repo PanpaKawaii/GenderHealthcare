@@ -3,8 +3,9 @@ import Calendar from "react-calendar";
 import dayjs from "dayjs";
 import "react-calendar/dist/Calendar.css";
 import { cycleAPI } from "../../services/api";
-import Legend from "../../components/legend/Legend";
-import ReminderList from "../../components/reminder/ReminderList";
+import ReminderModal from "../../components/reminder/ReminderModal";
+import { FiBell } from "react-icons/fi";
+import "./Cycle.css"; // Sử dụng file CSS đã cung cấp
 
 const DEFAULT_PERIOD_LENGTH = 7;
 const FERTILE_WINDOW_LENGTH = 12;
@@ -35,14 +36,14 @@ function predictNextMonths(startDay, periodLength, months = 12) {
 
 export default function CyclePage() {
   const [customerId, setCustomerId] = useState(null);
-  const [startDay, setStartDay] = useState(null);
+  const [startDay, setStartDay] = useState("");
+  const [endDay, setEndDay] = useState("");
   const [periodLength, setPeriodLength] = useState(DEFAULT_PERIOD_LENGTH);
-  const [endDay, setEndDay] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [notes, setNotes] = useState("");
-  // Thêm state lưu giá trị gốc
-  const [originalStartDay, setOriginalStartDay] = useState(null);
-  const [originalEndDay, setOriginalEndDay] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [originalStartDay, setOriginalStartDay] = useState("");
+  const [originalEndDay, setOriginalEndDay] = useState("");
+  const [reminderOpen, setReminderOpen] = useState(false);
 
   useEffect(() => {
     const id = localStorage.getItem("UserId");
@@ -70,9 +71,10 @@ export default function CyclePage() {
   }, []);
 
   const handleStartDay = (date) => {
-    setStartDay(dayjs(date).format("YYYY-MM-DD"));
+    const formatted = dayjs(date).format("YYYY-MM-DD");
+    setStartDay(formatted);
     setEndDay(
-      dayjs(date)
+      dayjs(formatted)
         .add(DEFAULT_PERIOD_LENGTH - 1, "day")
         .format("YYYY-MM-DD")
     );
@@ -80,11 +82,11 @@ export default function CyclePage() {
   };
 
   const handleEndDay = (date) => {
-    setEndDay(dayjs(date).format("YYYY-MM-DD"));
-    setPeriodLength(dayjs(date).diff(dayjs(startDay), "day") + 1);
+    const formatted = dayjs(date).format("YYYY-MM-DD");
+    setEndDay(formatted);
+    setPeriodLength(dayjs(formatted).diff(dayjs(startDay), "day") + 1);
   };
 
-  // Ngày thực tế tháng hiện tại
   const periodDays = startDay && endDay ? getRange(startDay, periodLength) : [];
   const fertileDays = periodDays.length
     ? getRange(
@@ -93,18 +95,17 @@ export default function CyclePage() {
       )
     : [];
 
-  // Ngày dự đoán các tháng tiếp theo
   const { predictedPeriodDays, predictedFertileDays } = startDay
     ? predictNextMonths(startDay, periodLength)
     : { predictedPeriodDays: [], predictedFertileDays: [] };
 
-  // Tô màu lịch
   const tileClassName = ({ date }) => {
     const d = dayjs(date).format("YYYY-MM-DD");
     if (periodDays.includes(d)) return "period-day";
     if (fertileDays.includes(d)) return "fertile-day";
     if (predictedPeriodDays.includes(d)) return "predicted-period-day";
     if (predictedFertileDays.includes(d)) return "predicted-fertile-day";
+    if (d === dayjs().format("YYYY-MM-DD")) return "today";
     return "";
   };
 
@@ -118,9 +119,21 @@ export default function CyclePage() {
         notes,
         customerId,
       });
-      // Sau khi lưu, cập nhật lại giá trị gốc
-      setOriginalStartDay(startDay);
-      setOriginalEndDay(endDay);
+      // Gọi lại API lấy dữ liệu mới nhất
+      const res = await cycleAPI.getByCustomer(customerId);
+      if (res.data.length > 0) {
+        const latest = res.data[0];
+        const start = dayjs(latest.periodDays[0]).format("YYYY-MM-DD");
+        const end = dayjs(
+          latest.periodDays[latest.periodDays.length - 1]
+        ).format("YYYY-MM-DD");
+        setStartDay(start);
+        setEndDay(end);
+        setOriginalStartDay(start);
+        setOriginalEndDay(end);
+        setPeriodLength(latest.periodDays.length);
+        setNotes(latest.notes || "");
+      }
       alert("Đã lưu kỳ kinh nguyệt!");
     } catch (err) {
       alert("Lỗi khi lưu: " + (err.response?.data?.error || err.message));
@@ -129,89 +142,115 @@ export default function CyclePage() {
   };
 
   return (
-    <div>
-      <Legend />
-      {loading && <div>Đang tải...</div>}
-      {!startDay ? (
-        <div>
-          <button
-            className="bg-pink-500 text-white px-4 py-2 rounded"
-            onClick={() => {}}
-          >
-            Bắt đầu theo dõi ngày kinh nguyệt
-          </button>
-          <Calendar onClickDay={handleStartDay} tileClassName={tileClassName} />
-        </div>
-      ) : (
-        <div>
+    <div className="cycle-wrapper fade-in">
+      <div className="cycle-header">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <div>
-            <b>Ngày bắt đầu:</b>{" "}
-            <input
-              type="date"
-              value={startDay}
-              onChange={(e) => {
-                handleStartDay(e.target.value);
-              }}
-              min="2000-01-01"
-              max="2100-12-31"
-            />
-            <br />
-            <b>Ngày kết thúc:</b>{" "}
-            <input
-              type="date"
-              value={endDay}
-              min={startDay}
-              onChange={(e) => handleEndDay(e.target.value)}
-            />
-            <br />
-            <b>Ghi chú:</b>{" "}
-            <input
-              type="text"
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Nhập ghi chú (nếu có)"
-            />
-            <br />
-            {(startDay !== originalStartDay || endDay !== originalEndDay) && (
-              <button
-                className="bg-green-500 text-white px-4 py-2 rounded mt-2"
-                onClick={handleSave}
-                disabled={loading}
-              >
-                Lưu kỳ kinh nguyệt
-              </button>
-            )}
+            <div className="title">Theo dõi chu kỳ kinh nguyệt</div>
+            <div className="instruction">
+              Quản lý chu kỳ, dự đoán ngày rụng trứng và nhận nhắc nhở chăm sóc
+              sức khỏe.
+            </div>
           </div>
-          <Calendar tileClassName={tileClassName} />
+          <button
+            className="btn btn-primary btn-bell"
+            style={{
+              borderRadius: "50%",
+              width: 48,
+              height: 48,
+              fontSize: 22,
+              marginLeft: 16,
+            }}
+            onClick={() => setReminderOpen(true)}
+            aria-label="Xem nhắc nhở"
+          >
+            <FiBell />
+          </button>
         </div>
-      )}
-      <ReminderList />
-      <style>
-        {`
-          .period-day {
-            background: #f472b6 !important;
-            color: white !important;
-            border-radius: 50%;
-          }
-          .fertile-day {
-            background: #4ade80 !important;
-            color: white !important;
-            border-radius: 50%;
-          }
-          .predicted-period-day {
-            border: 2px solid #f472b6 !important;
-            border-radius: 50%;
-            color: #f472b6 !important;
-            background: none !important;
-          }
-          .predicted-fertile-day {
-            border: 2px solid #4ade80 !important;
-            border-radius: 50%;
-            color: #4ade80 !important;
-            background: none !important;
-          }
-        `}
-      </style>
+      </div>
+      <div className="cycle-content">
+        {loading ? (
+          <div className="loading">Đang tải dữ liệu...</div>
+        ) : (
+          <div>
+            {!startDay ? (
+              <div className="form-section">
+                <div className="form-row">
+                  <div className="form-group">
+                    <span className="form-label">
+                      Chọn ngày bắt đầu kỳ kinh nguyệt đầu tiên:
+                    </span>
+                    <Calendar
+                      onClickDay={handleStartDay}
+                      tileClassName={tileClassName}
+                      className="calendar-container"
+                    />
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="form-section">
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label">Ngày bắt đầu</label>
+                    <input
+                      className="form-input"
+                      type="date"
+                      value={startDay}
+                      onChange={(e) => handleStartDay(e.target.value)}
+                      min="2000-01-01"
+                      max="2100-12-31"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Ngày kết thúc</label>
+                    <input
+                      className="form-input"
+                      type="date"
+                      value={endDay}
+                      min={startDay}
+                      onChange={(e) => handleEndDay(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Ghi chú</label>
+                    <input
+                      className="form-input"
+                      type="text"
+                      value={notes}
+                      onChange={(e) => setNotes(e.target.value)}
+                      placeholder="Nhập ghi chú (nếu có)"
+                    />
+                  </div>
+                </div>
+                {(startDay !== originalStartDay ||
+                  endDay !== originalEndDay) && (
+                  <button
+                    className="btn btn-success"
+                    onClick={handleSave}
+                    disabled={loading}
+                  >
+                    Lưu kỳ kinh nguyệt
+                  </button>
+                )}
+              </div>
+            )}
+            <div className="calendar-container" style={{ marginTop: 24 }}>
+              <Calendar tileClassName={tileClassName} />
+            </div>
+          </div>
+        )}
+      </div>
+      <ReminderModal
+        open={reminderOpen}
+        onClose={() => setReminderOpen(false)}
+      />
     </div>
   );
 }
