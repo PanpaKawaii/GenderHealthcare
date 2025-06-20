@@ -154,6 +154,11 @@
   box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
 }
 
+.btn-bell {
+  position: relative;
+  z-index: 1000;
+}
+
 /* Calendar Container */
 .calendar-container {
   background: rgba(255, 255, 255, 0.9);
@@ -249,7 +254,7 @@
 
 .react-calendar__tile--now {
   background: rgba(255, 215, 0, 0.2) !important;
-  border: 2px solid #ffd700 !important;
+  border: 5px solid #fbff00 !important;
   font-weight: 700 !important;
 }
 
@@ -260,14 +265,14 @@
 
 /* Custom Day Styles */
 .period-day {
-  background: linear-gradient(135deg, #ff6b9d, #e91e63) !important;
+  background: linear-gradient(135deg, #ff6b9d, #fccede) !important;
   color: white !important;
   font-weight: 700 !important;
   box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4) !important;
 }
 
 .fertile-day {
-  background: linear-gradient(135deg, #66bb6a, #4caf50) !important;
+  background: linear-gradient(135deg, #66bb6a, #aefab0) !important;
   color: white !important;
   font-weight: 700 !important;
   box-shadow: 0 4px 15px rgba(102, 187, 106, 0.4) !important;

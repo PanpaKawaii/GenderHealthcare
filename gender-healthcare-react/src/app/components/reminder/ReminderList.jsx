@@ -11,6 +11,7 @@ import {
   Popconfirm,
 } from "antd";
 import { reminderAPI } from "../../services/api";
+import "./ReminderList.css"; // Nếu bạn tách CSS riêng
 
 function ReminderList() {
   const [customerId, setCustomerId] = useState(null);
@@ -40,7 +41,6 @@ function ReminderList() {
     setLoading(false);
   };
 
-  // Mở popup tạo mới
   const handleCreate = () => {
     setEditingReminder(null);
     setIsCreate(true);
@@ -48,7 +48,6 @@ function ReminderList() {
     form.resetFields();
   };
 
-  // Mở popup sửa
   const handleEdit = (reminder) => {
     setEditingReminder(reminder);
     setIsCreate(false);
@@ -59,7 +58,6 @@ function ReminderList() {
     });
   };
 
-  // Xóa nhắc nhở
   const handleDelete = async (reminder) => {
     setLoading(true);
     try {
@@ -74,7 +72,6 @@ function ReminderList() {
     setLoading(false);
   };
 
-  // Lưu nhắc nhở (tạo mới hoặc cập nhật)
   const handleSave = async () => {
     try {
       const values = await form.validateFields();
@@ -147,12 +144,12 @@ function ReminderList() {
   ];
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h2 className="text-xl font-bold mb-4">Danh sách nhắc nhở</h2>
+    <div>
       <Button
         type="primary"
         onClick={handleCreate}
         style={{ marginBottom: 16 }}
+        block
       >
         Thêm nhắc nhở
       </Button>
@@ -162,6 +159,7 @@ function ReminderList() {
         rowKey="_id"
         loading={loading}
         pagination={false}
+        size="small"
       />
       <Modal
         title={isCreate ? "Tạo nhắc nhở mới" : "Cập nhật nhắc nhở"}

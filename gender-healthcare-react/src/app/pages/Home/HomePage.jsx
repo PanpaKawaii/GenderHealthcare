@@ -33,20 +33,37 @@ function HomePage() {
               management, and specialist connections. Secure, personalized, and
               your companion on your gender healthcare journey.
             </p>
-            <div style={{ marginTop: 32 }}>
-              <a
-                href="/register"
-                style={{
-                  background: "#1d3557",
-                  color: "#fff",
-                  padding: "14px 32px",
-                  borderRadius: 8,
-                  fontWeight: 600,
-                  fontSize: 18,
-                }}
-              >
-                Join Now
-              </a>
+            <div style={{ display: "flex" }}>
+              <div style={{ marginTop: 32 }}>
+                <a
+                  href="/register"
+                  style={{
+                    background: "#1d3557",
+                    color: "#fff",
+                    padding: "14px 32px",
+                    borderRadius: 8,
+                    fontWeight: 600,
+                    fontSize: 18,
+                  }}
+                >
+                  Join Now
+                </a>
+              </div>
+              <div style={{ marginTop: 32, marginLeft: 10 }}>
+                <a
+                  href="/cycle"
+                  style={{
+                    background: "#1d3557",
+                    color: "#fff",
+                    padding: "14px 32px",
+                    borderRadius: 8,
+                    fontWeight: 600,
+                    fontSize: 18,
+                  }}
+                >
+                  <Link to="/cycle">My cycle</Link>
+                </a>
+              </div>
             </div>
           </div>
           <img
@@ -116,7 +133,6 @@ function HomePage() {
             gap: 48,
           }}
         >
-          <Link to="/cycle">My cycle</Link>
           <img
             src={doctorImage}
             alt="Inclusive"
