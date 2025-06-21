@@ -1,0 +1,145 @@
+.pickingdate-content {
+
+    .calendar-form {
+        font-family: 'Segoe UI', sans-serif;
+        background: #fff;
+        width: 500px;
+        margin: 40px auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #e9f1ff;
+            padding: 16px 24px;
+
+            h2 {
+                margin: 0;
+                font-size: 18px;
+            }
+
+            p {
+                margin: 4px 0 0;
+                color: #4a6fa1;
+                font-size: 14px;
+            }
+        }
+
+        .price {
+
+            h2 {
+                margin: 0;
+                color: #2563eb;
+                font-size: 20px;
+                text-align: right;
+            }
+
+            p {
+                margin: 4px 0 0;
+                font-size: 13px;
+                color: #4a6fa1;
+                text-align: right;
+            }
+        }
+
+        .calendar-box {
+            padding: 24px;
+
+            .calendar-title {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-weight: bold;
+                margin-bottom: 16px;
+            }
+
+            .arrow {
+                cursor: pointer;
+                font-size: 20px;
+                padding: 4px;
+            }
+
+            .calendar-grid {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 8px;
+                text-align: center;
+
+                .day-label {
+                    font-weight: bold;
+                    color: #888;
+                }
+
+                .date {
+                    width: 36px;
+                    height: 36px;
+                    line-height: 36px;
+                    border-radius: 8px;
+                    margin: 0 auto;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    color: #222;
+
+                    &.empty {
+                        pointer-events: none;
+                        background: none;
+                    }
+
+                    &.today {
+                        background: #e1ebfb;
+                        color: #4a6fa1;
+                    }
+
+                    &.selected {
+                        background: #2563eb;
+                        color: white;
+                        box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+                    }
+                }
+            }
+        }
+
+        .calendar-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: #f9fafb;
+            font-size: 14px;
+            color: #666;
+
+            .legend {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+
+                .legend-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+
+                    .dot {
+                        width: 12px;
+                        height: 12px;
+                        display: inline-block;
+                        border-radius: 3px;
+
+                        &.selected-dot {
+                            background: #2563eb;
+                        }
+
+                        &.today-dot {
+                            background: #d6e4f8;
+                        }
+                    }
+                }
+            }
+
+            .timezone {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}

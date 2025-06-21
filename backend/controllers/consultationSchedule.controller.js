@@ -34,3 +34,26 @@ exports.deleteSchedule = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+// [NEW] GET schedules by counselorId and date
+exports.getSchedulesByCounselorAndDate = async (req, res) => {
+  try {
+    const { counselorId, date } = req.query;
+
+    if (!counselorId || !date) {
+      return res.status(400).json({ error: 'Missing counselorId or date' });
+    }
+
+    const startOfDay = new Date(`${date}T00:00:00.000Z`);
+    const endOfDay = new Date(`${date}T23:59:59.999Z`);
+
+    const schedules = await ConsultationSchedule.find({
+      counselorId: counselorId,
+      startTime: { $gte: startOfDay, $lte: endOfDay },
+    }).populate('counselorId');
+
+    res.json(schedules);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

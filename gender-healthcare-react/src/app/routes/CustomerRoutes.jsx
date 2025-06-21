@@ -14,6 +14,7 @@ import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacilit
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import TestBooking from "../pages/Booking/TestBooking";
 import Cycle from "../pages/Cycle/Cycle";
+import Booking from "../pages/Counselor/Booking/Booking";
 
 export default function CustomerRoutes() {
   return (
@@ -25,6 +26,7 @@ export default function CustomerRoutes() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/booking" element={<Booking />} />
         </Route>
 
         <Route path="/counselorblog" element={<CounselorBlog />} />
