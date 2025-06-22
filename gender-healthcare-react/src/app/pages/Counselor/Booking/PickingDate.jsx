@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './PickingDate.css';
 import dayjs from 'dayjs';
 
-export default function PickingDate({ doctor, onSelectDate }) {
+export default function PickingDate({onSelectDate }) {
     const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     const today = dayjs();
     const [currentDate, setCurrentDate] = useState(dayjs());
@@ -41,12 +41,10 @@ export default function PickingDate({ doctor, onSelectDate }) {
     return (
         <div className='pickingdate-content booking-content'>
             <h1 className='title'>Select Your Appointment Date</h1>
-            <p className='script'>Choose your preferred date with {doctor?.name || 'a provider'}</p>
             <div className='calendar-form'>
                 <div className='calendar-header'>
                     <div>
                         <h2>Select Date</h2>
-                        <p>Available appointments with {doctor?.name || 'Doctor'}</p>
                     </div>
                     <div className='price'>
                     </div>

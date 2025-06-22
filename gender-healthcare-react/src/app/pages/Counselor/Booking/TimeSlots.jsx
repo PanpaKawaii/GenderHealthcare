@@ -1,54 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TimeSlots.css';
-import { useState, useEffect } from 'react';
-import { counselorScheduleAPI } from '../../../services/api';
-import { useParams } from 'react-router-dom';
+
+export default function TimeSlots({ date, onSelectSlot }) {
+    const [selectedSlot, setSelectedSlot] = useState(null);
+
+    const slotTimes = [
+        { startTime: '09:00', endTime: '09:30' },
+        { startTime: '09:30', endTime: '10:00' },
+        { startTime: '10:00', endTime: '10:30' },
+        { startTime: '10:30', endTime: '11:00' },
+        { startTime: '11:00', endTime: '11:30' },
+        { startTime: '11:30', endTime: '12:00' },
+        { startTime: '14:00', endTime: '14:30' },
+        { startTime: '14:30', endTime: '15:00' },
+        { startTime: '15:00', endTime: '15:30' },
+        { startTime: '15:30', endTime: '16:00' },
+        { startTime: '16:00', endTime: '16:30' },
+        { startTime: '16:30', endTime: '17:00' },
+    ];
 
 
-export default function TimeSlots({ doctor, date, onSelectSlot  }) {
-    const [slots, setSlots] = useState([]);
 
-    useEffect(() => {
-        const fetchSlots = async () => {
-            try {
-                const formattedDate = date.toISOString().split('T')[0];
-                const res = await counselorScheduleAPI.getByCounselorAndDate(doctor._id, formattedDate);
+    const handleClick = (slot) => {
+        console.log('✅ Slot được chọn:', slot); // thêm dòng này
+        setSelectedSlot(slot);
+        onSelectSlot(slot);
+    };
 
-                const data = res.data;
 
-                const parsedSlots = data.map((item) => ({
-                    time: new Date(item.startTime).toLocaleTimeString([], {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                    }),
-                    status: item.status,
-                }));
-
-                setSlots(parsedSlots);
-            } catch (error) {
-                console.error('Lỗi khi lấy lịch tư vấn:', error);
-            }
-        };
-
-        fetchSlots();
-    }, [doctor, date]);
 
     return (
         <div className='timeslots-content booking-content'>
             <h1 className='title'>Select Time</h1>
-            <p className='script'>Available time slots for Friday, June 20, 2025</p>
+            <p className='script'>
+                Available time slots for {date ? new Date(date).toLocaleDateString() : '...'}
+            </p>
             <div className='timeslots-form'>
                 <div className='time-grid'>
-                    {slots.map(({ time, booked }, i) => (
+                    {slotTimes.map((slot, i) => (
                         <button
                             key={i}
-                            className={`time-slot ${booked ? 'booked' : ''}`}
-                            disabled={booked}
-                            onClick={() => onSelectSlot(slots)}
+                            className={`time-slot ${selectedSlot === slot ? 'selected' : ''}`}
+                            onClick={() => handleClick(slot)}
                         >
-                            <i className='fa-regular fa-clock'></i> {time}
+                            <i className='fa-regular fa-clock'></i> {slot.startTime} - {slot.endTime}
                         </button>
                     ))}
+
                 </div>
 
                 <div className='legend'>
@@ -57,5 +55,5 @@ export default function TimeSlots({ doctor, date, onSelectSlot  }) {
                 </div>
             </div>
         </div>
-    )
+    );
 }

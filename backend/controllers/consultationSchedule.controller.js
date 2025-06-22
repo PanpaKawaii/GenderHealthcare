@@ -1,5 +1,6 @@
 const ConsultationSchedule = require('../models/consultationSchedule.model');
 
+
 // [1] GET all schedules
 exports.getAllSchedules = async (req, res) => {
   try {
@@ -53,6 +54,35 @@ exports.getSchedulesByCounselorAndDate = async (req, res) => {
     }).populate('counselorId');
 
     res.json(schedules);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// [NEW] GET counselors who are available at specific date + time range
+exports.getAvailableCounselorsBySlot = async (req, res) => {
+   console.log('Called getAvailableCounselorsBySlot');
+  try {
+    const { date, startTime, endTime } = req.query;
+
+    if (!date || !startTime || !endTime) {
+      return res.status(400).json({ error: 'Missing date, startTime or endTime' });
+    }
+
+    const start = new Date(`${date}T${startTime}:00.000Z`);
+    const end = new Date(`${date}T${endTime}:00.000Z`);
+
+    const availableSchedules = await ConsultationSchedule.find({
+      startTime: { $gte: start, $lt: end },
+      status: 'available',
+    }).populate('counselorId');
+
+    // Lấy unique counselors
+    const counselors = availableSchedules.map(sch => sch.counselorId);
+    const uniqueCounselors = Array.from(new Set(counselors.map(c => c._id.toString())))
+      .map(id => counselors.find(c => c._id.toString() === id));
+
+    res.json(uniqueCounselors);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

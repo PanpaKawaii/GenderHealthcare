@@ -78,9 +78,15 @@ export const counselorScheduleAPI = {
   update: (id, data) => api.put(`/schedules/${id}`, data),
   delete: (id) => api.delete(`/schedules/${id}`),
   getById: (id) => api.get(`/schedules/${id}`),
+
   getByCounselorAndDate: (counselorId, date) =>
     api.get('/schedules/filter', {
       params: { counselorId, date }
+    }),
+
+  getAvailableCounselors: (date, startTime, endTime) =>
+    api.get('/schedules/available-counselors', {
+      params: { date, startTime, endTime }
     }),
 
 
