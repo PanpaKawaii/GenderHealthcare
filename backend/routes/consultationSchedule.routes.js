@@ -8,6 +8,7 @@ router.get('/available-counselors', controller.getAvailableCounselorsBySlot);
 // Lấy tất cả hoặc thêm mới hoặc xóa
 router.get('/', controller.getAllSchedules);
 router.post('/', controller.createSchedule);
+router.put('/:id', controller.updateSchedule);
 router.delete('/:id', controller.deleteSchedule);
 
 module.exports = router;

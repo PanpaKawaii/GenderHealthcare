@@ -22,6 +22,19 @@ exports.createSchedule = async (req, res) => {
   }
 };
 
+// [3] UPDATE a schedule by ID
+exports.updateSchedule = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updated = await ConsultationSchedule.findByIdAndUpdate(id, req.body, { new: true });
+    if (!updated) {
+      return res.status(404).json({ error: 'Schedule not found' });
+    }
+    res.json(updated);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
 // [4] DELETE a schedule by ID
 exports.deleteSchedule = async (req, res) => {
@@ -61,7 +74,7 @@ exports.getSchedulesByCounselorAndDate = async (req, res) => {
 
 // [NEW] GET counselors who are available at specific date + time range
 exports.getAvailableCounselorsBySlot = async (req, res) => {
-   console.log('Called getAvailableCounselorsBySlot');
+  console.log('Called getAvailableCounselorsBySlot');
   try {
     const { date, startTime, endTime } = req.query;
 
@@ -75,7 +88,11 @@ exports.getAvailableCounselorsBySlot = async (req, res) => {
     const availableSchedules = await ConsultationSchedule.find({
       startTime: { $gte: start, $lt: end },
       status: 'available',
-    }).populate('counselorId');
+    }).populate({
+      path: 'counselorId',
+      populate: { path: 'accountId' }
+    });
+
 
     // Lấy unique counselors
     const counselors = availableSchedules.map(sch => sch.counselorId);

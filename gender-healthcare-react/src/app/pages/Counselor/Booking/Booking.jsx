@@ -1,53 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Booking.css';
 import CounselorDoctor from './CounselorDoctor';
 import PickingDate from './PickingDate';
 import TimeSlots from './TimeSlots';
 import PaymentConfirm from './PaymentConfirm';
-import { useEffect } from 'react';
 
 export default function TestBooking() {
-    const [selectedDate, setSelectedDate] = useState(null);
-    const [selectedSlot, setSelectedSlot] = useState(null);
-    const [selectedDoctor, setSelectedDoctor] = useState(null);
-    useEffect(() => {
-  console.log("🔎 selectedDate:", selectedDate);
-  console.log("🔎 selectedSlot:", selectedSlot);
-  console.log("🔎 selectedDoctor:", selectedDoctor);
-}, [selectedDate, selectedSlot, selectedDoctor]);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState(null);     // slot tĩnh (chỉ có time)
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  const [finalSlot, setFinalSlot] = useState(null);           // ✅ slot từ DB (có _id)
 
+  useEffect(() => {
+    console.log('🔎 selectedDate:', selectedDate);
+    console.log('🔎 selectedSlot:', selectedSlot);
+    console.log('🔎 selectedDoctor:', selectedDoctor);
+    console.log('✅ finalSlot:', finalSlot);
+  }, [selectedDate, selectedSlot, selectedDoctor, finalSlot]);
 
-    return (
-        <div className='testbooking-container'>
-            <div>
-                {/* 1. Chọn ngày */}
-                {!selectedDate && (
-                    <PickingDate onSelectDate={setSelectedDate} />
-                )}
+  return (
+    <div className='testbooking-container'>
+      <div>
+        {/* 1. Chọn ngày */}
+        {!selectedDate && (
+          <PickingDate onSelectDate={setSelectedDate} />
+        )}
 
-                {/* 2. Chọn slot (phụ thuộc ngày) */}
-                {selectedDate && !selectedSlot && (
-                    <TimeSlots date={selectedDate} onSelectSlot={setSelectedSlot} />
-                )}
+        {/* 2. Chọn slot */}
+        {selectedDate && !selectedSlot && (
+          <TimeSlots
+            date={selectedDate}
+            onSelectSlot={setSelectedSlot} // slot tĩnh: { time: "09:00" }
+          />
+        )}
 
-                {/* 3. Chọn bác sĩ (phụ thuộc ngày + slot) */}
-                {selectedDate && selectedSlot && !selectedDoctor && (
-                    <CounselorDoctor
-                        date={selectedDate}
-                        slot={selectedSlot}
-                        onSelectDoctor={setSelectedDoctor}
-                    />
-                )}
+        {/* 3. Chọn bác sĩ */}
+        {selectedDate && selectedSlot && !selectedDoctor && (
+          <CounselorDoctor
+            date={selectedDate}
+            slot={selectedSlot}
+            onSelectDoctor={(doctor, realSlotFromDB) => {
+              setSelectedDoctor(doctor);
+              setFinalSlot(realSlotFromDB); // ✅ có _id để dùng ở bước sau
+            }}
+          />
+        )}
 
-                {/* 4. Xác nhận thanh toán */}
-                {selectedDate && selectedSlot && selectedDoctor && (
-                    <PaymentConfirm
-                        doctor={selectedDoctor}
-                        date={selectedDate}
-                        slot={selectedSlot}
-                    />
-                )}
-            </div>
-        </div>
-    );
+        {/* 4. Thanh toán */}
+        {selectedDate && selectedSlot && selectedDoctor && finalSlot && (
+          <PaymentConfirm
+            doctor={selectedDoctor}
+            date={selectedDate}
+            slot={finalSlot} // ✅ dùng slot có _id
+          />
+        )}
+      </div>
+    </div>
+  );
 }
