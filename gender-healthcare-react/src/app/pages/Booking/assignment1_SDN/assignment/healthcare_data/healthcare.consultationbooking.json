@@ -1,0 +1,176 @@
+[{
+  "_id": {
+    "$oid": "684ae8556335fb74f1ccdbf6"
+  },
+  "note": "Buổi tư vấn completed số 1",
+  "status": "completed",
+  "customerId": {
+    "$oid": "684ae1c46335fb74f1ccdbe3"
+  },
+  "scheduleId": {
+    "$oid": "684ae3ab6335fb74f1ccdbeb"
+  },
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "rating": 4,
+  "feedback": "Feedback tích cực số 1",
+  "result": "Kết quả tư vấn số 1"
+},
+{
+  "_id": {
+    "$oid": "684ae8556335fb74f1ccdbf7"
+  },
+  "note": "Buổi tư vấn completed số 2",
+  "status": "completed",
+  "customerId": {
+    "$oid": "684ae1c46335fb74f1ccdbe4"
+  },
+  "scheduleId": {
+    "$oid": "684ae3ab6335fb74f1ccdbec"
+  },
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "rating": 4,
+  "feedback": "Feedback tích cực số 2",
+  "result": "Kết quả tư vấn số 2"
+},
+{
+  "_id": {
+    "$oid": "684ae8556335fb74f1ccdbf8"
+  },
+  "note": "Buổi tư vấn completed số 3",
+  "status": "completed",
+  "customerId": {
+    "$oid": "684ae1c46335fb74f1ccdbe5"
+  },
+  "scheduleId": {
+    "$oid": "684ae3ab6335fb74f1ccdbed"
+  },
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "rating": 4,
+  "feedback": "Feedback tích cực số 3",
+  "result": "Kết quả tư vấn số 3"
+},
+{
+  "_id": {
+    "$oid": "684ae8556335fb74f1ccdbf9"
+  },
+  "note": "Buổi tư vấn completed số 4",
+  "status": "completed",
+  "customerId": {
+    "$oid": "684ae1c46335fb74f1ccdbe6"
+  },
+  "scheduleId": {
+    "$oid": "684ae3ab6335fb74f1ccdbee"
+  },
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "rating": 5,
+  "feedback": "Feedback tích cực số 4",
+  "result": "Kết quả tư vấn số 4"
+},
+{
+  "_id": {
+    "$oid": "684ae8556335fb74f1ccdbfa"
+  },
+  "note": "Buổi tư vấn completed số 5",
+  "status": "completed",
+  "customerId": {
+    "$oid": "684ae1c46335fb74f1ccdbe7"
+  },
+  "scheduleId": {
+    "$oid": "684ae3ab6335fb74f1ccdbef"
+  },
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "rating": 4,
+  "feedback": "Feedback tích cực số 5",
+  "result": "Kết quả tư vấn số 5"
+},
+{
+  "_id": {
+    "$oid": "684ae8556335fb74f1ccdbfb"
+  },
+  "note": "Buổi tư vấn cancelled số 6",
+  "status": "cancelled",
+  "customerId": {
+    "$oid": "684ae1c46335fb74f1ccdbe3"
+  },
+  "scheduleId": {
+    "$oid": "684ae3ab6335fb74f1ccdbf4"
+  },
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "rating": null,
+  "feedback": null,
+  "result": null
+},
+{
+  "_id": {
+    "$oid": "684ae8556335fb74f1ccdbfc"
+  },
+  "note": "Buổi tư vấn đã đặt chỗ số 7",
+  "status": "confirmed",
+  "customerId": {
+    "$oid": "684ae1c46335fb74f1ccdbe3"
+  },
+  "scheduleId": {
+    "$oid": "684ae3ab6335fb74f1ccdbf0"
+  },
+  "rating": null,
+  "feedback": null,
+  "result": null,
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae8556335fb74f1ccdbfd"
+  },
+  "note": "Buổi tư vấn đã đặt chỗ số 8",
+  "status": "confirmed",
+  "customerId": {
+    "$oid": "684ae1c46335fb74f1ccdbe4"
+  },
+  "scheduleId": {
+    "$oid": "684ae3ab6335fb74f1ccdbf1"
+  },
+  "rating": null,
+  "feedback": null,
+  "result": null,
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  }
+}]

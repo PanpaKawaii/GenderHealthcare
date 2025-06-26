@@ -1,0 +1,132 @@
+const Booking = require('../models/consultationbooking');
+const Customer = require('../models/customer');
+const Schedule = require('../models/consultationschedule')
+const Counselor = require('../models/counselor')
+
+// Lấy tất cả booking
+exports.getAllBookings = async (req, res) => {
+  try {
+    const bookings = await Booking.find()
+      .populate('customerId')
+      .populate('scheduleId');
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// Tạo booking mới
+exports.createBooking = async (req, res) => {
+  try {
+    const newBooking = new Booking(req.body);
+    const saved = await newBooking.save();
+    res.status(201).json(saved);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+// Cập nhật booking
+exports.updateBooking = async (req, res) => {
+  try {
+    const bookingId = req.params.id;
+    const updatedBooking = await Booking.findByIdAndUpdate(
+      bookingId,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!updatedBooking) {
+      return res.status(404).json({ error: 'Booking not found' });
+    }
+    res.json(updatedBooking);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+// Xoá booking
+exports.deleteBooking = async (req, res) => {
+  try {
+    const deleted = await Booking.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ error: 'Booking not found' });
+    }
+    res.json({ message: 'Booking deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// Lấy 1 booking theo ID
+exports.getBookingById = async (req, res) => {
+  try {
+    const booking = await Booking.findById(req.params.id)
+      .populate('customerId')
+      .populate('scheduleId');
+    if (!booking) {
+      return res.status(404).json({ error: 'Booking not found' });
+    }
+    res.json(booking);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.getBookingsByCustomerAccount = async (req, res) => {
+  try {
+    const { accountId } = req.params;
+
+    const customer = await Customer.findOne({ accountId });
+    if (!customer) {
+      return res.status(404).json({ error: 'Customer not found' });
+    }
+
+    const bookings = await Booking.find({ customerId: customer._id })
+      .populate({
+        path: 'scheduleId',
+        populate: {
+          path: 'counselorId',
+          populate: { path: 'accountId' } // lấy thông tin account của counselor
+        }
+      })
+      .populate({
+        path: 'customerId',
+        populate: { path: 'accountId' } // lấy thông tin account của customer
+      });
+
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.getBookingsByCounselorAccount = async (req, res) => {
+  try {
+    const { accountId } = req.params;
+
+    const counselor = await Counselor.findOne({ accountId });
+    if (!counselor) {
+      return res.status(404).json({ error: 'Counselor not found' });
+    }
+
+    const schedules = await Schedule.find({ counselorId: counselor._id });
+    const scheduleIds = schedules.map(s => s._id);
+
+    const bookings = await Booking.find({ scheduleId: { $in: scheduleIds } })
+      .populate({
+        path: 'scheduleId',
+        populate: {
+          path: 'counselorId',
+          populate: { path: 'accountId' }
+        }
+      })
+      .populate({
+        path: 'customerId',
+        populate: { path: 'accountId' }
+      });
+
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

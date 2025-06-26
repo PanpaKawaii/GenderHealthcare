@@ -1,8 +1,12 @@
+// Booking/TimeSlots.jsx
 import React, { useState } from 'react';
 import './TimeSlots.css';
+import dayjs from 'dayjs';
 
 export default function TimeSlots({ date, onSelectSlot }) {
     const [selectedSlot, setSelectedSlot] = useState(null);
+
+    const now = dayjs();
 
     const slotTimes = [
         { startTime: '09:00', endTime: '09:30' },
@@ -19,39 +23,61 @@ export default function TimeSlots({ date, onSelectSlot }) {
         { startTime: '16:30', endTime: '17:00' },
     ];
 
+    // Hàm này chỉ kiểm tra xem slot có nằm trong quá khứ so với ngày đã chọn (hoặc hiện tại nếu chưa chọn ngày) hay không
+     const isSlotPast = (slotTime) => {
+        // Xác định ngày tham chiếu để so sánh:
+        // Nếu prop 'date' là NULL, sử dụng ngày hiện tại để kiểm tra các slot đã qua.
+        // Ngược lại, sử dụng ngày được chọn.
+        const referenceDate = date ? dayjs(date) : dayjs(); // THAY ĐỔI Ở ĐÂY
 
+        const slotDateTime = dayjs(`${referenceDate.format('YYYY-MM-DD')}T${slotTime}`);
+        
+        // So sánh thời điểm của slot với thời điểm hiện tại.
+        return slotDateTime.isBefore(now);
+    };
+
+    
 
     const handleClick = (slot) => {
-        console.log('✅ Slot được chọn:', slot); // thêm dòng này
+        // Chỉ ngăn chặn click nếu slot đó thực sự đã trôi qua
+        if (isSlotPast(slot.startTime)) return;
+
         setSelectedSlot(slot);
         onSelectSlot(slot);
     };
 
-
-
     return (
         <div className='timeslots-content booking-content'>
             <h1 className='title'>Select Time</h1>
-            <p className='script'>
+            {/* <p className='script'>
                 Available time slots for {date ? new Date(date).toLocaleDateString() : '...'}
-            </p>
+            </p> */}
             <div className='timeslots-form'>
-                <div className='time-grid'>
-                    {slotTimes.map((slot, i) => (
-                        <button
-                            key={i}
-                            className={`time-slot ${selectedSlot === slot ? 'selected' : ''}`}
-                            onClick={() => handleClick(slot)}
-                        >
-                            <i className='fa-regular fa-clock'></i> {slot.startTime} - {slot.endTime}
-                        </button>
-                    ))}
+                {/* Thêm thông báo nhẹ nhàng nếu chưa chọn ngày */}
 
+                <div className='time-grid'>
+                    {slotTimes.map((slot, i) => {
+                        const disabled = isSlotPast(slot.startTime); // Kiểm tra disabled chỉ dựa trên việc slot có phải trong quá khứ không
+                        // SỬA DÒNG NÀY: So sánh theo startTime thay vì toàn bộ đối tượng
+                        const isSelected = selectedSlot && selectedSlot.startTime === slot.startTime; 
+
+                        return (
+                            <button
+                                key={i}
+                                className={`time-slot ${isSelected ? 'selected' : ''} ${disabled ? 'disabled' : ''}`}
+                                onClick={() => handleClick(slot)}
+                                disabled={disabled}
+                            >
+                                {/* <i className='fa-regular fa-clock'></i>  */}
+                                {slot.startTime} - {slot.endTime}
+                            </button>
+                        );
+                    })}
                 </div>
 
                 <div className='legend'>
                     <span><span className='box available'></span> Available</span>
-                    <span><span className='box booked'></span> Booked</span>
+                    <span><span className='box booked'></span> Past</span>
                 </div>
             </div>
         </div>
