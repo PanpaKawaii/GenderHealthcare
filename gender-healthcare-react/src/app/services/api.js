@@ -131,6 +131,13 @@ export const testserviceparameterAPI = {
   update: (id, data) => api.put(`/testserviceparameters/${id}`, data),
   delete: (id) => api.delete(`/testserviceparameters/${id}`),
 };
+export const testscheduleAPI = {
+  getAll: () => api.get("/testschedules"),
+  getById: (id) => api.get(`/testschedules/${id}`),
+  create: (data) => api.post("/testschedules", data),
+  update: (id, data) => api.put(`/testschedules/${id}`, data),
+  delete: (id) => api.delete(`/testschedules/${id}`),
+};
 
 //forum api
 // export const forumAPI = {
