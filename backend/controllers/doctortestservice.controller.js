@@ -11,11 +11,11 @@ exports.create = async (req, res) => {
 };
 
 exports.getAll = async (req, res) =>
-  res.json(await DoctorTestService.find().populate("doctor testService"));
+  res.json(await DoctorTestService.find().populate("doctorId testServiceId"));
 
 exports.getOne = async (req, res) => {
   const dts = await DoctorTestService.findById(req.params.id).populate(
-    "doctor testService"
+    "doctorId testServiceId"
   );
   if (!dts) return res.sendStatus(404);
   res.json(dts);
