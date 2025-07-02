@@ -12,8 +12,10 @@ import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
 import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
 import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
-import TestBooking from "../pages/Booking/TestBooking";
 import Cycle from "../pages/Cycle/Cycle";
+
+import SelectBooking from "../pages/Booking/SelectBooking";
+import TestBooking from "../pages/TestBooking/TestBooking";
 
 export default function CustomerRoutes() {
   return (

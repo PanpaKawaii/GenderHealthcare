@@ -35,8 +35,8 @@ function HomePage() {
             </p>
             <div style={{ display: "flex" }}>
               <div style={{ marginTop: 32 }}>
-                <a
-                  href="/register"
+                <Link
+                  to="/register"
                   style={{
                     background: "#1d3557",
                     color: "#fff",
@@ -47,11 +47,11 @@ function HomePage() {
                   }}
                 >
                   Join Now
-                </a>
+                </Link>
               </div>
               <div style={{ marginTop: 32, marginLeft: 10 }}>
-                <a
-                  href="/cycle"
+                <Link
+                  to="/cycle"
                   style={{
                     background: "#1d3557",
                     color: "#fff",
@@ -61,8 +61,8 @@ function HomePage() {
                     fontSize: 18,
                   }}
                 >
-                  <Link to="/cycle">My cycle</Link>
-                </a>
+                  My cycle
+                </Link>
               </div>
             </div>
           </div>
