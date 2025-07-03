@@ -55,9 +55,9 @@ export default function TestBooking() {
     return (
         <div className='testbooking-container'>
             <Service S_Service={S_Service} setS_Service={setS_Service} />
-            <TestService S_Test={S_Test} setS_Test={setS_Test} />
-            {S_Test && <CounselorDoctor S_Test={S_Test} S_Doctor={S_Doctor} setS_Doctor={setS_Doctor} />}
-            {S_Doctor && <PickingDate S_Doctor={S_Doctor} S_Date={S_Date} setS_Date={setS_Date} />}
+            {!S_Doctor && <TestService S_Test={S_Test} setS_Test={setS_Test} />}
+            {S_Test && !S_Slot && <CounselorDoctor S_Test={S_Test} S_Doctor={S_Doctor} setS_Doctor={setS_Doctor} />}
+            {S_Doctor && !S_Slot && <PickingDate S_Doctor={S_Doctor} S_Date={S_Date} setS_Date={setS_Date} />}
             {S_Test && S_Doctor && S_Date && <TimeSlots S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} setS_Slot={setS_Slot} />}
             {S_Slot && <PaymentConfirm S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} handleBooking={handleBooking} />}
         </div>

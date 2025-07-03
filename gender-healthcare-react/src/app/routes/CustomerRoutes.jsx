@@ -16,13 +16,17 @@ import Cycle from "../pages/Cycle/Cycle";
 
 import SelectBooking from "../pages/Booking/SelectBooking";
 import TestBooking from "../pages/TestBooking/TestBooking";
+import ParameterManager from "../pages/ParameterManager/ParameterManager";
+import TestResultManager from "../pages/TestResultManager/TestResultManager";
+import TestResultDetailManager from "../pages/TestResultDetailManager/TestResultDetailManager";
+import TestServiceParameterManager from "../pages/TestServiceParameterManager/TestServiceParameterManager";
 
 export default function CustomerRoutes() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
+          {/* <Route path="/" element={<HomePage />} /> */}
           <Route path="/forum" element={<ForumPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
@@ -34,6 +38,10 @@ export default function CustomerRoutes() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/testbooking" element={<TestBooking />} />
+        <Route path="/parameter" element={<ParameterManager />} />
+        <Route path="/testresult" element={<TestResultManager />} />
+        <Route path="/testresultdetail" element={<TestResultDetailManager />} />
+        <Route path="/testserviceparameter" element={<TestServiceParameterManager />} />
         <Route
           path="/dashboardTestservice"
           element={<DashboardTestservice />}
@@ -43,7 +51,7 @@ export default function CustomerRoutes() {
           element={<DashboardMedicalfacility />}
         />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
         <Route path="/cycle" element={<Cycle />} />
       </Routes>
     </BrowserRouter>

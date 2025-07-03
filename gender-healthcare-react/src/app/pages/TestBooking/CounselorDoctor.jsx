@@ -59,7 +59,7 @@ export default function CounselorDoctor({ S_Test, S_Doctor, setS_Doctor }) {
                             <div>{dt.bio}</div>
                         </div>
                         <div className='buttons'>
-                            <button className='btn' onClick={() => setS_Doctor(dt)}>Select</button>
+                            <button className='btn' onClick={() => setS_Doctor(p => p?._id == dt?._id ? null : dt)}>Select</button>
                         </div>
                     </div>
                 ))}
