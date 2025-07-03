@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PickingDate.css';
 
-export default function PickingDate() {
+export default function PickingDate({ S_Doctor, S_Date, setS_Date }) {
 
     const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
@@ -37,18 +37,22 @@ export default function PickingDate() {
 
     const formatDate = (date) => date.toISOString().split('T')[0];
 
+    const convertToVNTime = (date) => {
+        // Tạo bản sao ngày, cộng thêm 7 tiếng (tính theo UTC)
+        return new Date(date.getTime() + 7 * 60 * 60 * 1000);
+    };
+
     return (
         <div className='pickingdate-content booking-content'>
             <h1 className='title'>Select Your Appointment Date</h1>
-            <p className='script'>Choose your preferred date with Dr. David Park</p>
+            <p className='script'>Choose your preferred date with {S_Doctor?.name}</p>
             <div className='calendar-form'>
                 <div className='calendar-header'>
                     <div>
                         <h2>Select Date</h2>
-                        <p>Available appointments with Dr. David Park</p>
+                        <p>Available appointments with {S_Doctor?.name}</p>
                     </div>
                     <div className='price'>
-                        <h2>$165</h2>
                         <p>Preventive Medicine</p>
                     </div>
                 </div>
@@ -69,8 +73,10 @@ export default function PickingDate() {
 
                         {calendarCells.map((date, index) => {
                             if (!date) return <div key={index} className='date empty' />;
-                            const isToday = formatDate(date) === formatDate(today);
-                            const isSelected = selectedDate && formatDate(date) === formatDate(selectedDate);
+
+                            const vnDate = convertToVNTime(date);
+                            const isToday = formatDate(vnDate) === formatDate(convertToVNTime(today));
+                            const isSelected = selectedDate && formatDate(vnDate) === formatDate(convertToVNTime(selectedDate));
                             let className = 'date';
                             if (isToday) className += ' today';
                             if (isSelected) className += ' selected';
@@ -79,9 +85,13 @@ export default function PickingDate() {
                                 <div
                                     key={index}
                                     className={className}
-                                    onClick={() => setSelectedDate(date)}
+                                    onClick={() => {
+                                        const selectedVNDate = convertToVNTime(date);
+                                        setSelectedDate(selectedVNDate);
+                                        setS_Date(selectedVNDate.toISOString().split('T')[0]);
+                                    }}
                                 >
-                                    {date.getDate()}
+                                    {vnDate.getDate()}
                                 </div>
                             );
                         })}
