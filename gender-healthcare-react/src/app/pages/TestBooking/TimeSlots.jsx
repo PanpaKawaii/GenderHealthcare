@@ -1,36 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './TimeSlots.css';
+import { fetchData } from '../LoginRegister/api_register';
 
-export default function TimeSlots() {
+export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot }) {
 
-    const times = [
-        { time: '09:00', booked: false },
-        { time: '09:30', booked: true },
-        { time: '10:00', booked: false },
-        { time: '10:30', booked: false },
-        { time: '11:00', booked: true },
-        { time: '11:30', booked: false },
-        { time: '14:00', booked: false },
-        { time: '14:30', booked: true },
-        { time: '15:00', booked: false },
-        { time: '15:30', booked: false },
-        { time: '16:00', booked: false },
-        { time: '16:30', booked: true },
-    ];
+    const [Slot, setSlot] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        const GetSlot = async () => {
+            const token = '';
+            try {
+                const doctortestservices = await fetchData('/doctortestservices', token);
+                console.log('doctortestservices', doctortestservices.filter(
+                    dts => dts.doctorId._id == S_Doctor?._id && dts.testServiceId._id == S_Test?._id
+                ));
+                setSlot(doctortestservices.filter(
+                    dts => dts.doctorId._id == S_Doctor?._id && dts.testServiceId._id == S_Test?._id
+                ));
+            } catch (error) {
+                setError(true);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        GetSlot();
+    }, [S_Test, S_Doctor, S_Date]);
 
     return (
         <div className='timeslots-content booking-content'>
             <h1 className='title'>Select Time</h1>
-            <p className='script'>Available time slots for Friday, June 20, 2025</p>
+            <p className='script'>Available time slots for {S_Date}</p>
             <div className='timeslots-form'>
                 <div className='time-grid'>
-                    {times.map(({ time, booked }, i) => (
+                    {Slot.map((slot, i) => (
                         <button
                             key={i}
-                            className={`time-slot ${booked ? 'booked' : ''}`}
-                            disabled={booked}
+                            className={`time-slot ${false ? 'booked' : ''}`}
+                            style={{ backgroundColor: slot._id == S_Slot?._id ? '#28a74540' : '' }}
+                            onClick={() => setS_Slot(slot)}
+                        // disabled={booked}
                         >
-                            <i className='fa-regular fa-clock'></i> {time}
+                            <i className='fa-regular fa-clock'></i> {slot.startTime} - {slot.endTime}
                         </button>
                     ))}
                 </div>
