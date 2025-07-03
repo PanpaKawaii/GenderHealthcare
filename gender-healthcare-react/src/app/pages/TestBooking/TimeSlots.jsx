@@ -40,7 +40,7 @@ export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot 
                             key={i}
                             className={`time-slot ${false ? 'booked' : ''}`}
                             style={{ backgroundColor: slot._id == S_Slot?._id ? '#28a74540' : '' }}
-                            onClick={() => setS_Slot(slot)}
+                            onClick={() => setS_Slot(p => p?._id == slot?._id ? null : slot)}
                         // disabled={booked}
                         >
                             <i className='fa-regular fa-clock'></i> {slot.startTime} - {slot.endTime}

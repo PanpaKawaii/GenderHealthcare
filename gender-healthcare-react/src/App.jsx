@@ -40,8 +40,7 @@ export default function App() {
     return <CounselorRoutes />;
   } else if (Role == "Customer") {
     return <CustomerRoutes />;
-  }
-  else if (Role == 'Admin') {
+  } else if (Role == 'Admin') {
     return <AdminRoutes />;
   } else return <MainRoutes />;
 }

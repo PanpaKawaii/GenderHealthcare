@@ -36,6 +36,11 @@
             }
 
             .buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                min-width: 200px;
+
                 div {
                     color: #2563EB;
                     font-size: 30px;
