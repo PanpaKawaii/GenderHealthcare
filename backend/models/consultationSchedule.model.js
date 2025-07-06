@@ -6,7 +6,8 @@ const consultationScheduleSchema = new Schema({
     startTime: Date,
     endTime: Date,
     status: { type: String, enum: ['available', 'booked', 'completed', 'cancelled'] },
-    note: String
+    note: String,
+    price: {type: Number, required: true}
 }, { timestamps: true });
 
 module.exports = mongoose.model('ConsultationSchedule', consultationScheduleSchema);
