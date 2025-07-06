@@ -114,7 +114,7 @@ export default function TestResultManager() {
                                             status: res.status
                                         });
                                     }}>Edit</button>
-                                    <button onClick={() => handleDelete(res._id)}>Delete</button>
+                                    <button className='dlt-btn' onClick={() => handleDelete(res._id)}>Delete</button>
                                 </td>
                             </tr>
                         ))

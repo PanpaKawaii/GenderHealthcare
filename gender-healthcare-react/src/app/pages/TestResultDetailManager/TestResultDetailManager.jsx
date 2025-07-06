@@ -120,7 +120,7 @@ export default function TestResultDetailManager() {
                                             value: item.value
                                         });
                                     }}>Edit</button>
-                                    <button onClick={() => handleDelete(item._id)}>Delete</button>
+                                    <button className='dlt-btn' onClick={() => handleDelete(item._id)}>Delete</button>
                                 </td>
                             </tr>
                         ))

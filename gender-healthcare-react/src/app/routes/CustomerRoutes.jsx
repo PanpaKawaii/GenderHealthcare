@@ -24,6 +24,9 @@ import ParameterManager from "../pages/ParameterManager/ParameterManager";
 import TestResultManager from "../pages/TestResultManager/TestResultManager";
 import TestResultDetailManager from "../pages/TestResultDetailManager/TestResultDetailManager";
 import TestServiceParameterManager from "../pages/TestServiceParameterManager/TestServiceParameterManager";
+import TestServiceParameterDetail from "../pages/TestServiceParameterManager/TestServiceParameterDetail/TestServiceParameterDetail";
+
+import TestBookingManager from "../pages/TestBookingManager/TestBookingManager";
 
 
 export default function CustomerRoutes() {
@@ -44,11 +47,13 @@ export default function CustomerRoutes() {
         <Route path="/counselorschedule" element={<CounselorSchedule />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/testbooking" element={<TestBooking />} />
-        <Route path="/parameter" element={<ParameterManager />} />
-        <Route path="/testresult" element={<TestResultManager />} />
-        <Route path="/testresultdetail" element={<TestResultDetailManager />} />
-        <Route path="/testserviceparameter" element={<TestServiceParameterManager />} />
+        <Route path="/couselortestbooking" element={<TestBooking />} />
+        <Route path="/parametermanager" element={<ParameterManager />} />
+        <Route path="/testbookingmanager" element={<TestBookingManager />} />
+        <Route path="/testresultmanager" element={<TestResultManager />} />
+        <Route path="/testresultdetailmanager" element={<TestResultDetailManager />} />
+        <Route path="/testserviceparametermanager" element={<TestServiceParameterManager />} />
+        <Route path="/testserviceparametermanager/:id" element={<TestServiceParameterDetail/>} />
         <Route
           path="/dashboardTestservice"
           element={<DashboardTestservice />}
