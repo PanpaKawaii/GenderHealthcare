@@ -1,0 +1,106 @@
+.paymentconfirm-content {
+
+    .checkout-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        max-width: 900px;
+        margin: 20px auto;
+
+        .box {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+
+            h3 {
+                margin-top: 0;
+                margin-bottom: 20px;
+                font-size: 24px;
+            }
+        }
+
+        .summary-box {
+
+            .rows {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                .row {
+                    display: flex;
+                    justify-content: space-between;
+
+                    span {
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            .total {
+                display: flex;
+                justify-content: space-between;
+                font-weight: bold;
+                font-size: 18px;
+            }
+
+            hr {
+                margin: 16px 0;
+                border: none;
+                border-top: 1px solid #eee;
+            }
+        }
+
+        .payment-box {
+
+            .formbooking {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                label {
+                    display: block;
+                    margin: 0 0 8px;
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+
+                input {
+                    width: 100%;
+                    padding: 8px 12px;
+                    font-size: 16px;
+                    outline: none;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                    box-sizing: border-box;
+                }
+
+                .row2 {
+                    display: flex;
+                    gap: 12px;
+
+                    div {
+                        flex: 1;
+                    }
+                }
+
+                .pay-btn {
+                    width: 100%;
+                    background: #111;
+                    color: white;
+                    padding: 10px 12px;
+                    border: none;
+                    border-radius: 6px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        background: #333;
+                    }
+                }
+            }
+        }
+    }
+}

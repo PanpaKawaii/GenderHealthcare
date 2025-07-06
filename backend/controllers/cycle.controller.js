@@ -64,7 +64,7 @@ exports.getByCustomer = async (req, res) => {
   try {
     const cycles = await Cycle.find({ customerId: req.params.customerId }).sort(
       {
-        "periodDays.0": -1,
+        createdAt: -1,
       }
     );
     res.json(cycles);

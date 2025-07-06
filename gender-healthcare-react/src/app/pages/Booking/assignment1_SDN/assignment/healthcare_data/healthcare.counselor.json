@@ -1,0 +1,85 @@
+[{
+  "_id": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "accountId": {
+    "$oid": "684ae06b6335fb74f1ccdbd2"
+  },
+  "degree": "Degree 1",
+  "experience": 2,
+  "bio": "Counselor bio number 1",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "accountId": {
+    "$oid": "684ae06b6335fb74f1ccdbd3"
+  },
+  "degree": "Degree 2",
+  "experience": 3,
+  "bio": "Counselor bio number 2",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "accountId": {
+    "$oid": "684ae06b6335fb74f1ccdbd4"
+  },
+  "degree": "Degree 3",
+  "experience": 4,
+  "bio": "Counselor bio number 3",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "accountId": {
+    "$oid": "684ae06b6335fb74f1ccdbd5"
+  },
+  "degree": "Degree 4",
+  "experience": 5,
+  "bio": "Counselor bio number 4",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "accountId": {
+    "$oid": "684ae06b6335fb74f1ccdbd6"
+  },
+  "degree": "Degree 5",
+  "experience": 6,
+  "bio": "Counselor bio number 5",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  }
+}]

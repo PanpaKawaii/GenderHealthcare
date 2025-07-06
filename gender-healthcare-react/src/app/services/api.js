@@ -64,6 +64,34 @@ export const blogAPI = {
   getById: (id) => api.get(`/blogs/${id}`),
 };
 
+export const counselorBookAPI = {
+  getAll: () => api.get("/consultationbookings"),
+  create: (data) => api.post("/consultationbookings", data),
+  update: (id, data) => api.put(`/consultationbookings/${id}`, data),
+  delete: (id) => api.delete(`/consultationbookings/${id}`),
+  getById: (id) => api.get(`/consultationbookings/${id}`),
+};
+
+export const counselorScheduleAPI = {
+  getAll: () => api.get("/schedules"),
+  create: (data) => api.post("/schedules", data),
+  update: (id, data) => api.put(`/schedules/${id}`, data),
+  delete: (id) => api.delete(`/schedules/${id}`),
+  getById: (id) => api.get(`/schedules/${id}`),
+
+  getByCounselorAndDate: (counselorId, date) =>
+    api.get('/schedules/filter', {
+      params: { counselorId, date }
+    }),
+
+  getAvailableCounselors: (date, startTime, endTime) =>
+    api.get('/schedules/available-counselors', {
+      params: { date, startTime, endTime }
+    }),
+
+
+};
+
 // dotor
 export const doctorAPI = {
   getAll: () => api.get("/doctors"),

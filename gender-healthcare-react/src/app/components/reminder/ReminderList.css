@@ -28,7 +28,7 @@
 }
 
 .reminder-list-container button {
-  background: #ff69b4;
+  background: #f5b5d5;
   color: white;
   border: none;
   border-radius: 6px;
@@ -38,10 +38,11 @@
   cursor: pointer;
   margin-left: 4px;
   transition: background 0.2s;
+  margin-bottom: 3px;
 }
 
 .reminder-list-container button:hover {
-  background: #e75480;
+  background: #f795b2;
 }
 
 .reminder-list-container ul {

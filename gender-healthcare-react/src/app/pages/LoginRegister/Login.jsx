@@ -92,14 +92,14 @@ export default function Login() {
         <div className='login-container'>
 
             <div className='back-arrow'>
-                <i className='fa-solid fa-arrow-left'></i>
+                <Link to='/'><i className='fa-solid fa-arrow-left'></i></Link>
             </div>
 
             <div className='login-card'>
                 <div className='card-heading'>
                     <i className='fa-regular fa-heart'></i>
                     <div className='welcome'>Welcome back</div>
-                    <div className='text'>Sign in to your HeartHealing account</div>
+                    <div className='text'>Sign in to your Healthcare account</div>
                 </div>
 
                 <div className='card-body'>

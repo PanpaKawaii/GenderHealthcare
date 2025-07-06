@@ -4,14 +4,10 @@ const Schema = mongoose.Schema;
 const doctorTestServiceSchema = new Schema(
   {
     doctorId: { type: Schema.Types.ObjectId, ref: "Doctor", required: true },
-    testServiceId: {
-      type: Schema.Types.ObjectId,
-      ref: "TestService",
-      required: true,
-    },
-    // Thêm các trường phụ nếu cần, ví dụ:
-    // price: { type: Number },
-    // note: { type: String },
+    testServiceId: { type: Schema.Types.ObjectId, ref: "TestService", required: true, },
+    startTime: String,
+    endTime: String,
+    status: { type: String, enum: ['Available', 'Unavailable'] }
   },
   {
     timestamps: true,

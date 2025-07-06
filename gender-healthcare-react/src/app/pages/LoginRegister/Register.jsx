@@ -191,10 +191,15 @@ export default function Register() {
 
     return (
         <div className='register-container'>
+
+            <div className='back-arrow'>
+                <Link to='/'><i className='fa-solid fa-arrow-left'></i></Link>
+            </div>
+
             <div className='register-card'>
                 <div className='card-heading'>
                     <i className='fa-regular fa-heart'></i>
-                    <div className='welcome'>Join HeartHealing</div>
+                    <div className='welcome'>Join Healthcare</div>
                     <div className='text'>Create your account to get started</div>
                 </div>
 

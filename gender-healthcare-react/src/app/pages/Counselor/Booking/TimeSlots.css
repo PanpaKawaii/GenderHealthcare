@@ -1,0 +1,106 @@
+.timeslots-content .timeslots-form {
+    width: 100%;
+    margin: 20px auto;
+    padding: 24px;
+    max-width: 680px;
+    background: #fff;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.20);
+}
+
+/* Quy tắc cho .timeslots-content .timeslots-form .time-grid */
+.timeslots-content .timeslots-form .time-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+/* Quy tắc cơ bản cho .timeslots-content .timeslots-form .time-grid .time-slot */
+.timeslots-content .timeslots-form .time-grid .time-slot {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    color: #333;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: background 0.2s;
+}
+
+/* Quy tắc cho .time-slot khi được chọn */
+.timeslots-content .timeslots-form .time-grid .time-slot.selected {
+    background-color: #2563EB; /* Màu nền khi slot được chọn */
+    color: white;             /* Màu chữ khi slot được chọn */
+    border-color: #2563EB;    /* Màu viền khi slot được chọn */
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.4); /* Thêm đổ bóng để nổi bật */
+}
+
+/* THÊM QUY TẮC NÀY ĐỂ BỎ HOVER TRÊN SLOT ĐANG CHỌN */
+
+
+
+/* Quy tắc cho .time-slot khi đã được đặt (booked) */
+.timeslots-content .timeslots-form .time-grid .time-slot.booked {
+    background: #e5e7eb;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* Quy tắc cho .time-slot khi hover, không disabled và không selected (quy tắc cũ vẫn giữ) */
+/* Quy tắc cho .time-slot khi hover, không disabled và không selected */
+.timeslots-content .timeslots-form .time-grid .time-slot:hover:not(:disabled):not(.selected) {
+    background: #f0f8ff;
+}
+
+/* Quy tắc cho .time-slot khi disabled (vô hiệu hóa) */
+.timeslots-content .timeslots-form .time-grid .time-slot:disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Quy tắc cụ thể cho .time-slot.disabled (thường dùng để override các style khác) */
+.time-slot.disabled {
+    background-color: #f7f7f7 !important;
+    color: #bbb !important;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6 !important;
+}
+
+
+/* Quy tắc cho .timeslots-content .timeslots-form .legend */
+.timeslots-content .timeslots-form .legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Quy tắc cho .timeslots-content .timeslots-form .legend .box */
+.timeslots-content .timeslots-form .legend .box {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+/* Quy tắc cho .box khi available */
+.timeslots-content .timeslots-form .legend .box.available {
+    background: #fff;
+}
+
+/* Quy tắc cho .box khi booked */
+.timeslots-content .timeslots-form .legend .box.booked {
+    background: #bd2121;
+}
+
