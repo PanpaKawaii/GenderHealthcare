@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import forumAPI from "../../services/forumAPI";
+import accountAPI from "../../services/accountAPI";
 import { Button } from "../../components/ForumComponents/ui/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
+  CardDescription,
+  CardFooter,
 } from "../../components/ForumComponents/ui/card";
 import {
   Tabs,
@@ -15,33 +18,93 @@ import {
 } from "../../components/ForumComponents/ui/tabs";
 import { Badge } from "../../components/ForumComponents/ui/badge";
 import { formatDistance } from "date-fns";
+import { 
+  AlertTriangle, 
+  CheckCircle, 
+  XCircle, 
+  BarChart3,
+  User,
+  MessageSquare,
+  FileText,
+  Loader2
+} from "lucide-react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../../components/ForumComponents/ui/table";
 
 export default function ModerationPage() {
   const [pendingPosts, setPendingPosts] = useState([]);
   const [pendingComments, setPendingComments] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("posts");
+  const [activeTab, setActiveTab] = useState("dashboard");
 
   useEffect(() => {
-    fetchPendingContent();
-  }, [activeTab]);
-
-  const fetchPendingContent = async () => {
+    if (activeTab === "dashboard") {
+      fetchModerationStats();
+    } else if (activeTab === "posts") {
+      fetchPendingPosts();
+    } else if (activeTab === "comments") {
+      fetchPendingComments();
+    }
+    //  else if (activeTab === "users") {
+    //   fetchUsers();
+    // }
+  }, [activeTab]);  const fetchModerationStats = async () => {
     setLoading(true);
     try {
-      if (activeTab === "posts") {
-        const response = await forumAPI.getPendingPosts();
-        setPendingPosts(response.data || []);
-      } else {
-        const response = await forumAPI.getPendingComments();
-        setPendingComments(response.data || []);
-      }
+      const response = await forumAPI.getModerationStats();
+      setStats(response.data);
     } catch (error) {
-      console.error(`Error fetching pending ${activeTab}:`, error);
+      console.error("Error fetching moderation stats:", error);
     } finally {
       setLoading(false);
     }
   };
+
+  const fetchPendingPosts = async () => {
+    setLoading(true);
+    try {
+      const response = await forumAPI.getPendingPosts();
+      // Ensure we're accessing the data array from the response
+      setPendingPosts(response.data?.data || []);
+    } catch (error) {
+      console.error("Error fetching pending posts:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const fetchPendingComments = async () => {
+    setLoading(true);
+    try {
+      const response = await forumAPI.getPendingComments();
+      // Ensure we're accessing the data array from the response
+      setPendingComments(response.data?.data || []);
+    } catch (error) {
+      console.error("Error fetching pending comments:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  // const fetchUsers = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await accountAPI.getAllUsers();
+  //     setUsers(response.data || []);
+  //   } catch (error) {
+  //     console.error("Error fetching users:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const approvePost = async (postId) => {
     try {
@@ -74,11 +137,9 @@ export default function ModerationPage() {
       console.error("Error approving comment:", error);
     }
   };
-
   const rejectComment = async (commentId) => {
     try {
       await forumAPI.rejectComment(commentId);
-
       setPendingComments((prev) =>
         prev.filter((comment) => comment._id !== commentId)
       );
@@ -86,6 +147,26 @@ export default function ModerationPage() {
       console.error("Error rejecting comment:", error);
     }
   };
+  
+  // const activateUser = async (userId) => {
+  //   try {
+  //     await accountAPI.activateUser(userId);
+  //     // Refresh user list
+  //     fetchUsers();
+  //   } catch (error) {
+  //     console.error("Error activating user:", error);
+  //   }
+  // };
+
+  // const deactivateUser = async (userId) => {
+  //   try {
+  //     await accountAPI.deactivateUser(userId);
+  //     // Refresh user list
+  //     fetchUsers();
+  //   } catch (error) {
+  //     console.error("Error deactivating user:", error);
+  //   }
+  // };
 
   const formatDate = (dateString) => {
     if (!dateString) return "";
@@ -97,26 +178,198 @@ export default function ModerationPage() {
       return "";
     }
   };
-
   return (
-    <div className="container mx-auto py-6">
-      <h1 className="text-2xl font-bold mb-6">Content Moderation Dashboard</h1>
+    <div className="container mx-auto py-6 px-4">
+      <h1 className="text-2xl font-bold mb-6">Admin Control Panel</h1>
 
-      <Tabs defaultValue="posts" value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="mb-6">
-          <TabsTrigger value="posts">Pending Posts</TabsTrigger>
-          <TabsTrigger value="comments">Pending Comments</TabsTrigger>
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
+        <TabsList className="grid w-full grid-cols-3">
+          
+          <TabsTrigger value="posts" className="flex items-center gap-2">
+            <FileText size={16} />
+            <span>Posts</span>
+          </TabsTrigger>
+          <TabsTrigger value="comments" className="flex items-center gap-2">
+            <MessageSquare size={16} />
+            <span>Comments</span>
+          </TabsTrigger>
+          <TabsTrigger value="dashboard" className="flex items-center gap-2">
+            <BarChart3 size={16} />
+            <span>Dashboard</span>
+          </TabsTrigger>
+          {/* <TabsTrigger value="users" className="flex items-center gap-2">
+            <User size={16} />
+            <span>Users</span>
+          </TabsTrigger> */}
         </TabsList>
 
+        {/* Dashboard Tab */}
+        <TabsContent value="dashboard">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {loading ? (
+              <div className="col-span-3 flex justify-center items-center h-64">
+                <Loader2 className="h-8 w-8 animate-spin" />
+              </div>
+            ) : stats ? (
+              <>
+                {/* Content Statistics */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <FileText className="h-5 w-5" />
+                      Posts Overview
+                    </CardTitle>
+                    <CardDescription>Content moderation statistics</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Pending</span>
+                        <Badge variant="outline" className="bg-yellow-50">
+                          {stats.posts?.pending || 0}
+                        </Badge>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Approved</span>
+                        <Badge variant="outline" className="bg-green-50">
+                          {stats.posts?.approved || 0}
+                        </Badge>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Rejected</span>
+                        <Badge variant="outline" className="bg-red-50">
+                          {stats.posts?.rejected || 0}
+                        </Badge>
+                      </div>
+                      <div className="flex justify-between font-medium pt-2">
+                        <span>Total Posts</span>
+                        <span>{stats.posts?.total || 0}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Comment Statistics */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <MessageSquare className="h-5 w-5" />
+                      Comments Overview
+                    </CardTitle>
+                    <CardDescription>Comment moderation statistics</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Pending</span>
+                        <Badge variant="outline" className="bg-yellow-50">
+                          {stats.comments?.pending || 0}
+                        </Badge>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Approved</span>
+                        <Badge variant="outline" className="bg-green-50">
+                          {stats.comments?.approved || 0}
+                        </Badge>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Rejected</span>
+                        <Badge variant="outline" className="bg-red-50">
+                          {stats.comments?.rejected || 0}
+                        </Badge>
+                      </div>
+                      <div className="flex justify-between font-medium pt-2">
+                        <span>Total Comments</span>
+                        <span>{stats.comments?.total || 0}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* User Statistics */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <User className="h-5 w-5" />
+                      Users Overview
+                    </CardTitle>
+                    <CardDescription>User statistics</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Active Users</span>
+                        <Badge variant="outline" className="bg-green-50">
+                          {stats.users?.active || 0}
+                        </Badge>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Inactive Users</span>
+                        <Badge variant="outline" className="bg-gray-100">
+                          {stats.users?.inactive || 0}
+                        </Badge>
+                      </div>
+                      <div className="flex justify-between font-medium pt-2">
+                        <span>Total Users</span>
+                        <span>{stats.users?.total || 0}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Recent Activity Card */}
+                <Card className="col-span-3">
+                  <CardHeader>
+                    <CardTitle>Today's Activity</CardTitle>
+                    <CardDescription>New content and users from today</CardDescription>
+                  </CardHeader>
+                  <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
+                      <div>
+                        <p className="text-sm text-muted-foreground">New Posts</p>
+                        <p className="text-2xl font-bold">{stats.activity?.postsToday || 0}</p>
+                      </div>
+                      <FileText className="h-10 w-10 text-blue-500 opacity-80" />
+                    </div>
+
+                    <div className="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
+                      <div>
+                        <p className="text-sm text-muted-foreground">New Comments</p>
+                        <p className="text-2xl font-bold">{stats.activity?.commentsToday || 0}</p>
+                      </div>
+                      <MessageSquare className="h-10 w-10 text-green-500 opacity-80" />
+                    </div>
+
+                    <div className="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
+                      <div>
+                        <p className="text-sm text-muted-foreground">New Users</p>
+                        <p className="text-2xl font-bold">{stats.activity?.usersToday || 0}</p>
+                      </div>
+                      <User className="h-10 w-10 text-purple-500 opacity-80" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </>
+            ) : (
+              <Card className="col-span-3">
+                <CardContent className="py-10">
+                  <p className="text-center text-gray-500">Failed to load statistics</p>
+                </CardContent>
+              </Card>
+            )}
+          </div>
+        </TabsContent>
+
+        {/* Posts Tab */}
         <TabsContent value="posts">
-          <h2 className="text-xl font-semibold mb-4">
-            Posts Awaiting Approval
-          </h2>
+          <h2 className="text-xl font-semibold mb-4">Posts Awaiting Approval</h2>
           {loading ? (
-            <p>Loading pending posts...</p>
+            <div className="flex justify-center items-center h-64">
+              <Loader2 className="h-8 w-8 animate-spin" />
+            </div>
           ) : pendingPosts.length === 0 ? (
             <Card>
-              <CardContent className="py-4">
+              <CardContent className="py-10">
                 <p className="text-center text-gray-500">
                   No pending posts to review!
                 </p>
@@ -125,22 +378,24 @@ export default function ModerationPage() {
           ) : (
             <div className="grid gap-4">
               {pendingPosts.map((post) => (
-                <Card key={post._id}>
-                  <CardHeader className="pb-2">
+                <Card key={post._id} className="overflow-hidden">
+                  <CardHeader className="pb-2 bg-gray-50">
                     <div className="flex justify-between items-start">
                       <div>
-                        <CardTitle>{post.title}</CardTitle>
+                        <CardTitle className="text-lg">{post.title}</CardTitle>
                         <p className="text-sm text-gray-500">
                           Posted {formatDate(post.createdAt)} by{" "}
-                          {post.accountId?.name || "Anonymous"}
+                          {post.isAnonymous 
+                            ? "Anonymous" 
+                            : (post.accountId?.name || "Unknown User")}
                         </p>
                       </div>
                       <Badge>{post.category}</Badge>
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <p className="mb-4">{post.content}</p>
-                    <div className="flex gap-2">
+                  <CardContent className="py-4">
+                    <p className="mb-4 whitespace-pre-wrap">{post.content}</p>
+                    <div className="flex gap-2 flex-wrap">
                       {post.tags &&
                         post.tags.map((tag) => (
                           <Badge key={tag} variant="outline">
@@ -148,36 +403,45 @@ export default function ModerationPage() {
                           </Badge>
                         ))}
                     </div>
-                    <div className="flex justify-end gap-2 mt-4">
-                      <Button
-                        variant="destructive"
-                        onClick={() => rejectPost(post._id)}
-                      >
-                        Reject
-                      </Button>
-                      <Button
-                        variant="default"
-                        onClick={() => approvePost(post._id)}
-                      >
-                        Approve
-                      </Button>
-                    </div>
                   </CardContent>
+                  <CardFooter className="bg-gray-50 flex justify-end gap-2 py-3">
+                    <Button
+                      variant="destructive"
+                      size="sm"
+                      onClick={() => rejectPost(post._id)}
+                      className="flex items-center gap-1"
+                    >
+                      <XCircle size={16} />
+                      Reject
+                    </Button>
+                    <Button
+                      variant="default"
+                      size="sm"
+                      onClick={() => approvePost(post._id)}
+                      className="flex items-center gap-1"
+                    >
+                      <CheckCircle size={16} />
+                      Approve
+                    </Button>
+                  </CardFooter>
                 </Card>
               ))}
             </div>
           )}
         </TabsContent>
 
+        {/* Comments Tab */}
         <TabsContent value="comments">
           <h2 className="text-xl font-semibold mb-4">
             Comments Awaiting Approval
           </h2>
           {loading ? (
-            <p>Loading pending comments...</p>
+            <div className="flex justify-center items-center h-64">
+              <Loader2 className="h-8 w-8 animate-spin" />
+            </div>
           ) : pendingComments.length === 0 ? (
             <Card>
-              <CardContent className="py-4">
+              <CardContent className="py-10">
                 <p className="text-center text-gray-500">
                   No pending comments to review!
                 </p>
@@ -187,12 +451,19 @@ export default function ModerationPage() {
             <div className="grid gap-4">
               {pendingComments.map((comment) => (
                 <Card key={comment._id}>
-                  <CardHeader className="pb-2">
+                  <CardHeader className="pb-2 bg-gray-50">
                     <div className="flex justify-between items-center">
-                      <p className="text-sm text-gray-500">
-                        Comment by {comment.accountId?.name || "Anonymous"}{" "}
-                        {formatDate(comment.createdAt)}
-                      </p>
+                      <div>
+                        <p className="text-sm text-gray-500">
+                          Comment by {comment.accountId?.name || "Anonymous"}{" "}
+                          {formatDate(comment.createdAt)}
+                        </p>
+                        {comment.postId && (
+                          <p className="text-xs text-gray-400">
+                            On post: {comment.postId.title || "Unknown Post"}
+                          </p>
+                        )}
+                      </div>
                       {comment.parentCommentId && (
                         <Badge variant="outline">
                           Reply to another comment
@@ -200,28 +471,115 @@ export default function ModerationPage() {
                       )}
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <p className="mb-4">{comment.content}</p>
-                    <div className="flex justify-end gap-2 mt-4">
-                      <Button
-                        variant="destructive"
-                        onClick={() => rejectComment(comment._id)}
-                      >
-                        Reject
-                      </Button>
-                      <Button
-                        variant="default"
-                        onClick={() => approveComment(comment._id)}
-                      >
-                        Approve
-                      </Button>
-                    </div>
+                  <CardContent className="py-4">
+                    <p className="whitespace-pre-wrap">{comment.content}</p>
                   </CardContent>
+                  <CardFooter className="bg-gray-50 flex justify-end gap-2 py-3">
+                    <Button
+                      variant="destructive"
+                      size="sm"
+                      onClick={() => rejectComment(comment._id)}
+                      className="flex items-center gap-1"
+                    >
+                      <XCircle size={16} />
+                      Reject
+                    </Button>
+                    <Button
+                      variant="default"
+                      size="sm"
+                      onClick={() => approveComment(comment._id)}
+                      className="flex items-center gap-1"
+                    >
+                      <CheckCircle size={16} />
+                      Approve
+                    </Button>
+                  </CardFooter>
                 </Card>
               ))}
             </div>
           )}
         </TabsContent>
+
+        {/* Users Tab */}
+        {/* <TabsContent value="users">
+          <h2 className="text-xl font-semibold mb-4">User Management</h2>
+          {loading ? (
+            <div className="flex justify-center items-center h-64">
+              <Loader2 className="h-8 w-8 animate-spin" />
+            </div>
+          ) : users.length === 0 ? (
+            <Card>
+              <CardContent className="py-10">
+                <p className="text-center text-gray-500">
+                  No users found
+                </p>
+              </CardContent>
+            </Card>
+          ) : (
+            <Card>
+              <CardContent className="p-0">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Name</TableHead>
+                      <TableHead>Email</TableHead>
+                      <TableHead>Role</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead>Registered</TableHead>
+                      <TableHead className="text-right">Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {users.map((user) => (
+                      <TableRow key={user._id}>
+                        <TableCell className="font-medium">{user.name || "N/A"}</TableCell>
+                        <TableCell>{user.email}</TableCell>
+                        <TableCell>
+                          <Badge variant="outline" className="capitalize">
+                            {user.role || "User"}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          {user.isActive ? (
+                            <Badge variant="outline" className="bg-green-50">
+                              Active
+                            </Badge>
+                          ) : (
+                            <Badge variant="outline" className="bg-red-50">
+                              Inactive
+                            </Badge>
+                          )}
+                        </TableCell>
+                        <TableCell>{formatDate(user.createdAt)}</TableCell>
+                        <TableCell className="text-right">
+                          {user.isActive ? (
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={() => deactivateUser(user._id)}
+                              className="text-red-500"
+                            >
+                              Deactivate
+                            </Button>
+                          ) : (
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={() => activateUser(user._id)}
+                              className="text-green-500"
+                            >
+                              Activate
+                            </Button>
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+          )}
+        </TabsContent> */}
       </Tabs>
     </div>
   );

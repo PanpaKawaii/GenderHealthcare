@@ -14,6 +14,7 @@ import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacilit
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import TestBooking from "../pages/Booking/TestBooking";
 import Cycle from "../pages/Cycle/Cycle";
+import PostDetail from "../pages/ForumPage/PostDetail";
 
 export default function CustomerRoutes() {
   return (
@@ -22,6 +23,7 @@ export default function CustomerRoutes() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/forum" element={<ForumPage />} />
+          <Route path="/post/:postId" element={<PostDetail />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/profile" element={<ProfilePage />} />

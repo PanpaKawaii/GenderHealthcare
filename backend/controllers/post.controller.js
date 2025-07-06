@@ -18,6 +18,18 @@ exports.createPost = async (req, res) => {
         .status(400)
         .json({ message: "Tiêu đề và nội dung không được để trống" });
     }
+    
+    // Check for banned words in title and content
+    const titleHasBannedWords = containsBannedWords(title);
+    const contentHasBannedWords = containsBannedWords(content);
+    
+    if (titleHasBannedWords || contentHasBannedWords) {
+      return res.status(400).json({ 
+        message: "Nội dung hoặc tiêu đề của bạn chứa từ ngữ không phù hợp. Vui lòng chỉnh sửa lại.",
+        hasBannedWords: true
+      });
+    }
+    
     const post = new Post({ title, content, category, tags, accountId, isAnonymous });
     await post.save();
     res.status(201).json(post);
@@ -48,6 +60,12 @@ exports.getPosts = async (req, res) => {
     } else if (type === "expert") {
     } else if (type === "following" && accountId) {
       filter.voteUp = accountId;
+    } else if (type === "myPosts" && accountId) {
+      filter.$or = [
+        { status: "approved", accountId: new mongoose.Types.ObjectId(accountId) },
+        { status: "pending", accountId: new mongoose.Types.ObjectId(accountId) },
+      ];
+      delete filter.status; // Remove the default status filter since we're using $or
     }
 
     let sortOption = { createdAt: -1 };
@@ -154,7 +172,23 @@ exports.getPosts = async (req, res) => {
         (post.voteUp?.length || 0) - (post.voteDown?.length || 0);
 
       const displayVoteCount = Math.max(0, voteCount);
-      return { ...postObj, voteCount, displayVoteCount };
+      
+      // Make sure the post status is included in the response for UI display
+      const statusInfo = {
+        isPending: post.status === "pending",
+        isApproved: post.status === "approved",
+        isRejected: post.status === "rejected",
+        statusText: post.status === "pending" ? "Đang chờ duyệt" : 
+                   post.status === "approved" ? "Đã duyệt" : 
+                   post.status === "rejected" ? "Đã từ chối" : "",
+      };
+      
+      return { 
+        ...postObj, 
+        voteCount, 
+        displayVoteCount,
+        statusInfo
+      };
     });
 
     const totalPosts = await Post.countDocuments(filter);
@@ -264,6 +298,68 @@ exports.deletePost = async (req, res) => {
       return res.status(404).json({ message: "Post not found!" }); // Xoá luôn các comment có trong post này
     await Comment.deleteMany({ postId: postId });
     res.json({ message: "Đã xoá bài viết và các comment liên quan" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Controller function for editing posts with time and ownership restrictions
+exports.editPost = async (req, res) => {
+  try {
+    const postId = req.params.postId;
+    const { title, content, tags, accountId } = req.body;
+
+    // Find the post first to check permissions
+    const post = await Post.findById(postId);
+    
+    // Check if post exists
+    if (!post) {
+      return res.status(404).json({ message: "Bài viết không tồn tại" });
+    }
+    
+    // Check if the current user is the author of the post
+    if (post.accountId.toString() !== accountId) {
+      return res.status(403).json({ message: "Bạn không có quyền chỉnh sửa bài viết này" });
+    }
+    
+    // Check if post was created less than 15 minutes ago
+    const createdAt = new Date(post.createdAt);
+    const now = new Date();
+    const diffInMinutes = (now - createdAt) / (1000 * 60);
+    
+    if (diffInMinutes > 15) {
+      return res.status(403).json({ 
+        message: "Bài viết chỉ có thể được chỉnh sửa trong vòng 15 phút sau khi đăng" 
+      });
+    }
+    
+    // Check for banned words in title and content
+    const titleHasBannedWords = containsBannedWords(title);
+    const contentHasBannedWords = containsBannedWords(content);
+    
+    if (titleHasBannedWords || contentHasBannedWords) {
+      return res.status(400).json({ 
+        message: "Nội dung hoặc tiêu đề của bạn chứa từ ngữ không phù hợp. Vui lòng chỉnh sửa lại.",
+        hasBannedWords: true
+      });
+    }
+    
+    // Update the post with new data and add editedAt timestamp
+    const updatedPost = await Post.findByIdAndUpdate(
+      postId, 
+      { 
+        title, 
+        content, 
+        
+        editedAt: new Date() 
+      }, 
+      { new: true }
+    );
+    
+    res.json({
+      message: "Cập nhật bài viết thành công",
+      post: updatedPost
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

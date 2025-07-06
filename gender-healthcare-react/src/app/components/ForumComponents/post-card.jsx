@@ -10,6 +10,12 @@ import {
   Shield,
   Clock,
   Eye,
+  Copy,
+  ExternalLink,
+  Mail,
+  Check,
+  Clock3,
+  X,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
@@ -24,8 +30,9 @@ import {
 import { Textarea } from "./ui/textarea";
 import forumAPI from "../../services/forumAPI";
 import { formatDistance } from "date-fns";
+import { api } from "../../services/api";
 
-export function PostCard({ post }) {
+export function PostCard({ post, currentTab }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showComments, setShowComments] = useState(false);
   const [newComment, setNewComment] = useState("");
@@ -40,8 +47,10 @@ export function PostCard({ post }) {
   const [voteCount, setVoteCount] = useState(
     (post.voteUp?.length || 0) - (post.voteDown?.length || 0)
   );
+  const [upVoteCount, setUpVoteCount] = useState(post.voteUp?.length || 0);
 
-  const displayVoteCount = Math.max(0, voteCount);
+  const _displayVoteCount = Math.max(0, voteCount); // Net vote count (for commented code/future use)
+  const displayVoteUpCount = upVoteCount;
   const [isLiked, setIsLiked] = useState(false);
   const [comments, setComments] = useState([]);
 
@@ -57,6 +66,58 @@ export function PostCard({ post }) {
   const commentsPerPage = 10;
 
   const [expandedComments, setExpandedComments] = useState({});
+  const [isEditing, setIsEditing] = useState(false);
+  const [editFormData, setEditFormData] = useState({
+    title: "",
+    content: "",
+   
+  });
+
+  // Share functionality
+  const handleShare = async (platform) => {
+    // Tạo đường dẫn đầy đủ đến trang chi tiết bài viết
+    const postUrl = `${window.location.origin}/post/${post._id}`;
+    const postTitle = post.title;
+    const postContent = post.content.substring(0, 100) + "...";
+
+    switch (platform) {
+      case "copy": {
+        try {
+          await navigator.clipboard.writeText(postUrl);
+          alert("Link đã được sao chép vào clipboard!");
+        } catch (error) {
+          console.error("Failed to copy link:", error);
+          alert("Không thể sao chép link. Vui lòng thử lại.");
+        }
+        break;
+      }
+
+      case "facebook": {
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+          postUrl
+        )}`;
+        window.open(facebookUrl, "_blank", "width=600,height=400");
+        break;
+      }
+
+      case "twitter": {
+        const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+          postUrl
+        )}&text=${encodeURIComponent(postTitle)}`;
+        window.open(twitterUrl, "_blank", "width=600,height=400");
+        break;
+      }
+
+      case "email": {
+        const emailUrl = `mailto:?subject=${encodeURIComponent(postTitle)}&body=${encodeURIComponent(`${postContent}\n\nRead more: ${postUrl}`)}`;
+        window.location.href = emailUrl;
+        break;
+      }
+      
+      default:
+        break;
+    }
+  };
 
   // Format creation date
   const formatDate = (dateString) => {
@@ -72,14 +133,78 @@ export function PostCard({ post }) {
 
   // Effect to track view count
   useEffect(() => {
-    const incrementView = async () => {
+    // Sử dụng biến flag để đảm bảo API chỉ được gọi một lần
+    let isApiCalled = false;
+    
+    const cleanupOldViewedPosts = () => {
       try {
-        await forumAPI.incrementView(post._id);
+        const viewData = JSON.parse(localStorage.getItem('viewedPostsData') || '{}');
+        const now = new Date().getTime();
+        const ONE_DAY = 24 * 60 * 60 * 1000; // 24 giờ tính bằng milliseconds
+        const updatedData = {};
+        let hasChanges = false;
+        
+        // Xóa các bài đăng đã xem quá 24 giờ
+        Object.keys(viewData).forEach(key => {
+          if (now - viewData[key] < ONE_DAY) {
+            updatedData[key] = viewData[key];
+          } else {
+            hasChanges = true;
+          }
+        });
+        
+        if (hasChanges) {
+          localStorage.setItem('viewedPostsData', JSON.stringify(updatedData));
+        }
+        
+        return updatedData;
+      } catch (error) {
+        console.error("Error cleaning up viewed posts:", error);
+        return {};
+      }
+    };
+    
+    const incrementView = async () => {
+      // Đảm bảo hàm này chỉ chạy một lần
+      if (isApiCalled) return;
+      
+      try {
+        // Kiểm tra tồn tại sessionStorage để đảm bảo không tăng view khi refresh trang
+        const sessionKey = `viewed_${post._id}`;
+        if (sessionStorage.getItem(sessionKey)) {
+          // Đã xem trong phiên hiện tại, không tăng view
+          return;
+        }
+        
+        // Đánh dấu đã xem trong phiên hiện tại
+        sessionStorage.setItem(sessionKey, 'true');
+        
+        // Lấy và làm sạch dữ liệu cũ
+        const viewedPostsData = cleanupOldViewedPosts();
+        const postKey = `post_${post._id}`;
+        
+        // Kiểm tra xem bài viết đã được xem trong 24 giờ qua chưa
+        if (!viewedPostsData[postKey]) {
+          isApiCalled = true; // Đánh dấu đã gọi API
+          
+          // Gọi API để tăng lượt xem
+          await forumAPI.incrementView(post._id);
+          
+          // Lưu ID bài đăng và thời gian xem vào localStorage
+          viewedPostsData[postKey] = new Date().getTime();
+          localStorage.setItem('viewedPostsData', JSON.stringify(viewedPostsData));
+        }
       } catch (error) {
         console.error("Error incrementing view count:", error);
       }
     };
+    
     incrementView();
+    
+    // Cleanup function để tránh memory leak
+    return () => {
+      isApiCalled = true; // Đảm bảo không gọi API nữa khi component unmount
+    };
   }, [post._id]);
 
   useEffect(() => {
@@ -194,6 +319,28 @@ export function PostCard({ post }) {
         return;
       }
 
+      // Add visual feedback immediately with enhanced animation
+      const button = document.querySelector(`[data-vote-type="${type}"]`);
+      if (button) {
+        // Scale down effect
+        button.style.transform = "scale(0.95)";
+
+        // Ripple effect
+        const ripple = button.querySelector(".absolute");
+        if (ripple) {
+          ripple.style.opacity = "0.3";
+          ripple.style.transform = "scale(1.5)";
+          setTimeout(() => {
+            ripple.style.opacity = "0";
+            ripple.style.transform = "scale(0)";
+          }, 400);
+        }
+
+        setTimeout(() => {
+          button.style.transform = "";
+        }, 150);
+      }
+
       // Determine if this is a toggle (clicking same vote type again)
       const isToggling = userVote === type;
 
@@ -210,15 +357,18 @@ export function PostCard({ post }) {
         // Remove vote: if upvote is removed, decrease count by 1
         //             if downvote is removed, increase count by 1
         setVoteCount((prev) => (type === "up" ? prev - 1 : prev + 1));
+        setUpVoteCount((prev) => (type === "up" ? prev - 1 : prev));
         setUserVote(null);
       } else if (previousUserVote === null) {
         // Adding new vote: increase for upvote, decrease for downvote
         setVoteCount((prev) => (type === "up" ? prev + 1 : prev - 1));
+        setUpVoteCount((prev) => (type === "up" ? prev + 1 : prev));
         setUserVote(type);
       } else {
         // Switching vote direction (up → down or down → up)
         // This means a 2-point swing in either direction
         setVoteCount((prev) => (type === "up" ? prev + 2 : prev - 2));
+        setUpVoteCount((prev) => (type === "up" ? prev + 1 : prev - 1));
         setUserVote(type);
       }
 
@@ -231,6 +381,11 @@ export function PostCard({ post }) {
         // Get the raw vote count for internal state management
         const { rawTotal } = response.data.voteStats;
         setVoteCount(rawTotal);
+      }
+
+      // Update upvote count from server response if available
+      if (response.data && response.data.post) {
+        setUpVoteCount(response.data.post.voteUp?.length || 0);
       }
     } catch (error) {
       console.error("Error voting:", error);
@@ -259,6 +414,7 @@ export function PostCard({ post }) {
             (updatedPost.voteUp?.length || 0) -
               (updatedPost.voteDown?.length || 0)
           );
+          setUpVoteCount(updatedPost.voteUp?.length || 0);
         }
       } catch (refreshError) {
         console.error("Error refreshing post data:", refreshError);
@@ -428,7 +584,7 @@ export function PostCard({ post }) {
 
       if (response.data.message.includes("chờ duyệt")) {
         alert(
-          "Bình luận của bạn đang chờ kiểm duyệt. Nó sẽ hiển thị sau khi được phê duyệt."
+          "Your comment is pending approval. It will be visible after review."
         );
       } else {
         if (response.data.comment) {
@@ -568,31 +724,112 @@ export function PostCard({ post }) {
         post.answerCount = totalReplies;
       }
     }
-  }, [comments]);
+  }, [comments, post]);
+
+  // Edit post functionality
+  const handleEditPost = (postId) => {
+    setEditFormData({
+      title: post.title,
+      content: post.content,
+    });
+    setIsEditing(true);
+  };
+
+  const [errorMessage, setErrorMessage] = useState('');
+  
+  const handleUpdatePost = async () => {
+    try {
+      setErrorMessage('');
+      
+      const response = await api.put(`/posts/${post._id}/edit`, {
+        title: editFormData.title,
+        content: editFormData.content,
+    
+        accountId: currentUserId
+      });
+      
+      if (response.data) {
+        // Update the post in UI with the edited data
+        post.title = editFormData.title;
+        post.content = editFormData.content;
+       
+        post.editedAt = new Date();
+        
+        // Exit editing mode
+        setIsEditing(false);
+        
+        // Show success notification or toast here if you have one
+      }
+    } catch (error) {
+      console.error('Error updating post:', error);
+      
+      // Handle banned words error specifically
+      if (error.response?.data?.hasBannedWords) {
+        setErrorMessage('Your post contains language that violates our guidelines. Please modify the content before submitting.');
+      } else {
+        setErrorMessage(error.response?.data?.message || 'Không thể cập nhật bài viết. Vui lòng thử lại.');
+      }
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEditFormData({
+      ...editFormData,
+      [name]: value
+    });
+    
+    // Clear error messages when user makes changes
+    if (errorMessage) {
+      setErrorMessage('');
+    }
+  };
+
+ 
+
+  const cancelEdit = () => {
+    setIsEditing(false);
+  };
 
   return (
-    <Card className="hover:shadow-lg transition-all duration-200 border-l-4 border-l-blue-100">
+    <Card
+      className={`hover:shadow-lg transition-all duration-200 border-l-4 ${
+        currentTab === "myPosts" && post.statusInfo?.isPending
+          ? "border-l-yellow-300"
+          : currentTab === "myPosts" && post.statusInfo?.isRejected
+          ? "border-l-red-300"
+          : "border-l-blue-100"
+      }`}
+    >
       <CardContent className="p-0">
         <div className="p-6 pb-4">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
-              <Avatar className="h-12 w-12">                <AvatarImage
-                  src={post.isAnonymous ? "/avatar.jpg" : (post.accountId?.image || "/placeholder.svg")}
+              <Avatar className="h-12 w-12">
+                <AvatarImage
+                  src={
+                    post.isAnonymous
+                      ? "/avatar.jpg"
+                      : post.accountId?.image || "/placeholder.svg"
+                  }
                 />
                 <AvatarFallback className="bg-blue-100 text-blue-700">
-                  {post.isAnonymous 
-                    ? "A" 
-                    : (post.accountId?.name
-                        ? post.accountId.name
-                            .split(" ")
-                            .map((n) => n[0])
-                            .join("")
-                        : "U")}
+                  {post.isAnonymous
+                    ? "A"
+                    : post.accountId?.name
+                    ? post.accountId.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")
+                    : "U"}
                 </AvatarFallback>
               </Avatar>
-              <div>                <div className="flex items-center gap-2">
+              <div>
+                <div className="flex items-center gap-2">
                   <h4 className="font-semibold text-gray-900">
-                    {post.isAnonymous ? "Ẩn danh" : (post.accountId?.name || "Anonymous")}
+                    {post.isAnonymous
+                      ? "Ẩn danh"
+                      : post.accountId?.name || "Anonymous"}
                   </h4>
                   {!post.isAnonymous && post.accountId?.isVerified && (
                     <Badge
@@ -601,6 +838,31 @@ export function PostCard({ post }) {
                     >
                       <Shield className="h-3 w-3 mr-1" />
                       Verified Expert
+                    </Badge>
+                  )}
+
+                  {/* Post status badge - only show in myPosts tab */}
+                  {post.statusInfo && currentTab === "myPosts" && (
+                    <Badge
+                      variant="outline"
+                      className={`text-xs ${
+                        post.statusInfo.isPending
+                          ? "bg-yellow-50 text-yellow-700 border-yellow-200"
+                          : post.statusInfo.isApproved
+                          ? "bg-green-50 text-green-700 border-green-200"
+                          : post.statusInfo.isRejected
+                          ? "bg-red-50 text-red-700 border-red-200"
+                          : ""
+                      }`}
+                    >
+                      {post.statusInfo.isPending && (
+                        <Clock3 className="h-3 w-3 mr-1" />
+                      )}
+                      {post.statusInfo.isApproved && (
+                        <Check className="h-3 w-3 mr-1" />
+                      )}
+                      {post.statusInfo.isRejected && <X className="h-3 w-3 mr-1" />}
+                      {post.statusInfo.statusText}
                     </Badge>
                   )}
                 </div>
@@ -613,18 +875,27 @@ export function PostCard({ post }) {
                 </div>
               </div>
             </div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm">
-                  <MoreHorizontal className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>Report Post</DropdownMenuItem>
-                <DropdownMenuItem>Save Post</DropdownMenuItem>
-                <DropdownMenuItem>Share</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {currentTab === "myPosts" &&
+              post.accountId?._id === currentUserId && (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm">
+                      <MoreHorizontal className="h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                 <DropdownMenuContent align="end">
+  {new Date().getTime() - new Date(post.createdAt).getTime() <= 15 * 60 * 1000 ? (
+    <DropdownMenuItem onClick={() => handleEditPost(post._id)}>
+      Edit Post
+    </DropdownMenuItem>
+  ) : (
+    <div className="px-3 py-1 text-sm text-gray-400 cursor-default">
+      Cannot edit
+    </div>
+  )}
+</DropdownMenuContent>
+                </DropdownMenu>
+              )}
           </div>
 
           <div className="flex items-center gap-2 mb-3">
@@ -639,66 +910,166 @@ export function PostCard({ post }) {
               ))}
           </div>
 
-          <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight">
-            {post.title}
-          </h2>
+          {isEditing ? (
+            <div className="space-y-4 mb-4">
+              {errorMessage && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md mb-4">
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div className="ml-3">
+                      <p className="text-sm">{errorMessage}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
 
-          <div className="prose prose-sm max-w-none">
-            <p className="text-gray-700 leading-relaxed">
-              {isExpanded
-                ? post.content
-                : post.content.length > 300
-                ? `${post.content.substring(0, 300)}...`
-                : post.content}
-            </p>
-            {post.content.length > 300 && (
-              <Button
-                variant="link"
-                className="p-0 h-auto text-blue-600 hover:text-blue-700"
-                onClick={() => setIsExpanded(!isExpanded)}
-              >
-                {isExpanded ? "Show less" : "Read more"}
-              </Button>
-            )}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Tiêu đề
+                </label>
+                <input
+                  type="text"
+                  name="title"
+                  value={editFormData.title}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Nội dung
+                </label>
+                <Textarea
+                  name="content"
+                  value={editFormData.content}
+                  onChange={handleChange}
+                  className="min-h-[150px]"
+                />
+              </div>
+              
+             
+              
+              
+              <div className="flex justify-end space-x-2">
+                <Button variant="outline" onClick={cancelEdit}>
+                  Huỷ
+                </Button>
+                <Button onClick={handleUpdatePost}>
+                  Lưu thay đổi
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <>
+              <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                {post.title}
+                {post.editedAt && (
+                  <span className="text-xs font-normal text-gray-500 ml-2">
+                    (edited)
+                  </span>
+                )}
+              </h2>
+
+              <div className="prose prose-sm max-w-none">
+                <p className="text-gray-700 leading-relaxed">
+                  {isExpanded
+                    ? post.content
+                    : post.content.length > 300
+                    ? `${post.content.substring(0, 300)}...`
+                    : post.content}
+                </p>
+                {post.content.length > 300 && (
+                  <Button
+                    variant="link"
+                    className="p-0 h-auto text-blue-600 hover:text-blue-700"
+                    onClick={() => setIsExpanded(!isExpanded)}
+                  >
+                    {isExpanded ? "Show less" : "Read more"}
+                  </Button>
+                )}
+              </div>
+            </>
+          )}
           </div>
-        </div>
+       
 
         <div className="px-6 py-4 bg-gray-50 border-t">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1 bg-white rounded-full p-1 border">
+              <div className="flex items-center  bg-white rounded-full p-0 border shadow-sm hover:shadow-md transition-shadow duration-300">
                 <Button
                   variant="ghost"
                   size="sm"
-                  className={`h-8 w-8 p-0 rounded-full ${
+                  data-vote-type="up"
+                  className={`h-8 w-25 p-0 transition-all duration-300 ease-in-out transform relative overflow-hidden ${
                     userVote === "up"
-                      ? "bg-green-100 text-green-600 "
-                      : "hover:bg-gray-100"
+                      ? "text-white bg-gradient-to-r from-blue-500 to-blue-200 shadow-lg shadow-blue-200"
+                      : "text-gray-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 hover:text-blue-600  hover:shadow-md"
                   }`}
-                  style={{ borderRadius: "9999px" }}
+                  style={{
+                    borderTopLeftRadius: "9999px",
+                    borderBottomLeftRadius: "9999px",
+                    borderRight: userVote === "up" ? "1px solid #4c4c4c" : "none",
+
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  }}
                   onClick={() => handleVote("up")}
                 >
-                  <ChevronUp className="h-4 w-4" />
+                  <ChevronUp
+                    className={`h-4 w-4 transition-all duration-300 ${
+                      userVote === "up" ? "animate-none drop-shadow-sm" : ""
+                    }`}
+                    style={{
+                      animation:
+                        userVote === "up" ? "customPulse 2s infinite" : "none",
+                    }}
+                  />
+                  <span className="ml-1 font-medium transition-all duration-300 drop-shadow-sm">
+                    Upvote · {displayVoteUpCount}
+                  </span>
+                  {/* Ripple effect overlay */}
+                  <div className="absolute inset-0 bg-white opacity-0 rounded-full transform scale-0 transition-all duration-400 pointer-events-none"></div>
                 </Button>
-                <span
+                {/* <span
                   className={`px-2 font-medium ${
-                    displayVoteCount > 0 ? "text-green-600" : "text-gray-600"
+                    _displayVoteCount > 0 ? "text-green-600" : "text-gray-600"
                   }`}
                 >
-                  {displayVoteCount}
-                </span>
+                  {_displayVoteCount}
+                </span> */}
                 <Button
                   variant="ghost"
                   size="sm"
-                  className={`h-8 w-8 p-0 rounded-full ${
+                  data-vote-type="down"
+                  className={`h-8 w-10 p-0 rounded-full transition-all duration-300 ease-in-out transform relative overflow-hidden ${
                     userVote === "down"
-                      ? "bg-red-100 text-red-600"
-                      : "hover:bg-gray-100"
+                      ? "bg-gradient-to-r from-red-200 to-red-500 text-white shadow-lg shadow-red-200"
+                      : "text-gray-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-red-100 hover:text-red-600  hover:shadow-md"
                   }`}
-                  style={{ borderRadius: "9999px" }}
+                  style={{
+                    borderTopRightRadius: "9999px",
+                    borderBottomRightRadius: "9999px",
+                    borderLeft: userVote === "down" ? "1px solid #4c4c4c" : "none",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  }}
                   onClick={() => handleVote("down")}
                 >
-                  <ChevronDown className="h-4 w-4 " />
+                  <ChevronDown
+                    className={`h-4 w-4 transition-all duration-300 ${
+                      userVote === "down" ? "animate-none drop-shadow-sm" : ""
+                    }`}
+                    style={{
+                      animation:
+                        userVote === "up" ? "customPulse 2s infinite" : "none",
+                    }}
+                  />
+                  {/* Ripple effect overlay */}
+                  <div className="absolute inset-0 bg-white opacity-0 rounded-full transform scale-0 transition-all duration-400 pointer-events-none"></div>
                 </Button>
               </div>
               <Button
@@ -721,7 +1092,7 @@ export function PostCard({ post }) {
                 replies
               </Button>
 
-              <Button
+              {/* <Button
                 variant="ghost"
                 size="sm"
                 className={`gap-2 ${isLiked ? "text-red-500" : ""}`}
@@ -729,12 +1100,46 @@ export function PostCard({ post }) {
               >
                 <Heart className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`} />
                 {isLiked ? "Liked" : "Like"}
-              </Button>
+              </Button> */}
 
-              <Button variant="ghost" size="sm" className="gap-2">
-                <Share2 className="h-4 w-4" />
-                Share
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="gap-2">
+                    <Share2 className="h-4 w-4" />
+                    Share
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-48">
+                  <DropdownMenuItem
+                    onClick={() => handleShare("copy")}
+                    className="gap-2 cursor-pointer"
+                  >
+                    <Copy className="h-4 w-4" />
+                    Copy Link
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => handleShare("facebook")}
+                    className="gap-2 cursor-pointer"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Share on Facebook
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => handleShare("twitter")}
+                    className="gap-2 cursor-pointer"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Share on Twitter
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => handleShare("email")}
+                    className="gap-2 cursor-pointer"
+                  >
+                    <Mail className="h-4 w-4" />
+                    Share via Email
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
             {(post.accountId?.role === "Counselor" &&
               post.accountId?.isVerified === true) ||
@@ -980,25 +1385,25 @@ export function PostCard({ post }) {
                             comment.replies.filter(
                               (reply) => reply.status === "approved"
                             ).length > 0 && (
-                              <div className="mt-3">
-                                <Button
-                                  variant="ghost"
-                                  size="sm"
-                                  className="h-7 text-xs font-medium text-blue-600"
-                                  onClick={() =>
-                                    toggleExpandedComment(comment._id)
-                                  }
-                                >
-                                  {expandedComments[comment._id]
-                                    ? "Hide Replies"
-                                    : `Show All Replies (${
-                                        comment.replies.filter(
-                                          (reply) => reply.status === "approved"
-                                        ).length
-                                      })`}
-                                </Button>
-                              </div>
-                            )}
+                            <div className="mt-3">
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="h-7 text-xs font-medium text-blue-600"
+                                onClick={() =>
+                                  toggleExpandedComment(comment._id)
+                                }
+                              >
+                                {expandedComments[comment._id]
+                                  ? "Hide Replies"
+                                  : `Show All Replies (${
+                                      comment.replies.filter(
+                                        (reply) => reply.status === "approved"
+                                      ).length
+                                    })`}
+                              </Button>
+                            </div>
+                          )}
 
                           {comment.replies &&
                             comment.replies.length > 0 &&

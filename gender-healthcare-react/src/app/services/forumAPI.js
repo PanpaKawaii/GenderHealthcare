@@ -35,20 +35,21 @@ const forumAPI = {
   replyToComment: (commentId, data) => handleApiRequest(() => api.post(`/comments/${commentId}/replies`, data)),
   voteComment: (commentId, data) => handleApiRequest(() => api.post(`/comments/${commentId}/vote`, data)),
   getCommentReplies: (commentId) => handleApiRequest(() => api.get(`/comments/${commentId}/replies`)),
-  
-  // Moderation (for admin user)
+    // Moderation (for admin user)
   getPendingPosts: () => handleApiRequest(() => api.get('/moderation/posts/pending')),
   approvePost: (postId) => handleApiRequest(() => api.post(`/moderation/posts/${postId}/approve`)),
   rejectPost: (postId) => handleApiRequest(() => api.post(`/moderation/posts/${postId}/reject`)),
   getPendingComments: () => handleApiRequest(() => api.get('/moderation/comments/pending')),
   approveComment: (commentId) => handleApiRequest(() => api.post(`/moderation/comments/${commentId}/approve`)),
   rejectComment: (commentId) => handleApiRequest(() => api.post(`/moderation/comments/${commentId}/reject`)),
+  getModerationStats: () => handleApiRequest(() => api.get('/moderation/stats')),
   // Forum Filters and Tabs - consolidated into a single getPosts function for simplicity
   // Note: The type parameter in the query will determine which posts to return:
   //  - 'all': All approved posts
   //  - 'questions': Posts with no answers from counselors
   //  - 'expert': Posts with answers from counselors
   //  - 'following': Posts that the current user has upvoted (requires accountId)
+  //  - 'myPosts': Posts created by the current user (requires accountId)
   
   // Community Stats
   getCommunityStats: () => handleApiRequest(() => api.get('/stats/community')),

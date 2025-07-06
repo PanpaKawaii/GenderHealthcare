@@ -12,6 +12,7 @@ const questionSchema = new Schema(
     voteDown: [{ type: Schema.Types.ObjectId, ref: "Account" }],
     viewCount: { type: Number, default: 0 },
     answerCount: { type: Number, default: 0 },
+    editedAt: { type: Date },
 
     isAnonymous: {
     type: Boolean,
