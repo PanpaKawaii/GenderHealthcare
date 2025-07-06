@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Heart } from "lucide-react";
-import Sidebar from './Sidebar'; // Đảm bảo import đúng đường dẫn
+import Sidebar from './pages/Sidebar'; // Đảm bảo import đúng đường dẫn
 import React, { useState } from 'react';
 
 const Layout = () => {

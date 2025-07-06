@@ -1,4 +1,4 @@
-import Layout from "../pages/Counselor/pages/Layout";
+import Layout from "../pages/Counselor/Layout";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import CounselorBlog from "../pages/Counselor/pages/Blog";
 import CounselorSchedule from "../pages/Counselor/pages/Schedule";
