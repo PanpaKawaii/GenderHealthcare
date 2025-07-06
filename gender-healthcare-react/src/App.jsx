@@ -1,6 +1,7 @@
 import "./App.css";
 import MainRoutes from "./app/routes/MainRoutes";
 import CounselorRoutes from "./app/routes/CounselorRoutes";
+import DoctorRoutes from "./app/routes/DoctorRoutes.jsx"
 import CustomerRoutes from "./app/routes/CustomerRoutes.jsx";
 import AdminRoutes from './app/routes/AdminRoutes.jsx';
 import { UserAuth } from "./app/hooks/Context/AuthContext.jsx";
@@ -42,5 +43,8 @@ export default function App() {
     return <CustomerRoutes />;
   } else if (Role == 'Admin') {
     return <AdminRoutes />;
-  } else return <MainRoutes />;
+  }else if (Role == 'Doctor') {
+    return <DoctorRoutes/>;
+  }  
+  else return <MainRoutes />;
 }

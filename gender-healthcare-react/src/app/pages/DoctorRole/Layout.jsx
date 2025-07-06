@@ -1,11 +1,11 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Heart } from "lucide-react";
-import Sidebar from './Sidebar'; // Đảm bảo import đúng đường dẫn
+import Sidebar from './pages/Sidebar'; // Đảm bảo import đúng đường dẫn
 import React, { useState } from 'react';
 
 const Layout = () => {
   const location = useLocation();
-  const isCounselorRoute = location.pathname.startsWith('/counselor');
+  const isCounselorRoute = location.pathname.startsWith('/doctor');
 
   return (
     <div>
@@ -25,7 +25,7 @@ const Layout = () => {
               </div>
               <div className="min-w-20">
                 <div className="text-sm font-medium truncate max-w-[160px]">John Do</div>
-                <div className="text-xs text-gray-300 truncate">Counselor</div>
+                <div className="text-xs text-gray-300 truncate">Doctor</div>
               </div>
             </div>
           </div>
