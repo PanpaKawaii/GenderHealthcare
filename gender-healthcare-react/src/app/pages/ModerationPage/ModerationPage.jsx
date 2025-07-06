@@ -18,15 +18,15 @@ import {
 } from "../../components/ForumComponents/ui/tabs";
 import { Badge } from "../../components/ForumComponents/ui/badge";
 import { formatDistance } from "date-fns";
-import { 
-  AlertTriangle, 
-  CheckCircle, 
-  XCircle, 
+import {
+  AlertTriangle,
+  CheckCircle,
+  XCircle,
   BarChart3,
   User,
   MessageSquare,
   FileText,
-  Loader2
+  Loader2,
 } from "lucide-react";
 import {
   Table,
@@ -45,6 +45,15 @@ export default function ModerationPage() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("dashboard");
 
+  // Pagination state
+  const [postsPage, setPostsPage] = useState(1);
+  const [commentsPage, setCommentsPage] = useState(1);
+  const [postsPageCount, setPostsPageCount] = useState(1);
+  const [commentsPageCount, setCommentsPageCount] = useState(1);
+  const [postsTotal, setPostsTotal] = useState(0);
+  const [commentsTotal, setCommentsTotal] = useState(0);
+  const pageSize = 5;
+
   useEffect(() => {
     if (activeTab === "dashboard") {
       fetchModerationStats();
@@ -56,7 +65,10 @@ export default function ModerationPage() {
     //  else if (activeTab === "users") {
     //   fetchUsers();
     // }
-  }, [activeTab]);  const fetchModerationStats = async () => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTab, postsPage, commentsPage]);
+
+  const fetchModerationStats = async () => {
     setLoading(true);
     try {
       const response = await forumAPI.getModerationStats();
@@ -71,29 +83,41 @@ export default function ModerationPage() {
   const fetchPendingPosts = async () => {
     setLoading(true);
     try {
-      const response = await forumAPI.getPendingPosts();
+      const response = await forumAPI.getPendingPosts(postsPage, pageSize);
       // Ensure we're accessing the data array from the response
       setPendingPosts(response.data?.data || []);
+
+      // Update pagination info
+      if (response.data?.pagination) {
+        setPostsPageCount(response.data.pagination.pages || 1);
+        setPostsTotal(response.data.pagination.total || 0);
+      }
     } catch (error) {
       console.error("Error fetching pending posts:", error);
     } finally {
       setLoading(false);
     }
   };
-  
+
   const fetchPendingComments = async () => {
     setLoading(true);
     try {
-      const response = await forumAPI.getPendingComments();
+      const response = await forumAPI.getPendingComments(commentsPage, pageSize);
       // Ensure we're accessing the data array from the response
       setPendingComments(response.data?.data || []);
+      
+      // Update pagination info
+      if (response.data?.pagination) {
+        setCommentsPageCount(response.data.pagination.pages || 1);
+        setCommentsTotal(response.data.pagination.total || 0);
+      }
     } catch (error) {
       console.error("Error fetching pending comments:", error);
     } finally {
       setLoading(false);
     }
   };
-  
+
   // const fetchUsers = async () => {
   //   setLoading(true);
   //   try {
@@ -109,8 +133,27 @@ export default function ModerationPage() {
   const approvePost = async (postId) => {
     try {
       await forumAPI.approvePost(postId);
+      
       // Remove from list after approval
-      setPendingPosts((prev) => prev.filter((post) => post._id !== postId));
+      setPendingPosts((prev) => {
+        const newPosts = prev.filter((post) => post._id !== postId);
+        
+        // If we've removed the last item on the current page and there are previous pages,
+        // go back to the previous page
+        if (newPosts.length === 0 && postsPage > 1) {
+          // Use setTimeout to avoid state updates during rendering
+          setTimeout(() => {
+            setPostsPage((currentPage) => currentPage - 1);
+          }, 0);
+        } else if (newPosts.length === 0) {
+          // If on first page and no items left, refresh the current page
+          setTimeout(() => {
+            fetchPendingPosts();
+          }, 0);
+        }
+        
+        return newPosts;
+      });
     } catch (error) {
       console.error("Error approving post:", error);
     }
@@ -118,9 +161,34 @@ export default function ModerationPage() {
 
   const rejectPost = async (postId) => {
     try {
-      await forumAPI.rejectPost(postId);
+      const reason = window.prompt(
+        "Enter reason for rejection:",
+        "Content not suitable for the community"
+      );
+      if (reason === null) return; // User canceled the prompt
+
+      await forumAPI.rejectPost(postId, reason);
+      
       // Remove from list after rejection
-      setPendingPosts((prev) => prev.filter((post) => post._id !== postId));
+      setPendingPosts((prev) => {
+        const newPosts = prev.filter((post) => post._id !== postId);
+        
+        // If we've removed the last item on the current page and there are previous pages,
+        // go back to the previous page
+        if (newPosts.length === 0 && postsPage > 1) {
+          // Use setTimeout to avoid state updates during rendering
+          setTimeout(() => {
+            setPostsPage((currentPage) => currentPage - 1);
+          }, 0);
+        } else if (newPosts.length === 0) {
+          // If on first page and no items left, refresh the current page
+          setTimeout(() => {
+            fetchPendingPosts();
+          }, 0);
+        }
+        
+        return newPosts;
+      });
     } catch (error) {
       console.error("Error rejecting post:", error);
     }
@@ -130,24 +198,63 @@ export default function ModerationPage() {
     try {
       await forumAPI.approveComment(commentId);
 
-      setPendingComments((prev) =>
-        prev.filter((comment) => comment._id !== commentId)
-      );
+      setPendingComments((prev) => {
+        const newComments = prev.filter((comment) => comment._id !== commentId);
+        
+        // If we've removed the last item on the current page and there are previous pages,
+        // go back to the previous page
+        if (newComments.length === 0 && commentsPage > 1) {
+          // Use setTimeout to avoid state updates during rendering
+          setTimeout(() => {
+            setCommentsPage((currentPage) => currentPage - 1);
+          }, 0);
+        } else if (newComments.length === 0) {
+          // If on first page and no items left, refresh the current page
+          setTimeout(() => {
+            fetchPendingComments();
+          }, 0);
+        }
+        
+        return newComments;
+      });
     } catch (error) {
       console.error("Error approving comment:", error);
     }
   };
   const rejectComment = async (commentId) => {
     try {
-      await forumAPI.rejectComment(commentId);
-      setPendingComments((prev) =>
-        prev.filter((comment) => comment._id !== commentId)
+      const reason = window.prompt(
+        "Enter reason for rejection:",
+        "Content not suitable for the community"
       );
+      if (reason === null) return; // User canceled the prompt
+
+      await forumAPI.rejectComment(commentId, reason);
+      
+      setPendingComments((prev) => {
+        const newComments = prev.filter((comment) => comment._id !== commentId);
+        
+        // If we've removed the last item on the current page and there are previous pages,
+        // go back to the previous page
+        if (newComments.length === 0 && commentsPage > 1) {
+          // Use setTimeout to avoid state updates during rendering
+          setTimeout(() => {
+            setCommentsPage((currentPage) => currentPage - 1);
+          }, 0);
+        } else if (newComments.length === 0) {
+          // If on first page and no items left, refresh the current page
+          setTimeout(() => {
+            fetchPendingComments();
+          }, 0);
+        }
+        
+        return newComments;
+      });
     } catch (error) {
       console.error("Error rejecting comment:", error);
     }
   };
-  
+
   // const activateUser = async (userId) => {
   //   try {
   //     await accountAPI.activateUser(userId);
@@ -184,7 +291,6 @@ export default function ModerationPage() {
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
         <TabsList className="grid w-full grid-cols-3">
-          
           <TabsTrigger value="posts" className="flex items-center gap-2">
             <FileText size={16} />
             <span>Posts</span>
@@ -327,7 +433,9 @@ export default function ModerationPage() {
                     <div className="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
                       <div>
                         <p className="text-sm text-muted-foreground">New Posts</p>
-                        <p className="text-2xl font-bold">{stats.activity?.postsToday || 0}</p>
+                        <p className="text-2xl font-bold">
+                          {stats.activity?.postsToday || 0}
+                        </p>
                       </div>
                       <FileText className="h-10 w-10 text-blue-500 opacity-80" />
                     </div>
@@ -335,7 +443,9 @@ export default function ModerationPage() {
                     <div className="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
                       <div>
                         <p className="text-sm text-muted-foreground">New Comments</p>
-                        <p className="text-2xl font-bold">{stats.activity?.commentsToday || 0}</p>
+                        <p className="text-2xl font-bold">
+                          {stats.activity?.commentsToday || 0}
+                        </p>
                       </div>
                       <MessageSquare className="h-10 w-10 text-green-500 opacity-80" />
                     </div>
@@ -343,7 +453,9 @@ export default function ModerationPage() {
                     <div className="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
                       <div>
                         <p className="text-sm text-muted-foreground">New Users</p>
-                        <p className="text-2xl font-bold">{stats.activity?.usersToday || 0}</p>
+                        <p className="text-2xl font-bold">
+                          {stats.activity?.usersToday || 0}
+                        </p>
                       </div>
                       <User className="h-10 w-10 text-purple-500 opacity-80" />
                     </div>
@@ -385,9 +497,9 @@ export default function ModerationPage() {
                         <CardTitle className="text-lg">{post.title}</CardTitle>
                         <p className="text-sm text-gray-500">
                           Posted {formatDate(post.createdAt)} by{" "}
-                          {post.isAnonymous 
-                            ? "Anonymous" 
-                            : (post.accountId?.name || "Unknown User")}
+                          {post.isAnonymous
+                            ? "Anonymous"
+                            : post.accountId?.name || "Unknown User"}
                         </p>
                       </div>
                       <Badge>{post.category}</Badge>
@@ -426,6 +538,30 @@ export default function ModerationPage() {
                   </CardFooter>
                 </Card>
               ))}
+            </div>
+          )}
+          {/* Pagination Controls */}
+          {pendingPosts.length > 0 && (
+            <div className="mt-4 flex justify-between items-center">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPostsPage((prev) => Math.max(prev - 1, 1))}
+                disabled={postsPage === 1}
+              >
+                Previous
+              </Button>
+              <span className="text-sm text-muted-foreground">
+                Page {postsPage} of {postsPageCount}
+              </span>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPostsPage((prev) => Math.min(prev + 1, postsPageCount))}
+                disabled={postsPage === postsPageCount}
+              >
+                Next
+              </Button>
             </div>
           )}
         </TabsContent>
@@ -496,6 +632,30 @@ export default function ModerationPage() {
                   </CardFooter>
                 </Card>
               ))}
+            </div>
+          )}
+          {/* Pagination Controls */}
+          {pendingComments.length > 0 && (
+            <div className="mt-4 flex justify-between items-center">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCommentsPage((prev) => Math.max(prev - 1, 1))}
+                disabled={commentsPage === 1}
+              >
+                Previous
+              </Button>
+              <span className="text-sm text-muted-foreground">
+                Page {commentsPage} of {commentsPageCount}
+              </span>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCommentsPage((prev) => Math.min(prev + 1, commentsPageCount))}
+                disabled={commentsPage === commentsPageCount}
+              >
+                Next
+              </Button>
             </div>
           )}
         </TabsContent>

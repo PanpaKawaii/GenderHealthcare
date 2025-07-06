@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Search,
   ChevronDown,
@@ -9,7 +10,8 @@ import {
   Eye,
   MoreHorizontal,
   CheckCircle,
-  XCircle
+  XCircle,
+  LogOut
 } from 'lucide-react';
 import { Button } from '../../components/ForumComponents/ui/button';
 import { Input } from '../../components/ForumComponents/ui/input';
@@ -39,13 +41,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../../components/ForumComponents/ui/select';
+import {
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '../../components/ForumComponents/ui/dialog';
 import accountAPI from '../../services/accountAPI';
+import { UserAuth } from '../../hooks/Context/AuthContext';
 
 // User Edit Modal Component
 const UserEditModal = ({ isOpen, onClose, user, onSave }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    password: '',
     role: '',
     isActive: true
   });
@@ -55,8 +66,18 @@ const UserEditModal = ({ isOpen, onClose, user, onSave }) => {
       setFormData({
         name: user.name || '',
         email: user.email || '',
-        role: user.role || 'user',
+        password: '',  // Clear password field on edit
+        role: user.role || 'Customer',
         isActive: user.isActive !== false // default to true if not specified
+      });
+    } else {
+      // Reset form for new user
+      setFormData({
+        name: '',
+        email: '',
+        password: '',
+        role: 'Customer',
+        isActive: true
       });
     }
   }, [user]);
@@ -68,83 +89,106 @@ const UserEditModal = ({ isOpen, onClose, user, onSave }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave(user._id, formData);
+    onSave(user?._id, formData);
   };
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={onClose}>
       <Dialog.Portal>
-<Dialog.Overlay className="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
-  <Dialog.Content className="sm:max-w-[425px]">
-        <Dialog.Header>
-          <Dialog.Title>{user ? 'Edit User' : 'Create New User'}</Dialog.Title>
-          <Dialog.Description>
-            {user ? 'Update user details' : 'Enter information for the new user'}
-          </Dialog.Description>
-        </Dialog.Header>
-        <form onSubmit={handleSubmit} className="space-y-4 py-4">
-          <div className="space-y-2">
-            <label htmlFor="name" className="text-sm font-medium">Name</label>
-            <Input 
-              id="name" 
-              name="name" 
-              value={formData.name} 
-              onChange={handleChange}
-              placeholder="Full Name"
-              required
-            />
+        <Dialog.Overlay className="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+        <Dialog.Content className="fixed z-50 left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] bg-white rounded-lg p-6 shadow-lg max-w-[425px] w-full max-h-[85vh] overflow-y-auto focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]">
+          <div className="mb-4">
+            <Dialog.Title className="text-lg font-semibold">{user ? 'Edit User' : 'Create New User'}</Dialog.Title>
+            <Dialog.Description className="text-sm text-gray-500 mt-1">
+              {user ? 'Update user details' : 'Enter information for the new user'}
+            </Dialog.Description>
           </div>
+          <form onSubmit={handleSubmit} className="space-y-4 py-4">
+            <div className="space-y-2">
+              <label htmlFor="name" className="text-sm font-medium">Name</label>
+              <Input 
+                id="name" 
+                name="name" 
+                value={formData.name} 
+                onChange={handleChange}
+                placeholder="Full Name"
+                required
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <label htmlFor="email" className="text-sm font-medium">Email</label>
+              <Input 
+                id="email" 
+                name="email" 
+                type="email" 
+                value={formData.email} 
+                onChange={handleChange}
+                placeholder="user@example.com"
+                required
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <label htmlFor="password" className="text-sm font-medium">
+                {user ? 'Password (leave empty to keep current)' : 'Password'}
+              </label>
+              <Input 
+                id="password" 
+                name="password" 
+                type="password" 
+                value={formData.password} 
+                onChange={handleChange}
+                placeholder="••••••••"
+                required={!user} // Only required for new users
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <label htmlFor="role" className="text-sm font-medium">Role</label>
+              <Select 
+                name="role" 
+                value={formData.role} 
+                onValueChange={(value) => setFormData(prev => ({ ...prev, role: value }))}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a role" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Customer">Customer</SelectItem>
+                  <SelectItem value="Counselor">Counselor</SelectItem>
+                  <SelectItem value="Doctor">Doctor</SelectItem>
+                  <SelectItem value="Manager">Manager</SelectItem>
+                  <SelectItem value="Admin">Admin</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div className="flex items-center justify-between">
+              <label htmlFor="isActive" className="text-sm font-medium">Active Status</label>
+              <Switch 
+                id="isActive" 
+                checked={formData.isActive} 
+                onCheckedChange={(checked) => setFormData(prev => ({ ...prev, isActive: checked }))
+                }
+              />
+            </div>
           
-          <div className="space-y-2">
-            <label htmlFor="email" className="text-sm font-medium">Email</label>
-            <Input 
-              id="email" 
-              name="email" 
-              type="email" 
-              value={formData.email} 
-              onChange={handleChange}
-              placeholder="user@example.com"
-              required
-            />
-          </div>
-          
-          <div className="space-y-2">
-            <label htmlFor="role" className="text-sm font-medium">Role</label>
-            <Select 
-              name="role" 
-              value={formData.role} 
-              onValueChange={(value) => setFormData(prev => ({ ...prev, role: value }))}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select a role" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="user">User</SelectItem>
-                <SelectItem value="counselor">Counselor</SelectItem>
-                <SelectItem value="doctor">Doctor</SelectItem>
-                <SelectItem value="admin">Administrator</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          
-          <div className="flex items-center justify-between">
-            <label htmlFor="isActive" className="text-sm font-medium">Active Status</label>
-            <Switch 
-              id="isActive" 
-              checked={formData.isActive} 
-              onCheckedChange={(checked) => setFormData(prev => ({ ...prev, isActive: checked }))
-              }
-            />
-          </div>
-        
-          <Dialog.Footer>
-            <Button type="button" variant="outline" onClick={onClose}>Cancel</Button>
-            <Button type="submit">Save Changes</Button>
-          </Dialog.Footer>
-        </form>
-      </Dialog.Content>
+            <div className="flex justify-end gap-2 pt-2">
+              <Button type="button" variant="outline" onClick={onClose}>Cancel</Button>
+              <Button type="submit">Save Changes</Button>
+            </div>
+          </form>
+          <Dialog.Close asChild>
+            <button className="absolute right-4 top-4 opacity-70 hover:opacity-100 focus:outline-none" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6L6 18"></path>
+                <path d="M6 6l12 12"></path>
+              </svg>
+            </button>
+          </Dialog.Close>
+        </Dialog.Content>
       </Dialog.Portal>
-    
     </Dialog.Root>
   );
 };
@@ -161,6 +205,13 @@ const UserManagement = () => {
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
+  const navigate = useNavigate();
+  const { logout } = UserAuth();
+  
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   // Fetch users
   useEffect(() => {
@@ -202,16 +253,41 @@ const UserManagement = () => {
   // Handle user save
   const handleSaveUser = async (userId, userData) => {
     try {
-      await accountAPI.updateUser(userId, userData);
+      // Create a copy of userData to modify if needed
+      const dataToSubmit = { ...userData };
       
-      // Update the users list with the updated user
-      setUsers(users.map(user => 
-        user._id === userId ? { ...user, ...userData } : user
-      ));
+      if (userId) {
+        // If updating and password field is empty, remove it from the data
+        if (!dataToSubmit.password) {
+          delete dataToSubmit.password;
+        }
+        
+        // Update existing user
+        await accountAPI.updateUser(userId, dataToSubmit);
+        
+        // Update the users list with the updated user
+        // Remove password from the local state for security
+        const { password: _pw, ...userDataForState } = dataToSubmit;
+        setUsers(users.map(user => 
+          user._id === userId ? { ...user, ...userDataForState } : user
+        ));
+      } else {
+        // Create new user - password is required here
+        if (!dataToSubmit.password) {
+          alert('Password is required for new users');
+          return;
+        }
+        
+        const response = await accountAPI.createUser(dataToSubmit);
+        
+        // Add the new user to the list
+        setUsers([...users, response.data]);
+      }
       
       setIsModalOpen(false);
     } catch (error) {
-      console.error('Error updating user:', error);
+      console.error('Error saving user:', error);
+      alert('Error saving user: ' + (error.message || 'Unknown error'));
     }
   };
   
@@ -249,10 +325,19 @@ const UserManagement = () => {
           <h1 className="text-2xl font-bold tracking-tight mb-1">User Management</h1>
           <p className="text-gray-500">Manage all users of your platform</p>
         </div>
-        <Button className="gap-2">
-          <UserPlus size={18} />
-          Add User
-        </Button>
+        <div className="flex gap-2">
+          {/* <Button variant="outline" className="gap-2 text-red-600 border-red-200 hover:bg-red-50" onClick={handleLogout}>
+            <LogOut size={18} />
+            Logout
+          </Button> */}
+          <Button className="gap-2" onClick={() => {
+            setEditingUser(null);
+            setIsModalOpen(true);
+          }}>
+            <UserPlus size={18} />
+            Add User
+          </Button>
+        </div>
       </div>
 
       <Card>
@@ -277,10 +362,11 @@ const UserManagement = () => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Roles</SelectItem>
-                  <SelectItem value="user">Users</SelectItem>
-                  <SelectItem value="counselor">Counselors</SelectItem>
-                  <SelectItem value="doctor">Doctors</SelectItem>
-                  <SelectItem value="admin">Admins</SelectItem>
+                  <SelectItem value="Customer">Customer</SelectItem>
+                  <SelectItem value="Counselor">Counselor</SelectItem>
+                  <SelectItem value="Doctor">Doctor</SelectItem>
+                  <SelectItem value="Manager">Manager</SelectItem>
+                  <SelectItem value="Admin">Admin</SelectItem>
                 </SelectContent>
               </Select>
               
@@ -329,13 +415,14 @@ const UserManagement = () => {
                         <Badge 
                           variant="outline" 
                           className={
-                            user.role === 'admin' ? 'border-red-500 text-red-500' :
-                            user.role === 'counselor' ? 'border-blue-500 text-blue-500' :
-                            user.role === 'doctor' ? 'border-green-500 text-green-500' :
+                            user.role === 'Admin' ? 'border-red-500 text-red-500' :
+                            user.role === 'Manager' ? 'border-purple-500 text-purple-500' :
+                            user.role === 'Counselor' ? 'border-blue-500 text-blue-500' :
+                            user.role === 'Doctor' ? 'border-green-500 text-green-500' :
                             'border-gray-500 text-gray-500'
                           }
                         >
-                          {user.role || 'User'}
+                          {user.role || 'Customer'}
                         </Badge>
                       </TableCell>
                       <TableCell>
@@ -401,7 +488,9 @@ const UserManagement = () => {
       {isModalOpen && (
         <UserEditModal
           isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
+          onClose={() => {
+            setIsModalOpen(false);
+          }}
           user={editingUser}
           onSave={handleSaveUser}
         />
@@ -411,10 +500,13 @@ const UserManagement = () => {
       <Dialog.Root open={isViewModalOpen} onOpenChange={setIsViewModalOpen}>
       <Dialog.Portal>
          <Dialog.Overlay className="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
-        <Dialog.Content className="sm:max-w-[500px]">
-          <Dialog.Header>
-            <Dialog.Title>User Details</Dialog.Title>
-          </Dialog.Header>
+         <Dialog.Content className="fixed z-50 left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] bg-white rounded-lg p-6 shadow-lg max-w-[500px] w-full max-h-[85vh] overflow-y-auto focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]">
+          <div className="mb-4">
+            <Dialog.Title className="text-lg font-semibold">User Details</Dialog.Title>
+            <Dialog.Description className="text-sm text-gray-500 mt-1">
+              View detailed information about this user.
+            </Dialog.Description>
+          </div>
           {selectedUser && (
             <div className="py-4 space-y-4">
               <div className="flex justify-center">
@@ -439,13 +531,14 @@ const UserManagement = () => {
                   <Badge 
                     variant="outline" 
                     className={
-                      selectedUser.role === 'admin' ? 'border-red-500 text-red-500' :
-                      selectedUser.role === 'counselor' ? 'border-blue-500 text-blue-500' :
-                      selectedUser.role === 'doctor' ? 'border-green-500 text-green-500' :
+                      selectedUser.role === 'Admin' ? 'border-red-500 text-red-500' :
+                      selectedUser.role === 'Manager' ? 'border-purple-500 text-purple-500' :
+                      selectedUser.role === 'Counselor' ? 'border-blue-500 text-blue-500' :
+                      selectedUser.role === 'Doctor' ? 'border-green-500 text-green-500' :
                       'border-gray-500 text-gray-500'
                     }
                   >
-                    {selectedUser.role || 'User'}
+                    {selectedUser.role || 'Customer'}
                   </Badge>
                 </div>
                 <div>
@@ -485,13 +578,21 @@ const UserManagement = () => {
               </div>
             </div>
           )}
-          <Dialog.Footer>
+          <div className="flex justify-end gap-2 pt-4">
             <Button variant="outline" onClick={() => setIsViewModalOpen(false)}>Close</Button>
             <Button onClick={() => {
               setIsViewModalOpen(false);
               handleEditUser(selectedUser);
             }}>Edit User</Button>
-          </Dialog.Footer>
+          </div>
+          <Dialog.Close asChild>
+            <button className="absolute right-4 top-4 opacity-70 hover:opacity-100 focus:outline-none" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6L6 18"></path>
+                <path d="M6 6l12 12"></path>
+              </svg>
+            </button>
+          </Dialog.Close>
         </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
@@ -500,17 +601,25 @@ const UserManagement = () => {
       <Dialog.Root open={isDeleteModalOpen} onOpenChange={setIsDeleteModalOpen}>
         <Dialog.Portal> 
              <Dialog.Overlay className="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
-        <Dialog.Content className="sm:max-w-[400px]">
-          <Dialog.Header>
-            <Dialog.Title>Delete User</Dialog.Title>
-            <Dialog.Description>
+        <Dialog.Content className="fixed z-50 left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] bg-white rounded-lg p-6 shadow-lg max-w-[400px] w-full focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]">
+          <div className="mb-4">
+            <Dialog.Title className="text-lg font-semibold">Delete User</Dialog.Title>
+            <Dialog.Description className="text-sm text-gray-500 mt-1">
               Are you sure you want to delete this user? This action cannot be undone.
             </Dialog.Description>
-          </Dialog.Header>
-          <Dialog.Footer>
+          </div>
+          <div className="flex justify-end gap-2 pt-4">
             <Button variant="outline" onClick={() => setIsDeleteModalOpen(false)}>Cancel</Button>
             <Button variant="destructive" onClick={handleDeleteUser}>Delete User</Button>
-          </Dialog.Footer>
+          </div>
+          <Dialog.Close asChild>
+            <button className="absolute right-4 top-4 opacity-70 hover:opacity-100 focus:outline-none" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6L6 18"></path>
+                <path d="M6 6l12 12"></path>
+              </svg>
+            </button>
+          </Dialog.Close>
         </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>

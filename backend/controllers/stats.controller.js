@@ -42,7 +42,7 @@ exports.getCommunityStats = async (req, res) => {
 
     // Count comments from counselors or staff (expert answers)
     const expertAccounts = await Account.find({ 
-      role: { $in: ['Counselor', 'Staff'] } 
+      role: { $in: ['Counselor', 'Doctor'] } 
     }).select('_id');
     
     const expertAccountIds = expertAccounts.map(account => account._id);

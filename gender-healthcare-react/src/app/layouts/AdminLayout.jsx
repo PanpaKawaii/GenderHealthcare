@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
   Users,
   MessageSquare,
@@ -11,9 +11,17 @@ import {
   ChevronRight,
   Menu,
 } from 'lucide-react';
+import { UserAuth } from '../hooks/Context/AuthContext';
 
 const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { logout } = UserAuth();
+  
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
   
   const menuItems = [
     {
@@ -59,15 +67,22 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
         })}
       </div>
       
-      <div className="mt-auto">
-        <Link
-          to="/"
+      {/* <div className="mt-auto">
+        <button
+          onClick={handleLogout}
           className={`flex items-center px-4 py-3 text-red-400 hover:bg-gray-800 ${isCollapsed ? 'justify-center' : 'space-x-3'}`}
         >
           <LogOut size={20} />
-          {!isCollapsed && <span>Exit to Site</span>}
+          {!isCollapsed && <span>Logout</span>}
+        </button>
+        <Link
+          to="/"
+          className={`flex items-center px-4 py-3 text-gray-400 hover:bg-gray-800 ${isCollapsed ? 'justify-center' : 'space-x-3'}`}
+        >
+          <ChevronLeft size={20} />
+          {!isCollapsed && <span>Back to Site</span>}
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };
@@ -75,6 +90,13 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
 const AdminLayout = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const navigate = useNavigate();
+  const { logout } = UserAuth();
+  
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -103,6 +125,13 @@ const AdminLayout = () => {
             </button>
             <div className="flex-1 flex justify-end">
               <div className="flex items-center space-x-4">
+                <button 
+                  onClick={handleLogout}
+                  className="px-3 py-1 text-sm text-red-600 hover:text-red-800 flex items-center gap-1"
+                >
+                  <LogOut size={16} />
+                  <span className="hidden sm:inline">Logout</span>
+                </button>
                 <div className="flex flex-col items-end">
                   <span className="text-sm font-medium">Admin User</span>
                   <span className="text-xs text-gray-500">Administrator</span>

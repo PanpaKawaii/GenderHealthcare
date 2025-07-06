@@ -136,7 +136,7 @@ exports.getPendingComments = async (req, res) => {
     
     const comments = await Comment.find({ status: 'pending' })
       .populate('accountId', 'name email role')
-      .populate('questionId', 'title')
+      // .populate('questionId', 'title')
       .populate('postId', 'title')
       .sort({ createdAt: -1 })
       .skip(skip)
