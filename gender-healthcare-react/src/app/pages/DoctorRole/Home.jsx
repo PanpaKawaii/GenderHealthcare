@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from './pages/Sidebar';
-import Dashboard from './pages/Dashboard'; // NEW: dashboard content
+import Dashboard from './pages/Dashboard'; 
 import Schedule from './pages/Schedule';
 import Blog from './pages/Blog';
 import Users from './pages/ManageAuth';

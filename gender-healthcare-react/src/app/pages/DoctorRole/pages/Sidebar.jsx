@@ -5,7 +5,7 @@ export default function Sidebar() {
   const menuItems = [
     { label: 'Dashboard', icon: <Home />, path: '/doctor/dashboard' },
     { label: 'Schedule', icon: <Calendar />, path: '/doctor/schedule' },
-    { label: 'Blog', icon: <FileText />, path: '/doctor/blog' },
+    { label: 'Booking', icon: <FileText />, path: '/doctor/booking' },
     { label: 'Users', icon: <Users />, path: '/doctor/users' },
     { label: 'Settings', icon: <Settings />, path: '/doctor/settings' },
   ];
