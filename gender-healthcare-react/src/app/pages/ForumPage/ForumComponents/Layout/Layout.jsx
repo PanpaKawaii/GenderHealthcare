@@ -1,18 +1,54 @@
-
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from "../../../../components/ForumComponents/ui/button";
 import { Card, CardContent } from "../../../../components/ForumComponents/ui/card";
-import { Calendar, Users, MessageCircle, FileText, Heart } from "lucide-react";
+import { Calendar, Users, MessageCircle, FileText, Heart, User, Settings, LogOut } from "lucide-react";
 import { UserAuth } from '../../../../hooks/Context/AuthContext.jsx';
+import { useState, useEffect } from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from "../../../../components/ForumComponents/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../../../../components/ForumComponents/ui/dropdown-menu";
 
 const Layout = () => {
 
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState(null);
 
   const Role = localStorage.getItem('UserRole');
+  const UserId = localStorage.getItem('UserId');
   const { logout } = UserAuth();
+
+  useEffect(() => {
+    // Fetch user info if logged in
+    const fetchUserInfo = async () => {
+      try {
+        // Sử dụng API URL từ biến môi trường hoặc URL mặc định
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+        const response = await fetch(`${API_URL}/accounts/${UserId}`);
+        
+        if (response.ok) {
+          const data = await response.json();
+          setUserInfo(data);
+        } else {
+          console.error("Failed to fetch user data with status:", response.status);
+        }
+      } catch (error) {
+        console.error("Failed to fetch user info:", error);
+      }
+    };
+    
+    if (UserId) {
+      fetchUserInfo();
+    }
+  }, [UserId]);
+
   const handleLogout = () => {
     localStorage.removeItem('Token')
     localStorage.removeItem('UserId')
@@ -57,12 +93,64 @@ const Layout = () => {
                 </Link>
               </div>
               :
-              <div>
-                <Link to='/login' onClick={handleLogout}>
-                  <Button variant="outline" asChild>
-                    Log out
-                  </Button>
-                </Link>
+              <div className="flex items-center gap-4">
+                {Role === 'Doctor' && (
+                  <div className="hidden md:flex items-center gap-2">
+                    <Link to="/dashboardDoctor">
+                      <Button asChild>
+                        Dashboard
+                      </Button>
+                    </Link>
+                  </div>
+                )}
+                {Role === 'Admin' && (
+                  <div className="hidden md:flex items-center gap-2">
+                    <Link to="/admin">
+                      <Button asChild>
+                        Dashboard
+                      </Button>
+                    </Link>
+                  </div>
+                )}
+                {Role === 'Counselor' && (
+                  <div className="hidden md:flex items-center gap-2">
+                    <Link to="/counselor">
+                      <Button asChild>
+                        Dashboard
+                      </Button>
+                    </Link>
+                  </div>
+                )}
+                <div className="relative">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" className="flex items-center gap-2 rounded-full hover:bg-gray-100 transition-colors p-1 h-auto">
+                        <Avatar className="h-9 w-9 border-2 border-teal-500">
+                          <AvatarImage src={userInfo?.image || "/avatar.jpg"} alt="User Avatar" />
+                          <AvatarFallback>{userInfo?.name?.charAt(0) || "U"}</AvatarFallback>
+                        </Avatar>
+                        <span className="hidden md:inline-block font-medium">{userInfo?.name || "User"}</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56">
+                      <DropdownMenuLabel className="font-semibold">Your account</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem onClick={() => navigate('/profile')} className="cursor-pointer">
+                        <User className="mr-2 h-4 w-4" />
+                        <span>Profile</span>
+                      </DropdownMenuItem>
+                      {/* <DropdownMenuItem onClick={() => navigate('/settings')} className="cursor-pointer">
+                        <Settings className="mr-2 h-4 w-4" />
+                        <span>Cài đặt</span>
+                      </DropdownMenuItem> */}
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-red-600">
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Log Out</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
               </div>
             }
           </div>

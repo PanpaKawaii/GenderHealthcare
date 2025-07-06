@@ -31,7 +31,7 @@ export default function CustomerRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* <Route path="/" element={<HomePage />} /> */}
+          <Route path="/" element={<HomePage />} />
           <Route path="/forum" element={<ForumPage />} />
           <Route path="/post/:postId" element={<PostDetail />} />
           <Route path="/blog" element={<Blog />} />
@@ -58,7 +58,7 @@ export default function CustomerRoutes() {
           element={<DashboardMedicalfacility />}
         />
 
-        {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+        <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/cycle" element={<Cycle />} />
       </Routes>
     </BrowserRouter>
