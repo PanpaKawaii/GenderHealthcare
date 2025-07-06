@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 const Layout = () => {
   const location = useLocation();
-  const isCounselorRoute = location.pathname.startsWith('/doctor');
+  const isDoctorRoute = location.pathname.startsWith('/doctor');
 
   return (
     <div>

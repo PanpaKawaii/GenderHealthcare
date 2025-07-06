@@ -3,11 +3,11 @@ import { Home, Calendar, FileText, Users, Settings } from 'lucide-react';
 
 export default function Sidebar() {
   const menuItems = [
-    { label: 'Dashboard', icon: <Home />, path: '/counselor/dashboard' },
-    { label: 'Schedule', icon: <Calendar />, path: '/counselor/schedule' },
-    { label: 'Blog', icon: <FileText />, path: '/counselor/blog' },
-    { label: 'Users', icon: <Users />, path: '/counselor/users' },
-    { label: 'Settings', icon: <Settings />, path: '/counselor/settings' },
+    { label: 'Dashboard', icon: <Home />, path: '/doctor/dashboard' },
+    { label: 'Schedule', icon: <Calendar />, path: '/doctor/schedule' },
+    { label: 'Blog', icon: <FileText />, path: '/doctor/blog' },
+    { label: 'Users', icon: <Users />, path: '/doctor/users' },
+    { label: 'Settings', icon: <Settings />, path: '/doctor/settings' },
   ];
 
   return (
