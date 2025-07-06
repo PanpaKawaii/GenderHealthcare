@@ -13,6 +13,9 @@ import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
 import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import Cycle from "../pages/Cycle/Cycle";
+
+import PostDetail from "../pages/ForumPage/PostDetail";
+
 import Booking from "../pages/Counselor/Booking/Booking";
 
 import SelectBooking from "../pages/Booking/SelectBooking";
@@ -22,6 +25,7 @@ import TestResultManager from "../pages/TestResultManager/TestResultManager";
 import TestResultDetailManager from "../pages/TestResultDetailManager/TestResultDetailManager";
 import TestServiceParameterManager from "../pages/TestServiceParameterManager/TestServiceParameterManager";
 
+
 export default function CustomerRoutes() {
   return (
     <BrowserRouter>
@@ -29,6 +33,7 @@ export default function CustomerRoutes() {
         <Route path="/" element={<Layout />}>
           {/* <Route path="/" element={<HomePage />} /> */}
           <Route path="/forum" element={<ForumPage />} />
+          <Route path="/post/:postId" element={<PostDetail />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/profile" element={<ProfilePage />} />

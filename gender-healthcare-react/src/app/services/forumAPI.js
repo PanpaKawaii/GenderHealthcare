@@ -20,7 +20,7 @@ const handleApiRequest = async (apiCall) => {
 
 // Export forum API functions
 const forumAPI = {
-  // Posts
+  // Posts 
   getPosts: (params) => handleApiRequest(() => api.get('/posts', { params })),
   getPostById: (id) => handleApiRequest(() => api.get(`/posts/${id}`)),
   createPost: (data) => handleApiRequest(() => api.post('/posts', data)),
@@ -35,20 +35,25 @@ const forumAPI = {
   replyToComment: (commentId, data) => handleApiRequest(() => api.post(`/comments/${commentId}/replies`, data)),
   voteComment: (commentId, data) => handleApiRequest(() => api.post(`/comments/${commentId}/vote`, data)),
   getCommentReplies: (commentId) => handleApiRequest(() => api.get(`/comments/${commentId}/replies`)),
-  
-  // Moderation (for admin user)
-  getPendingPosts: () => handleApiRequest(() => api.get('/moderation/posts/pending')),
+    // Moderation (for admin user)
+  getPendingPosts: (page = 1, limit = 10) => handleApiRequest(() => api.get('/moderation/posts/pending', { params: { page, limit } })),
+  getPostsByStatus: (status, page = 1, limit = 10) => handleApiRequest(() => api.get(`/moderation/posts/${status}`, { params: { page, limit } })),
   approvePost: (postId) => handleApiRequest(() => api.post(`/moderation/posts/${postId}/approve`)),
-  rejectPost: (postId) => handleApiRequest(() => api.post(`/moderation/posts/${postId}/reject`)),
-  getPendingComments: () => handleApiRequest(() => api.get('/moderation/comments/pending')),
+  rejectPost: (postId, reason) => handleApiRequest(() => api.post(`/moderation/posts/${postId}/reject`, { reason })),
+  flagPost: (postId, reason) => handleApiRequest(() => api.post(`/moderation/posts/${postId}/flag`, { reason })),
+  getPendingComments: (page = 1, limit = 10) => handleApiRequest(() => api.get('/moderation/comments/pending', { params: { page, limit } })),
+  getCommentsByStatus: (status, page = 1, limit = 10) => handleApiRequest(() => api.get(`/moderation/comments/${status}`, { params: { page, limit } })),
   approveComment: (commentId) => handleApiRequest(() => api.post(`/moderation/comments/${commentId}/approve`)),
-  rejectComment: (commentId) => handleApiRequest(() => api.post(`/moderation/comments/${commentId}/reject`)),
+  rejectComment: (commentId, reason) => handleApiRequest(() => api.post(`/moderation/comments/${commentId}/reject`, { reason })),
+  flagComment: (commentId, reason) => handleApiRequest(() => api.post(`/moderation/comments/${commentId}/flag`, { reason })),
+  getModerationStats: () => handleApiRequest(() => api.get('/moderation/stats')),
   // Forum Filters and Tabs - consolidated into a single getPosts function for simplicity
   // Note: The type parameter in the query will determine which posts to return:
   //  - 'all': All approved posts
   //  - 'questions': Posts with no answers from counselors
   //  - 'expert': Posts with answers from counselors
   //  - 'following': Posts that the current user has upvoted (requires accountId)
+  //  - 'myPosts': Posts created by the current user (requires accountId)
   
   // Community Stats
   getCommunityStats: () => handleApiRequest(() => api.get('/stats/community')),

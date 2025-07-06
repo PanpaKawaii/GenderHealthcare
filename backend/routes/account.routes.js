@@ -10,5 +10,7 @@ router.delete('/:id', accountCtrl.remove);
 router.post('/check-email', accountCtrl.checkEmail);
 router.post('/authentication', accountCtrl.authentication);
 router.get('/:accountId/posts', accountCtrl.getAccountPosts);
+router.patch('/:id/activate', accountCtrl.activateAccount);
+router.patch('/:id/deactivate', accountCtrl.deactivateAccount);
 
 module.exports = router;

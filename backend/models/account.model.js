@@ -8,7 +8,7 @@ const accountSchema = new Schema({
   email:     { type: String, required: true},
   phone:     String,
   password:  { type: String, required: true },
-  role:      { type: String, enum: ['Customer', 'Counselor', 'Staff', 'Manager', 'Admin'], required: true },
+  role:      { type: String, enum: ['Customer', 'Counselor', 'Doctor', 'Manager', 'Admin'], required: true },
   isVerified: { type: Boolean, default: false }
  
 },

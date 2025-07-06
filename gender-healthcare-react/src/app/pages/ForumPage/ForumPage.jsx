@@ -36,20 +36,18 @@ import {
 import { PostCard } from "../../components/ForumComponents/post-card";
 import { CreatePostModal } from "../../components/ForumComponents/create-post-modal";
 
-const trendingTopics = [
-  { name: "Birth Control Options", posts: 45, trend: "+12%" },
-  { name: "First Gynecologist Visit", posts: 32, trend: "+8%" },
-  { name: "STI Testing Guide", posts: 28, trend: "+15%" },
-  { name: "Menstrual Health", posts: 24, trend: "+5%" },
-  { name: "Pregnancy Planning", posts: 19, trend: "+22%" },
-];
-
 export default function ForumPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("newest");
   const [filterBy, setFilterBy] = useState("all");
+  const [communityStats, setCommunityStats] = useState({
+    activeMembers: 0,
+    discussions: 0,
+    expertAnswers: 0,
+  });
+  const [trendingTopics, setTrendingTopics] = useState([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
-  
+
   const [activeTab, setActiveTab] = useState("all");
   const [Posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -98,6 +96,18 @@ export default function ForumPage() {
             return;
           }
           break;
+        case "myPosts":
+          // My Posts: hiển thị những bài đăng của người dùng hiện tại
+          if (accountId) {
+            params.type = "myPosts";
+            params.accountId = accountId;
+            apiCall = forumAPI.getPosts(params);
+          } else {
+            setPosts([]);
+            setLoading(false);
+            return;
+          }
+          break;
         default:
           params.type = "all";
           apiCall = forumAPI.getPosts(params);
@@ -131,10 +141,28 @@ export default function ForumPage() {
     }
   };
 
+  const fetchCommunityStats = async () => {
+    try {
+      const response = await forumAPI.getCommunityStats();
+      if (response?.data) {
+        setCommunityStats({
+          activeMembers: response.data.activeMembers,
+          discussions: response.data.discussions,
+          expertAnswers: response.data.expertAnswers,
+        });
+        setTrendingTopics(response.data.trendingTopics || []);
+      }
+    } catch (error) {
+      console.error("Error fetching community stats:", error);
+    }
+  };
+
   useEffect(() => {
     fetchPosts(1, true);
+    fetchCommunityStats();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   useEffect(() => {
     fetchPosts(1, true);
     setCurrentPage(1);
@@ -165,11 +193,11 @@ export default function ForumPage() {
     fetchPosts(1, true);
     setCurrentPage(1);
   };
-  
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div className="min-h-screen">
+      <div className="  ">
+        <div className="max-w-3/4 mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">
@@ -181,10 +209,10 @@ export default function ForumPage() {
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <Button variant="outline" className="gap-2">
+              {/* <Button variant="outline" className="gap-2">
                 <Bell className="h-4 w-4" />
                 Notifications
-              </Button>
+              </Button> */}
               <Button
                 className="bg-blue-600 hover:bg-blue-700 gap-2"
                 onClick={() => setShowCreateModal(true)}
@@ -197,7 +225,7 @@ export default function ForumPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-3/4 mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1 space-y-6">
             <Card>
@@ -210,21 +238,27 @@ export default function ForumPage() {
                     <Users className="h-4 w-4 text-blue-600" />
                     <span className="text-sm">Active Members</span>
                   </div>
-                  <span className="font-semibold">12,456</span>
+                  <span className="font-semibold">
+                    {communityStats.activeMembers.toLocaleString()}
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <MessageCircle className="h-4 w-4 text-green-600" />
                     <span className="text-sm">Discussions</span>
                   </div>
-                  <span className="font-semibold">3,789</span>
+                  <span className="font-semibold">
+                    {communityStats.discussions.toLocaleString()}
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Award className="h-4 w-4 text-yellow-600" />
                     <span className="text-sm">Expert Answers</span>
                   </div>
-                  <span className="font-semibold">1,234</span>
+                  <span className="font-semibold">
+                    {communityStats.expertAnswers.toLocaleString()}
+                  </span>
                 </div>
               </CardContent>
             </Card>
@@ -270,12 +304,10 @@ export default function ForumPage() {
                 <p>• No personal medical advice</p>
                 <p>• Verify information with professionals</p>
                 <p>• Report inappropriate content</p>
-                <Button
-                  variant="link"
-                  className="p-0 h-auto text-blue-600 text-sm"
-                >
-                  Read full guidelines →
-                </Button>
+                <p>• Avoid spreading misinformation</p>
+                <p>• Use clear and kind language</p>
+                <p>• Do not diagnose or prescribe treatments</p>
+                <p>• Respect differing views and experiences</p>
               </CardContent>
             </Card>
           </div>
@@ -311,11 +343,12 @@ export default function ForumPage() {
             </Card>
 
             <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="grid w-full grid-cols-4">
+              <TabsList className="grid w-full grid-cols-5">
                 <TabsTrigger value="all">All Discussions</TabsTrigger>
                 <TabsTrigger value="questions">Questions</TabsTrigger>
                 <TabsTrigger value="expert">Expert Answers</TabsTrigger>
                 <TabsTrigger value="following">Following</TabsTrigger>
+                <TabsTrigger value="myPosts">My Posts</TabsTrigger>
               </TabsList>
               <TabsContent value="all" className="space-y-6 mt-6">
                 {loading ? (
@@ -323,7 +356,9 @@ export default function ForumPage() {
                     <p className="text-gray-500">Loading discussions...</p>
                   </div>
                 ) : Posts.length > 0 ? (
-                  Posts.map((post) => <PostCard key={post._id} post={post} />)
+                  Posts.map((post) => (
+                    <PostCard key={post._id} post={post} currentTab="all" />
+                  ))
                 ) : (
                   <div className="text-center py-12">
                     <p className="text-gray-500">No discussions found</p>
@@ -336,7 +371,13 @@ export default function ForumPage() {
                     <p className="text-gray-500">Loading questions...</p>
                   </div>
                 ) : Posts.length > 0 ? (
-                  Posts.map((post) => <PostCard key={post._id} post={post} />)
+                  Posts.map((post) => (
+                    <PostCard
+                      key={post._id}
+                      post={post}
+                      currentTab="questions"
+                    />
+                  ))
                 ) : (
                   <div className="text-center py-12">
                     <p className="text-gray-500">No questions found</p>
@@ -389,6 +430,47 @@ export default function ForumPage() {
                       onClick={() => setActiveTab("all")}
                     >
                       Explore popular discussions →
+                    </Button>
+                  </div>
+                )}
+              </TabsContent>
+              <TabsContent value="myPosts" className="space-y-6 mt-6">
+                {!accountId ? (
+                  <div className="text-center py-12">
+                    <p className="text-gray-500">
+                      Please log in to see your posts.
+                    </p>
+                    <Button
+                      variant="link"
+                      className="mt-2"
+                      onClick={() => setActiveTab("all")}
+                    >
+                      Explore all discussions →
+                    </Button>
+                  </div>
+                ) : loading ? (
+                  <div className="text-center py-12">
+                    <p className="text-gray-500">Loading your posts...</p>
+                  </div>
+                ) : Posts.length > 0 ? (
+                  Posts.map((post) => (
+                    <PostCard
+                      key={post._id}
+                      post={post}
+                      currentTab={activeTab}
+                    />
+                  ))
+                ) : (
+                  <div className="text-center py-12">
+                    <p className="text-gray-500">
+                      You haven't created any posts yet.
+                    </p>
+                    <Button
+                      variant="link"
+                      className="mt-2"
+                      onClick={() => setShowCreateModal(true)}
+                    >
+                      Ask a question now →
                     </Button>
                   </div>
                 )}

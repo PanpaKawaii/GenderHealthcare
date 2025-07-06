@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Layout from "../pages/ForumPage/ForumComponents/Layout/Layout";
 import ForumPage from "../pages/ForumPage/ForumPage";
+import PostDetail from "../pages/ForumPage/PostDetail/PostDetail";
 import Login from "../pages/LoginRegister/Login";
 import Register from "../pages/LoginRegister/Register";
 import Blog from "../pages/blog/Blog";
@@ -23,6 +24,7 @@ export default function MainRoutes() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/forum" element={<ForumPage />} />
+          <Route path="/post/:postId" element={<PostDetail />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/profile" element={<ProfilePage />} />

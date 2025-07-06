@@ -66,14 +66,14 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
     try {
       const accountId = localStorage.getItem("UserId");
       if (!accountId) {
-        alert("Bạn cần đăng nhập để đăng bài viết.");
+        alert("You need to log in to create a post.");
         setLoading(false);
         return;
       }
 
       if (!title.trim() || !content.trim()) {
         alert(
-          "Tiêu đề và nội dung không được để trống hoặc chỉ có khoảng trắng."
+          "Title and content cannot be empty or contain only whitespace."
         );
         setLoading(false);
         return;
@@ -104,7 +104,7 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
       }, 3000);
     } catch (error) {
       console.error("Error creating post:", error);
-      alert("Đã xảy ra lỗi khi tạo bài viết. Vui lòng thử lại sau.");
+      alert("Your post contains language that violates our guidelines. Please modify the content before submitting.");
     } finally {
       setLoading(false);
     }
@@ -119,7 +119,7 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
             Create New Discussion
           </Dialog.Title>
           <Dialog.Description className="text-gray-500 text-sm">
-            Điền nội dung bạn muốn chia sẻ với cộng đồng.
+            Fill in the content you want to share with the community.
           </Dialog.Description>
 
           {showSuccessMessage ? (
@@ -129,11 +129,11 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
               </div>
               <div>
                 <h4 className="font-medium text-green-800">
-                  Đăng bài thành công!
+                  Post created successfully!
                 </h4>
                 <p className="text-green-600 text-sm">
-                  Bài viết của bạn đã được gửi và đang chờ kiểm duyệt. Chúng tôi
-                  sẽ thông báo khi bài viết được phê duyệt.
+                  Your post has been submitted and is awaiting moderation. We will notify
+                  you when your post is approved.
                 </p>
               </div>
             </div>
@@ -144,11 +144,11 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
                   htmlFor="title"
                   className="block text-sm font-medium mb-1"
                 >
-                  Tiêu đề
+                  Title
                 </label>
                 <Input
                   id="title"
-                  placeholder="Nhập tiêu đề cho chủ đề thảo luận..."
+                  placeholder="Enter a title for your discussion topic..."
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   className="w-full"
@@ -160,11 +160,11 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
                   htmlFor="category"
                   className="block text-sm font-medium mb-1"
                 >
-                  Danh mục
+                  Category
                 </label>
                 <Select value={category} onValueChange={setCategory}>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Chọn danh mục" />
+                    <SelectValue placeholder="Select a category" />
                   </SelectTrigger>
                   <SelectContent
                     position="popper"
@@ -185,10 +185,10 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
                   htmlFor="content"
                   className="block text-sm font-medium mb-1"
                 >
-                  Nội dung
+                  Content
                 </label>
                 <div className="border rounded-md mb-2">
-                  <div className="flex items-center gap-1 border-b p-2">
+                  {/* <div className="flex items-center gap-1 border-b p-2">
                     <button className="p-1 hover:bg-gray-100 rounded">
                       <Bold className="h-4 w-4" />
                     </button>
@@ -204,10 +204,10 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
                     <button className="p-1 hover:bg-gray-100 rounded">
                       <ImageIcon className="h-4 w-4" />
                     </button>
-                  </div>
+                  </div> */}
                   <Textarea
                     id="content"
-                    placeholder="Viết nội dung câu hỏi hoặc thảo luận của bạn..."
+                    placeholder="Write your question or discussion content here..."
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     className="border-none resize-none focus-visible:ring-0"
@@ -218,7 +218,7 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
 
               <div>
                 <label className="block text-sm font-medium mb-1">
-                  Tags (tối đa 5)
+                  Tags (maximum 5)
                 </label>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {tags.map((tag) => (
@@ -262,21 +262,21 @@ export function CreatePostModal({ isOpen, onClose, onPostCreated }) {
                 <label
                   htmlFor="anonymous"
                   className="text-sm text-gray-700"
-                >                  Đăng ẩn danh
+                >                  Post anonymously
                 </label>
               </div>
 
               <div className="flex justify-end gap-2">
                 <Dialog.Close asChild>
                   <Button variant="outline" disabled={loading}>
-                    Hủy
+                    Cancel
                   </Button>
                 </Dialog.Close>
                 <Button
                   onClick={handleSubmit}
                   disabled={loading || !title || !content || !category}
                 >
-                  {loading ? "Đang xử lý..." : "Đăng bài"}
+                  {loading ? "Processing..." : "Post"}
                 </Button>
               </div>
             </div>

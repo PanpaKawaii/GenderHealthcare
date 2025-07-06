@@ -8,6 +8,7 @@ router.get('/:postId', postCtrl.getPostById);
 router.put('/:postId', postCtrl.updatePost);
 router.patch('/:postId', postCtrl.updatePost);
 router.delete('/:postId', postCtrl.deletePost);
+router.put('/:postId/edit', postCtrl.editPost);
 router.post('/:postId/comments', postCtrl.addComment);
 router.post('/:postId/vote', postCtrl.votePost);
 router.patch('/:postId/view', postCtrl.incrementView);

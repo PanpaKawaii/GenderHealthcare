@@ -140,3 +140,44 @@ exports.getAccountPosts = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// User activation and deactivation
+exports.activateAccount = async (req, res) => {
+  try {
+    const accountId = req.params.id;
+    const account = await Account.findByIdAndUpdate(
+      accountId, 
+      { isActive: true },
+      { new: true }
+    );
+    
+    if (!account) {
+      return res.status(404).json({ message: 'Account not found' });
+    }
+    
+    res.json(account);
+  } catch (error) {
+    console.error('Error activating account:', error);
+    res.status(500).json({ message: 'Failed to activate account', error: error.message });
+  }
+};
+
+exports.deactivateAccount = async (req, res) => {
+  try {
+    const accountId = req.params.id;
+    const account = await Account.findByIdAndUpdate(
+      accountId, 
+      { isActive: false },
+      { new: true }
+    );
+    
+    if (!account) {
+      return res.status(404).json({ message: 'Account not found' });
+    }
+    
+    res.json(account);
+  } catch (error) {
+    console.error('Error deactivating account:', error);
+    res.status(500).json({ message: 'Failed to deactivate account', error: error.message });
+  }
+};
