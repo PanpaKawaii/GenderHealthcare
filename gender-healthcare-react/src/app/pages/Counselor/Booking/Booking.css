@@ -1,0 +1,135 @@
+.testbooking-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fdfdfd;
+    padding: 32px 0 0;
+
+    .booking-content {
+        width: 100%;
+        max-width: 900px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto 0;
+        padding: 0 20px;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-weight: bold;
+    }
+
+    .title {
+        font-size: 36px;
+        text-align: center;
+        margin: 0 0 16px;
+    }
+
+    .script {
+        max-width: 800px;
+        text-align: center;
+        font-size: 20px;
+        color: #555;
+        font-weight: 500;
+    }
+}
+.booking-main-container { /* Đổi tên từ .testbooking-container */
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fdfdfd;
+
+    .booking-content { /* Giữ lại class này cho các component con */
+        width: 100%;
+        max-width: 900px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto 0;
+        padding: 0 20px;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-weight: bold;
+    }
+
+    .title {
+        font-size: 36px;
+        text-align: center;
+        }
+
+    .script {
+        max-width: 800px;
+        text-align: center;
+        font-size: 20px;
+        color: #555;
+        font-weight: 500;
+    }
+
+    /* === Thêm các style mới cho layout 2 cột === */
+    .booking-content-wrapper {
+        display: flex;
+        gap: 40px; /* Khoảng cách giữa hai cột */
+        width: 100%;
+        max-width: 1200px; /* Tăng chiều rộng tối đa cho layout 2 cột */
+        margin-top: 30px;
+        padding: 0 20px; /* Padding tổng thể cho wrapper */
+        align-items: flex-start; /* Căn trên cùng */
+    }
+
+    .booking-left-column {
+        flex: 1.5; /* Cột trái chiếm phần bằng nhau */
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Khoảng cách giữa PickingDate và TimeSlots */
+    }
+
+    .booking-right-column {
+        flex: 1; /* Cột phải rộng hơn cột trái một chút để hiển thị danh sách bác sĩ */
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 24px; /* Padding cho cột bác sĩ */
+        min-height: 400px; /* Đảm bảo cột phải có chiều cao tối thiểu */
+        justify-content: center; /* Căn giữa nội dung khi chưa có bác sĩ */
+        align-items: center;
+        text-align: center;
+    }
+
+    .placeholder-text {
+        font-size: 18px;
+        color: #777;
+        font-style: italic;
+    }
+
+    /* Đảm bảo các component con vẫn có style riêng của chúng */
+    .pickingdate-content .calendar-form,
+    .timeslots-content .timeslots-form {
+        width: auto; /* Cho phép tự điều chỉnh chiều rộng trong cột */
+        margin: 0; /* Loại bỏ margin tự động của component con */
+    }
+
+    /* Responsive cho màn hình nhỏ hơn */
+    @media (max-width: 1024px) {
+        .booking-content-wrapper {
+            flex-direction: column; /* Chuyển sang xếp chồng trên màn hình nhỏ */
+            gap: 30px;
+        }
+
+        .booking-right-column {
+            width: 100%;
+            min-height: auto;
+        }
+    }
+}

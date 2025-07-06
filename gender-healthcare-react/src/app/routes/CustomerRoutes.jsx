@@ -13,6 +13,7 @@ import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
 import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import Cycle from "../pages/Cycle/Cycle";
+import Booking from "../pages/Counselor/Booking/Booking";
 
 import SelectBooking from "../pages/Booking/SelectBooking";
 import TestBooking from "../pages/TestBooking/TestBooking";
@@ -31,6 +32,7 @@ export default function CustomerRoutes() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/booking" element={<Booking />} />
         </Route>
 
         <Route path="/counselorblog" element={<CounselorBlog />} />
