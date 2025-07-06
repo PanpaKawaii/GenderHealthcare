@@ -123,7 +123,7 @@ export default function ParameterManager() {
                                 <td>{new Date(param.createdAt).toLocaleDateString('vi-VN')}</td>
                                 <td>
                                     <button onClick={() => setEditingParam(param)}>Edit</button>
-                                    <button onClick={() => DeleteParameter(param._id)}>Delete</button>
+                                    <button className='dlt-btn' onClick={() => DeleteParameter(param._id)}>Delete</button>
                                 </td>
                             </tr>
                         ))

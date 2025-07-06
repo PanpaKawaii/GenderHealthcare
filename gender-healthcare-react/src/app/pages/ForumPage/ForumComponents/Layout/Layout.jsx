@@ -36,11 +36,12 @@ const Layout = () => {
               <Link to="/" className="text-gray-600 hover:text-gray-900">Home</Link>
               <Link to="/forum" className="text-gray-600 hover:text-gray-900">Forum</Link>
               <Link to="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
-              <Link to="/testbooking" className="text-gray-600 hover:text-gray-900">Booking</Link>
-              <Link to="/parameter" className="text-gray-600 hover:text-gray-900">Parameter</Link>
-              <Link to="/testresult" className="text-gray-600 hover:text-gray-900">TestResult</Link>
-              <Link to="/testresultdetail" className="text-gray-600 hover:text-gray-900">TestResultDetail</Link>
-              <Link to="/testserviceparameter" className="text-gray-600 hover:text-gray-900">TestServiceParameterManager</Link>
+              <Link to="/couselortestbooking" className="text-gray-600 hover:text-gray-900">Booking</Link>
+              <Link to="/parametermanager" className="text-gray-600 hover:text-gray-900">Parameter</Link>
+              <Link to="/testbookingmanager" className="text-gray-600 hover:text-gray-900">TestBooking</Link>
+              <Link to="/testresultmanager" className="text-gray-600 hover:text-gray-900">TestResult</Link>
+              <Link to="/testresultdetailmanager" className="text-gray-600 hover:text-gray-900">TestResultDetail</Link>
+              <Link to="/testserviceparametermanager" className="text-gray-600 hover:text-gray-900">TestServiceParameterManager</Link>
               <Link to="/contact" className="text-gray-600 hover:text-gray-900">Contact</Link>
             </div>
             {!Role ?

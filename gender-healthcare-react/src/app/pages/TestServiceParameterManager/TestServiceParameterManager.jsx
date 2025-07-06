@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { fetchData, postData, putData, deleteData } from '../LoginRegister/api_register';
 import '../ParameterManager/ManagerStyles.css';
 
@@ -34,30 +35,20 @@ export default function TestServiceParameterManager() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (list.some(tsp => tsp.testServiceId._id == formData.testServiceId && tsp.parameterId._id == formData.parameterId)) {
+            alert('Dịch vụ xét nghiệm đã có thông số này!');
+            return;
+        }
+
         const token = '';
         try {
-            if (editing) {
-                await putData(`/testserviceparameters/${editing._id}`, token, formData);
-            } else {
-                await postData('/testserviceparameters', token, formData);
-            }
+            await postData('/testserviceparameters', token, formData);
             setFormData({ testServiceId: '', parameterId: '' });
             setEditing(null);
             setRefresh(r => r + 1);
         } catch (error) {
             console.error(error);
-        }
-    };
-
-    const handleDelete = async (id) => {
-        const token = '';
-        if (window.confirm('Bạn có chắc muốn xoá?')) {
-            try {
-                await deleteData(`/testserviceparameters/${id}`, token);
-                setRefresh(r => r + 1);
-            } catch (error) {
-                console.error(error);
-            }
         }
     };
 
@@ -108,14 +99,7 @@ export default function TestServiceParameterManager() {
                                 <td>{item.parameterId?.name || item.parameterId?._id}</td>
                                 <td>{new Date(item.createdAt).toLocaleDateString('vi-VN')}</td>
                                 <td>
-                                    <button onClick={() => {
-                                        setEditing(item);
-                                        setFormData({
-                                            testServiceId: item.testServiceId?._id,
-                                            parameterId: item.parameterId?._id
-                                        });
-                                    }}>Edit</button>
-                                    <button onClick={() => handleDelete(item._id)}>Delete</button>
+                                    <Link to={`./${item.testServiceId?._id}`}><button>Detail</button></Link>
                                 </td>
                             </tr>
                         ))
