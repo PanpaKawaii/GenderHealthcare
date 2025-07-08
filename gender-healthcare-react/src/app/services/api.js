@@ -65,11 +65,12 @@ export const blogAPI = {
 };
 
 export const counselorBookAPI = {
-  getAll: () => api.get("/consultationbookings"),
-  create: (data) => api.post("/consultationbookings", data),
-  update: (id, data) => api.put(`/consultationbookings/${id}`, data),
-  delete: (id) => api.delete(`/consultationbookings/${id}`),
-  getById: (id) => api.get(`/consultationbookings/${id}`),
+  getAll: () => api.get("/consultationbooking"),
+  create: (data) => api.post("/consultationbooking", data),
+  update: (id, data) => api.put(`/consultationbooking/${id}`, data),
+  delete: (id) => api.delete(`/consultationbooking/${id}`),
+  getById: (id) => api.get(`/consultationbooking/${id}`),
+  getCustomerIdByAccountId: (accountId) => api.get(`/consultationbooking/customers/byAccount/${accountId}`),
 };
 
 export const counselorScheduleAPI = {

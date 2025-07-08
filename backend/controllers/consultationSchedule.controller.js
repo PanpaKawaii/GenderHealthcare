@@ -1,5 +1,9 @@
 const ConsultationSchedule = require('../models/consultationSchedule.model');
-
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 // [1] GET all schedules
 exports.getAllSchedules = async (req, res) => {
@@ -58,8 +62,8 @@ exports.getSchedulesByCounselorAndDate = async (req, res) => {
       return res.status(400).json({ error: 'Missing counselorId or date' });
     }
 
-    const startOfDay = new Date(`${date}T00:00:00.000Z`);
-    const endOfDay = new Date(`${date}T23:59:59.999Z`);
+    const startOfDay = dayjs.tz(date, 'Asia/Ho_Chi_Minh').startOf('day').toDate();
+    const endOfDay = dayjs.tz(date, 'Asia/Ho_Chi_Minh').endOf('day').toDate();
 
     const schedules = await ConsultationSchedule.find({
       counselorId: counselorId,
@@ -82,8 +86,9 @@ exports.getAvailableCounselorsBySlot = async (req, res) => {
       return res.status(400).json({ error: 'Missing date, startTime or endTime' });
     }
 
-    const start = new Date(`${date}T${startTime}:00.000Z`);
-    const end = new Date(`${date}T${endTime}:00.000Z`);
+    const start = dayjs.tz(`${date}T${startTime}`, 'Asia/Ho_Chi_Minh').toDate();
+const end = dayjs.tz(`${date}T${endTime}`, 'Asia/Ho_Chi_Minh').toDate();
+
 
     const availableSchedules = await ConsultationSchedule.find({
       startTime: { $gte: start, $lt: end },
@@ -93,8 +98,6 @@ exports.getAvailableCounselorsBySlot = async (req, res) => {
       populate: { path: 'accountId' }
     });
 
-
-    // Lấy unique counselors
     const counselors = availableSchedules.map(sch => sch.counselorId);
     const uniqueCounselors = Array.from(new Set(counselors.map(c => c._id.toString())))
       .map(id => counselors.find(c => c._id.toString() === id));

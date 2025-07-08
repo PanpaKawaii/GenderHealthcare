@@ -1,85 +1,100 @@
+// Booking.jsx
 import React, { useState, useEffect } from 'react';
 import './Booking.css';
+import dayjs from 'dayjs';
 import PickingDate from './PickingDate';
 import TimeSlots from './TimeSlots';
 import CounselorDoctor from './CounselorDoctor';
 import PaymentConfirm from './PaymentConfirm';
 
 export default function Booking() {
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedSlot, setSelectedSlot] = useState(null);     // slot tĩnh (chỉ có time)
+  const [selectedDate, setSelectedDate] = useState(null);  // Date obj
+  const [selectedSlot, setSelectedSlot] = useState(null);  // { startTime, endTime }
   const [selectedDoctor, setSelectedDoctor] = useState(null);
-  const [finalSlot, setFinalSlot] = useState(null);           // ✅ slot từ DB (có _id)
+  const [finalSlot, setFinalSlot] = useState(null);        // slot từ DB
 
+  /* Debug log */
   useEffect(() => {
-    console.log('🔎 selectedDate:', selectedDate);
-    console.log('🔎 selectedSlot:', selectedSlot);
-    console.log('🔎 selectedDoctor:', selectedDoctor);
-    console.log('✅ finalSlot:', finalSlot);
+    console.log({ selectedDate, selectedSlot, selectedDoctor, finalSlot });
   }, [selectedDate, selectedSlot, selectedDoctor, finalSlot]);
 
-  // Handler cho việc chọn ngày
+  /* ============ handlers ============ */
   const handleSelectDate = (date) => {
     setSelectedDate(date);
-    // KHÔNG reset selectedSlot ở đây nữa để giữ lựa chọn của người dùng
-    // selectedDoctor và finalSlot vẫn cần reset vì chúng phụ thuộc vào cả ngày và slot
+    setSelectedDoctor(null);
+    setFinalSlot(null);
+
+    // Nếu đã chọn slot trước đó, kiểm tra xem slot có còn hợp lệ sau khi chọn ngày
+    if (date && selectedSlot) {
+      const slotDateTime = dayjs(
+        `${dayjs(date).format('YYYY-MM-DD')}T${selectedSlot.startTime}`
+      ).tz('Asia/Ho_Chi_Minh');
+      const nowVN = dayjs().tz('Asia/Ho_Chi_Minh');
+      if (slotDateTime.isBefore(nowVN)) {
+        // slot này đã qua ở ngày mới ⇒ reset
+        setSelectedSlot(null);
+      }
+    }
+  };
+
+  const handleSelectSlot = (slot) => {
+    // Toggle: nếu click lại slot đang chọn thì bỏ chọn
+    if (selectedSlot && selectedSlot.startTime === slot.startTime) {
+      setSelectedSlot(null);
+      setSelectedDoctor(null);
+      setFinalSlot(null);
+      return;
+    }
+    setSelectedSlot(slot);
     setSelectedDoctor(null);
     setFinalSlot(null);
   };
 
-  // Handler cho việc chọn slot
-  const handleSelectSlot = (slot) => {
-    setSelectedSlot(slot);
-    // KHÔNG reset selectedDoctor và finalSlot ở đây nữa
-    // selectedDoctor và finalSlot sẽ tự động được cập nhật/reset khi CounselorDoctor re-render
-  };
-
-  // Handler cho việc chọn bác sĩ
   const handleSelectDoctor = (doctor, realSlotFromDB) => {
     setSelectedDoctor(doctor);
-    setFinalSlot(realSlotFromDB); // Lưu slot từ DB để dùng cho thanh toán
+    setFinalSlot(realSlotFromDB);
   };
 
-  // Nếu đã chọn đủ ngày, slot và bác sĩ, chuyển sang trang PaymentConfirm
+  /* Khi đủ dữ liệu -> sang trang thanh toán */
   if (selectedDate && selectedSlot && selectedDoctor && finalSlot) {
     return (
-      <PaymentConfirm
-        doctor={selectedDoctor}
-        date={selectedDate}
-        slot={finalSlot}
-      />
+      <PaymentConfirm doctor={selectedDoctor} date={selectedDate} slot={finalSlot} />
     );
   }
 
-  // Hiển thị các bước chọn trên cùng một màn hình với bố cục 2 cột
+  /* ============ UI ============ */
   return (
-    <div className='booking-main-container'>
-      <h1 className='title'>Đặt lịch tư vấn</h1>
-      <p className='script'>Chọn ngày, khung giờ và tư vấn viên phù hợp với bạn.</p>
+    <div className="counselor-booking-main-container">
+      <h1 className="counselor-title">Consultation Booking</h1>
 
-      <div className='booking-content-wrapper'>
-        {/* Cột trái: Chọn ngày và khung giờ */}
-        <div className='booking-left-column'>
-          <PickingDate onSelectDate={handleSelectDate} />
-          <TimeSlots
-            date={selectedDate}
-            onSelectSlot={handleSelectSlot}
-          />
+      <div className="counselor-booking-row">
+        {/* Bên trái: Date + Slot */}
+        <div className="counselor-booking-left-column">
+          <div className="counselor-step-box">
+            <PickingDate onSelectDate={handleSelectDate} />
+          </div>
+
+          <div className="counselor-step-box">
+            <TimeSlots date={selectedDate} onSelectSlot={handleSelectSlot} />
+          </div>
         </div>
 
-        {/* Cột phải: Danh sách bác sĩ */}
-        <div className='booking-right-column'>
-          {(!selectedDate || !selectedSlot) && (
-            <p className='placeholder-text'>Vui lòng chọn ngày và khung giờ để xem danh sách tư vấn viên.</p>
-          )}
-          {/* Hiển thị CounselorDoctor nếu đã có ngày và slot được chọn */}
-          {selectedDate && selectedSlot && (
-            <CounselorDoctor
-              date={selectedDate}
-              slot={selectedSlot}
-              onSelectDoctor={handleSelectDoctor}
-            />
-          )}
+        {/* Bên phải: Counselor */}
+        <div className="counselor-booking-right-column">
+          <div className="m-6 rounded-xl border border-gray-300 counselor-step-box">
+            <h2 className="counselor-step-title">3. Choose a Counselor</h2>
+            {(!selectedDate || !selectedSlot) ? (
+              <p className="counselor-placeholder-text">
+                Please select a date and time slot to view available counselors.
+              </p>
+            ) : (
+              <CounselorDoctor
+                date={selectedDate}
+                slot={selectedSlot}
+                onSelectDoctor={handleSelectDoctor}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

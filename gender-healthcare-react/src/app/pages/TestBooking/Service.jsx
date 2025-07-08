@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Service.css';
 
 export default function Service() {
@@ -7,7 +8,7 @@ export default function Service() {
             <h1 className='title'>Professional Healthcare Services</h1>
             <p className='script'>Choose from our comprehensive range of medical services provided by board-certified healthcare professionals</p>
             <div className='card-container'>
-                <div className='card card-stethoscope'>
+                <Link to="/booking" className='card card-stethoscope' style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className='icon icon-stethoscope'><i className='fa-solid fa-stethoscope'></i></div>
                     <h2>Medical Consultation</h2>
                     <p>Comprehensive medical evaluations with experienced physicians. Get expert diagnosis, treatment plans, and health guidance tailored to your needs.</p>
@@ -21,8 +22,8 @@ export default function Service() {
                     <div className='price-1'><span>100.000 VND</span> starting from</div>
                     <div className='convenient'>45-60 minute comprehensive session</div>
                     <div className='note-1'>Most Popular</div>
-                </div>
-                <div className='card card-hospital'>
+                </Link>
+                <Link to="/couselortestbooking" className='card card-hospital' style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className='icon icon-hospital'><i className='fa-solid fa-hospital'></i></div>
                     <h2>STI Testing & Screening</h2>
                     <p>Confidential and comprehensive sexually transmitted infection testing with rapid results. Professional, discreet service in a comfortable environment.</p>
@@ -36,12 +37,12 @@ export default function Service() {
                     <div className='price-2'><span>120.000 VND</span> starting from</div>
                     <div className='convenient'>Quick, discreet, and professional</div>
                     <div className='note-2'>Same Day Results</div>
-                </div>
+                </Link>
             </div>
             <div className='why-choose'>
-                <h3>Why Choose Our Healthcare Services?</h3>
                 <div className='items'>
                     <div className='item'>
+                        <div className='icon icon-stethoscope'><i className='fa-solid fa-stethoscope'></i></div>
                         <div className='icon icon-stethoscope'><i className='fa-solid fa-stethoscope'></i></div>
                         <div className='name'>Licensed Professionals</div>
                         <p>All our healthcare providers are board-certified and experienced</p>

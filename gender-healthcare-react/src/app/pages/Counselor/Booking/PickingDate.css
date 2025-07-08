@@ -1,20 +1,20 @@
-.pickingdate-content {
-    .calendar-form {
+.pickingdate-content-counselor {
+    .counselor-calendar-form {
         font-family: 'Segoe UI', sans-serif;
         background: #fff;
-        margin: 40px auto;
         border-radius: 12px;
         overflow: hidden;
-         width: 300px; /* Giảm từ 500px xuống 300px hoặc 350px tùy theo mong muốn */
-        margin: 0 auto; /* Đảm bảo căn giữa trong cột của nó */
+        margin: 0 auto;
         border-radius: 12px;
-
-        .calendar-header {
+        border: 1px solid #e0e0e0; /* Thêm border xám nhạt */
+        /* Xóa box-shadow */
+        
+        .counselor-calendar-header {
             display: flex;
             justify-content: space-between;
-            background-color: #e9f1ff;
-            padding: 16px 24px;
-
+            background-color: #d7e6ff;
+            padding: 10px 24px;
+            font-weight: bold;
             h2 {
                 margin: 0;
                 font-size: 18px;
@@ -72,22 +72,22 @@
                 }
 
                 .date {
-                    border-radius: 8px;
+                    border-radius: 100%;
                     margin: 0 auto;
                     cursor: pointer;
                     transition: all 0.2s ease;
                     color: #222;
-                    width: 32px; /* Giảm kích thước ô ngày */
-                    height: 32px;
-                    line-height: 32px;
-                    font-size: 14px; /* Giảm cỡ chữ ngày */
+                    width: 30px;
+                    height: 30px;
+                    line-height: 30px;
+                    font-size: 14px;
 
                     &.empty {
                         pointer-events: none;
                         background: none;
                     }
 
-                    &.today {
+                    &.counselor-today {
                         background: #e1ebfb;
                         color: #4a6fa1;
                     }
@@ -109,10 +109,10 @@
             }
         }
 
-        .calendar-footer {
+        .counselor-calendar-footer {
             display: flex;
-            justify-content: space-between;
-            padding: 12px 16px;
+            justify-content: center;
+            padding:0px 12px 12px 16px;
             background: #f9fafb;
             font-size: 14px;
             color: #666;
@@ -148,7 +148,6 @@
                 }
             }
 
-            /* Nếu bạn không cần timezone, bạn có thể xóa phần này luôn */
             .timezone {
                 display: none;
             }

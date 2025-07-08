@@ -1,77 +1,118 @@
 import React from 'react';
-import './PaymentConfirm.css';
 import dayjs from 'dayjs';
 import { useNavigate } from 'react-router-dom';
-import { counselorScheduleAPI } from '../../../services/api'; // ✅ import đúng API
+import {
+  counselorScheduleAPI,
+  counselorBookAPI,
+} from '../../../services/api';
 
 export default function PaymentConfirm({ doctor, date, slot }) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const getFormattedTime = (timeStr) => {
-        if (!date || !timeStr) return null;
-        const dateStr = dayjs(date).format('YYYY-MM-DD');
-        return dayjs(`${dateStr}T${timeStr}`);
-    };
+  const start = slot?.startTime ? dayjs(slot.startTime) : null;
+  const end = slot?.endTime ? dayjs(slot.endTime) : null;
 
-    const start = getFormattedTime(slot?.startTime);
-    const end = getFormattedTime(slot?.endTime);
+  const accountId = localStorage.getItem('UserId');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  const handleSubmit = async (e) => {
+    console.log('🚀 Bắt đầu thanh toán');
+    e.preventDefault();
 
-        try {
-            console.log('📤 Gửi cập nhật slot ID:', slot?._id);
-            // ✅ Gọi API cập nhật trạng thái slot thành 'booked'
-            if (slot?._id) {
-                await counselorScheduleAPI.update(slot._id, {
-                    status: 'booked',
-                });
-                console.log('✔ Slot đã được cập nhật thành booked');
-            }
+    if (!accountId || !slot?._id || !doctor?._id) {
+      console.warn('❗Thiếu thông tin:', {
+        accountId,
+        doctorId: doctor?._id,
+        scheduleId: slot?._id,
+      });
+      alert('Vui lòng chọn đầy đủ thông tin để thanh toán.');
+      return;
+    }
 
-            alert('✅ Thanh toán thành công!');
-            navigate('/booking'); 
-        } catch (err) {
-            console.error('❌ Lỗi khi cập nhật trạng thái slot:', err);
-            alert('❌ Đã xảy ra lỗi khi thanh toán!');
-        }
-    };
+try {
+  // 1️⃣ Gọi API lấy customerId từ accountId
+  const res = await counselorBookAPI.getCustomerIdByAccountId(accountId);
+  const customerId = res.data._id;
 
-    return (
-        <div className='paymentconfirm-content booking-content'>
-            <h1 className='title'>Confirm & Pay</h1>
-            <p className='script'>Review your booking details and complete payment</p>
+  // 2️⃣ Tạo booking trước
+  const payload = {
+    customerId,
+    counselorId: doctor._id,
+    scheduleId: slot._id,
+    bookingDate: start ? start.toISOString() : new Date().toISOString(),
+    status: 'confirmed',
+    note: '',
+  };
 
-            <div className='checkout-container'>
-                <div className='box summary-box'>
-                    <h3><i className='fa-regular fa-calendar'></i> Booking Summary</h3>
-                    <div className='rows'>
-                        <div className='row'>
-                            Service: <span>Consultation Booking</span>
-                        </div>
-                        <div className='row'>
-                            Provider: <span>{doctor?.accountId?.name || '---'}</span>
-                        </div>
-                        <div className='row'>
-                            Date: <span>{start ? start.format('DD/MM/YYYY') : '---'}</span>
-                        </div>
-                        <div className='row'>
-                            Time: <span>
-                                {start && end
-                                    ? `${start.format('HH:mm')} - ${end.format('HH:mm')}`
-                                    : '---'}
-                            </span>
-                        </div>
-                    </div>
-                    <div className='total'>
-                        Total: <span>${doctor?.price || 0}</span>
-                    </div>
-                    <hr />
-                    <button onClick={handleSubmit} className='pay-btn'>
-                        Pay ${doctor?.price || 0}
-                    </button>
-                </div>
-            </div>
+  console.log('📤 Booking payload gửi lên:', payload);
+  await counselorBookAPI.create(payload);
+  console.log('✅ Booking created');
+
+  // 3️⃣ Sau khi booking thành công mới update slot
+  await counselorScheduleAPI.update(slot._id, { status: 'booked' });
+  console.log('✔ Schedule updated → booked');
+
+  alert('✅ Thanh toán thành công!');
+  navigate('/');
+}catch (err) {
+  console.error('❌ Lỗi khi thanh toán:', err);
+  if (err.response) {
+    console.error('🛑 Response data:', err.response.data);
+    console.error('🛑 Status:', err.response.status);
+    console.error('🛑 Headers:', err.response.headers);
+  }
+  alert('❌ Đã xảy ra lỗi khi thanh toán!');
+}
+
+
+  };
+
+  return (
+    <div className="max-w-2xl mx-auto bg-white shadow-md rounded-xl p-8 mt-10">
+      <h1 className="text-2xl font-bold text-center text-gray-800 mb-2">
+        Confirm &amp; Pay
+      </h1>
+      <p className="text-center text-gray-500 mb-6">
+        Review your booking details and complete payment
+      </p>
+
+      <div className="bg-gray-100 p-6 rounded-lg">
+        <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+          <i className="fa-regular fa-calendar"></i> Booking Summary
+        </h3>
+
+        <div className="space-y-2 text-gray-700 text-sm">
+          <div className="flex justify-between">
+            <span>Service:</span>
+            <span className="font-medium">Consultation Booking</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Counselor:</span>
+            <span className="font-medium">{doctor?.accountId?.name || '---'}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Date:</span>
+            <span className="font-medium">{start ? start.format('DD/MM/YYYY') : '---'}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Time:</span>
+            <span className="font-medium">
+              {start && end ? `${start.format('HH:mm')} - ${end.format('HH:mm')}` : '---'}
+            </span>
+          </div>
+
+          <div className="flex justify-between font-bold mt-4 border-t pt-3 text-base">
+            <span>Total:</span>
+            <span>${slot?.price || 0}</span>
+          </div>
         </div>
-    );
+
+        <button
+          onClick={handleSubmit}
+          className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-lg transition"
+        >
+          Pay ${slot?.price || 0}
+        </button>
+      </div>
+    </div>
+  );
 }
