@@ -1,16 +1,27 @@
 const express = require('express');
 const accountCtrl = require('../controllers/account.controller');
+const { authenticate, authorize } = require('../middlewares/auth.middleware');
 const router = express.Router();
 
-router.post('/', accountCtrl.create);
-router.get('/', accountCtrl.getAll);
-router.get('/:id', accountCtrl.getOne);
-router.put('/:id', accountCtrl.update);
-router.delete('/:id', accountCtrl.remove);
+// Public routes
+router.post('/register', accountCtrl.register);
+router.post('/login', accountCtrl.login);
 router.post('/check-email', accountCtrl.checkEmail);
+
+// Legacy routes for backward compatibility
 router.post('/authentication', accountCtrl.authentication);
-router.get('/:accountId/posts', accountCtrl.getAccountPosts);
-router.patch('/:id/activate', accountCtrl.activateAccount);
-router.patch('/:id/deactivate', accountCtrl.deactivateAccount);
+
+// Protected routes (require authentication)
+router.get('/me', authenticate, accountCtrl.getCurrentUser);
+router.get('/:accountId/posts', authenticate, accountCtrl.getAccountPosts);
+
+// Admin only routes
+router.get('/', authenticate, authorize('Admin'), accountCtrl.getAll);
+router.get('/:id', authenticate, accountCtrl.getOne);
+router.post('/', authenticate, authorize('Admin'), accountCtrl.create);
+router.put('/:id', authenticate, accountCtrl.update);
+router.delete('/:id', authenticate, authorize('Admin'), accountCtrl.remove);
+router.patch('/:id/activate', authenticate, authorize('Admin'), accountCtrl.activateAccount);
+router.patch('/:id/deactivate', authenticate, authorize('Admin'), accountCtrl.deactivateAccount);
 
 module.exports = router;

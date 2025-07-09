@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../hooks/Context/AuthContext.jsx';
-import { postData } from './api_register.js';
+import { authenticate } from '../../services/authService';
 import './LoginRegister.css';
 
 export default function Login() {
@@ -16,8 +16,7 @@ export default function Login() {
     const { login } = UserAuth();
 
     const [errorSignIn, setErrorSignIn] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const Login = async (email, password) => {
         console.log('Remember: ', Remember);
@@ -33,40 +32,35 @@ export default function Login() {
             return;
         }
 
-        const account = {
-            email: email,
-            password: password,
-        };
-        console.log('Sign In Data:', account);
-
-        const token = '';
+        setLoading(true);
+        
         try {
-            const result = await postData('/accounts/authentication', token, account);
-            console.log('result', result);
-            console.log('allowLogin', result.allowLogin);
+            const result = await authenticate(email, password);
+            console.log('Authentication result:', result);
 
             if (result.allowLogin) {
-                // setSuccessSignIn('Sign up success!');
-                // if (result.userInfo.role == 'Customer') {
-                // navigate('http://localhost:5173/register');
-                // } else {
-
-                // localStorage.removeItem('Token');
-                // localStorage.setItem('Token', data.token);
-                localStorage.removeItem('UserId');
-                localStorage.setItem('UserId', result.userInfo._id);
-                localStorage.removeItem('UserRole');
-                localStorage.setItem('UserRole', result.userInfo.role);
-                localStorage.removeItem('isLogIn');
-                localStorage.setItem('IsLogIn', 'true');
-                login();
-                navigate('/');
-                // }
+                // Token is already saved in localStorage by the authenticate function
+                // User data already saved in localStorage by the authenticate function
+                
+                login(); // Update auth context
+                
+                // Redirect based on role
+                const userRole = result.userInfo.role;
+                if (userRole === 'Admin') {
+                  navigate('/admin/dashboard');
+                } else if (userRole === 'Doctor') {
+                  navigate('/doctor/dashboard');
+                } else if (userRole === 'Counselor') {
+                  navigate('/counselor/dashboard');
+                } else {
+                  navigate('/'); // Default for customers
+                }
             } else {
                 setErrorSignIn('Incorrect email or password');
             }
         } catch (error) {
-            setError('Failed to fetch data: ', error);
+            console.error('Login error:', error);
+            setErrorSignIn(error.message || 'Failed to login. Please try again.');
         } finally {
             setLoading(false);
         }

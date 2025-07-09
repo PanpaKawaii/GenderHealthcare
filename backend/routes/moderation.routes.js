@@ -1,6 +1,10 @@
 const express = require('express');
 const moderationCtrl = require('../controllers/moderation.controller');
+const { authenticate, authorize } = require('../middlewares/auth.middleware');
 const router = express.Router();
+
+// All moderation routes require authentication and Manager or Admin authorization
+router.use(authenticate, authorize( 'Admin'));
 
 // Posts moderation
 router.get('/posts/pending', moderationCtrl.getPendingPosts);

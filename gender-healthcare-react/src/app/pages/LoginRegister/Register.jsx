@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { postData } from './api_register.js';
+import { register } from '../../services/authService';
 import './LoginRegister.css';
 
 export default function Register() {
@@ -15,8 +15,7 @@ export default function Register() {
 
     const [errorSignUp, setErrorSignUp] = useState(null);
     const [successSignUp, setSuccessSignUp] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const Register = async (name, email, phone, date, gender, password, confirm) => {
         console.log('Accept: ', Accept);
@@ -27,13 +26,11 @@ export default function Register() {
             return;
         }
 
-
         if (!email) {
             console.error('Invalid email');
             setErrorSignUp('Invalid email');
             return;
         }
-
 
         if (!phone) {
             console.error('Invalid phone number');
@@ -49,7 +46,6 @@ export default function Register() {
             return;
         }
 
-
         const isOver16 = (dateOfBirth) => {
             const birthDate = new Date(dateOfBirth);
             const currentDate = new Date();
@@ -62,6 +58,7 @@ export default function Register() {
             }
             return age >= 16;
         }
+        
         if (!date) {
             console.error('Invalid date of birth');
             setErrorSignUp('Invalid date of birth');
@@ -72,13 +69,11 @@ export default function Register() {
             return;
         }
 
-
         if (!gender) {
             console.error('Invalid gender');
             setErrorSignUp('Invalid gender');
             return;
         }
-
 
         if (!password) {
             console.error('Invalid password');
@@ -90,7 +85,6 @@ export default function Register() {
             return;
         }
 
-
         if (!confirm) {
             console.error('Invalid password confirmation');
             setErrorSignUp('Invalid password confirmation');
@@ -101,15 +95,16 @@ export default function Register() {
             return;
         }
 
-
         if (Accept === false) {
             console.error('You must accept the provision to sign up');
             setErrorSignUp('You must accept the provision to sign up');
             return;
         }
 
+        setLoading(true);
 
-        const account = {
+        // Create account data
+        const userData = {
             name: name,
             image: '',
             gender: gender,
@@ -118,40 +113,50 @@ export default function Register() {
             password: password,
             role: 'Customer'
         };
-        console.log('Sign Up Data:', account);
-
-        const token = '';
+        
         try {
-            const result = await postData('/accounts/check-email', token, { email: email });
-            console.log('result', result);
-            console.log('allowRegister', result.allowRegister);
-
-            if (result.allowRegister) {
-                const resultAccount = await postData('/accounts', token, account);
-                console.log('resultAccount', resultAccount);
-
-                if (resultAccount) {
-                    const customer = {
-                        accountId: resultAccount._id,
-                        dateOfBirth: date,
-                        address: '',
-                    };
-
-                    const resultCustomer = await postData('/customers', token, customer);
-                    console.log('resultCustomer', resultCustomer);
-
-                    setSuccessSignUp('Sign up success!');
-
-                    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-                    await sleep(2000);
-                    navigate('/login');
+            // Register using our authService
+            const result = await register(userData);
+            
+            if (result.success) {
+                // Now create the customer profile with additional details
+                const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+                const customerData = {
+                    accountId: result.user._id,
+                    dateOfBirth: date,
+                    address: '',
+                };
+                
+                // Use token from successful registration
+                const token = result.token;
+                const headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                };
+                
+                // Create customer profile
+                const customerResponse = await fetch(`${API_URL}/customers`, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify(customerData)
+                });
+                
+                if (customerResponse.ok) {
+                    setSuccessSignUp('Registration successful!');
+                    
+                    // Wait 2 seconds and navigate to login
+                    setTimeout(() => {
+                        navigate('/login');
+                    }, 2000);
+                } else {
+                    throw new Error('Failed to create customer profile');
                 }
-
             } else {
-                setErrorSignUp('Your email has been signed in');
+                setErrorSignUp('Email already registered');
             }
         } catch (error) {
-            setError('Failed to fetch data: ', error);
+            console.error('Registration error:', error);
+            setErrorSignUp(error.message || 'Registration failed. Please try again.');
         } finally {
             setLoading(false);
         }
