@@ -134,7 +134,7 @@ export default function ForumPage() {
           setHasMore(false);
         }
       }
-    } catch (error) {
+    } catch (error) { 
       console.error("Error fetching posts:", error);
     } finally {
       setLoading(false);
