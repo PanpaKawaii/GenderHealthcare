@@ -1,81 +1,83 @@
-import { useState, useEffect } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ForumComponents/ui/card"
-import { Badge } from "../../components/ForumComponents/ui/badge"
-import { CalendarIcon, Clock, Loader2 } from "lucide-react"
+import { useState, useEffect } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../../components/ForumComponents/ui/card";
+import { Badge } from "../../components/ForumComponents/ui/badge";
+import { CalendarIcon, Clock, Loader2 } from "lucide-react";
+import { counselorBookAPI } from "../../services/api"; // 👈 gọi API thật
 
 export default function AppointmentHistory() {
-  const [appointments, setAppointments] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  
-  const customerId = localStorage.getItem("UserId")
+  const [appointments, setAppointments] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const accountId = localStorage.getItem("UserId");
 
   useEffect(() => {
     const fetchAppointments = async () => {
-      if (!customerId) return
-      
-      setLoading(true)
+      if (!accountId) return;
+
+      setLoading(true);
       try {
-        // For demo purposes, we'll use static data since the API endpoint for consultations wasn't provided
-        setTimeout(() => {
-          setAppointments([
-            {
-              id: 1,
-              doctor: "Dr. Sarah Smith",
-              specialty: "Gynecologist",
-              date: "June 12, 2025",
-              time: "10:00 AM",
-              status: "upcoming"
-            },
-            {
-              id: 2,
-              doctor: "Dr. Michael Chen",
-              specialty: "Health Counselor",
-              date: "June 18, 2025",
-              time: "2:30 PM",
-              status: "upcoming"
-            },
-            {
-              id: 3,
-              doctor: "Dr. Sarah Smith",
-              specialty: "Gynecologist",
-              date: "May 15, 2025",
-              time: "11:00 AM",
-              status: "completed",
-              notes: "Annual checkup. Everything looks normal."
-            }
-          ])
-          setLoading(false)
-        }, 500)
+        const res = await counselorBookAPI.getByCustomerAccountId(accountId);
+        const raw = res.data;
+
+        const mapped = raw.map((booking) => {
+          const doctor = booking.scheduleId?.counselorId?.accountId;
+          const start = booking.scheduleId?.startTime;
+          const end = booking.scheduleId?.endTime;
+
+          return {
+            id: booking._id,
+            doctor: doctor?.name || "Unknown",
+            specialty: booking.scheduleId?.counselorId?.degree || "General",
+            date: start ? new Date(start).toLocaleDateString("vi-VN") : "N/A",
+            time: start && end
+              ? `${new Date(start).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" })} - ${new Date(end).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" })}`
+              : "N/A",
+            status: booking.status || "unknown",
+            notes: booking.note || "",
+          };
+        });
+
+        setAppointments(mapped);
       } catch (err) {
-        console.error("Error fetching appointments:", err)
-        setError("Failed to load appointment data")
-        setLoading(false)
+        console.error("❌ Lỗi khi tải lịch sử booking:", err);
+        setError("Không thể tải dữ liệu lịch sử.");
+      } finally {
+        setLoading(false);
       }
-    }
-    
-    fetchAppointments()
-  }, [customerId])
+    };
+
+    fetchAppointments();
+  }, [accountId]);
 
   const getStatusBadge = (status) => {
     switch (status) {
       case "upcoming":
-        return <Badge className="bg-green-100 text-green-800">Upcoming</Badge>
+      case "confirmed":
+        return <Badge className="bg-green-100 text-green-800">Upcoming</Badge>;
       case "completed":
-        return <Badge className="bg-blue-100 text-blue-800">Completed</Badge>
+        return <Badge className="bg-blue-100 text-blue-800">Completed</Badge>;
       case "cancelled":
-        return <Badge className="bg-red-100 text-red-800">Cancelled</Badge>
+        return <Badge className="bg-red-100 text-red-800">Cancelled</Badge>;
       default:
-        return <Badge variant="outline">Unknown</Badge>
+        return <Badge variant="outline">Unknown</Badge>;
     }
-  }
+  };
 
   return (
     <div className="space-y-4">
       <Card>
         <CardHeader>
           <CardTitle>Appointments</CardTitle>
-          <CardDescription>View your upcoming and past appointments</CardDescription>
+          <CardDescription>
+            View your upcoming and past appointments
+          </CardDescription>
         </CardHeader>
         <CardContent>
           {loading ? (
@@ -87,26 +89,32 @@ export default function AppointmentHistory() {
           ) : appointments.length > 0 ? (
             <div className="space-y-4">
               {appointments.map((appointment) => (
-                <div key={appointment.id} className="p-4 border rounded-lg hover:bg-gray-50">
+                <div
+                  key={appointment.id}
+                  className="p-4 border rounded-lg hover:bg-gray-50"
+                >
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                     <div>
                       <div className="flex items-center justify-between">
                         <h3 className="font-medium">{appointment.doctor}</h3>
                         {getStatusBadge(appointment.status)}
                       </div>
-                      <p className="text-sm text-gray-500">{appointment.specialty}</p>
-                      
+                      <p className="text-sm text-gray-500">
+                        {appointment.specialty}
+                      </p>
+
                       <div className="flex items-center gap-2 mt-2">
                         <CalendarIcon className="h-4 w-4 text-gray-500" />
                         <span className="text-sm">{appointment.date}</span>
-                        
+
                         <Clock className="h-4 w-4 text-gray-500 ml-2" />
                         <span className="text-sm">{appointment.time}</span>
                       </div>
-                      
+
                       {appointment.notes && (
                         <div className="mt-2 text-sm">
-                          <span className="font-medium">Notes:</span> {appointment.notes}
+                          <span className="font-medium">Notes:</span>{" "}
+                          {appointment.notes}
                         </div>
                       )}
                     </div>
@@ -122,5 +130,5 @@ export default function AppointmentHistory() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

@@ -70,6 +70,7 @@ export const counselorBookAPI = {
   update: (id, data) => api.put(`/consultationbooking/${id}`, data),
   delete: (id) => api.delete(`/consultationbooking/${id}`),
   getById: (id) => api.get(`/consultationbooking/${id}`),
+    getByCustomerAccountId: (accountId) => api.get(`/consultationbooking/customer/${accountId}`),
   getCustomerIdByAccountId: (accountId) => api.get(`/consultationbooking/customers/byAccount/${accountId}`),
 };
 

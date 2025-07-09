@@ -52,7 +52,7 @@ try {
   console.log('✔ Schedule updated → booked');
 
   alert('✅ Thanh toán thành công!');
-  navigate('/');
+  navigate('/profile?tab=appointments');
 }catch (err) {
   console.error('❌ Lỗi khi thanh toán:', err);
   if (err.response) {

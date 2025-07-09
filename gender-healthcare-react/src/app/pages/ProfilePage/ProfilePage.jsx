@@ -13,8 +13,13 @@ import AppointmentHistory from "./AppointmentHistory"
 import TestResults from "./TestResult"
 import EditProfileDialog from "./EditProfileDialog"
 import { format } from "date-fns"
+import { useSearchParams } from 'react-router-dom';
 
 export default function ProfilePage() {
+  const [searchParams] = useSearchParams();
+  const initialTab = searchParams.get('tab') || 'cycle'; // 👉 đọc từ URL ?tab=appointments
+  const [activeTab, setActiveTab] = useState(initialTab);
+
   const [userInfo, setUserInfo] = useState(null);
   const [customerInfo, setCustomerInfo] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,17 +30,17 @@ export default function ProfilePage() {
   useEffect(() => {
     const fetchUserData = async () => {
       if (!UserId) return;
-      
+
       try {
         setLoading(true);
         const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-        
+
         // Fetch user account info
         const accountResponse = await fetch(`${API_URL}/accounts/${UserId}`);
         if (accountResponse.ok) {
           const accountData = await accountResponse.json();
           setUserInfo(accountData);
-          
+
           // Fetch customer details if user is a customer
           if (accountData.role === 'Customer') {
             const customerResponse = await fetch(`${API_URL}/customers?accountId=${UserId}`);
@@ -53,24 +58,24 @@ export default function ProfilePage() {
         setLoading(false);
       }
     };
-    
+
     fetchUserData();
   }, [UserId]);
 
   // Function to refresh user data after profile update
   const refreshUserData = async () => {
     if (!UserId) return;
-    
+
     try {
       setLoading(true);
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-      
+
       // Fetch user account info
       const accountResponse = await fetch(`${API_URL}/accounts/${UserId}`);
       if (accountResponse.ok) {
         const accountData = await accountResponse.json();
         setUserInfo(accountData);
-        
+
         // Fetch customer details if user is a customer
         if (accountData.role === 'Customer') {
           const customerResponse = await fetch(`${API_URL}/customers?accountId=${UserId}`);
@@ -145,7 +150,7 @@ export default function ProfilePage() {
               </div>
               <div className="flex flex-col">
                 <span className="text-sm text-muted-foreground">Date of Birth</span>
-                <span className="font-medium">{customerInfo?.dateOfBirth ? 
+                <span className="font-medium">{customerInfo?.dateOfBirth ?
                   format(new Date(customerInfo.dateOfBirth), "dd/MM/yyyy") : "N/A"}</span>
               </div>
               <div className="flex flex-col">
@@ -215,7 +220,7 @@ export default function ProfilePage() {
           </div> */}
 
           {/* Tabs for different sections */}
-          <Tabs defaultValue="cycle" className="w-full">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid grid-cols-5 mb-4">
               <TabsTrigger value="cycle">Cycle</TabsTrigger>
               <TabsTrigger value="reminders">Reminders</TabsTrigger>
@@ -249,10 +254,10 @@ export default function ProfilePage() {
 
       {/* Edit Profile Dialog */}
       {isEditProfileOpen && (
-        <EditProfileDialog 
-          isOpen={isEditProfileOpen} 
-          onClose={() => setIsEditProfileOpen(false)} 
-          userInfo={userInfo} 
+        <EditProfileDialog
+          isOpen={isEditProfileOpen}
+          onClose={() => setIsEditProfileOpen(false)}
+          userInfo={userInfo}
           customerInfo={customerInfo}
           onProfileUpdated={refreshUserData}
         />
