@@ -6,30 +6,17 @@ import CustomerRoutes from "./app/routes/CustomerRoutes.jsx";
 import AdminRoutes from './app/routes/AdminRoutes.jsx';
 import { UserAuth } from "./app/hooks/Context/AuthContext.jsx";
 import { useEffect } from "react";
-import { api } from "./app/services/api";
+import { initAuth, setupAxiosInterceptors } from "./app/services/authService";
 
 export default function App() {
-  // Setup axios global error handler for unauthorized responses
-  // useEffect(() => {
-  //   // Add a response interceptor to handle 401 errors globally
-  //   const interceptor = api.interceptors.response.use(
-  //     response => response,
-  //     error => {
-  //       if (error.response && error.response.status === 401) {
-  //         // Clear the token if it's invalid
-  //         localStorage.removeItem('token');
-  //         // Redirect to login page if needed
-  //         window.location.href = '/login';
-  //       }
-  //       return Promise.reject(error);
-  //     }
-  //   );
-
-  //   return () => {
-  //     // Clean up interceptor on component unmount
-  //     api.interceptors.response.eject(interceptor);
-  //   };
-  // }, []);
+  // Setup authentication on app load
+  useEffect(() => {
+    // Initialize auth token from localStorage
+    initAuth();
+    
+    // Setup interceptors to handle expired tokens
+    setupAxiosInterceptors();
+  }, []);
   const { Id, Token, Role, IsLogIn } = UserAuth();
   console.log("Id", Id);
   console.log("Token", Token);
