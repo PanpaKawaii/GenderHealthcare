@@ -70,7 +70,7 @@ export const counselorBookAPI = {
   update: (id, data) => api.put(`/consultationbooking/${id}`, data),
   delete: (id) => api.delete(`/consultationbooking/${id}`),
   getById: (id) => api.get(`/consultationbooking/${id}`),
-    getByCustomerAccountId: (accountId) => api.get(`/consultationbooking/customer/${accountId}`),
+  getByCustomerAccountId: (accountId) => api.get(`/consultationbooking/customer/${accountId}`),
   getCustomerIdByAccountId: (accountId) => api.get(`/consultationbooking/customers/byAccount/${accountId}`),
 };
 
@@ -177,7 +177,7 @@ export const testserviceparameterAPI = {
 
 //   // ===== COMMENTS =====
 //   // Tạo bình luận hoặc trả lời (gộp chung)
-//   createComment: (postId, data) => api.post(`/posts/${postId}/comments`, data), 
+//   createComment: (postId, data) => api.post(`/posts/${postId}/comments`, data),
 //   // data = { content, accountId, parentCommentId (optional) }
 
 //   // (Nếu cần cập nhật comment)
@@ -188,7 +188,7 @@ export const testserviceparameterAPI = {
 //   getRepliesByCommentId: (commentId) => api.get(`comments/${commentId}/replies`),
 
 //   // Vote comment
-//   voteComment: (commentId, data) => api.post(`/comments/${commentId}/vote`, data), 
+//   voteComment: (commentId, data) => api.post(`/comments/${commentId}/vote`, data),
 //   // data = { voteType, accountId }
 // };
 

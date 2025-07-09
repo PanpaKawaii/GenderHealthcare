@@ -37,18 +37,28 @@ export default function Booking() {
     }
   };
 
-  const handleSelectSlot = (slot) => {
-    // Toggle: nếu click lại slot đang chọn thì bỏ chọn
-    if (selectedSlot && selectedSlot.startTime === slot.startTime) {
-      setSelectedSlot(null);
-      setSelectedDoctor(null);
-      setFinalSlot(null);
-      return;
-    }
+ const handleSelectSlot = (slot) => {
+  if (!slot) {
+    // Nếu slot là null (bỏ chọn từ TimeSlots)
+    setSelectedSlot(null);
+    setSelectedDoctor(null);
+    setFinalSlot(null);
+    return;
+  }
+
+  if (selectedSlot && selectedSlot.startTime === slot.startTime) {
+    // Click lại slot đang chọn ⇒ bỏ chọn
+    setSelectedSlot(null);
+    setSelectedDoctor(null);
+    setFinalSlot(null);
+  } else {
+    // Chọn slot mới
     setSelectedSlot(slot);
     setSelectedDoctor(null);
     setFinalSlot(null);
-  };
+  }
+};
+
 
   const handleSelectDoctor = (doctor, realSlotFromDB) => {
     setSelectedDoctor(doctor);
