@@ -6,6 +6,13 @@ export const api = axios.create({
   },
 });
 
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 export const accountAPI = {
   // login: (credentials) => api.post('/accounts/login', credentials),
   // register: (userData) => api.post('/accounts/register', userData),
@@ -72,6 +79,8 @@ export const counselorBookAPI = {
   getById: (id) => api.get(`/consultationbooking/${id}`),
   getByCustomerAccountId: (accountId) => api.get(`/consultationbooking/customer/${accountId}`),
   getCustomerIdByAccountId: (accountId) => api.get(`/consultationbooking/customers/byAccount/${accountId}`),
+getByCounselorAccountId: (accountId) => api.get(`/consultationbooking/counselor/${accountId}`),
+
 };
 
 export const counselorScheduleAPI = {
