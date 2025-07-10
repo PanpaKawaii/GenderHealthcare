@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { fetchData, postData, putData, deleteData } from '../LoginRegister/api_register';
 import '../ParameterManager/ManagerStyles.css';
 
@@ -133,7 +134,7 @@ export default function TestBookingManager() {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>ID</th>
+                        {/* <th>ID</th> */}
                         <th>Ngày xét nghiệm</th>
                         <th>Thời gian</th>
                         <th>Ngày tạo</th>
@@ -149,7 +150,7 @@ export default function TestBookingManager() {
                         bookings.map((booking, index) => (
                             <tr key={booking._id}>
                                 <td>{index + 1}</td>
-                                <td>{booking._id}</td>
+                                {/* <td>{booking._id}</td> */}
                                 <td>{new Date(booking.bookingDate).toLocaleDateString('vi-VN')}</td>
                                 <td>
                                     {booking.doctorTestServiceId?.startTime} - {booking.doctorTestServiceId?.endTime}
@@ -158,8 +159,11 @@ export default function TestBookingManager() {
                                 <td>{booking.status}</td>
                                 <td>{booking.note || '—'}</td>
                                 <td>
-                                    <button onClick={() => setEditingBooking(booking)}>Edit</button>
-                                    <button className='dlt-btn' onClick={() => DeleteBooking(booking._id)}>Delete</button>
+                                    <div className='btn-box'>
+                                        <button className='btn' onClick={() => setEditingBooking(booking)}>Edit</button>
+                                        {/* <button className='dlt-btn' onClick={() => DeleteBooking(booking._id)}>Delete</button> */}
+                                        <Link to='/'><button className='btn detail-btn'>Detail</button></Link>
+                                    </div>
                                 </td>
                             </tr>
                         ))

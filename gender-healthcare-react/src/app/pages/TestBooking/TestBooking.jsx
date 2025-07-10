@@ -34,8 +34,11 @@ export default function TestBooking() {
 
         const token = '';
         try {
-            const result = await postData('/testbookings', token, BookingData);
-            console.log('result', result);
+            const resultTestBookings = await postData('/testbookings', token, BookingData);
+            console.log('resultTestBookings', resultTestBookings);
+            const resultTestResults = await postData('/testresults', token, BookingData);
+            console.log('resultTestResults', resultTestResults);
+
             navigate('/');
         } catch (error) {
             setError(true);
