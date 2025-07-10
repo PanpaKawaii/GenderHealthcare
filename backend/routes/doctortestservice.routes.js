@@ -1,11 +1,13 @@
 const express = require("express");
 const ctrl = require("../controllers/doctortestservice.controller");
-const r = express.Router();
+const router = express.Router();
+const { authenticate, authorize } = require("../middlewares/auth.middleware");
+router.use(authenticate, authorize("Doctor"));
 
-r.post("/", ctrl.create);
-r.get("/", ctrl.getAll);
-r.get("/:id", ctrl.getOne);
-r.put("/:id", ctrl.update);
-r.delete("/:id", ctrl.remove);
+router.post("/", ctrl.create);
+router.get("/", ctrl.getAll);
+router.get("/:id", ctrl.getOne);
+router.put("/:id", ctrl.update);
+router.delete("/:id", ctrl.remove);
 
-module.exports = r;
+module.exports = router;
