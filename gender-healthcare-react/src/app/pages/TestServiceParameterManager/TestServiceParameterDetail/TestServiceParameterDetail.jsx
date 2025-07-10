@@ -122,11 +122,15 @@ export default function TestServiceParameterDetail() {
                                 <td>{item.parameterId?.referenceMin ?? 'N/A'} - {item.parameterId?.referenceMax ?? 'N/A'}</td>
                                 <td>{new Date(item.createdAt).toLocaleDateString('vi-VN')}</td>
                                 <td>
-                                    <button onClick={() => {
-                                        setEditing(item);
-                                        setFormData({ parameterId: item.parameterId?._id });
-                                    }}>Edit</button>
-                                    <button className='dlt-btn' onClick={() => handleDelete(item._id)}>Delete</button>
+                                    <div className='btn-box'>
+                                        <button
+                                            className='btn'
+                                            onClick={() => {
+                                                setEditing(item);
+                                                setFormData({ parameterId: item.parameterId?._id });
+                                            }}>Edit</button>
+                                        <button className='btn dlt-btn' onClick={() => handleDelete(item._id)}>Delete</button>
+                                    </div>
                                 </td>
                             </tr>
                         ))

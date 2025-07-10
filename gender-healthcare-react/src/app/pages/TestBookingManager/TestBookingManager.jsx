@@ -18,7 +18,19 @@ export default function TestBookingManager() {
             try {
                 const BookingData = await fetchData('/testbookings', token);
                 console.log('BookingData', BookingData);
-                setBookings(BookingData);
+                const ResultData = await fetchData('/testresults', token);
+                console.log('ResultData', ResultData);
+
+                const mergedBookings = BookingData.map(booking => {
+                    const result = ResultData.find(r => r.testBookingId?._id == booking._id);
+                    return {
+                        ...booking,
+                        result: result || null // hoặc gộp từng thuộc tính cụ thể nếu muốn
+                    };
+                });
+                console.log('mergedBookings', mergedBookings);
+
+                setBookings(mergedBookings);
             } catch (error) {
                 setError(true);
             } finally {
@@ -162,7 +174,7 @@ export default function TestBookingManager() {
                                     <div className='btn-box'>
                                         <button className='btn' onClick={() => setEditingBooking(booking)}>Edit</button>
                                         {/* <button className='dlt-btn' onClick={() => DeleteBooking(booking._id)}>Delete</button> */}
-                                        <Link to='/'><button className='btn detail-btn'>Detail</button></Link>
+                                        <Link to={`/testresultmanager/${booking.result?._id}`}><button className='btn detail-btn'>Detail</button></Link>
                                     </div>
                                 </td>
                             </tr>

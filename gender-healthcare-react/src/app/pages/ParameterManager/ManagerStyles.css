@@ -11,14 +11,13 @@
     font-size: 2.5rem;
     font-weight: 700;
     position: relative;
-    z-index: 1;
   }
 
   .form {
     display: flex;
     /* flex-wrap: wrap; */
     gap: 10px;
-    margin: 0 0 32px;
+    margin: 0 0 20px;
 
     select,
     input {
@@ -41,8 +40,13 @@
 
   .table {
     width: 100%;
+    margin: 0 0 20px;
     border-collapse: collapse;
     background-color: white;
+
+    &.small-table {
+      max-width: 400px;
+    }
   }
 
   .table th,
@@ -57,27 +61,37 @@
       background-color: #f0f8ff;
     }
 
+    td {
+      i {
+        color: #aaa;
+      }
+    }
+
     .btn-box {
       display: flex;
       gap: 8px;
+    }
 
-      .btn {
-        flex: 1;
-        padding: 4px 8px;
-        border: none;
-        background-color: #fb8b24;
-        color: white;
-        border-radius: 4px;
-        cursor: pointer;
-      }
+    .btn {
+      flex: 1;
+      padding: 4px 8px;
+      border: none;
+      background-color: #fb8b24;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-      .dlt-btn {
-        background-color: #dc3545;
-      }
+    .add-btn {
+      background-color: #28a745;
+    }
 
-      .detail-btn {
-        background-color: #247afb;
-      }
+    .dlt-btn {
+      background-color: #dc3545;
+    }
+
+    .detail-btn {
+      background-color: #247afb;
     }
   }
 
@@ -99,6 +113,12 @@
     border-radius: 8px;
     width: 400px;
     max-width: 90%;
+
+    h3 {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0 0 8px;
+    }
 
     input,
     select {

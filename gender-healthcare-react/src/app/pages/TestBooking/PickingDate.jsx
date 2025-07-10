@@ -79,7 +79,7 @@ export default function PickingDate({ S_Doctor, S_Date, setS_Date }) {
                             const isSelected = (selectedDate && formatDate(vnDate) === formatDate(convertToVNTime(selectedDate)) ||
                                 convertToVNTime(date).toISOString().split('T')[0] == S_Date);
                             let className = 'date';
-                            if (isToday) className += ' today';
+                            if (isToday) className += ' today-date';
                             if (isSelected) className += ' selected';
 
                             return (
