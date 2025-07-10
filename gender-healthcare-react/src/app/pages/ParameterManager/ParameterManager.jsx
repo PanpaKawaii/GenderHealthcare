@@ -180,13 +180,10 @@ export default function ParameterManager() {
                 </td>
                 <td>{new Date(param.createdAt).toLocaleDateString("vi-VN")}</td>
                 <td>
-                  <button onClick={() => setEditingParam(param)}>Edit</button>
-                  <button
-                    className="dlt-btn"
-                    onClick={() => DeleteParameter(param._id)}
-                  >
-                    Delete
-                  </button>
+                  <div className="btn-box">
+                    <button className="btn" onClick={() => setEditingParam(param)}>Edit</button>
+                    <button className="btn dlt-btn" onClick={() => DeleteParameter(param._id)}>Delete</button>
+                  </div>
                 </td>
               </tr>
             ))

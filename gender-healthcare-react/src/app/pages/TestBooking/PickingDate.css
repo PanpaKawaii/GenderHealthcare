@@ -80,6 +80,8 @@
                     margin: 0 auto;
                     cursor: pointer;
                     transition: all 0.2s ease;
+                    box-sizing: border-box;
+                    align-content: center;
                     color: #222;
 
                     &.empty {
@@ -87,7 +89,7 @@
                         background: none;
                     }
 
-                    &.today {
+                    &.today-date {
                         background: #e1ebfb;
                         color: #4a6fa1;
                     }

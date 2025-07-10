@@ -164,7 +164,7 @@ export default function TestServiceParameterManager() {
                   </td>
                   <td>
                     <Link to={`./${item.testServiceId?._id}`}>
-                      <button>Detail</button>
+                      <button className="btn detail-btn">Detail</button>
                     </Link>
                   </td>
                 </tr>
