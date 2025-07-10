@@ -13,7 +13,7 @@ import './TestBooking.css';
 export default function TestBooking() {
     const navigate = useNavigate();
 
-    const [S_Service, setS_Service] = React.useState(null);
+    // const [S_Service, setS_Service] = React.useState(null);
     const [S_Test, setS_Test] = React.useState(null);
     const [S_Doctor, setS_Doctor] = React.useState(null);
     const [S_Date, setS_Date] = React.useState(null);
@@ -57,7 +57,7 @@ export default function TestBooking() {
 
     return (
         <div className='testbooking-container'>
-            <Service S_Service={S_Service} setS_Service={setS_Service} />
+            {/* <Service S_Service={S_Service} setS_Service={setS_Service} /> */}
             {!S_Doctor && <TestService S_Test={S_Test} setS_Test={setS_Test} />}
             {S_Test && !S_Slot && <CounselorDoctor S_Test={S_Test} S_Doctor={S_Doctor} setS_Doctor={setS_Doctor} />}
             {S_Doctor && !S_Slot && <PickingDate S_Doctor={S_Doctor} S_Date={S_Date} setS_Date={setS_Date} />}

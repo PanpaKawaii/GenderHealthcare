@@ -1,33 +1,57 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Heart } from "lucide-react";
 import Sidebar from './pages/Sidebar'; // Đảm bảo import đúng đường dẫn
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import accountAPI from '../../services/accountAPI'; // đường dẫn đúng tuỳ vào project của bạn
+
 
 const Layout = () => {
   const location = useLocation();
   const isCounselorRoute = location.pathname.startsWith('/counselor');
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const id = localStorage.getItem('UserId');
+        if (!id) return;
+        const res = await accountAPI.getProfile(id);
+        setUserInfo(res.data); // hoặc `setUserInfo(res)` nếu bạn không gói trong `data`
+      } catch (err) {
+        console.error("Lỗi lấy thông tin người dùng:", err);
+      }
+    };
+
+    fetchUserInfo();
+  }, []);
 
   return (
     <div>
       <div className="h-screen flex flex-col">
         {/* Navbar */}
-        <nav className="flex justify-between bg-gray-900 text-white">
-          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <nav className=" bg-gray-900 text-white">
+          <div className="py-4 px-4 flex justify-between items-center">
             <div className="flex items-center gap-2">
               <Heart className="h-8 w-8 text-teal-600" />
               <Link to="/" className="text-xl font-bold text-white">HealthCare+</Link>
             </div>
 
             {/* User Info */}
-            <div className="flex items-center gap-3">
+            <div className='flex gap-2'>
               <div className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center font-semibold">
-                JD
+                {userInfo?.name?.[0] || 'C'}
               </div>
               <div className="min-w-20">
-                <div className="text-sm font-medium truncate max-w-[160px]">John Do</div>
-                <div className="text-xs text-gray-300 truncate">Counselor</div>
+                <div className="text-sm font-medium truncate max-w-[160px]">
+                  {userInfo?.name || 'Loading...'}
+                </div>
+                <div className="text-xs text-gray-300 truncate">
+                  {userInfo?.role || ''}
+                </div>
               </div>
             </div>
+
+
           </div>
         </nav>
 

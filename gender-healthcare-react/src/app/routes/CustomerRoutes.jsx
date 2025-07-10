@@ -27,7 +27,7 @@ import TestServiceParameterManager from "../pages/TestServiceParameterManager/Te
 import TestServiceParameterDetail from "../pages/TestServiceParameterManager/TestServiceParameterDetail/TestServiceParameterDetail";
 
 import TestBookingManager from "../pages/TestBookingManager/TestBookingManager";
-
+import BookingService from "../pages/TestBooking/Service"
 
 export default function CustomerRoutes() {
   return (
@@ -41,13 +41,15 @@ export default function CustomerRoutes() {
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/booking" element={<Booking />} />
+          <Route path="/bookingservice" element ={<BookingService/>} />
+        <Route path="/couselortestbooking" element={<TestBooking />} />
         </Route>
 
         <Route path="/counselorblog" element={<CounselorBlog />} />
         <Route path="/counselorschedule" element={<CounselorSchedule />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/couselortestbooking" element={<TestBooking />} />
+        
         <Route path="/parametermanager" element={<ParameterManager />} />
         <Route path="/testbookingmanager" element={<TestBookingManager />} />
         <Route path="/testresultmanager" element={<TestResultManager />} />
