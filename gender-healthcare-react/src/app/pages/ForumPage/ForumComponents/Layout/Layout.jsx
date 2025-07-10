@@ -31,7 +31,17 @@ const Layout = () => {
       try {
         // Sử dụng API URL từ biến môi trường hoặc URL mặc định
         const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-        const response = await fetch(`${API_URL}/accounts/${UserId}`);
+        const token = localStorage.getItem('token');
+        
+        // Prepare headers with the token
+        const headers = {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        };
+        
+        const response = await fetch(`${API_URL}/accounts/${UserId}`, {
+          headers: headers
+        });
         
         if (response.ok) {
           const data = await response.json();
@@ -50,7 +60,7 @@ const Layout = () => {
   }, [UserId]);
 
   const handleLogout = () => {
-    localStorage.removeItem('Token')
+    localStorage.removeItem('token')
     localStorage.removeItem('UserId')
     localStorage.removeItem('UserRole')
     localStorage.removeItem('IsLogIn');
