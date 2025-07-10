@@ -15,6 +15,12 @@ const doctorSchema = new Schema(
       ref: "MedicalFacilities",
       required: true,
     },
+    accountId: {
+      type: Schema.Types.ObjectId,
+      ref: "Account",
+      unique: true,
+      required: true,
+    },
   },
   {
     timestamps: true,
