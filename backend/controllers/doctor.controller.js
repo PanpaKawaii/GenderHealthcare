@@ -10,10 +10,11 @@ exports.create = async (req, res) => {
   }
 };
 
-exports.getAll = async (req, res) => res.json(await Doctor.find());
+exports.getAll = async (req, res) =>
+  res.json(await Doctor.find().populate("accountId"));
 
 exports.getOne = async (req, res) => {
-  const doctor = await Doctor.findById(req.params.id);
+  const doctor = await Doctor.findById(req.params.id).populate("accountId");
   if (!doctor) return res.sendStatus(404);
   res.json(doctor);
 };
