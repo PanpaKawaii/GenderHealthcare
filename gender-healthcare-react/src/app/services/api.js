@@ -21,6 +21,9 @@ export const customerAPI = {
 export const counselorAPI = {
   getAll: () => api.get("/counselors"),
   getById: (id) => api.get(`/counselors/${id}`),
+  create: (data) => api.post("/counselors", data),
+  update: (id, data) => api.put(`/counselors/${id}`, data),
+  delete: (id) => api.delete(`/counselors/${id}`),
 };
 
 // export const questionAPI = {
