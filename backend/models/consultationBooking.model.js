@@ -7,8 +7,9 @@ const consultationBookingSchema = new Schema({
     feedback: String,
     status: { type: String, enum: ['pending', 'confirmed', 'completed', 'cancelled'] },
     result: String,
-    customerId: { type: Schema.Types.ObjectId, ref: 'Customer', unique: true, required: true },
-    scheduleId: { type: Schema.Types.ObjectId, ref: 'ConsultationSchedule', unique: true, required: true }
+    bookingDate: {type: Date, required: true },
+    customerId: { type: Schema.Types.ObjectId, ref: 'Customer', required: true },
+    scheduleId: { type: Schema.Types.ObjectId, ref: 'ConsultationSchedule', required: true }
 }, { timestamps: true });
 
 module.exports = mongoose.model('ConsultationBooking', consultationBookingSchema);

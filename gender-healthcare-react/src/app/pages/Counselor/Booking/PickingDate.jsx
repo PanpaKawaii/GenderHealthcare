@@ -26,9 +26,15 @@ export default function PickingDate({ onSelectDate }) {
     }
 
     const handleDateClick = (date) => {
-        setSelectedDate(date);
-        onSelectDate(date.toDate());
+        if (selectedDate && date.isSame(selectedDate, 'day')) {
+            setSelectedDate(null);
+            onSelectDate(null);
+        } else {
+            setSelectedDate(date);
+            onSelectDate(date.toDate());
+        }
     };
+
 
     const handlePrev = () => {
         setCurrentDate(currentDate.subtract(1, 'month'));
@@ -39,16 +45,16 @@ export default function PickingDate({ onSelectDate }) {
     };
 
     return (
-        <div className='pickingdate-content booking-content'>
-            <div className='calendar-form'>
-                <div className='calendar-header'>
-                    <div><h2>Select Date</h2></div>
+        <div className='pickingdate-content-counselor booking-content'>
+            <div className='counselor-calendar-form'>
+                <div className='counselor-calendar-header'>
+                    <div><h2>1. Select Date</h2></div>
                 </div>
 
                 <div className='calendar-box'>
                     <div className='calendar-title'>
                         <span className='arrow' onClick={handlePrev}>&#8249;</span>
-                        <strong>{currentDate.format('MMMM YYYY')}</strong>
+                        <span>{currentDate.format('MMMM YYYY')}</span>
                         <span className='arrow' onClick={handleNext}>&#8250;</span>
                     </div>
 
@@ -65,7 +71,7 @@ export default function PickingDate({ onSelectDate }) {
                             const isOutOfRange = date.isBefore(minDate) || date.isAfter(maxDate);
 
                             let className = 'date';
-                            if (isToday) className += ' today';
+                            if (isToday) className += ' counselor-today';
                             if (isSelected) className += ' selected';
                             if (isOutOfRange) className += ' disabled';
 
@@ -84,7 +90,7 @@ export default function PickingDate({ onSelectDate }) {
                     </div>
                 </div>
 
-                <div className='calendar-footer'>
+                <div className='counselor-calendar-footer'>
                     <div className='legend'>
                         <span className='legend-item'>
                             <span className='dot selected-dot'></span> Selected

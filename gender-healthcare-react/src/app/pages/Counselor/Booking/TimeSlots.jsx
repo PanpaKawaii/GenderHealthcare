@@ -1,85 +1,95 @@
-// Booking/TimeSlots.jsx
+// TimeSlots.jsx
 import React, { useState } from 'react';
-import './TimeSlots.css';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 export default function TimeSlots({ date, onSelectSlot }) {
-    const [selectedSlot, setSelectedSlot] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState(null);
 
-    const now = dayjs();
+  const slotTimes = [
+    { startTime: '09:00', endTime: '10:00' },
+    { startTime: '10:00', endTime: '11:00' },
+    { startTime: '11:00', endTime: '12:00' },
+    { startTime: '14:00', endTime: '15:00' },
+    { startTime: '15:00', endTime: '16:00' },
+    { startTime: '16:00', endTime: '17:00' },
+  ];
 
-    const slotTimes = [
-        { startTime: '09:00', endTime: '09:30' },
-        { startTime: '09:30', endTime: '10:00' },
-        { startTime: '10:00', endTime: '10:30' },
-        { startTime: '10:30', endTime: '11:00' },
-        { startTime: '11:00', endTime: '11:30' },
-        { startTime: '11:30', endTime: '12:00' },
-        { startTime: '14:00', endTime: '14:30' },
-        { startTime: '14:30', endTime: '15:00' },
-        { startTime: '15:00', endTime: '15:30' },
-        { startTime: '15:30', endTime: '16:00' },
-        { startTime: '16:00', endTime: '16:30' },
-        { startTime: '16:30', endTime: '17:00' },
-    ];
-
-    // Hàm này chỉ kiểm tra xem slot có nằm trong quá khứ so với ngày đã chọn (hoặc hiện tại nếu chưa chọn ngày) hay không
-     const isSlotPast = (slotTime) => {
-        // Xác định ngày tham chiếu để so sánh:
-        // Nếu prop 'date' là NULL, sử dụng ngày hiện tại để kiểm tra các slot đã qua.
-        // Ngược lại, sử dụng ngày được chọn.
-        const referenceDate = date ? dayjs(date) : dayjs(); // THAY ĐỔI Ở ĐÂY
-
-        const slotDateTime = dayjs(`${referenceDate.format('YYYY-MM-DD')}T${slotTime}`);
-        
-        // So sánh thời điểm của slot với thời điểm hiện tại.
-        return slotDateTime.isBefore(now);
-    };
-
-    
-
-    const handleClick = (slot) => {
-        // Chỉ ngăn chặn click nếu slot đó thực sự đã trôi qua
-        if (isSlotPast(slot.startTime)) return;
-
-        setSelectedSlot(slot);
-        onSelectSlot(slot);
-    };
-
-    return (
-        <div className='timeslots-content booking-content'>
-            <h1 className='title'>Select Time</h1>
-            {/* <p className='script'>
-                Available time slots for {date ? new Date(date).toLocaleDateString() : '...'}
-            </p> */}
-            <div className='timeslots-form'>
-                {/* Thêm thông báo nhẹ nhàng nếu chưa chọn ngày */}
-
-                <div className='time-grid'>
-                    {slotTimes.map((slot, i) => {
-                        const disabled = isSlotPast(slot.startTime); // Kiểm tra disabled chỉ dựa trên việc slot có phải trong quá khứ không
-                        // SỬA DÒNG NÀY: So sánh theo startTime thay vì toàn bộ đối tượng
-                        const isSelected = selectedSlot && selectedSlot.startTime === slot.startTime; 
-
-                        return (
-                            <button
-                                key={i}
-                                className={`time-slot ${isSelected ? 'selected' : ''} ${disabled ? 'disabled' : ''}`}
-                                onClick={() => handleClick(slot)}
-                                disabled={disabled}
-                            >
-                                {/* <i className='fa-regular fa-clock'></i>  */}
-                                {slot.startTime} - {slot.endTime}
-                            </button>
-                        );
-                    })}
-                </div>
-
-                <div className='legend'>
-                    <span><span className='box available'></span> Available</span>
-                    <span><span className='box booked'></span> Past</span>
-                </div>
-            </div>
-        </div>
+  /* Kiểm tra slot đã qua chưa (chỉ khi đã chọn ngày) */
+  const isSlotPast = (slotTime) => {
+    if (!date) return false; // chưa chọn ngày -> luôn có thể chọn
+    const slotDateTime = dayjs.tz(
+      `${dayjs(date).format('YYYY-MM-DD')}T${slotTime}`,
+      'Asia/Ho_Chi_Minh'
     );
+    const nowVN = dayjs().tz('Asia/Ho_Chi_Minh');
+    return slotDateTime.isBefore(nowVN);
+  };
+
+  /* Xử lý click slot (toggle) */
+  const handleClick = (slot) => {
+    if (isSlotPast(slot.startTime)) return;
+
+    if (selectedSlot && selectedSlot.startTime === slot.startTime) {
+      setSelectedSlot(null);
+      onSelectSlot(null);
+    } else {
+      setSelectedSlot(slot);
+      onSelectSlot(slot);
+    }
+  };
+
+  return (
+    <div className="max-w-[900px] mx-auto rounded-xl border border-gray-300 bg-white overflow-hidden">
+      <div className="bg-blue-100 px-5 py-2">
+        <h2 className="text-lg font-bold text-gray-800">2. Select Slot</h2>
+      </div>
+
+      <div className="p-6">
+        <div className="grid grid-cols-6 gap-4 mb-6">
+          {slotTimes.map((slot, i) => {
+            const disabled = isSlotPast(slot.startTime);   // chỉ disable khi đã chọn ngày và slot đã qua
+            const isSelected = selectedSlot && selectedSlot.startTime === slot.startTime;
+
+            const base = 'py-1 px-3 rounded-full font-medium border text-center transition';
+            const selected = 'bg-blue-600 text-white border-blue-600 shadow';
+            const disabledCls = 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed';
+            const normal = 'bg-white text-gray-800 border-gray-300 hover:bg-blue-50';
+
+            return (
+              <button
+                key={i}
+                className={`${base} ${disabled ? disabledCls : isSelected ? selected : normal}`}
+                onClick={() => handleClick(slot)}
+                disabled={disabled}
+              >
+                {slot.startTime}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="flex justify-center gap-8 text-sm text-gray-600">
+          <span className="flex items-center gap-2">
+            
+            <span className="w-4 h-4 border border-gray-300 rounded bg-[#2563eb]" />
+            Selected
+          </span>
+          <span className="flex items-center gap-2">
+            
+            <span className="w-4 h-4 border border-gray-300 rounded bg-white" />
+            Available
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="w-4 h-4 border border-gray-300 rounded bg-gray-300" />
+            Past
+          </span>
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -6,6 +6,13 @@ export const api = axios.create({
   },
 });
 
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 export const accountAPI = {
   // login: (credentials) => api.post('/accounts/login', credentials),
   // register: (userData) => api.post('/accounts/register', userData),
@@ -68,11 +75,15 @@ export const blogAPI = {
 };
 
 export const counselorBookAPI = {
-  getAll: () => api.get("/consultationbookings"),
-  create: (data) => api.post("/consultationbookings", data),
-  update: (id, data) => api.put(`/consultationbookings/${id}`, data),
-  delete: (id) => api.delete(`/consultationbookings/${id}`),
-  getById: (id) => api.get(`/consultationbookings/${id}`),
+  getAll: () => api.get("/consultationbooking"),
+  create: (data) => api.post("/consultationbooking", data),
+  update: (id, data) => api.put(`/consultationbooking/${id}`, data),
+  delete: (id) => api.delete(`/consultationbooking/${id}`),
+  getById: (id) => api.get(`/consultationbooking/${id}`),
+  getByCustomerAccountId: (accountId) => api.get(`/consultationbooking/customer/${accountId}`),
+  getCustomerIdByAccountId: (accountId) => api.get(`/consultationbooking/customers/byAccount/${accountId}`),
+getByCounselorAccountId: (accountId) => api.get(`/consultationbooking/counselor/${accountId}`),
+
 };
 
 export const counselorScheduleAPI = {
@@ -178,7 +189,7 @@ export const testserviceparameterAPI = {
 
 //   // ===== COMMENTS =====
 //   // Tạo bình luận hoặc trả lời (gộp chung)
-//   createComment: (postId, data) => api.post(`/posts/${postId}/comments`, data), 
+//   createComment: (postId, data) => api.post(`/posts/${postId}/comments`, data),
 //   // data = { content, accountId, parentCommentId (optional) }
 
 //   // (Nếu cần cập nhật comment)
@@ -189,7 +200,7 @@ export const testserviceparameterAPI = {
 //   getRepliesByCommentId: (commentId) => api.get(`comments/${commentId}/replies`),
 
 //   // Vote comment
-//   voteComment: (commentId, data) => api.post(`/comments/${commentId}/vote`, data), 
+//   voteComment: (commentId, data) => api.post(`/comments/${commentId}/vote`, data),
 //   // data = { voteType, accountId }
 // };
 
