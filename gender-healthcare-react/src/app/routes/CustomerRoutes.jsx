@@ -18,6 +18,9 @@ import PostDetail from "../pages/ForumPage/PostDetail";
 
 import Booking from "../pages/Counselor/Booking/Booking";
 import BookingDetail from "../pages/ProfilePage/BookingDetail"
+
+import PaymentStatus from "../pages/PaymentStatus/PaymentStatus";
+
 import SelectBooking from "../pages/Booking/SelectBooking";
 import TestBooking from "../pages/TestBooking/TestBooking";
 import ParameterManager from "../pages/ParameterManager/ParameterManager";
@@ -45,18 +48,21 @@ export default function CustomerRoutes() {
 
           <Route path="/bookingservice" element ={<BookingService/>} />
         <Route path="/couselortestbooking" element={<TestBooking />} />
+          <Route path="/bookingservice" element={<BookingService />} />
+          <Route path="/couselortestbooking" element={<TestBooking />} />
+          <Route path='/paymentstatus' element={<PaymentStatus />} />
         </Route>
 
         <Route path="/counselorblog" element={<CounselorBlog />} />
         <Route path="/counselorschedule" element={<CounselorSchedule />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        
+
         <Route path="/parametermanager" element={<ParameterManager />} />
         <Route path="/testbookingmanager" element={<TestBookingManager />} />
         <Route path="/testresultmanager/:id" element={<TestResultManager />} />
         <Route path="/testserviceparametermanager" element={<TestServiceParameterManager />} />
-        <Route path="/testserviceparametermanager/:id" element={<TestServiceParameterDetail/>} />
+        <Route path="/testserviceparametermanager/:id" element={<TestServiceParameterDetail />} />
         <Route
           path="/dashboardTestservice"
           element={<DashboardTestservice />}

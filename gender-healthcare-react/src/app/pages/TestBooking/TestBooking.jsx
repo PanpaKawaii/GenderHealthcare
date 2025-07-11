@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import CounselorDoctor from './CounselorDoctor';
 import PaymentConfirm from './PaymentConfirm';
 import PickingDate from './PickingDate';
-import Service from './Service';
 import TestService from './TestService';
 import TimeSlots from './TimeSlots';
 import { postData, fetchData } from '../LoginRegister/api_register';
@@ -55,7 +54,7 @@ export default function TestBooking() {
     const BookingTestFunction = async (S_Date, S_Slot) => {
 
         const BookingData = {
-            customerId: localStorage.getItem('UserId'),
+            customerId: localStorage.getItem('CustomerId'),
             doctorTestServiceId: S_Slot?._id,
             bookingDate: S_Date,
             status: 'Pending',
@@ -101,7 +100,7 @@ export default function TestBooking() {
                 }
             }
 
-            navigate('/');
+            navigate('/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng');
         } catch (error) {
             setError(true);
         } finally {
@@ -119,12 +118,25 @@ export default function TestBooking() {
 
     return (
         <div className='testbooking-container'>
-            {/* <Service S_Service={S_Service} setS_Service={setS_Service} /> */}
-            {!S_Doctor && <TestService S_Test={S_Test} setS_Test={setS_Test} />}
-            {S_Test && !S_Slot && <CounselorDoctor S_Test={S_Test} S_Doctor={S_Doctor} setS_Doctor={setS_Doctor} />}
-            {S_Doctor && !S_Slot && <PickingDate S_Doctor={S_Doctor} S_Date={S_Date} setS_Date={setS_Date} />}
-            {S_Test && S_Doctor && S_Date && <TimeSlots S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} setS_Slot={setS_Slot} />}
-            {S_Slot && <PaymentConfirm loading={loading} S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} handleBooking={handleBooking} />}
+            {/* {!S_Doctor && */}
+            <TestService S_Test={S_Test} setS_Test={setS_Test} S_Doctor={S_Doctor} />
+            {/* } */}
+
+            {/* {S_Test && !S_Slot && */}
+            <CounselorDoctor S_Test={S_Test} S_Doctor={S_Doctor} setS_Doctor={setS_Doctor} S_Slot={S_Slot} />
+            {/* } */}
+
+            {/* {S_Doctor && !S_Slot && */}
+            <PickingDate S_Doctor={S_Doctor} S_Date={S_Date} setS_Date={setS_Date} S_Slot={S_Slot} />
+            {/* } */}
+
+            {/* {S_Test && S_Doctor && S_Date && */}
+            <TimeSlots S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} setS_Slot={setS_Slot} />
+            {/* } */}
+
+            {/* {S_Slot && */}
+            <PaymentConfirm loading={loading} S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} handleBooking={handleBooking} />
+            {/* } */}
         </div>
     )
 }
