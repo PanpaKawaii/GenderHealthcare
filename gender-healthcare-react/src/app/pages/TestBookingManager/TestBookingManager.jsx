@@ -14,7 +14,7 @@ export default function TestBookingManager() {
 
     useEffect(() => {
         const GetBooking = async () => {
-            const token = '';
+            const token = localStorage.getItem('token');
             try {
                 const BookingData = await fetchData('/testbookings', token);
                 console.log('BookingData', BookingData);
@@ -52,7 +52,7 @@ export default function TestBookingManager() {
 
     const AddBooking = async (e) => {
         e.preventDefault();
-        const token = '';
+        const token = localStorage.getItem('token');
 
         const AddBookingData = {
             doctorTestServiceId: formData.doctorTestServiceId,
@@ -76,7 +76,7 @@ export default function TestBookingManager() {
     };
 
     const DeleteBooking = async (id) => {
-        const token = '';
+        const token = localStorage.getItem('token');
         try {
             setLoading(true);
             if (window.confirm('Xoá lịch đặt này?')) {
@@ -94,7 +94,7 @@ export default function TestBookingManager() {
 
     const EditBooking = async (e) => {
         e.preventDefault();
-        const token = '';
+        const token = localStorage.getItem('token');
 
         const EditBookingData = {
             bookingDate: editingBooking.bookingDate || null,

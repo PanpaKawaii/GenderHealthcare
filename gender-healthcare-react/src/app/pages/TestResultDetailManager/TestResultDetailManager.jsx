@@ -13,7 +13,7 @@ export default function TestResultDetailManager({ resultId }) {
 
     useEffect(() => {
         const fetchAll = async () => {
-            const token = '';
+            const token = localStorage.getItem('token');
             try {
                 const [details, params] = await Promise.all([
                     fetchData('/testresultdetails', token),
@@ -34,7 +34,7 @@ export default function TestResultDetailManager({ resultId }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const token = '';
+        const token = localStorage.getItem('token');
         const payload = {
             ...formData,
             value: parseFloat(formData.value)
@@ -55,7 +55,7 @@ export default function TestResultDetailManager({ resultId }) {
     };
 
     const handleDelete = async (id) => {
-        const token = '';
+        const token = localStorage.getItem('token');
         if (window.confirm('Bạn có chắc muốn xoá chi tiết này?')) {
             await deleteData(`/testresultdetails/${id}`, token);
             setRefresh(r => r + 1);

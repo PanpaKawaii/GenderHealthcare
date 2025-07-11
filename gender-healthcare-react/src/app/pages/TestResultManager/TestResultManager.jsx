@@ -18,7 +18,7 @@ export default function TestResultManager() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const token = '';
+        const token = localStorage.getItem('token');
         const fetchAll = async () => {
             try {
                 const [TestResult, TestBooking, TestServiceParameter] = await Promise.all([
@@ -47,7 +47,7 @@ export default function TestResultManager() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const token = '';
+        const token = localStorage.getItem('token');
         try {
             if (editing) {
                 await putData(`/testresults/${editing._id}`, token, formData);
@@ -63,7 +63,7 @@ export default function TestResultManager() {
     };
 
     const handleDelete = async (id) => {
-        const token = '';
+        const token = localStorage.getItem('token');
         if (window.confirm('Bạn có chắc muốn xoá kết quả này?')) {
             try {
                 await deleteData(`/testresults/${id}`, token);

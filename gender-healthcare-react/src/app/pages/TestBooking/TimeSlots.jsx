@@ -10,7 +10,7 @@ export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot 
 
     useEffect(() => {
         const GetSlot = async () => {
-            const token = '';
+            const token = localStorage.getItem('token');
             try {
                 const doctortestservices = await fetchData('/doctortestservices', token);
                 console.log('doctortestservices', doctortestservices.filter(

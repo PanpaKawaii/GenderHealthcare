@@ -10,7 +10,7 @@ export default function CounselorDoctor({ S_Test, S_Doctor, setS_Doctor }) {
 
     useEffect(() => {
         const GetDoctor = async () => {
-            const token = '';
+            const token = localStorage.getItem('token');
             try {
                 const resultdoctorTestServices = await fetchData('/doctortestservices', token);
                 const resultDoctor = await fetchData('/doctors', token);

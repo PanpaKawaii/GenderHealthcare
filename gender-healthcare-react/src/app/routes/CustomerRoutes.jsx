@@ -53,7 +53,6 @@ export default function CustomerRoutes() {
         <Route path="/parametermanager" element={<ParameterManager />} />
         <Route path="/testbookingmanager" element={<TestBookingManager />} />
         <Route path="/testresultmanager/:id" element={<TestResultManager />} />
-        <Route path="/testresultdetailmanager" element={<TestResultDetailManager />} />
         <Route path="/testserviceparametermanager" element={<TestServiceParameterManager />} />
         <Route path="/testserviceparametermanager/:id" element={<TestServiceParameterDetail/>} />
         <Route

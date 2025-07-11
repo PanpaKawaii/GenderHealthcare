@@ -10,7 +10,7 @@ export default function TestService({ S_Test, setS_Test }) {
 
     useEffect(() => {
         const GetTest = async () => {
-            const token = '';
+            const token = localStorage.getItem('token');
             try {
                 const result = await fetchData('/testservices', token);
                 console.log('resultTestService', result);
@@ -31,7 +31,7 @@ export default function TestService({ S_Test, setS_Test }) {
             <p className='script'>Select from our qualified healthcare test services</p>
             <div className='cards'>
                 {TestService.map((ts, i) => (
-                    <div key={i} className='card' style={{backgroundColor: ts._id == S_Test?._id ? '#28a74540' : ''}}>
+                    <div key={i} className='card' style={{ backgroundColor: ts._id == S_Test?._id ? '#28a74540' : '' }}>
                         <div className='information'>
                             <h3>{ts.name}</h3>
                             <p>{ts.description}</p>
