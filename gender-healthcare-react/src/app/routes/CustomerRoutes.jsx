@@ -17,7 +17,7 @@ import Cycle from "../pages/Cycle/Cycle";
 import PostDetail from "../pages/ForumPage/PostDetail";
 
 import Booking from "../pages/Counselor/Booking/Booking";
-
+import BookingDetail from "../pages/ProfilePage/BookingDetail"
 import SelectBooking from "../pages/Booking/SelectBooking";
 import TestBooking from "../pages/TestBooking/TestBooking";
 import ParameterManager from "../pages/ParameterManager/ParameterManager";
@@ -41,6 +41,8 @@ export default function CustomerRoutes() {
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/booking" element={<Booking />} />
+          <Route path="bookings/:id" element={<BookingDetail />} />
+
           <Route path="/bookingservice" element ={<BookingService/>} />
         <Route path="/couselortestbooking" element={<TestBooking />} />
         </Route>

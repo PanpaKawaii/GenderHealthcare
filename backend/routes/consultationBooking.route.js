@@ -48,7 +48,7 @@ router.get('/:id',
 // Counselor hoặc Admin cập nhật booking
 router.put('/:id',
   authenticate,
-  authorize('Admin', 'Counselor'),
+  authorize('Admin', 'Counselor', 'Customer'),
   consultationBooking.updateBooking
 );
 
