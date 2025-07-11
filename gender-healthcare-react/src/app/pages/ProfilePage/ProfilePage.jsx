@@ -35,15 +35,28 @@ export default function ProfilePage() {
         setLoading(true);
         const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
+        const token = localStorage.getItem('token');
+        
+        // Prepare headers with the token
+        const headers = {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        };
+        
+
         // Fetch user account info
-        const accountResponse = await fetch(`${API_URL}/accounts/${UserId}`);
+        const accountResponse = await fetch(`${API_URL}/accounts/${UserId}`, {
+          headers: headers
+        });
         if (accountResponse.ok) {
           const accountData = await accountResponse.json();
           setUserInfo(accountData);
 
           // Fetch customer details if user is a customer
           if (accountData.role === 'Customer') {
-            const customerResponse = await fetch(`${API_URL}/customers?accountId=${UserId}`);
+            const customerResponse = await fetch(`${API_URL}/customers?accountId=${UserId}`, {
+              headers: headers
+            });
             if (customerResponse.ok) {
               const customerData = await customerResponse.json();
               if (customerData && customerData.length > 0) {
@@ -70,15 +83,27 @@ export default function ProfilePage() {
       setLoading(true);
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
+      const token = localStorage.getItem('token');
+      
+      // Prepare headers with the token
+      const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      };
+
       // Fetch user account info
-      const accountResponse = await fetch(`${API_URL}/accounts/${UserId}`);
+      const accountResponse = await fetch(`${API_URL}/accounts/${UserId}`, {
+        headers: headers
+      });
       if (accountResponse.ok) {
         const accountData = await accountResponse.json();
         setUserInfo(accountData);
 
         // Fetch customer details if user is a customer
         if (accountData.role === 'Customer') {
-          const customerResponse = await fetch(`${API_URL}/customers?accountId=${UserId}`);
+          const customerResponse = await fetch(`${API_URL}/customers?accountId=${UserId}`, {
+            headers: headers
+          });
           if (customerResponse.ok) {
             const customerData = await customerResponse.json();
             if (customerData && customerData.length > 0) {
