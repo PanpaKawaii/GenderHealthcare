@@ -17,9 +17,9 @@ export default function App() {
     // Setup interceptors to handle expired tokens
     setupAxiosInterceptors();
   }, []);
-  const { Id, Token, Role, IsLogIn } = UserAuth();
+  const { Id, token, Role, IsLogIn } = UserAuth();
   console.log("Id", Id);
-  console.log("Token", Token);
+  console.log("Token", token);
   console.log("Role", Role);
   console.log("IsLogIn", IsLogIn);
 

@@ -82,7 +82,7 @@ export const counselorBookAPI = {
   getById: (id) => api.get(`/consultationbooking/${id}`),
   getByCustomerAccountId: (accountId) => api.get(`/consultationbooking/customer/${accountId}`),
   getCustomerIdByAccountId: (accountId) => api.get(`/consultationbooking/customers/byAccount/${accountId}`),
-getByCounselorAccountId: (accountId) => api.get(`/consultationbooking/counselor/${accountId}`),
+  getByCounselorAccountId: (accountId) => api.get(`/consultationbooking/counselor/${accountId}`),
 
 };
 
@@ -92,6 +92,7 @@ export const counselorScheduleAPI = {
   update: (id, data) => api.put(`/schedules/${id}`, data),
   delete: (id) => api.delete(`/schedules/${id}`),
   getById: (id) => api.get(`/schedules/${id}`),
+getByAccount: (accountId) => api.get(`/schedules/by-account/${accountId}`),
 
   getByCounselorAndDate: (counselorId, date) =>
     api.get('/schedules/filter', {

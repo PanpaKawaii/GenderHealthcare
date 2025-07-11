@@ -107,3 +107,27 @@ const end = dayjs.tz(`${date}T${endTime}`, 'Asia/Ho_Chi_Minh').toDate();
     res.status(500).json({ error: err.message });
   }
 };
+
+// [NEW] GET schedules by counselor's accountId
+exports.getSchedulesByAccountId = async (req, res) => {
+  try {
+    const { accountId } = req.params;
+    if (!accountId) {
+      return res.status(400).json({ error: 'Missing accountId' });
+    }
+
+    // populate nested counselorId -> accountId
+    const schedules = await ConsultationSchedule.find()
+      .populate({
+        path: 'counselorId',
+        match: { accountId: accountId } // lọc theo accountId của counselor
+      });
+
+    // Lọc bỏ những cái counselorId bị null (không khớp accountId)
+    const filtered = schedules.filter(s => s.counselorId !== null);
+
+    res.json(filtered);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

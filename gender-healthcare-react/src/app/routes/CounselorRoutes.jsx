@@ -4,11 +4,12 @@ import CounselorBlog from "../pages/Counselor/pages/Blog";
 import CounselorSchedule from "../pages/Counselor/pages/Schedule";
 import Login from "../pages/LoginRegister/Login";
 import Home from "../pages/Counselor/Home"
-import Dashboard from "../pages/Counselor/pages/Dashboard";
 import NewBlog from "../pages/Counselor/components/Blog/NewBlog";
 import EditBlog from "../pages/Counselor/components/Blog/EditBlog";
 import BlogDetail from "../pages/blog/components/BlogDetail";
 import ForumPage from "../pages/ForumPage/ForumPage";
+import Profile from "../pages/Counselor/pages/Profile"
+import BookingDetail from "../pages/Counselor/components/Schedule/BookingDetail";
 
 export default function CounselorRoutes() {
   return (
@@ -22,6 +23,9 @@ export default function CounselorRoutes() {
           <Route path="editblog/:id" element={<EditBlog />} />
           <Route path="schedule" element={<CounselorSchedule />} />
           <Route path="forum" element={<ForumPage />} />
+          <Route path="profile" element={<Profile />} />
+
+          <Route path="bookings/:id" element={<BookingDetail />} />
           <Route path="" element={<Home />} />
         </Route>
         <Route path="*" element={<Navigate to="/counselor" replace />} />
