@@ -43,7 +43,6 @@ export default function Service() {
                 <div className='items'>
                     <div className='item'>
                         <div className='icon icon-stethoscope'><i className='fa-solid fa-stethoscope'></i></div>
-                        <div className='icon icon-stethoscope'><i className='fa-solid fa-stethoscope'></i></div>
                         <div className='name'>Licensed Professionals</div>
                         <p>All our healthcare providers are board-certified and experienced</p>
                     </div>

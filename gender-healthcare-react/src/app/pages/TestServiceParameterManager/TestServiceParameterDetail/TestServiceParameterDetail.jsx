@@ -14,7 +14,7 @@ export default function TestServiceParameterDetail() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const token = '';
+        const token = localStorage.getItem('token');
         const fetchAll = async () => {
             try {
                 const [testservice, parameters, testserviceparameters] = await Promise.all([
@@ -48,7 +48,7 @@ export default function TestServiceParameterDetail() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const token = '';
+        const token = localStorage.getItem('token');
         const payload = { testServiceId: id, parameterId: formData.parameterId };
         if (assignedParams.some(
             tsp => tsp.testServiceId._id == service._id && tsp.parameterId._id == formData.parameterId
@@ -71,7 +71,7 @@ export default function TestServiceParameterDetail() {
     };
 
     const handleDelete = async (paramId) => {
-        const token = '';
+        const token = localStorage.getItem('token');
         console.log('paramId', paramId);
 
         if (window.confirm('Xoá thông số này khỏi dịch vụ?')) {

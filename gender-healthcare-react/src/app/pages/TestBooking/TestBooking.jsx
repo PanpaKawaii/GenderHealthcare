@@ -26,7 +26,7 @@ export default function TestBooking() {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        const token = '';
+        const token = localStorage.getItem('token');
         const fetchAll = async () => {
             try {
                 const [TestResult, TestBooking, TestServiceParameter] = await Promise.all([
@@ -63,7 +63,7 @@ export default function TestBooking() {
         };
         console.log('BookingData:', BookingData);
 
-        const token = '';
+        const token = localStorage.getItem('token');
         try {
             const resultTestBookings = await postData('/testbookings', token, BookingData);
             console.log('resultTestBookings', resultTestBookings);
