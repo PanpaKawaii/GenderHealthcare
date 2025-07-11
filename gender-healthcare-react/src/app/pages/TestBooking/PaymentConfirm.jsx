@@ -1,7 +1,7 @@
 import React from 'react';
 import './PaymentConfirm.css';
 
-export default function PaymentConfirm({ S_Test, S_Doctor, S_Date, S_Slot, handleBooking }) {
+export default function PaymentConfirm({ loading, S_Test, S_Doctor, S_Date, S_Slot, handleBooking }) {
     return (
         <div className='paymentconfirm-content booking-content'>
             <h1 className='title'>Confirm & Pay</h1>
@@ -51,7 +51,7 @@ export default function PaymentConfirm({ S_Test, S_Doctor, S_Date, S_Slot, handl
                             <input type='text' placeholder='John Doe' />
                         </div>
 
-                        <button type='submit' className='pay-btn' onClick={() => handleBooking()}>Pay {S_Slot?.testServiceId?.price.toLocaleString('vn')} VND</button>
+                        <button type='submit' className='pay-btn' onClick={() => handleBooking()} disabled={loading}>Pay {S_Slot?.testServiceId?.price.toLocaleString('vn')} VND</button>
                     </div>
                 </div>
             </div>
