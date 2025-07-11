@@ -28,9 +28,9 @@ export default function TestBookingManager() {
                         result: result || null // hoặc gộp từng thuộc tính cụ thể nếu muốn
                     };
                 });
-                console.log('mergedBookings', mergedBookings);
+                console.log('mergedBookings', mergedBookings.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
 
-                setBookings(mergedBookings);
+                setBookings(mergedBookings.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
             } catch (error) {
                 setError(true);
             } finally {
@@ -147,12 +147,12 @@ export default function TestBookingManager() {
                     <tr>
                         <th>#</th>
                         {/* <th>ID</th> */}
-                        <th>Ngày xét nghiệm</th>
-                        <th>Thời gian</th>
-                        <th>Ngày tạo</th>
-                        <th>Trạng thái</th>
-                        <th>Ghi chú</th>
-                        <th>Hành động</th>
+                        <th>Booking Date</th>
+                        <th>Slot</th>
+                        <th>Created At</th>
+                        <th>Status</th>
+                        <th>Note</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -163,11 +163,11 @@ export default function TestBookingManager() {
                             <tr key={booking._id}>
                                 <td>{index + 1}</td>
                                 {/* <td>{booking._id}</td> */}
-                                <td>{new Date(booking.bookingDate).toLocaleDateString('vi-VN')}</td>
+                                <td>{new Date(booking.bookingDate).toISOString().split('T')[0]}</td>
                                 <td>
                                     {booking.doctorTestServiceId?.startTime} - {booking.doctorTestServiceId?.endTime}
                                 </td>
-                                <td>{new Date(booking.createdAt).toLocaleDateString('vi-VN')}</td>
+                                <td>{new Date(booking.createdAt).toISOString().split('T')[0]}</td>
                                 <td>{booking.status}</td>
                                 <td>{booking.note || '—'}</td>
                                 <td>

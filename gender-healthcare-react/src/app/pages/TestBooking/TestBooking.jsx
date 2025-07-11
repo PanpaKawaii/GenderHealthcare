@@ -54,7 +54,7 @@ export default function TestBooking() {
     const BookingTestFunction = async (S_Date, S_Slot) => {
 
         const BookingData = {
-            customerId: localStorage.getItem('UserId'),
+            customerId: localStorage.getItem('CustomerId'),
             doctorTestServiceId: S_Slot?._id,
             bookingDate: S_Date,
             status: 'Pending',
@@ -100,7 +100,7 @@ export default function TestBooking() {
                 }
             }
 
-            navigate('/');
+            navigate('/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng');
         } catch (error) {
             setError(true);
         } finally {
