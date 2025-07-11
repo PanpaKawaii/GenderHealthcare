@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Sidebar from './pages/Sidebar';
-import Dashboard from './pages/Dashboard';
-import Schedule from './pages/Schedule';
-import Blog from './pages/Blog';
-import Users from './pages/ManageAuth';
-import Profile from './pages/Profile';
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('dashboard');
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState('Counselor');
   const navigate = useNavigate();
 
-  // Gọi API để lấy tên người dùng
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
@@ -21,16 +13,12 @@ export default function Home() {
         const token = localStorage.getItem('token');
 
         const res = await fetch(`${API_URL}/accounts/${userId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         });
 
         if (res.ok) {
           const data = await res.json();
           setUserName(data.name || 'Counselor');
-        } else {
-          console.error('❌ Failed to fetch user info');
         }
       } catch (err) {
         console.error('❌ Error fetching user info:', err);
@@ -40,65 +28,63 @@ export default function Home() {
     fetchUserInfo();
   }, []);
 
-  const dashboardCards = [
+  const cards = [
     {
-      title: 'Lịch làm việc',
-      description: 'Quản lý và xem lịch hẹn tư vấn.',
+      title: 'Schedule',
+      description: 'Manage your weekly counseling appointments.',
+      icon: '📅',
       link: '/counselor/schedule',
     },
     {
-      title: 'Bài viết & Blog',
-      description: 'Quản lý bài viết và chia sẻ kiến thức.',
+      title: 'Blog & Articles',
+      description: 'Share knowledge through articles and updates.',
+      icon: '📝',
       link: '/counselor/blog',
     },
     {
-      title: 'Diễn đàn',
-      description: 'Tham gia trả lời các câu hỏi trên diễn đàn.',
+      title: 'Forum',
+      description: 'Join and answer user questions.',
+      icon: '💬',
       link: '/counselor/forum',
+    },
+    {
+      title: 'Profile',
+      description: 'Update your information & credentials.',
+      icon: '👤',
+      link: '/counselor/profile',
     },
   ];
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'dashboard':
-        return (
-          <div>
-            <h1 className="text-3xl font-bold mb-4">👋 Welcome back, {userName}!</h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-              {dashboardCards.map((card, index) => (
-                <div
-                  key={index}
-                  onClick={() => navigate(card.link)}
-                  className="cursor-pointer bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition border hover:border-blue-500"
-                >
-                  <h2 className="text-xl font-semibold text-blue-600 mb-2">{card.title}</h2>
-                  <p className="text-gray-600">{card.description}</p>
-                </div>
-              ))}
+return (
+  <div className="min-h-screen bg-[#f5f9fc] px-6 py-12">
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-10">
+        Welcome back, {userName}.
+      </h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {cards.map((card, i) => (
+          <div
+            key={i}
+            onClick={() => navigate(card.link)}
+            className="bg-white cursor-pointer shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-200 rounded-xl px-6 py-8 text-center group border border-gray-100"
+          >
+            <div className="text-4xl mb-4">{card.icon}</div>
+            <h3 className="text-lg font-semibold text-gray-800 group-hover:text-blue-600">
+              {card.title}
+            </h3>
+            <p className="text-gray-500 text-sm mt-2">{card.description}</p>
+
+            <div className="mt-6">
+              <button className="text-sm text-white bg-blue-500 hover:bg-blue-600 px-4 py-1.5 rounded-md transition-all">
+                View
+              </button>
             </div>
           </div>
-        );
-      case 'schedule':
-        return <Schedule />;
-      case 'blog':
-        return <Blog />;
-      case 'users':
-        return <Users />;
-      case 'profiles':
-        return <Profile />;
-      default:
-        return null;
-    }
-  };
-
-  return (
-    <div className="flex">
-      {/* Sidebar nếu cần */}
-      {/* <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} /> */}
-
-      <main className="flex-1 overflow-y-auto p-6 bg-gray-50">
-        {renderContent()}
-      </main>
+        ))}
+      </div>
     </div>
-  );
+  </div>
+);
+
 }

@@ -17,7 +17,7 @@ export default function Schedule() {
 
   const [activeTab, setActiveTab] = useState('overview');
 
-  // Đồng bộ tab từ query khi component mount
+  // Sync tab from query param on component mount
   useEffect(() => {
     if (tabQuery === 'overview' || tabQuery === 'today' || tabQuery === 'history') {
       setActiveTab(tabQuery);
@@ -26,18 +26,14 @@ export default function Schedule() {
 
   return (
     <DashboardShell>
-      <DashboardHeader heading="Schedule" text="Quản lý lịch tư vấn">
-        <Button>
-          <CalendarPlus className="mr-2 h-4 w-4" />
-          Booking mới
-        </Button>
+      <DashboardHeader heading="Schedule" text="Manage your consultation schedules">
       </DashboardHeader>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
         <TabsList>
-          <TabsTrigger value="overview">Lịch làm việc</TabsTrigger>
-          <TabsTrigger value="today">Hôm nay</TabsTrigger>
-          <TabsTrigger value="history">Lịch sử</TabsTrigger>
+          <TabsTrigger value="overview">Work Schedule</TabsTrigger>
+          <TabsTrigger value="today">Today</TabsTrigger>
+          <TabsTrigger value="history">History</TabsTrigger>
         </TabsList>
 
         <TabsContent value="overview">
