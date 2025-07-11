@@ -19,7 +19,7 @@ export default function Service() {
                         <li>Follow-up care coordination</li>
                     </ul>
                     <div className='line'></div>
-                    <div className='price-1'><span>100.000 VND</span> starting from</div>
+                    <div className='price-1'><span>120.000 VND</span> starting from</div>
                     <div className='convenient'>45-60 minute comprehensive session</div>
                     <div className='note-1'>Most Popular</div>
                 </Link>
@@ -34,7 +34,7 @@ export default function Service() {
                         <li>Post-test counseling available</li>
                     </ul>
                     <div className='line'></div>
-                    <div className='price-2'><span>120.000 VND</span> starting from</div>
+                    <div className='price-2'><span>100.000 VND</span> starting from</div>
                     <div className='convenient'>Quick, discreet, and professional</div>
                     <div className='note-2'>Same Day Results</div>
                 </Link>

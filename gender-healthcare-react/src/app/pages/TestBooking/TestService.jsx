@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './TestService.css';
 import { fetchData } from '../LoginRegister/api_register';
 
-export default function TestService({ S_Test, setS_Test }) {
+export default function TestService({ S_Test, setS_Test, S_Doctor }) {
 
     const [TestService, setTestService] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -26,7 +26,7 @@ export default function TestService({ S_Test, setS_Test }) {
     }, []);
 
     return (
-        <div className='test-service-content booking-content'>
+        <div className={`test-service-content booking-content ${!S_Doctor ? '' : 'blured'}`}>
             <h1 className='title'>Tell Us Your Problem</h1>
             <p className='script'>Select from our qualified healthcare test services</p>
             <div className='cards'>
