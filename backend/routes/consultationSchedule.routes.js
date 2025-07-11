@@ -27,6 +27,13 @@ router.get(
   controller.getAllSchedules
 );
 
+router.get('/by-account/:accountId',
+  authenticate,
+  authorize('Admin', 'Counselor'),
+  controller.getSchedulesByAccountId
+);
+
+
 // Tạo mới lịch
 router.post(
   '/',
