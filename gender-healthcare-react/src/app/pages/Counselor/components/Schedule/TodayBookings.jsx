@@ -9,33 +9,49 @@ export default function TodayBookings() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchBookings = async () => {
-      try {
-        const accountId = localStorage.getItem('UserId');
-        if (!accountId) return;
+ useEffect(() => {
+  const fetchBookings = async () => {
+    try {
+      const accountId = localStorage.getItem('UserId');
+      if (!accountId) return;
 
-        const res = await counselorBookAPI.getByCounselorAccountId(accountId);
-        const allBookings = res?.data || res;
+      const res = await counselorBookAPI.getByCounselorAccountId(accountId);
+      const allBookings = res?.data || res;
 
-        const today = dayjs().format('YYYY-MM-DD');
+      const today = dayjs().format('YYYY-MM-DD');
+      const now = dayjs();
 
-        const filtered = allBookings.filter((b) => {
-          const startTime = b?.scheduleId?.startTime;
-          const formattedDate = startTime ? dayjs(startTime).format('YYYY-MM-DD') : null;
-          return formattedDate === today && b.status === 'confirmed';
-        });
+      const filtered = [];
 
-        setBookings(filtered);
-      } catch (err) {
-        console.error('Error fetching today\'s bookings:', err);
-      } finally {
-        setLoading(false);
+      for (const b of allBookings) {
+        const startTime = b?.scheduleId?.startTime;
+        const endTime = b?.scheduleId?.endTime;
+        const formattedDate = startTime ? dayjs(startTime).format('YYYY-MM-DD') : null;
+
+        if (formattedDate === today && b.status === 'confirmed') {
+          const isPastEndTime = endTime && dayjs(endTime).isBefore(now);
+          
+          if (isPastEndTime) {
+            // Auto mark as missed
+            await counselorBookAPI.update(b._id, { status: 'missed' });
+            console.log(`⏰ Booking ${b._id} marked as missed`);
+          } else {
+            filtered.push(b);
+          }
+        }
       }
-    };
 
-    fetchBookings();
-  }, []);
+      setBookings(filtered);
+    } catch (err) {
+      console.error("❌ Error auto-marking missed bookings:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchBookings();
+}, []);
+
 
   if (loading) return <p className="text-center text-sm text-gray-500">Loading...</p>;
 
