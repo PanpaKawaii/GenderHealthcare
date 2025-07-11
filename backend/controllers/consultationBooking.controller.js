@@ -61,16 +61,28 @@ exports.deleteBooking = async (req, res) => {
 exports.getBookingById = async (req, res) => {
   try {
     const booking = await consultationBooking.findById(req.params.id)
-      .populate('customerId')
-      .populate('scheduleId');
+      .populate({
+        path: 'customerId',
+        populate: { path: 'accountId' }
+      })
+      .populate({
+        path: 'scheduleId',
+        populate: {
+          path: 'counselorId',
+          populate: { path: 'accountId' }
+        }
+      });
+
     if (!booking) {
       return res.status(404).json({ error: 'Booking not found' });
     }
+
     res.json(booking);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 //View history booking tư vấn (của khách hàng)
 exports.getBookingsByCustomerAccount = async (req, res) => {
