@@ -82,6 +82,7 @@ const Layout = () => {
               <Link to="/" className="text-gray-600 hover:text-gray-900">Home</Link>
               <Link to="/forum" className="text-gray-600 hover:text-gray-900">Forum</Link>
               <Link to="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
+              <Link to="/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng" className="text-gray-600 hover:text-gray-900">Payment</Link>
               <Link to="/bookingservice" className="text-gray-600 hover:text-gray-900">Booking</Link>
               <Link to="/parametermanager" className="text-gray-600 hover:text-gray-900">Parameter</Link>
               <Link to="/testbookingmanager" className="text-gray-600 hover:text-gray-900">TestBooking</Link>
