@@ -65,6 +65,7 @@ export default function TestBooking() {
 
         const token = localStorage.getItem('token');
         try {
+            setLoading(true);
             const resultTestBookings = await postData('/testbookings', token, BookingData);
             console.log('resultTestBookings', resultTestBookings);
 
@@ -123,7 +124,7 @@ export default function TestBooking() {
             {S_Test && !S_Slot && <CounselorDoctor S_Test={S_Test} S_Doctor={S_Doctor} setS_Doctor={setS_Doctor} />}
             {S_Doctor && !S_Slot && <PickingDate S_Doctor={S_Doctor} S_Date={S_Date} setS_Date={setS_Date} />}
             {S_Test && S_Doctor && S_Date && <TimeSlots S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} setS_Slot={setS_Slot} />}
-            {S_Slot && <PaymentConfirm S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} handleBooking={handleBooking} />}
+            {S_Slot && <PaymentConfirm loading={loading} S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} handleBooking={handleBooking} />}
         </div>
     )
 }

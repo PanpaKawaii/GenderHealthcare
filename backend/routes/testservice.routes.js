@@ -2,7 +2,7 @@ const express = require("express");
 const ctrl = require("../controllers/testservice.controller");
 const router = express.Router();
 const { authenticate, authorize } = require("../middlewares/auth.middleware");
-router.use(authenticate, authorize("Doctor"));
+router.use(authenticate, authorize("Customer"));
 
 router.post("/", ctrl.create);
 router.get("/", ctrl.getAll);
