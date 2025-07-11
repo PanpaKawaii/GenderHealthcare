@@ -163,7 +163,9 @@ export default function TestServiceParameterManager() {
                     {new Date(item.createdAt).toLocaleDateString("vi-VN")}
                   </td>
                   <td>
-                    <Link to={`./${item.testServiceId?._id}`}>
+                    <Link
+                      to={`/doctor/testserviceparametermanager/${item.testServiceId?._id}`}
+                    >
                       <button className="btn detail-btn">Detail</button>
                     </Link>
                   </td>

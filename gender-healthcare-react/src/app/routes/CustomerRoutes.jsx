@@ -12,7 +12,6 @@ import DashboardDoctor from "../pages/Dashboard/DashboardDoctor";
 import DashboardTestservice from "../pages/Dashboard/DashboardTestservice";
 import DashboardMedicalfacility from "../pages/Dashboard/DashboardMedicalfacility";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
-import Cycle from "../pages/Cycle/Cycle";
 
 import PostDetail from "../pages/ForumPage/PostDetail";
 
@@ -27,7 +26,9 @@ import TestServiceParameterManager from "../pages/TestServiceParameterManager/Te
 import TestServiceParameterDetail from "../pages/TestServiceParameterManager/TestServiceParameterDetail/TestServiceParameterDetail";
 
 import TestBookingManager from "../pages/TestBookingManager/TestBookingManager";
-import BookingService from "../pages/TestBooking/Service"
+import BookingService from "../pages/TestBooking/Service";
+import CyclePage from "../pages/Cycle/Cycle";
+import Contact from "../pages/contact/Contact";
 
 export default function CustomerRoutes() {
   return (
@@ -41,20 +42,28 @@ export default function CustomerRoutes() {
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/booking" element={<Booking />} />
-          <Route path="/bookingservice" element ={<BookingService/>} />
-        <Route path="/couselortestbooking" element={<TestBooking />} />
+          <Route path="/bookingservice" element={<BookingService />} />
+          <Route path="/couselortestbooking" element={<TestBooking />} />
+          <Route path="/cycle" element={<CyclePage />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
 
         <Route path="/counselorblog" element={<CounselorBlog />} />
         <Route path="/counselorschedule" element={<CounselorSchedule />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        
+
         <Route path="/parametermanager" element={<ParameterManager />} />
         <Route path="/testbookingmanager" element={<TestBookingManager />} />
         <Route path="/testresultmanager/:id" element={<TestResultManager />} />
-        <Route path="/testserviceparametermanager" element={<TestServiceParameterManager />} />
-        <Route path="/testserviceparametermanager/:id" element={<TestServiceParameterDetail/>} />
+        <Route
+          path="/testserviceparametermanager"
+          element={<TestServiceParameterManager />}
+        />
+        <Route
+          path="/testserviceparametermanager/:id"
+          element={<TestServiceParameterDetail />}
+        />
         <Route
           path="/dashboardTestservice"
           element={<DashboardTestservice />}
@@ -65,7 +74,6 @@ export default function CustomerRoutes() {
         />
 
         <Route path="*" element={<Navigate to="/" replace />} />
-        <Route path="/cycle" element={<Cycle />} />
       </Routes>
     </BrowserRouter>
   );

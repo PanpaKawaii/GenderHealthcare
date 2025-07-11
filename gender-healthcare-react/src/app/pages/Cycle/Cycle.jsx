@@ -142,59 +142,62 @@ export default function CyclePage() {
   };
 
   return (
-    <div className="cycle-wrapper fade-in">
-      <div className="cycle-header">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>
-            <div className="title">Theo dõi chu kỳ kinh nguyệt</div>
-            <div className="instruction">
-              Quản lý chu kỳ, dự đoán ngày rụng trứng và nhận nhắc nhở chăm sóc
-              sức khỏe.
-            </div>
-          </div>
-          <button
-            className="btn btn-primary btn-bell"
+    <div>
+      <div className="cycle-wrapper fade-in">
+        <div className="cycle-header">
+          <div
             style={{
-              borderRadius: "50%",
-              width: 48,
-              height: 48,
-              fontSize: 22,
-              marginLeft: 16,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
             }}
-            onClick={() => setReminderOpen(true)}
-            aria-label="Xem nhắc nhở"
           >
-            <FiBell />
-          </button>
+            <div>
+              <div className="title">Theo dõi chu kỳ kinh nguyệt</div>
+              <div className="instruction">
+                Quản lý chu kỳ, dự đoán ngày rụng trứng và nhận nhắc nhở chăm
+                sóc sức khỏe.
+              </div>
+            </div>
+            <button
+              className="btn btn-primary btn-bell"
+              style={{
+                borderRadius: "50%",
+                width: 48,
+                height: 48,
+                fontSize: 22,
+                marginLeft: 16,
+                background: "#fc9292",
+              }}
+              onClick={() => setReminderOpen(true)}
+              aria-label="Xem nhắc nhở"
+            >
+              <FiBell />
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="cycle-content">
-        {loading ? (
-          <div className="loading">Đang tải dữ liệu...</div>
-        ) : (
-          <div>
-            {!startDay ? (
-              <div className="form-section">
-                <div className="form-row">
-                  <div className="form-group">
-                    <span className="form-label">
-                      Chọn ngày bắt đầu kỳ kinh nguyệt đầu tiên:
-                    </span>
-                    <Calendar
-                      onClickDay={handleStartDay}
-                      tileClassName={tileClassName}
-                      className="calendar-container"
-                    />
-                  </div>
+        <div className="cycle-content">
+          {loading ? (
+            <div className="loading">Đang tải dữ liệu...</div>
+          ) : !startDay ? (
+            // Nếu chưa chọn ngày bắt đầu, chỉ hiện 1 lịch để chọn
+            <div className="form-section">
+              <div className="form-row">
+                <div className="form-group">
+                  <span className="form-label">
+                    Chọn ngày bắt đầu kỳ kinh nguyệt đầu tiên:
+                  </span>
+                  <Calendar
+                    onClickDay={handleStartDay}
+                    tileClassName={tileClassName}
+                    className="calendar-container"
+                  />
                 </div>
               </div>
-            ) : (
+            </div>
+          ) : (
+            // Nếu đã chọn ngày bắt đầu, hiện form và 1 lịch ở dưới
+            <div>
               <div className="form-section">
                 <div className="form-row">
                   <div className="form-group">
@@ -240,17 +243,17 @@ export default function CyclePage() {
                   </button>
                 )}
               </div>
-            )}
-            <div className="calendar-container" style={{ marginTop: 24 }}>
-              <Calendar tileClassName={tileClassName} />
+              <div className="calendar-container" style={{ marginTop: 24 }}>
+                <Calendar tileClassName={tileClassName} />
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
+        <ReminderModal
+          open={reminderOpen}
+          onClose={() => setReminderOpen(false)}
+        />
       </div>
-      <ReminderModal
-        open={reminderOpen}
-        onClose={() => setReminderOpen(false)}
-      />
     </div>
   );
 }

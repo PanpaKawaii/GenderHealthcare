@@ -1,27 +1,35 @@
 import Layout from "../pages/DoctorRole/Layout";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import CounselorBlog from "../pages/DoctorRole/pages/Blog";
-import CounselorSchedule from "../pages/DoctorRole/pages/Schedule";
 import Login from "../pages/LoginRegister/Login";
-import Home from "../pages/DoctorRole/Home"
+import Home from "../pages/DoctorRole/Home";
+import ParameterManager from "../pages/ParameterManager/ParameterManager";
+import TestBookingManager from "../pages/TestBookingManager/TestBookingManager";
+import TestServiceParameterManager from "../pages/TestServiceParameterManager/TestServiceParameterManager";
+import TestResultManager from "../pages/TestResultManager/TestResultManager";
+import TestServiceParameterDetail from "../pages/TestServiceParameterManager/TestServiceParameterDetail/TestServiceParameterDetail";
 
-import Booking from "../pages/DoctorRole/pages/ManageBooking";
-
-
-
-export default function CounselorRoutes() {
+export default function DoctorRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Navigate to="/doctor" replace />} />{" "}
+        {/* Thêm dòng này */}
+        <Route path="/login" element={<Login />} />
         <Route path="doctor" element={<Layout />}>
-          <Route path="schedule" element={<CounselorSchedule />} />
-          <Route path="booking" element={<Booking />} />
-
-          <Route path="" element={<Home />} />
+          <Route index element={<ParameterManager />} />
+          <Route path="parametermanager" element={<ParameterManager />} />
+          <Route path="testbookingmanager" element={<TestBookingManager />} />
+          <Route path="testresultmanager/:id" element={<TestResultManager />} />
+          <Route
+            path="testserviceparametermanager"
+            element={<TestServiceParameterManager />}
+          />
+          <Route
+            path="testserviceparametermanager/:id"
+            element={<TestServiceParameterDetail />}
+          />
+          <Route path="*" element={<Navigate to="/doctor" replace />} />
         </Route>
-        <Route path="*" element={<Navigate to="/doctor" replace />} />
-
       </Routes>
     </BrowserRouter>
   );
