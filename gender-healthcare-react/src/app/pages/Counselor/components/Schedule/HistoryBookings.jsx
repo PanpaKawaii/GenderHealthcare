@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { counselorBookAPI } from '../../../../services/api';
 import dayjs from 'dayjs';
+import { Star } from 'lucide-react';
 
 export default function HistoryBookings() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filterStatus, setFilterStatus] = useState('all');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchHistory = async () => {
@@ -15,13 +19,16 @@ export default function HistoryBookings() {
         const res = await counselorBookAPI.getByCounselorAccountId(accountId);
         const allBookings = res?.data || res;
 
-        const history = allBookings.filter((b) =>
-          b.status === 'completed' || b.status === 'cancelled'
+        const history = allBookings.filter(
+          (b) =>
+            b.status === 'completed' ||
+            b.status === 'cancelled' ||
+            b.status === 'missed'
         );
 
         setBookings(history);
       } catch (err) {
-        console.error('Lỗi khi lấy lịch sử tư vấn:', err);
+        console.error('Error fetching history:', err);
       } finally {
         setLoading(false);
       }
@@ -30,59 +37,105 @@ export default function HistoryBookings() {
     fetchHistory();
   }, []);
 
-  if (loading) return <p>Đang tải lịch sử...</p>;
+  const filteredBookings = bookings.filter(
+    (b) => filterStatus === 'all' || b.status === filterStatus
+  );
+
+  const renderStars = (count) => (
+    <div className="flex gap-1">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <Star
+          key={i}
+          size={16}
+          strokeWidth={1.5}
+          className={`${
+            i <= count ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
+          }`}
+        />
+      ))}
+    </div>
+  );
+
+  if (loading)
+    return <p className="text-center text-gray-500 text-sm mt-6">Loading history...</p>;
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-medium">Lịch sử tư vấn</h3>
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h3 className="text-xl font-semibold text-gray-800">Consultation History</h3>
+        <select
+          className="border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-700"
+          value={filterStatus}
+          onChange={(e) => setFilterStatus(e.target.value)}
+        >
+          <option value="all">All</option>
+          <option value="completed">Completed</option>
+          <option value="cancelled">Cancelled</option>
+          <option value="missed">Missed</option>
+        </select>
+      </div>
 
-      {bookings.length === 0 ? (
-        <p className="text-gray-500">Chưa có lịch sử tư vấn.</p>
+      {filteredBookings.length === 0 ? (
+        <p className="text-center text-gray-500">No consultation history available.</p>
       ) : (
-        bookings.map((b) => {
-          const start = dayjs(b.scheduleId?.startTime);
-          const end = dayjs(b.scheduleId?.endTime);
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {filteredBookings.map((b) => {
+            const start = dayjs(b.scheduleId?.startTime);
+            const end = dayjs(b.scheduleId?.endTime);
+            const duration = end.diff(start, 'minute') || 60;
 
-          return (
-            <div key={b._id} className="rounded-md border p-4 space-y-1">
-              <div className="flex justify-between">
-                <p className="font-medium">{b.customerId?.accountId?.fullName || 'Khách hàng'}</p>
-                <p className={`text-sm ${b.status === 'completed' ? 'text-green-600' : 'text-red-600'}`}>
-                  {b.status === 'completed' ? 'Đã hoàn thành' : 'Đã huỷ'}
-                </p>
+            return (
+              <div
+                key={b._id}
+                className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-200"
+              >
+                <div className="flex justify-between items-start">
+                  {/* Left - Customer Info */}
+                  <div>
+                    <h4 className="text-base font-semibold text-gray-900">
+                      {b.customerId?.accountId?.name || 'Customer'}
+                    </h4>
+                    <p className="text-sm text-gray-500">
+                      {b.customerId?.accountId?.email || ''}
+                    </p>
+                  </div>
+
+                  {/* Right - Status + Time */}
+                  <div className="text-right space-y-1">
+                    <span
+                      className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${
+                        b.status === 'completed'
+                          ? 'bg-green-100 text-green-700'
+                          : b.status === 'cancelled'
+                          ? 'bg-red-100 text-red-700'
+                          : 'bg-yellow-100 text-yellow-700'
+                      }`}
+                    >
+                      {b.status.charAt(0).toUpperCase() + b.status.slice(1)}
+                    </span>
+                    <p className="text-sm text-gray-600">
+                      {start.format('DD/MM/YYYY')}<br />
+                      {start.format('HH:mm')} - {end.format('HH:mm')} ({duration} min)
+                    </p>
+                  </div>
+                </div>
+
+                {/* Rating + View Detail */}
+                <div className="mt-4 flex items-center justify-between">
+                  <div className="text-sm text-gray-700">
+                    {b.rating > 0 && renderStars(b.rating)}
+                  </div>
+                  <button
+                    onClick={() => navigate(`/counselor/bookings/${b._id}`)}
+                    className="text-sm text-indigo-600 font-medium hover:underline"
+                  >
+                    View Details
+                  </button>
+                </div>
               </div>
-
-              <p className="text-sm text-muted-foreground">
-                {start.format('DD/MM/YYYY')} – {start.format('HH:mm')} ~ {end.format('HH:mm')}
-              </p>
-
-              {b.result && (
-                <p>
-                  <span className="font-medium">Kết quả: </span>
-                  {b.result}
-                </p>
-              )}
-              {b.note && (
-                <p>
-                  <span className="font-medium">Ghi chú: </span>
-                  {b.note}
-                </p>
-              )}
-              {b.feedback && (
-                <p>
-                  <span className="font-medium">Phản hồi KH: </span>
-                  {b.feedback}
-                </p>
-              )}
-              {b.rating && (
-                <p>
-                  <span className="font-medium">Đánh giá: </span>
-                  {b.rating} ★
-                </p>
-              )}
-            </div>
-          );
-        })
+            );
+          })}
+        </div>
       )}
     </div>
   );

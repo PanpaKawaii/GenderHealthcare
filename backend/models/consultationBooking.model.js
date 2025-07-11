@@ -5,7 +5,7 @@ const consultationBookingSchema = new Schema({
     note: String,
     rating: Number,
     feedback: String,
-    status: { type: String, enum: ['pending', 'confirmed', 'completed', 'cancelled'] },
+    status: { type: String, enum: ['pending', 'confirmed', 'completed', 'cancelled', 'missed'] },
     result: String,
     bookingDate: {type: Date, required: true },
     customerId: { type: Schema.Types.ObjectId, ref: 'Customer', required: true },
