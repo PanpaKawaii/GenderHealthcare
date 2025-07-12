@@ -246,12 +246,12 @@ export default function ProfilePage() {
 
           {/* Tabs for different sections */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid grid-cols-5 mb-4">
+            <TabsList className="grid grid-cols-4 mb-4">
               <TabsTrigger value="cycle">Cycle</TabsTrigger>
               <TabsTrigger value="reminders">Reminders</TabsTrigger>
               <TabsTrigger value="appointments">Appointments</TabsTrigger>
               <TabsTrigger value="tests">Tests</TabsTrigger>
-              <TabsTrigger value="settings">Settings</TabsTrigger>
+              {/* <TabsTrigger value="settings">Settings</TabsTrigger> */}
             </TabsList>
 
             <TabsContent value="cycle" className="space-y-4">
@@ -270,9 +270,9 @@ export default function ProfilePage() {
               <TestResults />
             </TabsContent>
 
-            <TabsContent value="settings" className="space-y-4">
+            {/* <TabsContent value="settings" className="space-y-4">
               <SettingsComponent />
-            </TabsContent>
+            </TabsContent> */}
           </Tabs>
         </div>
       </div>

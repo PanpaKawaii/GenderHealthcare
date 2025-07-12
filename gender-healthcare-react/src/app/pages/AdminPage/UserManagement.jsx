@@ -751,7 +751,7 @@ const UserManagement = () => {
             'bg-red-100 text-red-800 border border-red-200'
           }`}
         >
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 ">
             {notification.type === 'success' ? (
               <CheckCircle size={18} className="text-green-600" />
             ) : (
@@ -848,7 +848,7 @@ const UserManagement = () => {
             </div>
           ) : (
             <div className="rounded-md border overflow-hidden">
-              <Table>
+              <Table className="min-w-full">
                 <TableHeader>
                   <TableRow>
                     <TableHead>Name</TableHead>
@@ -858,10 +858,10 @@ const UserManagement = () => {
                     <TableHead className="w-[100px]">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
-                <TableBody>
+                <TableBody >
                   {filteredUsers.map((user) => (
-                    <TableRow key={user._id}>
-                      <TableCell className="font-medium">{user.name || 'N/A'}</TableCell>
+                    <TableRow key={user._id} >
+                      <TableCell className="font-medium p-2">{user.name || 'N/A'}</TableCell>
                       <TableCell>{user.email}</TableCell>
                       <TableCell>
                         <Badge 
