@@ -56,7 +56,13 @@ export default function Login() {
                   navigate('/'); // Default for customers
                 }
             } else {
-                setErrorSignIn('Incorrect email or password');
+                if( result.message == "Your account has been deactivated") {
+                    setErrorSignIn('Your account has been deactivated');
+                } else{
+                      setErrorSignIn('Incorrect email or password');
+                }
+    
+              
             }
         } catch (error) {
             console.error('Login error:', error);

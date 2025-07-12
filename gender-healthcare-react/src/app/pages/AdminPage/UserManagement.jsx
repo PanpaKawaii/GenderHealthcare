@@ -718,6 +718,29 @@ const UserManagement = () => {
     setIsViewModalOpen(true);
   };
   
+  // Handle user activation/deactivation
+  const handleToggleUserStatus = async (user) => {
+    try {
+      if (user.isActive !== false) {
+        // Deactivate user
+        await accountAPI.deactivateUser(user._id);
+        showNotification(`User ${user.name} has been deactivated`);
+      } else {
+        // Activate user
+        await accountAPI.activateUser(user._id);
+        showNotification(`User ${user.name} has been activated`);
+      }
+      
+      // Update users list with the updated status
+      setUsers(users.map(u => 
+        u._id === user._id ? { ...u, isActive: !user.isActive } : u
+      ));
+    } catch (error) {
+      console.error('Error toggling user status:', error);
+      showNotification(`Error: ${error.message || 'Unknown error toggling user status'}`, "error");
+    }
+  };
+  
   // Handle delete user
   const confirmDeleteUser = (user) => {
     setUserToDelete(user);
@@ -878,21 +901,27 @@ const UserManagement = () => {
                         </Badge>
                       </TableCell>
                       <TableCell>
-                        {user.isActive !== false ? (
-                          <Badge className="bg-green-100 text-green-800 border-green-200 hover:bg-green-100">
-                            <div className="flex items-center gap-1">
-                              <CheckCircle size={12} />
-                              Active
-                            </div>
-                          </Badge>
-                        ) : (
-                          <Badge className="bg-red-100 text-red-800 border-red-200 hover:bg-red-100">
-                            <div className="flex items-center gap-1">
-                              <XCircle size={12} />
-                              Inactive
-                            </div>
-                          </Badge>
-                        )}
+                        <div 
+                          className="cursor-pointer" 
+                          onClick={() => handleToggleUserStatus(user)}
+                          title={user.isActive !== false ? "Click to deactivate user" : "Click to activate user"}
+                        >
+                          {user.isActive !== false ? (
+                            <Badge className="bg-green-100 text-green-800 border-green-200 hover:bg-green-50">
+                              <div className="flex items-center gap-1">
+                                <CheckCircle size={12} />
+                                Active
+                              </div>
+                            </Badge>
+                          ) : (
+                            <Badge className="bg-red-100 text-red-800 border-red-200 hover:bg-red-50">
+                              <div className="flex items-center gap-1">
+                                <XCircle size={12} />
+                                Inactive
+                              </div>
+                            </Badge>
+                          )}
+                        </div>
                       </TableCell>
                       <TableCell>
                         <DropdownMenu>
@@ -911,6 +940,17 @@ const UserManagement = () => {
                               <Edit2 className="mr-2 h-4 w-4" />
                               <span>Edit</span>
                             </DropdownMenuItem>
+                            {user.isActive !== false ? (
+                              <DropdownMenuItem onClick={() => handleToggleUserStatus(user)} className="cursor-pointer text-amber-600">
+                                <XCircle className="mr-2 h-4 w-4" />
+                                <span>Deactivate</span>
+                              </DropdownMenuItem>
+                            ) : (
+                              <DropdownMenuItem onClick={() => handleToggleUserStatus(user)} className="cursor-pointer text-green-600">
+                                <CheckCircle className="mr-2 h-4 w-4" />
+                                <span>Activate</span>
+                              </DropdownMenuItem>
+                            )}
                             <DropdownMenuItem onClick={() => confirmDeleteUser(user)} className="cursor-pointer text-red-600">
                               <Trash2 className="mr-2 h-4 w-4" />
                               <span>Delete</span>
@@ -1032,6 +1072,17 @@ const UserManagement = () => {
           )}
           <div className="flex justify-end gap-2 pt-4">
             <Button variant="outline" onClick={() => setIsViewModalOpen(false)}>Close</Button>
+            {selectedUser?.isActive !== false ? (
+              <Button variant="outline" className="border-amber-200 text-amber-600 hover:bg-amber-50" onClick={() => {
+                handleToggleUserStatus(selectedUser);
+                setIsViewModalOpen(false);
+              }}>Deactivate User</Button>
+            ) : (
+              <Button variant="outline" className="border-green-200 text-green-600 hover:bg-green-50" onClick={() => {
+                handleToggleUserStatus(selectedUser);
+                setIsViewModalOpen(false);
+              }}>Activate User</Button>
+            )}
             <Button onClick={() => {
               setIsViewModalOpen(false);
               handleEditUser(selectedUser);
