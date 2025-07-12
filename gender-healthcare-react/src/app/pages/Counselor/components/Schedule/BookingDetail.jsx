@@ -84,13 +84,12 @@ export default function BookingDetail() {
               <li>
                 <strong>Status:</strong>{' '}
                 <span
-                  className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${
-                    booking.status === 'completed'
+                  className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${booking.status === 'completed'
                       ? 'bg-green-100 text-green-700'
                       : booking.status === 'cancelled'
-                      ? 'bg-red-100 text-red-700'
-                      : 'bg-yellow-100 text-yellow-700'
-                  }`}
+                        ? 'bg-red-100 text-red-700'
+                        : 'bg-yellow-100 text-yellow-700'
+                    }`}
                 >
                   {booking.status}
                 </span>
@@ -143,27 +142,27 @@ export default function BookingDetail() {
                 </div>
 
                 <div className="flex flex-wrap justify-end gap-3 pt-4">
-  <button
-    onClick={() => handleUpdateBooking('missed')}
-    className="px-4 py-2 rounded-lg text-sm bg-yellow-50 text-yellow-600 hover:bg-yellow-100 transition"
-  >
-    Mark as Missed
-  </button>
+                  <button
+                    onClick={() => handleUpdateBooking('missed')}
+                    className="px-4 py-2 rounded-lg text-sm bg-yellow-50 text-yellow-600 hover:bg-yellow-100 transition"
+                  >
+                    Mark as Missed
+                  </button>
 
-  <button
-    onClick={() => handleUpdateBooking('cancelled')}
-    className="px-4 py-2 rounded-lg text-sm bg-red-50 text-red-600 hover:bg-red-100 transition"
-  >
-    Cancel Booking
-  </button>
+                  <button
+                    onClick={() => handleUpdateBooking('cancelled')}
+                    className="px-4 py-2 rounded-lg text-sm bg-red-50 text-red-600 hover:bg-red-100 transition"
+                  >
+                    Cancel Booking
+                  </button>
 
-  <button
-    onClick={() => handleUpdateBooking('completed')}
-    className="px-4 py-2 rounded-lg text-sm bg-blue-600 text-white hover:bg-blue-700 transition"
-  >
-    Mark as Completed
-  </button>
-</div>
+                  <button
+                    onClick={() => handleUpdateBooking('completed')}
+                    className="px-4 py-2 rounded-lg text-sm bg-blue-600 text-white hover:bg-blue-700 transition"
+                  >
+                    Mark as Completed
+                  </button>
+                </div>
 
               </div>
             )}

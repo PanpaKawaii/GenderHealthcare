@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { counselorBookAPI } from "../../services/api";
+import { counselorBookAPI, counselorScheduleAPI } from "../../services/api";
 import {
   Card,
   CardHeader,
@@ -51,25 +51,50 @@ export default function BookingDetail() {
     }
   };
 
-  const renderStars = (editable = false) => {
-    return (
-      <div className="flex gap-1">
-        {[1, 2, 3, 4, 5].map((i) => (
-          <Star
-            key={i}
-            size={22}
-            strokeWidth={1.5}
-            className={`transition cursor-pointer ${
-              (hover || rating) >= i ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
-            }`}
-            onMouseEnter={() => editable && setHover(i)}
-            onMouseLeave={() => editable && setHover(0)}
-            onClick={() => editable && setRating(i)}
-          />
-        ))}
-      </div>
-    );
+  const handleCancelBooking = async () => {
+    const confirmCancel = confirm("Bạn có chắc chắn muốn huỷ lịch hẹn này?");
+    if (!confirmCancel) return;
+
+    try {
+      setSaving(true);
+
+      // 1. Cập nhật trạng thái booking
+      await counselorBookAPI.update(booking._id, { status: "cancelled" });
+
+      // 2. Mở lại slot trong schedule
+      const scheduleId = booking.scheduleId?._id;
+      if (scheduleId) {
+        await counselorScheduleAPI.update(scheduleId, { status: "available" });
+      }
+
+      alert("Đã huỷ lịch hẹn.");
+      const res = await counselorBookAPI.getById(booking._id);
+      setBooking(res.data);
+    } catch (error) {
+      console.error("❌ Lỗi khi huỷ lịch hẹn:", error);
+      alert("Huỷ lịch hẹn thất bại.");
+    } finally {
+      setSaving(false);
+    }
   };
+
+  const renderStars = (editable = false) => (
+    <div className="flex gap-1">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <Star
+          key={i}
+          size={22}
+          strokeWidth={1.5}
+          className={`transition cursor-pointer ${
+            (hover || rating) >= i ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+          }`}
+          onMouseEnter={() => editable && setHover(i)}
+          onMouseLeave={() => editable && setHover(0)}
+          onClick={() => editable && setRating(i)}
+        />
+      ))}
+    </div>
+  );
 
   if (loading) {
     return (
@@ -96,7 +121,7 @@ export default function BookingDetail() {
     <div className="max-w-2xl mx-auto p-4">
       <div className="mb-4">
         <button
-          onClick={() => navigate("/profile?tab=appointments")} // hoặc '/appointments' nếu đúng route
+          onClick={() => navigate("/profile?tab=appointments")}
           className="text-sm text-indigo-600 hover:underline"
         >
           ← Quay lại lịch hẹn
@@ -133,6 +158,18 @@ export default function BookingDetail() {
             <span className="font-medium">Kết quả tư vấn:</span>
             <span>{booking.result || "Chưa có"}</span>
           </div>
+
+          {booking.status === "confirmed" && (
+            <div className="text-right">
+              <button
+                onClick={handleCancelBooking}
+                disabled={saving}
+                className="px-4 py-2 rounded text-white bg-red-600 hover:bg-red-700 transition"
+              >
+                {saving ? "Đang huỷ..." : "Huỷ lịch hẹn"}
+              </button>
+            </div>
+          )}
 
           {booking.rating ? (
             <div className="bg-gray-100 p-4 rounded">

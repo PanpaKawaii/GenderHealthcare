@@ -10,7 +10,7 @@ export default function Service() {
             <div className='card-container'>
                 <Link to="/booking" className='card card-stethoscope' style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className='icon icon-stethoscope'><i className='fa-solid fa-stethoscope'></i></div>
-                    <h2>Medical Consultation</h2>
+                    <h2>Consultation Booking</h2>
                     <p>Comprehensive medical evaluations with experienced physicians. Get expert diagnosis, treatment plans, and health guidance tailored to your needs.</p>
                     <ul className='ul-1'>
                         <li>Board-certified physicians</li>
@@ -19,8 +19,8 @@ export default function Service() {
                         <li>Follow-up care coordination</li>
                     </ul>
                     <div className='line'></div>
-                    <div className='price-1'><span>120.000 VND</span> starting from</div>
-                    <div className='convenient'>45-60 minute comprehensive session</div>
+                    <div className='price-1'><span>150.000 VND</span> starting from</div>
+                    <div className='convenient'>60 minute comprehensive session</div>
                     <div className='note-1'>Most Popular</div>
                 </Link>
                 <Link to="/couselortestbooking" className='card card-hospital' style={{ textDecoration: 'none', color: 'inherit' }}>

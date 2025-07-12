@@ -61,18 +61,21 @@ export default function AppointmentHistory() {
   }, [accountId]);
 
   const getStatusBadge = (status) => {
-    switch (status) {
-      case "upcoming":
-      case "confirmed":
-        return <Badge className="bg-green-100 text-green-800">Upcoming</Badge>;
-      case "completed":
-        return <Badge className="bg-blue-100 text-blue-800">Completed</Badge>;
-      case "cancelled":
-        return <Badge className="bg-red-100 text-red-800">Cancelled</Badge>;
-      default:
-        return <Badge variant="outline">Unknown</Badge>;
-    }
-  };
+  switch (status) {
+    case "upcoming":
+    case "confirmed":
+      return <Badge className="bg-green-100 text-green-800">Upcoming</Badge>;
+    case "completed":
+      return <Badge className="bg-blue-100 text-blue-800">Completed</Badge>;
+    case "cancelled":
+      return <Badge className="bg-red-100 text-red-800">Cancelled</Badge>;
+    case "missed":
+      return <Badge className="bg-yellow-100 text-yellow-800">Missed</Badge>;
+    default:
+      return <Badge variant="outline">Unknown</Badge>;
+  }
+};
+
 
   const renderStars = (count) => (
     <div className="flex gap-1">
