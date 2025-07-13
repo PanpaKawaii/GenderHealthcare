@@ -12,7 +12,7 @@ export default function TestBookingManager() {
     const [bookings, setBookings] = useState([]);
     const [formData, setFormData] = useState({ doctorTestServiceId: '', bookingDate: '', status: 'Pending', note: '', });
     const [editingBooking, setEditingBooking] = useState(null);
-    const [doctorTestServices, setDoctorTestServices] = useState(null);
+    // const [doctorTestServices, setDoctorTestServices] = useState(null);
     const [refresh, setRefresh] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -46,13 +46,13 @@ export default function TestBookingManager() {
         GetBooking();
     }, [refresh]);
 
-    useEffect(() => {
-        const fetchDoctors = async () => {
-            const data = await fetchData('/doctortestservices', '');
-            setDoctorTestServices(data);
-        };
-        fetchDoctors();
-    }, []);
+    // useEffect(() => {
+    //     const fetchDoctors = async () => {
+    //         const data = await fetchData('/doctortestservices', '');
+    //         setDoctorTestServices(data);
+    //     };
+    //     fetchDoctors();
+    // }, []);
 
 
     const AddBooking = async (e) => {
@@ -183,7 +183,7 @@ export default function TestBookingManager() {
                                     <div className='btn-box'>
                                         <button className='btn' onClick={() => setEditingBooking(booking)}>Edit</button>
                                         {/* <button className='dlt-btn' onClick={() => DeleteBooking(booking._id)}>Delete</button> */}
-                                        <Link to={`/testresultmanager/${booking.result?._id}`}><button className='btn detail-btn'>Detail</button></Link>
+                                        <Link to={`/doctor/testresultmanager/${booking.result?._id}`}><button className='btn detail-btn'>Detail</button></Link>
                                     </div>
                                 </td>
                             </tr>

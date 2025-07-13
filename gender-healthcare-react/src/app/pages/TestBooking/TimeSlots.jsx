@@ -33,6 +33,9 @@ export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot 
     }, [S_Test, S_Doctor, S_Date]);
 
     const SameDate_Booking = TestBooking.filter(booking => booking.bookingDate?.split('T')[0] == S_Date);
+    const NoCancel_Booking = SameDate_Booking.filter(booking => booking.status != 'Cancelled');
+    console.log('NoCancel_Booking', NoCancel_Booking);
+
 
     return (
         <div className={`timeslots-content booking-content ${(S_Test && S_Doctor && S_Date) ? '' : 'blured'}`}>
@@ -40,13 +43,13 @@ export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot 
             <p className='script'>Available time slots for {S_Date}</p>
             <div className='timeslots-form'>
                 <div className='time-grid'>
-                    {Slot.map((slot, i) => (
+                    {Slot?.sort((a, b) => a.startTime - b.startTime).map((slot, i) => (
                         <button
                             key={i}
-                            className={`time-slot ${SameDate_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id) ? 'booked' : ''}`}
+                            className={`time-slot ${NoCancel_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id) ? 'booked' : ''}`}
                             style={{ backgroundColor: slot._id == S_Slot?._id ? '#28a74540' : '' }}
                             onClick={() => setS_Slot(p => p?._id == slot?._id ? null : slot)}
-                            disabled={SameDate_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id)}
+                            disabled={NoCancel_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id)}
                         >
                             <i className='fa-regular fa-clock'></i> {slot.startTime} - {slot.endTime}
                         </button>

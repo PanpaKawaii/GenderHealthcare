@@ -49,7 +49,7 @@ const Layout = () => {
   }, [UserId]);
 
   const handleLogout = () => {
-    localStorage.removeItem("Token");
+    localStorage.removeItem("token");
     localStorage.removeItem("UserId");
     localStorage.removeItem("UserRole");
     localStorage.setItem("IsLogIn", "false");

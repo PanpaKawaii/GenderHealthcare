@@ -24,3 +24,10 @@ body {
 a {
   text-decoration: none;
 }
+
+.back-arrow {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 40px;
+}

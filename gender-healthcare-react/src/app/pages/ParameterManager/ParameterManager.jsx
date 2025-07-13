@@ -5,6 +5,7 @@ import {
   putData,
   deleteData,
 } from "../LoginRegister/api_register";
+import { Link } from "react-router-dom";
 import "./ManagerStyles.css";
 
 export default function ParameterManager() {
@@ -23,7 +24,7 @@ export default function ParameterManager() {
 
   useEffect(() => {
     const GetParameter = async () => {
-      const token = "";
+      const token = localStorage.getItem('token');
       try {
         const ParameterData = await fetchData("/parameters", token);
         console.log("ParameterData", ParameterData);
@@ -46,7 +47,7 @@ export default function ParameterManager() {
       referenceMax: formData.referenceMax || null,
     };
     console.log(AddParameterData);
-    const token = "";
+    const token = localStorage.getItem('token');
     try {
       setLoading(true);
       const ParameterData = await postData(
@@ -64,7 +65,7 @@ export default function ParameterManager() {
   };
 
   const DeleteParameter = async (id) => {
-    const token = "";
+    const token = localStorage.getItem('token');
     try {
       setLoading(true);
       const ParameterData = await deleteData(`/parameters/${id}`, token);
@@ -85,7 +86,7 @@ export default function ParameterManager() {
       referenceMin: editingParam.referenceMin || null,
       referenceMax: editingParam.referenceMax || null,
     };
-    const token = "";
+    const token = localStorage.getItem('token');
     try {
       setLoading(true);
       const ParameterData = await putData(
