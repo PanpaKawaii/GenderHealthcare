@@ -1,0 +1,175 @@
+[{
+  "_id": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "accountId": {
+    "$oid": "686e70ff4e84738ffe1677a3"
+  },
+  "degree": "Thạc sĩ Y tế công cộng – Đại học Y Dược TP.HCM",
+  "experience": 3,
+  "bio": "Chuyên sâu về sức khỏe giới tính và sức khỏe sinh sản.",
+  "createdAt": {
+    "$date": "2025-06-08T08:13:58.063Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-08T08:13:58.063Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "accountId": {
+    "$oid": "686e97383c4060239f5c953d"
+  },
+  "degree": "Cử nhân Công tác xã hội – Đại học Mở TP.HCM",
+  "experience": 2,
+  "bio": "Chuyên ngành Công tác xã hội trong lĩnh vực sức khỏe cộng đồng.",
+  "createdAt": {
+    "$date": "2025-06-08T08:14:06.545Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-08T08:14:06.545Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "accountId": {
+    "$oid": "686f20ef7dc9f20202bc8a38"
+  },
+  "degree": "Thạc sĩ Giới và Phát triển – Đại học Quốc gia Hà Nội",
+  "experience": 5,
+  "bio": "Tập trung nghiên cứu về quyền và sức khỏe tình dục.",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "accountId": {
+    "$oid": "686f84528bba644b2c4ebad0"
+  },
+  "degree": "Cử nhân Điều dưỡng – Đại học Y Dược Cần Thơ",
+  "experience": 3,
+  "bio": "Có kinh nghiệm làm việc trong các phòng khám sức khỏe vị thành niên.",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.391Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "accountId": {
+    "$oid": "686691ab968eaa6a8fc933cd"
+  },
+  "degree": "Cử nhân Tâm lý học – Đại học KHXH&NV TP.HCM",
+  "experience": 4,
+  "bio": "Tốt nghiệp năm 2020, chuyên ngành Tâm lý học lâm sàng.",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "accountId": {
+    "$oid": "686f83328bba644b2c4ebac6"
+  },
+  "degree": "Chứng chỉ Tư vấn tâm lý vị thành niên – Viện Tâm lý và Giáo dục học Việt Nam",
+  "experience": 5,
+  "bio": "Chứng nhận hoàn thành khóa học năm 2023.",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "accountId": {
+    "$oid": "686f83e38bba644b2c4ebacb"
+  },
+  "degree": "Cử nhân Xã hội học – Đại học Tôn Đức Thắng",
+  "experience": 6,
+  "bio": "Hướng chuyên sâu về hành vi giới và sức khỏe cộng đồng.",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686f650f9b07b301ceddfa3a"
+  },
+  "accountId": {
+    "$oid": "686f650f9b07b301ceddfa38"
+  },
+  "degree": "Cử nhân Sinh học – Đại học Khoa học Tự nhiên TP.HCM",
+  "experience": 6,
+  "bio": "Tốt nghiệp năm 2017, định hướng truyền thông y tế và sinh sản.",
+  "createdAt": {
+    "$date": "2025-07-10T07:00:31.459Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T07:00:31.459Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686f74039b07b301ceddfcc2"
+  },
+  "accountId": {
+    "$oid": "686f74039b07b301ceddfcc0"
+  },
+  "degree": "99912",
+  "experience": 99912,
+  "bio": "99912",
+  "createdAt": {
+    "$date": "2025-07-10T08:04:19.897Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T08:04:50.167Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686fec3c78f4f17fbb3275b9"
+  },
+  "accountId": {
+    "$oid": "686fec3c78f4f17fbb3275b7"
+  },
+  "degree": "degree 2",
+  "experience": 5,
+  "bio": "hi",
+  "createdAt": {
+    "$date": "2025-07-10T16:37:16.300Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T16:37:16.300Z"
+  },
+  "__v": 0
+}]

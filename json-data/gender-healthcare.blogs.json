@@ -1,0 +1,229 @@
+[{
+  "_id": {
+    "$oid": "68456824e09b72838342f06b"
+  },
+  "counselorId": {
+    "$oid": "68454559dbdde43f8439188f"
+  },
+  "title": "How to Manage Stress Effectively",
+  "content": "Discover science-backed methods to reduce daily stress and maintain focus.",
+  "image": "https://picsum.photos/800/450?random=102",
+  "author": "David Tran",
+  "category": "Mental Health",
+  "postedDate": {
+    "$date": "2025-06-02T08:00:00.000Z"
+  },
+  "lastEdited": {
+    "$date": "2025-06-15T14:14:14.599Z"
+  },
+  "status": "active",
+  "updatedAt": {
+    "$date": "2025-06-15T14:14:14.602Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68456824e09b72838342f06f"
+  },
+  "counselorId": {
+    "$oid": "68454559dbdde43f8439188f"
+  },
+  "title": "The Psychology of Motivation",
+  "content": "What drives us to act? Explore theories of human motivation.",
+  "image": "https://picsum.photos/800/450?random=106",
+  "author": "Phạm Khánh",
+  "category": "Psychology",
+  "postedDate": {
+    "$date": "2025-06-06T11:00:00.000Z"
+  },
+  "lastEdited": {
+    "$date": "2025-06-15T14:14:16.631Z"
+  },
+  "status": "active",
+  "updatedAt": {
+    "$date": "2025-06-15T14:14:16.631Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68456824e09b72838342f06a"
+  },
+  "counselorId": {
+    "$oid": "6651001b6c95643eb8ac8adc"
+  },
+  "title": "Understanding Emotional Intelligence",
+  "content": "Emotional intelligence is key to relationships, leadership, and self-awareness. Learn how to develop it.",
+  "image": "https://picsum.photos/800/450?random=101",
+  "author": "Alice Nguyen",
+  "category": "Psychology",
+  "postedDate": {
+    "$date": "2025-06-01T08:00:00.000Z"
+  },
+  "lastEdited": {
+    "$date": "2025-06-15T13:23:25.628Z"
+  },
+  "status": "active",
+  "updatedAt": {
+    "$date": "2025-06-15T13:23:25.628Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68456824e09b72838342f070"
+  },
+  "counselorId": {
+    "$oid": "6651001b6c95643eb8ac8adc"
+  },
+  "title": "Social Media and Mental Health",
+  "content": "A look at the effects of social media on youth mental health and identity.",
+  "image": "https://picsum.photos/800/450?random=107",
+  "author": "Linh Pham",
+  "category": "Mental Health",
+  "postedDate": {
+    "$date": "2025-06-07T10:20:00.000Z"
+  },
+  "lastEdited": {
+    "$date": "2025-06-07T11:00:00.000Z"
+  },
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "68457c03e09b72838342f079"
+  },
+  "counselorId": {
+    "$oid": "6651001b6c95643eb8ac8adc"
+  },
+  "title": "Healthcare Disparities Among Transgender Patients",
+  "content": "A closer look at the challenges trans people face in getting proper sexual and mental health care — and how we can help.",
+  "image": "https://picsum.photos/800/450?random=215",
+  "author": "Tracy Le",
+  "category": "Gender",
+  "postedDate": {
+    "$date": "2025-06-15T10:00:00.000Z"
+  },
+  "lastEdited": {
+    "$date": "2025-06-15T10:30:00.000Z"
+  },
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "68457c03e09b72838342f078"
+  },
+  "counselorId": {
+    "$oid": "68454559dbdde43f8439188f"
+  },
+  "title": "How Gender Identity Affects STI Risk",
+  "content": "Gender-diverse individuals face unique risks and barriers when it comes to STI education and prevention.",
+  "image": "https://picsum.photos/800/450?random=214",
+  "author": "Linh Tran",
+  "category": "Gender",
+  "postedDate": {
+    "$date": "2025-06-14T08:30:00.000Z"
+  },
+  "lastEdited": {
+    "$date": "2025-06-14T09:15:00.000Z"
+  },
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "68457c03e09b72838342f077"
+  },
+  "counselorId": {
+    "$oid": "6651001b6c95643eb8ac8adc"
+  },
+  "title": "Breaking Gender Stereotypes in Healthcare",
+  "content": "Explore how traditional gender roles affect access to care and what we can do to create inclusive health systems.",
+  "image": "https://picsum.photos/800/450?random=213",
+  "author": "Kim Anh",
+  "category": "Gender",
+  "postedDate": {
+    "$date": "2025-06-13T08:00:00.000Z"
+  },
+  "lastEdited": {
+    "$date": "2025-06-13T09:00:00.000Z"
+  },
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "68457c56e09b72838342f07c"
+  },
+  "counselorId": {
+    "$oid": "6651001b6c95643eb8ac8adc"
+  },
+  "title": "Overcoming Fear of STI Testing",
+  "content": "Worried about testing? You're not alone. We break down the process and why it’s a powerful step toward better health.",
+  "image": "https://picsum.photos/800/450?random=217",
+  "author": "Mai Hoang",
+  "category": "STI Testing",
+  "postedDate": {
+    "$date": "2025-06-17T10:00:00.000Z"
+  },
+  "lastEdited": {
+    "$date": "2025-06-17T10:45:00.000Z"
+  },
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "68457c56e09b72838342f07b"
+  },
+  "counselorId": {
+    "$oid": "68454559dbdde43f8439188f"
+  },
+  "title": "Why Regular STI Testing Matters",
+  "content": "Routine testing helps detect infections early and prevent long-term health complications. Learn when and how to get tested.",
+  "image": "https://picsum.photos/800/450?random=216",
+  "author": "Dr. Quang Bui",
+  "category": "STI Testing",
+  "postedDate": {
+    "$date": "2025-06-16T09:00:00.000Z"
+  },
+  "lastEdited": {
+    "$date": "2025-06-16T09:30:00.000Z"
+  },
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "68457c56e09b72838342f07d"
+  },
+  "counselorId": {
+    "$oid": "68454559dbdde43f8439188f"
+  },
+  "title": "Why Regular STI Testing Matters",
+  "content": "Routine testing helps detect infections early and prevent long-term health complications. Learn when and how to get tested.",
+  "image": "https://picsum.photos/800/450?random=216",
+  "author": "Dr. Quang Bui",
+  "category": "STI Testing",
+  "postedDate": {
+    "$date": "2025-06-16T09:00:00.000Z"
+  },
+  "lastEdited": {
+    "$date": "2025-06-16T09:30:00.000Z"
+  },
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "68457c56e09b72838342f07e"
+  },
+  "counselorId": {
+    "$oid": "6651001b6c95643eb8ac8adc"
+  },
+  "title": "Overcoming Fear of STI Testing",
+  "content": "Worried about testing? You're not alone. We break down the process and why it’s a powerful step toward better health.",
+  "image": "https://picsum.photos/800/450?random=217",
+  "author": "Mai Hoang",
+  "category": "STI Testing",
+  "postedDate": {
+    "$date": "2025-06-17T10:00:00.000Z"
+  },
+  "lastEdited": {
+    "$date": "2025-06-17T10:45:00.000Z"
+  },
+  "status": "active"
+}]
