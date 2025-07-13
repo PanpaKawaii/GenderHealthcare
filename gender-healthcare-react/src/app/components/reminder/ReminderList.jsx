@@ -62,7 +62,7 @@ function ReminderList() {
     setLoading(true);
     try {
       await reminderAPI.delete(reminder._id);
-      message.success("Đã xóa nhắc nhở.");
+      message.success("Deleted reminder.");
       fetchReminders(customerId);
     } catch (err) {
       message.error(
@@ -82,14 +82,14 @@ function ReminderList() {
           date: values.date.format("YYYY-MM-DD"),
           customerId,
         });
-        message.success("Đã tạo nhắc nhở mới.");
+        message.success("Created new reminder.");
       } else {
         await reminderAPI.update(editingReminder._id, {
           ...values,
           date: values.date.format("YYYY-MM-DD"),
           customerId,
         });
-        message.success("Đã cập nhật nhắc nhở.");
+        message.success("Updated reminder.");
       }
       setModalVisible(false);
       setEditingReminder(null);
@@ -97,7 +97,7 @@ function ReminderList() {
       fetchReminders(customerId);
     } catch (err) {
       message.error(
-        "Lỗi khi lưu: " + (err.response?.data?.error || err.message)
+        "Error saving: " + (err.response?.data?.error || err.message)
       );
     }
     setLoading(false);
@@ -105,37 +105,37 @@ function ReminderList() {
 
   const columns = [
     {
-      title: "Loại",
+      title: "Reminder Type",
       dataIndex: "type",
       key: "type",
     },
     {
-      title: "Ngày",
+      title: "Reminder Date",
       dataIndex: "date",
       key: "date",
       render: (date) => dayjs(date).format("DD/MM/YYYY"),
     },
     {
-      title: "Nội dung",
+      title: "Content",
       dataIndex: "message",
       key: "message",
     },
     {
-      title: "Thao tác",
+      title: "Actions",
       key: "actions",
       render: (_, record) => (
         <>
           <Button type="link" onClick={() => handleEdit(record)}>
-            Sửa
+            Change
           </Button>
           <Popconfirm
-            title="Bạn chắc chắn muốn xóa nhắc nhở này?"
+            title="Are you sure you want to delete this reminder?"
             onConfirm={() => handleDelete(record)}
-            okText="Xóa"
-            cancelText="Hủy"
+            okText="Delete"
+            cancelText="Cancel"
           >
             <Button type="link" danger>
-              Xóa
+              Delete
             </Button>
           </Popconfirm>
         </>
@@ -151,7 +151,7 @@ function ReminderList() {
         style={{ marginBottom: 16 }}
         block
       >
-        Thêm nhắc nhở
+        Add Reminder
       </Button>
       <Table
         columns={columns}
@@ -162,31 +162,31 @@ function ReminderList() {
         size="small"
       />
       <Modal
-        title={isCreate ? "Tạo nhắc nhở mới" : "Cập nhật nhắc nhở"}
+        title={isCreate ? "Create New Reminder" : "Update Reminder"}
         open={modalVisible}
         onCancel={() => setModalVisible(false)}
         onOk={handleSave}
-        okText={isCreate ? "Tạo mới" : "Lưu"}
-        cancelText="Hủy"
+        okText={isCreate ? "Create" : "Save"}
+        cancelText="Cancel"
         confirmLoading={loading}
       >
         <Form form={form} layout="vertical">
           <Form.Item
             name="type"
-            label="Loại nhắc nhở"
-            rules={[{ required: true, message: "Nhập loại nhắc nhở" }]}
+            label="Reminder Type"
+            rules={[{ required: true, message: "Please enter reminder type" }]}
           >
-            <Input placeholder="Ví dụ: Uống thuốc, Sự kiện..." />
+            <Input placeholder="E.g., Take medicine, Event..." />
           </Form.Item>
           <Form.Item
             name="date"
-            label="Ngày nhắc nhở"
-            rules={[{ required: true, message: "Chọn ngày nhắc nhở" }]}
+            label="Reminder Date"
+            rules={[{ required: true, message: "Please select reminder date" }]}
           >
             <DatePicker format="DD/MM/YYYY" style={{ width: "100%" }} />
           </Form.Item>
-          <Form.Item name="message" label="Nội dung">
-            <Input placeholder="Nội dung nhắc nhở (không bắt buộc)" />
+          <Form.Item name="message" label="Content">
+            <Input placeholder="Reminder content (optional)" />
           </Form.Item>
         </Form>
       </Modal>

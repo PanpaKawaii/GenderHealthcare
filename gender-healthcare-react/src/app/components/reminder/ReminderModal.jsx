@@ -14,7 +14,7 @@ export default function ReminderModal({ open, onClose }) {
       destroyOnClose
     >
       <div className="reminder-list-container">
-        <h3>Danh sách nhắc nhở</h3>
+        <h3>Reminder list</h3>
         <ReminderList />
       </div>
     </Modal>
