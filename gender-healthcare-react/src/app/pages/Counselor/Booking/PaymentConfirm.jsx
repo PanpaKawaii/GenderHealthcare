@@ -51,8 +51,9 @@ try {
   await counselorScheduleAPI.update(slot._id, { status: 'booked' });
   console.log('✔ Schedule updated → booked');
 
-  alert('✅ Thanh toán thành công!');
-  navigate('/profile?tab=appointments');
+  navigate('/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng');
+  // alert('✅ Thanh toán thành công!');
+  // navigate('/profile?tab=appointments');
 }catch (err) {
   console.error('❌ Lỗi khi thanh toán:', err);
   if (err.response) {

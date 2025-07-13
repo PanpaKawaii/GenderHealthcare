@@ -124,7 +124,7 @@ export default function CounselorDoctor({ date, slot, onSelectDoctor }) {
                   </div>
                 </div>
                 <div className="flex flex-col items-end gap-2">
-                  <div className="text-blue-600 font-bold text-lg">150$</div>
+                  <div className="text-blue-600 font-bold text-lg">150.000 VND</div>
                   <button
                     className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
                     onClick={() => handleSelectDoctor(doctor)}
