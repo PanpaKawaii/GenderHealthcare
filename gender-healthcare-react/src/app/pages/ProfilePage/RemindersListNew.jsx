@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ForumComponents/ui/card"
 import { Button } from "../../components/ForumComponents/ui/button"
-import { Switch } from "../../components/ForumComponents/ui/switch"
+// import { Switch } from "../../components/ForumComponents/ui/switch"
 import { Bell, Calendar, Clock, Pill, Trash2, Plus, Loader2 } from "lucide-react"
 import { Badge } from "../../components/ForumComponents/ui/badge"
 import dayjs from "dayjs"
@@ -21,6 +21,7 @@ export default function RemindersListNew() {
       setLoading(true)
       try {
         const response = await reminderAPI.getByCustomer(customerId)
+        console.log("Fetched reminders:", response.data)
         setReminders(response.data)
       } catch (err) {
         console.error("Error fetching reminders:", err)
@@ -49,13 +50,13 @@ export default function RemindersListNew() {
   const getBadgeStyle = (type) => {
     switch (type) {
       case "medication":
-        return "bg-blue-100 text-blue-800 hover:bg-blue-200"
+        return "bg-blue-100 text-blue-800 border-blue-200"
       case "appointment":
-        return "bg-green-100 text-green-800 hover:bg-green-200"
+        return "bg-green-100 text-green-800 border-green-200"
       case "test":
-        return "bg-purple-100 text-purple-800 hover:bg-purple-200"
+        return "bg-purple-100 text-purple-800 border-purple-200"
       default:
-        return "bg-gray-100 text-gray-800 hover:bg-gray-200"
+        return "bg-gray-100 text-gray-800 border-gray-200"
     }
   }
 
@@ -67,10 +68,10 @@ export default function RemindersListNew() {
             <CardTitle>Reminders</CardTitle>
             <CardDescription>Set reminders for medications and appointments</CardDescription>
           </div>
-          <Button size="sm" className="h-9">
+          {/* <Button size="sm" className="h-9">
             <Plus className="h-4 w-4 mr-1" />
             Add Reminder
-          </Button>
+          </Button> */}
         </CardHeader>
         <CardContent>
           {loading ? (
@@ -84,53 +85,33 @@ export default function RemindersListNew() {
               {reminders.map((reminder) => (
                 <div
                   key={reminder._id}
-                  className="flex items-center justify-between p-3 border rounded-md"
+                  className="flex flex-col p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10">
-                      {getIcon(reminder.type)}
-                    </div>
-                    <div>
-                      <div className="font-medium">{reminder.title}</div>
-                      <div className="text-sm text-gray-500">
-                        {reminder.time} • {reminder.recurrence || dayjs(reminder.date).format('MMM DD, YYYY')}
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className={`flex h-10 w-10 items-center justify-center rounded-full ${getBadgeStyle(reminder.type)}`}>
+                        {getIcon(reminder.type)}
+                      </div>
+                      <div>
+                        <div className="font-semibold text-lg">{reminder.title}</div>
+                        <div className="text-sm text-gray-500 flex items-center gap-1">
+                          <Clock className="h-3 w-3" /> {reminder.time} • 
+                          <Calendar className="h-3 w-3 ml-1" /> {reminder.recurrence || dayjs(reminder.date).format('MMM DD, YYYY')}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className={getBadgeStyle(reminder.type)}>
+                    <Badge variant="outline" className={`${getBadgeStyle(reminder.type)} px-3 py-1 rounded-full`}>
                       {reminder.type}
                     </Badge>
-                    <Switch 
-                      id={`reminder-${reminder._id}`} 
-                      checked={reminder.isActive} 
-                      onCheckedChange={async (checked) => {
-                        try {
-                          await reminderAPI.toggleActive(reminder._id, checked);
-                          setReminders(reminders.map(r => 
-                            r._id === reminder._id ? {...r, isActive: checked} : r
-                          ));
-                        } catch (err) {
-                          console.error("Failed to toggle reminder:", err);
-                        }
-                      }}
-                    />
-                    <Button 
-                      variant="ghost" 
-                      size="icon" 
-                      className="h-8 w-8 text-red-500"
-                      onClick={async () => {
-                        try {
-                          await reminderAPI.delete(reminder._id);
-                          setReminders(reminders.filter(r => r._id !== reminder._id));
-                        } catch (err) {
-                          console.error("Failed to delete reminder:", err);
-                        }
-                      }}
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
                   </div>
+                  
+                  {reminder.message && (
+                    <div className="mt-2 p-3 bg-gray-50 rounded-md text-sm">
+                      <p className="text-gray-700">
+                        {reminder.message}
+                      </p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

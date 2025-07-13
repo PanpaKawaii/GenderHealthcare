@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PickingDate.css';
 
-export default function PickingDate({ S_Doctor, S_Date, setS_Date }) {
+export default function PickingDate({ S_Doctor, S_Date, setS_Date, S_Slot }) {
 
     const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
@@ -43,7 +43,7 @@ export default function PickingDate({ S_Doctor, S_Date, setS_Date }) {
     };
 
     return (
-        <div className='pickingdate-content booking-content'>
+        <div className={`pickingdate-content booking-content ${(S_Doctor && !S_Slot) ? '' : 'blured'}`}>
             <h1 className='title'>Select Your Appointment Date</h1>
             <p className='script'>Choose your preferred date with {S_Doctor?.name}</p>
             <div className='calendar-form'>
@@ -75,18 +75,26 @@ export default function PickingDate({ S_Doctor, S_Date, setS_Date }) {
                             if (!date) return <div key={index} className='date empty' />;
 
                             const vnDate = convertToVNTime(date);
-                            const isToday = formatDate(vnDate) === formatDate(convertToVNTime(today));
-                            const isSelected = (selectedDate && formatDate(vnDate) === formatDate(convertToVNTime(selectedDate)) ||
-                                convertToVNTime(date).toISOString().split('T')[0] == S_Date);
+                            const vnToday = convertToVNTime(today);
+                            const maxDate = new Date(vnToday);
+                            maxDate.setDate(maxDate.getDate() + 6); // today + 6 = 7 ngày
+
+                            const isToday = formatDate(vnDate) === formatDate(vnToday);
+                            const isSelected = (selectedDate && formatDate(vnDate) === formatDate(convertToVNTime(selectedDate))) ||
+                                vnDate.toISOString().split('T')[0] === S_Date;
+                            const isWithin7Days = formatDate(vnDate) >= formatDate(vnToday) && formatDate(vnDate) <= formatDate(maxDate);
+
                             let className = 'date';
                             if (isToday) className += ' today-date';
                             if (isSelected) className += ' selected';
+                            if (!isWithin7Days) className += ' disabled';
 
                             return (
                                 <div
                                     key={index}
                                     className={className}
                                     onClick={() => {
+                                        if (!isWithin7Days) return;
                                         const selectedVNDate = convertToVNTime(date);
                                         setSelectedDate(selectedVNDate);
                                         setS_Date(selectedVNDate.toISOString().split('T')[0]);

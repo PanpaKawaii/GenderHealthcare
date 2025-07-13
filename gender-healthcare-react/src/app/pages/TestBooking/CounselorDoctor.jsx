@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './CounselorDoctor.css';
 import { fetchData } from '../LoginRegister/api_register';
 
-export default function CounselorDoctor({ S_Test, S_Doctor, setS_Doctor }) {
+export default function CounselorDoctor({ S_Test, S_Doctor, setS_Doctor, S_Slot }) {
 
     const [Doctor, setDoctor] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -38,7 +38,7 @@ export default function CounselorDoctor({ S_Test, S_Doctor, setS_Doctor }) {
     }, [S_Test]);
 
     return (
-        <div className='counselor-doctor-content booking-content'>
+        <div className={`counselor-doctor-content booking-content ${(S_Test && !S_Slot) ? '' : 'blured'}`}>
             <h1 className='title'>Choose Your Doctor</h1>
             <p className='script'>Select from our qualified healthcare professionals</p>
             <div className='cards'>

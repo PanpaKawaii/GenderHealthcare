@@ -1,4 +1,5 @@
 const Account = require('../models/account.model');
+const Customer = require('../models/customer.model');
 const Post = require('../models/post.model');
 const jwt = require('jsonwebtoken');
 
@@ -260,6 +261,10 @@ exports.authentication = async (req, res) => {
 
     // Find user by email
     const account = await Account.findOne({ email });
+    let customer = '';
+    if (account.role == 'Customer') {
+      customer = await Customer.findOne({ accountId: account._id })
+    }
 
     if (!account) {
       return res.status(200).json({
@@ -305,7 +310,8 @@ exports.authentication = async (req, res) => {
         name: account.name,
         email: account.email,
         role: account.role,
-        image: account.image
+        image: account.image,
+        customerId: customer._id
       }
     });
   } catch (error) {

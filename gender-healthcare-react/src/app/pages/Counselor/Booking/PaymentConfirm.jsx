@@ -70,7 +70,7 @@ try {
     <div className="max-w-2xl mx-auto bg-white shadow-md rounded-xl p-8 mt-10">
       <h1 className="text-2xl font-bold text-center text-gray-800 mb-2">
         Confirm &amp; Pay
-      </h1>
+      </h1>Consultation Booking
       <p className="text-center text-gray-500 mb-6">
         Review your booking details and complete payment
       </p>
@@ -83,7 +83,7 @@ try {
         <div className="space-y-2 text-gray-700 text-sm">
           <div className="flex justify-between">
             <span>Service:</span>
-            <span className="font-medium">Consultation Booking</span>
+            <span className="font-medium"></span>
           </div>
           <div className="flex justify-between">
             <span>Counselor:</span>
@@ -102,7 +102,7 @@ try {
 
           <div className="flex justify-between font-bold mt-4 border-t pt-3 text-base">
             <span>Total:</span>
-            <span>${slot?.price || 0}</span>
+            <span>{slot?.price || 0}.000 VND</span>
           </div>
         </div>
 
@@ -110,7 +110,7 @@ try {
           onClick={handleSubmit}
           className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-lg transition"
         >
-          Pay ${slot?.price || 0}
+          Pay {slot?.price || 0}.000 VND
         </button>
       </div>
     </div>
