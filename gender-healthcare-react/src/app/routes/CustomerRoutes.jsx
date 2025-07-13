@@ -16,6 +16,9 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import PostDetail from "../pages/ForumPage/PostDetail";
 
 import Booking from "../pages/Counselor/Booking/Booking";
+import BookingDetail from "../pages/ProfilePage/BookingDetail"
+
+import PaymentStatus from "../pages/PaymentStatus/PaymentStatus";
 
 import SelectBooking from "../pages/Booking/SelectBooking";
 import TestBooking from "../pages/TestBooking/TestBooking";
@@ -42,10 +45,12 @@ export default function CustomerRoutes() {
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/booking" element={<Booking />} />
-          <Route path="/bookingservice" element={<BookingService />} />
-          <Route path="/couselortestbooking" element={<TestBooking />} />
           <Route path="/cycle" element={<CyclePage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="bookings/:id" element={<BookingDetail />} />
+          <Route path="/bookingservice" element={<BookingService />} />
+          <Route path="/couselortestbooking" element={<TestBooking />} />
+          <Route path='/paymentstatus' element={<PaymentStatus />} />
         </Route>
 
         <Route path="/counselorblog" element={<CounselorBlog />} />
@@ -56,14 +61,8 @@ export default function CustomerRoutes() {
         <Route path="/parametermanager" element={<ParameterManager />} />
         <Route path="/testbookingmanager" element={<TestBookingManager />} />
         <Route path="/testresultmanager/:id" element={<TestResultManager />} />
-        <Route
-          path="/testserviceparametermanager"
-          element={<TestServiceParameterManager />}
-        />
-        <Route
-          path="/testserviceparametermanager/:id"
-          element={<TestServiceParameterDetail />}
-        />
+        <Route path="/testserviceparametermanager" element={<TestServiceParameterManager />} />
+        <Route path="/testserviceparametermanager/:id" element={<TestServiceParameterDetail />} />
         <Route
           path="/dashboardTestservice"
           element={<DashboardTestservice />}

@@ -37,6 +37,7 @@ export const login = async (email, password) => {
     if (response.data.success && response.data.token) {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('UserId', response.data.user._id);
+      localStorage.setItem('CustomerId', response.data.user.customerId);
       localStorage.setItem('UserRole', response.data.user.role);
       localStorage.setItem('IsLogIn', 'true');
       setAuthToken(response.data.token);
@@ -52,8 +53,11 @@ export const authenticate = async (email, password) => {
   try {
     const response = await axios.post(`${API_URL}/accounts/authentication`, { email, password });
     if (response.data.success && response.data.allowLogin && response.data.token) {
+      console.log('response.data.userInfo', response.data.userInfo);
+
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('UserId', response.data.userInfo._id);
+      localStorage.setItem('CustomerId', response.data.userInfo.customerId);
       localStorage.setItem('UserRole', response.data.userInfo.role);
       localStorage.setItem('IsLogIn', 'true');
       setAuthToken(response.data.token);
@@ -67,6 +71,7 @@ export const authenticate = async (email, password) => {
 // Logout user
 export const logout = () => {
   localStorage.removeItem('token');
+  localStorage.removeItem('CustomerId');
   localStorage.removeItem('UserId');
   localStorage.removeItem('UserRole');
   localStorage.removeItem('IsLogIn');
@@ -80,7 +85,7 @@ export const getCurrentUser = async () => {
     if (!token) {
       return null;
     }
-    
+
     setAuthToken(token);
     const response = await axios.get(`${API_URL}/accounts/me`);
     return response.data;

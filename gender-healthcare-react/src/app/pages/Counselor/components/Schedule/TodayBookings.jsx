@@ -6,115 +6,103 @@ import dayjs from 'dayjs';
 export default function TodayBookings() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedBooking, setSelectedBooking] = useState(null);
-
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchBookings = async () => {
-      try {
-        const accountId = localStorage.getItem('UserId');
-        if (!accountId) return;
-
-        const res = await counselorBookAPI.getByCounselorAccountId(accountId);
-        const allBookings = res?.data || res;
-
-        const today = dayjs().format('YYYY-MM-DD');
-
-        const filtered = allBookings.filter((b) => {
-          const startTime = b?.scheduleId?.startTime;
-          const formattedDate = startTime ? dayjs(startTime).format('YYYY-MM-DD') : null;
-          return formattedDate === today && b.status === 'confirmed';
-        });
-
-        setBookings(filtered);
-      } catch (err) {
-        console.error('Lỗi khi lấy booking hôm nay:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBookings();
-  }, []);
-
-  const handleOpenForm = (booking) => {
-    if (selectedBooking?._id === booking._id) {
-      setSelectedBooking(null);
-    } else {
-      setSelectedBooking(booking);
-      setForm({
-        result: booking.result || '',
-        note: booking.note || '',
-      });
-    }
-  };
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleUpdateBooking = async (status) => {
-    if (!selectedBooking) return;
-
+ useEffect(() => {
+  const fetchBookings = async () => {
     try {
-      await counselorBookAPI.update(selectedBooking._id, {
-        ...form,
-        status,
-      });
+      const accountId = localStorage.getItem('UserId');
+      if (!accountId) return;
 
-      alert('✅ Cập nhật booking thành công');
-      setSelectedBooking(null);
-      setBookings((prev) => prev.filter((b) => b._id !== selectedBooking._id));
+      const res = await counselorBookAPI.getByCounselorAccountId(accountId);
+      const allBookings = res?.data || res;
+
+      const today = dayjs().format('YYYY-MM-DD');
+      const now = dayjs();
+
+      const filtered = [];
+
+      for (const b of allBookings) {
+        const startTime = b?.scheduleId?.startTime;
+        const endTime = b?.scheduleId?.endTime;
+        const formattedDate = startTime ? dayjs(startTime).format('YYYY-MM-DD') : null;
+
+        if (formattedDate === today && b.status === 'confirmed') {
+          const isPastEndTime = endTime && dayjs(endTime).isBefore(now);
+          
+          if (isPastEndTime) {
+            // Auto mark as missed
+            await counselorBookAPI.update(b._id, { status: 'missed' });
+            console.log(`⏰ Booking ${b._id} marked as missed`);
+          } else {
+            filtered.push(b);
+          }
+        }
+      }
+
+      setBookings(filtered);
     } catch (err) {
-      console.error('Lỗi khi cập nhật booking:', err);
-      alert('❌ Lỗi khi cập nhật booking');
+      console.error("❌ Error auto-marking missed bookings:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
-  if (loading) return <p>Đang tải dữ liệu...</p>;
+  fetchBookings();
+}, []);
+
+
+  if (loading) return <p className="text-center text-sm text-gray-500">Loading...</p>;
 
   return (
     <div className="space-y-6">
-      <h3 className="text-lg font-medium">Booking hôm nay (chưa diễn ra)</h3>
+      <h3 className="text-xl font-semibold text-gray-800">Today's Bookings</h3>
 
       {bookings.length === 0 ? (
-        <p className="text-gray-500">Không có lịch hẹn nào hôm nay.</p>
+        <p className="text-gray-500 text-center">You have no appointments today.</p>
       ) : (
-        bookings.map((b) => {
-          const startTime = dayjs(b.scheduleId?.startTime);
-          const endTime = dayjs(b.scheduleId?.endTime);
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+          {bookings.map((b) => {
+            const startTime = dayjs(b.scheduleId?.startTime);
+            const endTime = dayjs(b.scheduleId?.endTime);
+            const duration = endTime.diff(startTime, 'minute') || 60;
 
-          return (
-            <div key={b._id} className="rounded-md border p-4 space-y-2">
-              <div className="flex justify-between items-center">
-                <div>
-                  <p className="font-medium">
-                    {b.customerId?.accountId?.name || 'Khách hàng'}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {b.serviceName || 'Tư vấn'}
-                  </p>
+            return (
+              <div
+                key={b._id}
+                className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-200"
+              >
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h4 className="text-lg font-medium text-gray-800">
+                      {b.customerId?.accountId?.name || 'Customer'}
+                    </h4>
+                    <p className="text-sm text-gray-500">{b.serviceName || 'Consultation'}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm font-medium text-gray-700">
+                      {startTime.format('DD/MM/YYYY')}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      {startTime.format('HH:mm')} - {endTime.format('HH:mm')}
+                    </p>
+                    <span className="inline-block mt-1 text-xs text-gray-400">{duration} minutes</span>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <p className="font-medium">
-                    {startTime.format('DD/MM/YYYY')} - {startTime.format('HH:mm')} ~ {endTime.format('HH:mm')}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {(endTime.diff(startTime, 'minute')) || 60} phút
-                  </p>
+
+                <div className="mt-4 text-right">
+                  <button
+                    onClick={() => navigate(`/counselor/bookings/${b._id}`)}
+                    className="text-sm text-indigo-600 font-medium hover:underline"
+                  >
+                    View Details
+                  </button>
                 </div>
               </div>
-
-              <div className="flex justify-end gap-4">
-                <button onClick={() => navigate(`/counselor/bookings/${b._id}`)} className="underline text-blue-500">
-                  Xem chi tiết
-                </button>
-              </div>
-            </div>
-          );
-        })
+            );
+          })}
+        </div>
       )}
     </div>
   );
