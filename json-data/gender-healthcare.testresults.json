@@ -1,0 +1,80 @@
+[{
+  "_id": {
+    "$oid": "6873825c0fba47cfa748c643"
+  },
+  "testBookingId": {
+    "$oid": "6873825c0fba47cfa748c640"
+  },
+  "resultDate": {
+    "$date": "2025-07-13T09:54:36.748Z"
+  },
+  "resultFile": "abc.pdf",
+  "status": "Positive",
+  "createdAt": {
+    "$date": "2025-07-13T09:54:36.830Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T09:55:35.392Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873bc69a63013bdf519392f"
+  },
+  "testBookingId": {
+    "$oid": "6873bc69a63013bdf519392c"
+  },
+  "resultDate": {
+    "$date": "2025-07-13T14:02:17.419Z"
+  },
+  "resultFile": "abcdefgh.pdf",
+  "status": "Positive",
+  "createdAt": {
+    "$date": "2025-07-13T14:02:17.819Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:07:45.307Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873c179a63013bdf5193c28"
+  },
+  "testBookingId": {
+    "$oid": "6873c179a63013bdf5193c25"
+  },
+  "resultDate": {
+    "$date": "2025-07-13T14:23:53.536Z"
+  },
+  "resultFile": "",
+  "status": "Pending",
+  "createdAt": {
+    "$date": "2025-07-13T14:23:53.654Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:23:53.654Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873c1c3a63013bdf5193d19"
+  },
+  "testBookingId": {
+    "$oid": "6873c1c2a63013bdf5193d16"
+  },
+  "resultDate": {
+    "$date": "2025-07-13T14:25:07.054Z"
+  },
+  "resultFile": "",
+  "status": "Pending",
+  "createdAt": {
+    "$date": "2025-07-13T14:25:07.150Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:25:07.150Z"
+  },
+  "__v": 0
+}]

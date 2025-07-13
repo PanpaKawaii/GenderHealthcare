@@ -1,0 +1,150 @@
+[{
+  "_id": {
+    "$oid": "684834acee2d895f53645f25"
+  },
+  "name": "Glucose",
+  "unit": "mg/dL",
+  "referenceMin": 70,
+  "referenceMax": 99,
+  "createdAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684834acee2d895f53645f26"
+  },
+  "name": "Cholesterol",
+  "unit": "mg/dL",
+  "referenceMin": 120,
+  "referenceMax": 200,
+  "createdAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684834acee2d895f53645f27"
+  },
+  "name": "Hemoglobin",
+  "unit": "g/dL",
+  "referenceMin": 13.5,
+  "referenceMax": 17.5,
+  "createdAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684834acee2d895f53645f28"
+  },
+  "name": "Blood Pressure",
+  "unit": "mmHg",
+  "referenceMin": 90,
+  "referenceMax": 120,
+  "createdAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684834acee2d895f53645f29"
+  },
+  "name": "Heart Rate",
+  "unit": "bpm",
+  "referenceMin": 60,
+  "referenceMax": 100,
+  "createdAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-03T14:40:16.963Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684834acee2d895f53645f2a"
+  },
+  "name": "Body Temperature",
+  "unit": "°C",
+  "referenceMin": 36.1,
+  "referenceMax": 37.2,
+  "createdAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684834acee2d895f53645f2b"
+  },
+  "name": "White Blood Cell",
+  "unit": "10^9/L",
+  "referenceMin": 4,
+  "referenceMax": 11,
+  "createdAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684834acee2d895f53645f2c"
+  },
+  "name": "Red Blood Cell",
+  "unit": "10^12/L",
+  "referenceMin": 4.7,
+  "referenceMax": 6.1,
+  "createdAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684834acee2d895f53645f2d"
+  },
+  "name": "Platelets",
+  "unit": "10^9/L",
+  "referenceMin": 150,
+  "referenceMax": 450,
+  "createdAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684834acee2d895f53645f2e"
+  },
+  "name": "Creatinine",
+  "unit": "mg/dL",
+  "referenceMin": 0.6,
+  "referenceMax": 1.2,
+  "createdAt": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T09:33:51.107Z"
+  }
+}]

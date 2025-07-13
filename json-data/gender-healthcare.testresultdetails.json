@@ -1,0 +1,228 @@
+[{
+  "_id": {
+    "$oid": "6873825c0fba47cfa748c646"
+  },
+  "testResultId": {
+    "$oid": "6873825c0fba47cfa748c643"
+  },
+  "parameterId": {
+    "$oid": "684834acee2d895f53645f25"
+  },
+  "value": 80,
+  "createdAt": {
+    "$date": "2025-07-13T09:54:36.988Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T09:55:21.652Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873825d0fba47cfa748c649"
+  },
+  "testResultId": {
+    "$oid": "6873825c0fba47cfa748c643"
+  },
+  "parameterId": {
+    "$oid": "684834acee2d895f53645f2b"
+  },
+  "value": 3,
+  "createdAt": {
+    "$date": "2025-07-13T09:54:37.144Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T09:55:25.521Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873825d0fba47cfa748c64c"
+  },
+  "testResultId": {
+    "$oid": "6873825c0fba47cfa748c643"
+  },
+  "parameterId": {
+    "$oid": "684834acee2d895f53645f2c"
+  },
+  "value": 7,
+  "createdAt": {
+    "$date": "2025-07-13T09:54:37.295Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T09:55:29.228Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873bc69a63013bdf5193932"
+  },
+  "testResultId": {
+    "$oid": "6873bc69a63013bdf519392f"
+  },
+  "parameterId": {
+    "$oid": "684834acee2d895f53645f25"
+  },
+  "value": 80,
+  "createdAt": {
+    "$date": "2025-07-13T14:02:17.984Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:07:02.607Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873bc6aa63013bdf5193935"
+  },
+  "testResultId": {
+    "$oid": "6873bc69a63013bdf519392f"
+  },
+  "parameterId": {
+    "$oid": "684834acee2d895f53645f2b"
+  },
+  "value": 3,
+  "createdAt": {
+    "$date": "2025-07-13T14:02:18.463Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:07:28.655Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873bc6aa63013bdf5193938"
+  },
+  "testResultId": {
+    "$oid": "6873bc69a63013bdf519392f"
+  },
+  "parameterId": {
+    "$oid": "684834acee2d895f53645f2c"
+  },
+  "value": 7,
+  "createdAt": {
+    "$date": "2025-07-13T14:02:18.633Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:07:32.570Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873c179a63013bdf5193c2b"
+  },
+  "testResultId": {
+    "$oid": "6873c179a63013bdf5193c28"
+  },
+  "parameterId": {
+    "$oid": "684834acee2d895f53645f25"
+  },
+  "value": null,
+  "createdAt": {
+    "$date": "2025-07-13T14:23:53.852Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:23:53.852Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873c17aa63013bdf5193c2e"
+  },
+  "testResultId": {
+    "$oid": "6873c179a63013bdf5193c28"
+  },
+  "parameterId": {
+    "$oid": "684834acee2d895f53645f2b"
+  },
+  "value": null,
+  "createdAt": {
+    "$date": "2025-07-13T14:23:54.042Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:23:54.042Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873c17aa63013bdf5193c31"
+  },
+  "testResultId": {
+    "$oid": "6873c179a63013bdf5193c28"
+  },
+  "parameterId": {
+    "$oid": "684834acee2d895f53645f2c"
+  },
+  "value": null,
+  "createdAt": {
+    "$date": "2025-07-13T14:23:54.257Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:23:54.257Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873c1c3a63013bdf5193d1c"
+  },
+  "testResultId": {
+    "$oid": "6873c1c3a63013bdf5193d19"
+  },
+  "parameterId": {
+    "$oid": "684834acee2d895f53645f25"
+  },
+  "value": null,
+  "createdAt": {
+    "$date": "2025-07-13T14:25:07.344Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:25:07.344Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873c1c3a63013bdf5193d1f"
+  },
+  "testResultId": {
+    "$oid": "6873c1c3a63013bdf5193d19"
+  },
+  "parameterId": {
+    "$oid": "684834acee2d895f53645f2b"
+  },
+  "value": null,
+  "createdAt": {
+    "$date": "2025-07-13T14:25:07.558Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:25:07.558Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873c1c3a63013bdf5193d22"
+  },
+  "testResultId": {
+    "$oid": "6873c1c3a63013bdf5193d19"
+  },
+  "parameterId": {
+    "$oid": "684834acee2d895f53645f2c"
+  },
+  "value": null,
+  "createdAt": {
+    "$date": "2025-07-13T14:25:07.737Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:25:07.737Z"
+  },
+  "__v": 0
+}]

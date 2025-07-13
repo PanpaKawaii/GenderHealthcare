@@ -1,0 +1,92 @@
+[{
+  "_id": {
+    "$oid": "6873825c0fba47cfa748c640"
+  },
+  "customerId": {
+    "$oid": "686fbe11f6427b9aae183b13"
+  },
+  "doctorTestServiceId": {
+    "$oid": "68657da5a25972d9f61ab3e7"
+  },
+  "bookingDate": {
+    "$date": "2025-07-15T00:00:00.000Z"
+  },
+  "status": "Approved",
+  "note": "ok",
+  "createdAt": {
+    "$date": "2025-07-13T09:54:36.671Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T09:55:15.170Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873bc69a63013bdf519392c"
+  },
+  "customerId": {
+    "$oid": "686fbe11f6427b9aae183b13"
+  },
+  "doctorTestServiceId": {
+    "$oid": "68657da5a25972d9f61ab3ed"
+  },
+  "bookingDate": {
+    "$date": "2025-07-15T00:00:00.000Z"
+  },
+  "status": "Approved",
+  "note": "oke nha bé iu",
+  "createdAt": {
+    "$date": "2025-07-13T14:02:17.339Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:06:53.623Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873c179a63013bdf5193c25"
+  },
+  "customerId": {
+    "$oid": "686fbe11f6427b9aae183b13"
+  },
+  "doctorTestServiceId": {
+    "$oid": "68657da5a25972d9f61ab3f1"
+  },
+  "bookingDate": {
+    "$date": "2025-07-15T00:00:00.000Z"
+  },
+  "status": "Cancelled",
+  "note": "",
+  "createdAt": {
+    "$date": "2025-07-13T14:23:53.441Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:24:38.228Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873c1c2a63013bdf5193d16"
+  },
+  "customerId": {
+    "$oid": "686fbe11f6427b9aae183b13"
+  },
+  "doctorTestServiceId": {
+    "$oid": "68657da5a25972d9f61ab3f1"
+  },
+  "bookingDate": {
+    "$date": "2025-07-15T00:00:00.000Z"
+  },
+  "status": "Pending",
+  "note": "",
+  "createdAt": {
+    "$date": "2025-07-13T14:25:06.970Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:25:06.970Z"
+  },
+  "__v": 0
+}]
