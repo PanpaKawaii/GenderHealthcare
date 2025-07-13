@@ -1,0 +1,13 @@
+[{
+  "_id": {
+    "$oid": "6844fcd9918172e0a8f7c9e4"
+  },
+  "name": "Bệnh viện Đa khoa Nhà Văn Hóa",
+  "image": "https://bvtb.org.vn/wp-content/uploads/2022/04/10130-1170x732.jpg",
+  "email": "nhavanhoa@gmail.com",
+  "phone": "0123456789",
+  "address": "VNUHCM Student Cultural House, Lưu Hữu Phước Tân Lập, Đông Hoà, Dĩ An, Bình Dương",
+  "openingHours": "07:00 - 17:00",
+  "establishedYear": 2005,
+  "description": "Bệnh viện Đa khoa Nhà Văn Hóa uy tín với đội ngũ bác sĩ giàu kinh nghiệm."
+}]

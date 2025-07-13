@@ -1,0 +1,54 @@
+[{
+  "_id": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "name": "Xét nghiệm máu tổng quát",
+  "description": "Kiểm tra các chỉ số cơ bản của máu.",
+  "price": 250000,
+  "processingTime": 60,
+  "sampleType": "Máu",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-06-08T09:52:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-08T09:52:00.000Z"
+  },
+  "instructions": "Nhịn ăn sáng trước khi lấy mẫu."
+},
+{
+  "_id": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "name": "Xét nghiệm đường huyết",
+  "description": "Kiểm tra chỉ số glucose trong máu.",
+  "price": 100000,
+  "processingTime": 30,
+  "sampleType": "Máu",
+  "isActive": false,
+  "createdAt": {
+    "$date": "2025-06-08T09:52:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-08T09:52:00.000Z"
+  },
+  "instructions": "Không ăn uống trong vòng 8 tiếng trước khi lấy mẫu."
+},
+{
+  "_id": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "name": "Xét nghiệm nước tiểu",
+  "description": "Đánh giá chức năng thận và các chỉ số liên quan.",
+  "price": 150000,
+  "processingTime": 45,
+  "sampleType": "Nước tiểu",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-06-08T09:52:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-08T09:52:00.000Z"
+  },
+  "instructions": "Lấy mẫu nước tiểu buổi sáng đầu tiên."
+}]
