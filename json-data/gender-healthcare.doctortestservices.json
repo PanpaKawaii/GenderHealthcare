@@ -1,0 +1,756 @@
+[{
+  "_id": {
+    "$oid": "68657bfb39aab185258cee41"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41917"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "startTime": "06:00",
+  "endTime": "07:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:35:39.796Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:35:39.796Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657c1c39aab185258cee43"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41917"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "startTime": "07:00",
+  "endTime": "08:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:36:12.313Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:36:12.313Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657c6e39aab185258cee47"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41917"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "startTime": "09:00",
+  "endTime": "10:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:34.818Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:34.818Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657d67a25972d9f61ab3da"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41923"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "startTime": "06:00",
+  "endTime": "07:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:35:39.796Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:35:39.796Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657d67a25972d9f61ab3de"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41923"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "startTime": "10:00",
+  "endTime": "11:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:40.964Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:40.964Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657d67a25972d9f61ab3e0"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41923"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "startTime": "12:00",
+  "endTime": "13:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:51.550Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:51.550Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657d67a25972d9f61ab3e1"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41923"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "startTime": "13:00",
+  "endTime": "14:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:57.201Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:57.201Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657c6339aab185258cee45"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41917"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "startTime": "08:00",
+  "endTime": "09:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:23.910Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:23.910Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657d67a25972d9f61ab3dd"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41923"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "startTime": "09:00",
+  "endTime": "10:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:34.818Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:34.818Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657da5a25972d9f61ab3ea"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41925"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "startTime": "10:00",
+  "endTime": "11:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:40.964Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:40.964Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657da5a25972d9f61ab3ed"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41925"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "startTime": "13:00",
+  "endTime": "14:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:57.201Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:57.201Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657c7a39aab185258cee4b"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41917"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "startTime": "11:00",
+  "endTime": "12:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:46.042Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:46.042Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657c8c39aab185258cee51"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41917"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "startTime": "14:00",
+  "endTime": "15:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:38:04.978Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:38:04.978Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657d67a25972d9f61ab3db"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41923"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "startTime": "07:00",
+  "endTime": "08:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:36:12.313Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:36:12.313Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657c7439aab185258cee49"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41917"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "startTime": "10:00",
+  "endTime": "11:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:40.964Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:40.964Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657c8539aab185258cee4f"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41917"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "startTime": "13:00",
+  "endTime": "14:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:57.201Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:57.201Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657c9c39aab185258cee57"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41917"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "startTime": "17:00",
+  "endTime": "18:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:38:20.843Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:38:20.843Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657da5a25972d9f61ab3eb"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41925"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "startTime": "11:00",
+  "endTime": "12:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:46.042Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:46.042Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657c9139aab185258cee53"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41917"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "startTime": "15:00",
+  "endTime": "16:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:38:10.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:38:10.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657da5a25972d9f61ab3e9"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41925"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "startTime": "09:00",
+  "endTime": "10:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:34.818Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:34.818Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657d67a25972d9f61ab3df"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41923"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "startTime": "11:00",
+  "endTime": "12:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:46.042Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:46.042Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657d67a25972d9f61ab3e3"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41923"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "startTime": "15:00",
+  "endTime": "16:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:38:10.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:38:10.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657da5a25972d9f61ab3ee"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41925"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "startTime": "14:00",
+  "endTime": "15:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:38:04.978Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:38:04.978Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657d67a25972d9f61ab3e4"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41923"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "startTime": "16:00",
+  "endTime": "17:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:38:15.279Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:38:15.279Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657da5a25972d9f61ab3f0"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41925"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "startTime": "16:00",
+  "endTime": "17:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:38:15.279Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:38:15.279Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657d67a25972d9f61ab3e2"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41923"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "startTime": "14:00",
+  "endTime": "15:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:38:04.978Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:38:04.978Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657da5a25972d9f61ab3e7"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41925"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "startTime": "07:00",
+  "endTime": "08:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:36:12.313Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:36:12.313Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657da5a25972d9f61ab3f1"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41925"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "startTime": "17:00",
+  "endTime": "18:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:38:20.843Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:38:20.843Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657c7f39aab185258cee4d"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41917"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "startTime": "12:00",
+  "endTime": "13:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:51.550Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:51.550Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657c9739aab185258cee55"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41917"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9ba"
+  },
+  "startTime": "16:00",
+  "endTime": "17:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:38:15.279Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:38:15.279Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657d67a25972d9f61ab3dc"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41923"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "startTime": "08:00",
+  "endTime": "09:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:23.910Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:23.910Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657da5a25972d9f61ab3e6"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41925"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "startTime": "06:00",
+  "endTime": "07:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:35:39.796Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:35:39.796Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657da5a25972d9f61ab3e8"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41925"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "startTime": "08:00",
+  "endTime": "09:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:23.910Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:23.910Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657da5a25972d9f61ab3ec"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41925"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "startTime": "12:00",
+  "endTime": "13:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:37:51.550Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:37:51.550Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657da5a25972d9f61ab3ef"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41925"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bc"
+  },
+  "startTime": "15:00",
+  "endTime": "16:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:38:10.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:38:10.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68657d67a25972d9f61ab3e5"
+  },
+  "doctorId": {
+    "$oid": "68490e3efa1002fb6ff41923"
+  },
+  "testServiceId": {
+    "$oid": "6844fb21918172e0a8f7c9bb"
+  },
+  "startTime": "17:00",
+  "endTime": "18:00",
+  "status": "Available",
+  "createdAt": {
+    "$date": "2025-07-02T18:38:20.843Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:38:20.843Z"
+  },
+  "__v": 0
+}]
