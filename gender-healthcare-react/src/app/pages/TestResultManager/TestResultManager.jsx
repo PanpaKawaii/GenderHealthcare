@@ -193,6 +193,7 @@ export default function TestResultManager() {
                             </select> */}
                             <input value={formData.resultFile} placeholder='Result file' onChange={(e) => setFormData({ ...formData, resultFile: e.target.value })} required />
                             <select value={formData.status} onChange={(e) => setFormData({ ...formData, status: e.target.value })} required>
+                                <option value="Pending">Pending</option>
                                 <option value="Negative">Negative</option>
                                 <option value="Positive">Positive</option>
                             </select>

@@ -22,7 +22,7 @@ export default function TestServiceParameterManager() {
   const [searchServiceName, setSearchServiceName] = useState("");
   const [searchParameter, setSearchParameter] = useState("");
   useEffect(() => {
-    const token = "";
+    const token = localStorage.getItem('token');
     const fetchAll = async () => {
       try {
         const [dataList, serviceList, paramList] = await Promise.all([
@@ -56,7 +56,7 @@ export default function TestServiceParameterManager() {
       return;
     }
 
-    const token = "";
+    const token = localStorage.getItem('token');
     try {
       await postData("/testserviceparameters", token, formData);
       setFormData({ testServiceId: "", parameterId: "" });

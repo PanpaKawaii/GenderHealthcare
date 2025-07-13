@@ -1,11 +1,12 @@
 const express = require('express');
 const ctrl = require('../controllers/testbooking.controller');
+const { authenticate, authorize } = require('../middlewares/auth.middleware');
 const r = express.Router();
 
-r.post('/', ctrl.create);
-r.get('/', ctrl.getAll);
-r.get('/:id', ctrl.getOne);
-r.put('/:id', ctrl.update);
-r.delete('/:id', ctrl.remove);
+r.post('/', authenticate, ctrl.create);
+r.get('/', authenticate, ctrl.getAll);
+r.get('/:id', authenticate, ctrl.getOne);
+r.put('/:id', authenticate, ctrl.update);
+r.delete('/:id', authenticate, ctrl.remove);
 
 module.exports = r;
