@@ -134,7 +134,7 @@ export default function CyclePage() {
         setPeriodLength(latest.periodDays.length);
         setNotes(latest.notes || "");
       }
-      alert("Đã lưu kỳ kinh nguyệt!");
+      alert("Saved Cycle!");
     } catch (err) {
       alert("Lỗi khi lưu: " + (err.response?.data?.error || err.message));
     }
@@ -228,7 +228,7 @@ export default function CyclePage() {
                       type="text"
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
-                      placeholder="Nhập ghi chú (nếu có)"
+                      placeholder="Enter any notes or symptoms..."
                     />
                   </div>
                 </div>
