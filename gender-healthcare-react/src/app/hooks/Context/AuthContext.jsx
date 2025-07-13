@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 const initialState = {
     Id: null,
     token: null,
-    UserRole: null,
+    UserRole: localStorage.getItem('UserRole'),
     IsLogIn: localStorage.getItem('IsLogIn'),
     login: () => { },
     logout: () => { },
