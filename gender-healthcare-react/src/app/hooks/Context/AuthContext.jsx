@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 
 const initialState = {
     Id: null,
-    Token: null,
+    token: null,
     Role: null,
     IsLogIn: localStorage.getItem('IsLogIn'),
     login: () => { },
@@ -14,7 +14,7 @@ const AuthContext = React.createContext(initialState);
 export const AuthProvider = ({ children }) => {
 
     const [Id, setId] = useState(null);
-    const [Token, setToken] = useState(null);
+    const [token, setToken] = useState(null);
     const [Role, setRole] = useState(null);
     const [IsLogIn, setIsLogIn] = useState(localStorage.getItem('IsLogIn'));
 
@@ -35,11 +35,11 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const UserId = localStorage.getItem('UserId');
-        const Token = localStorage.getItem('Token');
+        const token = localStorage.getItem('token');
         const UserRole = localStorage.getItem('UserRole');
 
         setId(UserId);
-        setToken(Token);
+        setToken(token);
         setRole(UserRole);
     }, [IsLogIn]);
 
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         console.log('logout');
-        localStorage.removeItem('Token');
+        localStorage.removeItem('token');
         localStorage.removeItem('CustomerId');
         localStorage.removeItem('UserId');
         localStorage.removeItem('UserRole');
@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ login, logout, Id, Token, Role, IsLogIn }}>
+        <AuthContext.Provider value={{ login, logout, Id, token, Role, IsLogIn }}>
             {children}
         </AuthContext.Provider>
     );
