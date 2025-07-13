@@ -1,0 +1,507 @@
+[{
+  "_id": {
+    "$oid": "66520cde7f4e123abc456789"
+  },
+  "accountId": {
+    "$oid": "6650fe8e8f3a8d6ff13d22a1"
+  },
+  "dateOfBirth": {
+    "$date": "1995-04-10T00:00:00.000Z"
+  },
+  "address": "Vĩnh Long",
+  "createdAt": {
+    "$date": "2025-06-05T09:02:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-11T14:47:18.785Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68456014dac56f0e269df368"
+  },
+  "accountId": {
+    "$oid": "68456014dac56f0e269df366"
+  },
+  "dateOfBirth": {
+    "$date": "2004-02-04T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-06-08T10:04:04.116Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-08T10:04:04.116Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6849df28f1d95d1740fd40a2"
+  },
+  "accountId": {
+    "$oid": "6849df28f1d95d1740fd40a0"
+  },
+  "dateOfBirth": {
+    "$date": "2004-04-24T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-06-11T19:55:20.353Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T19:55:20.353Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "684a668a5ac02b8ce290a727"
+  },
+  "accountId": {
+    "$oid": "684a668a5ac02b8ce290a725"
+  },
+  "dateOfBirth": {
+    "$date": "2004-03-02T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-06-12T05:32:58.942Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T05:32:58.942Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68512c72350513a95e27e651"
+  },
+  "accountId": {
+    "$oid": "68512c72350513a95e27e64f"
+  },
+  "dateOfBirth": {
+    "$date": "2006-02-12T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-06-17T08:50:58.365Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-17T08:50:58.365Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "684ae1c46335fb74f1ccdbe3"
+  },
+  "accountId": {
+    "$oid": "684ae06b6335fb74f1ccdbd7"
+  },
+  "dateOfBirth": {
+    "$date": "1990-01-14T17:00:00.000Z"
+  },
+  "address": "Address 1",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae1c46335fb74f1ccdbe4"
+  },
+  "accountId": {
+    "$oid": "684ae06b6335fb74f1ccdbd8"
+  },
+  "dateOfBirth": {
+    "$date": "1991-01-14T17:00:00.000Z"
+  },
+  "address": "Address 2",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae1c46335fb74f1ccdbe5"
+  },
+  "accountId": {
+    "$oid": "684ae06b6335fb74f1ccdbd9"
+  },
+  "dateOfBirth": {
+    "$date": "1992-01-14T17:00:00.000Z"
+  },
+  "address": "Address 3",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae1c46335fb74f1ccdbe6"
+  },
+  "accountId": {
+    "$oid": "684ae06b6335fb74f1ccdbda"
+  },
+  "dateOfBirth": {
+    "$date": "1993-01-14T17:00:00.000Z"
+  },
+  "address": "Address 4",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ae1c46335fb74f1ccdbe7"
+  },
+  "accountId": {
+    "$oid": "684ae06b6335fb74f1ccdbdb"
+  },
+  "dateOfBirth": {
+    "$date": "1994-01-14T17:00:00.000Z"
+  },
+  "address": "Address 5",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685500390ea659ceeb7906bc"
+  },
+  "accountId": {
+    "$oid": "685500390ea659ceeb7906ba"
+  },
+  "dateOfBirth": {
+    "$date": "2000-06-11T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-06-20T06:31:21.475Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-20T06:31:21.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686573cbdb400c5b68baf351"
+  },
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "dateOfBirth": {
+    "$date": "2004-02-04T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-02T18:00:43.217Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T18:00:43.217Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6865b51f6a8e494bd14cc4d9"
+  },
+  "accountId": {
+    "$oid": "6865b51f6a8e494bd14cc4d7"
+  },
+  "dateOfBirth": {
+    "$date": "2004-09-15T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-02T22:39:27.918Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T22:39:27.918Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68669fb1b591049e40a86741"
+  },
+  "accountId": {
+    "$oid": "68669fb1b591049e40a8673f"
+  },
+  "dateOfBirth": {
+    "$date": "2000-11-11T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-03T15:20:17.733Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-03T15:20:17.733Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686de8c347aafa6bcd5a48f6"
+  },
+  "accountId": {
+    "$oid": "686de8c347aafa6bcd5a48f4"
+  },
+  "dateOfBirth": {
+    "$date": "2004-11-11T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-09T03:57:55.792Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-09T03:57:55.792Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686e97383c4060239f5c953f"
+  },
+  "accountId": {
+    "$oid": "686e97383c4060239f5c953d"
+  },
+  "dateOfBirth": {
+    "$date": "1989-05-14T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-09T16:22:16.382Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-09T16:22:16.382Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686f20077dc9f20202bc89c2"
+  },
+  "accountId": {
+    "$oid": "686f20077dc9f20202bc89c0"
+  },
+  "dateOfBirth": {
+    "$date": "2004-11-11T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-10T02:05:59.832Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T02:05:59.832Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686f83338bba644b2c4ebac8"
+  },
+  "accountId": {
+    "$oid": "686f83328bba644b2c4ebac6"
+  },
+  "dateOfBirth": {
+    "$date": "1991-02-10T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-10T09:09:07.114Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T09:09:07.114Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686f83e38bba644b2c4ebacd"
+  },
+  "accountId": {
+    "$oid": "686f83e38bba644b2c4ebacb"
+  },
+  "dateOfBirth": {
+    "$date": "1983-05-10T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-10T09:12:03.406Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T09:12:03.406Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686f84528bba644b2c4ebad2"
+  },
+  "accountId": {
+    "$oid": "686f84528bba644b2c4ebad0"
+  },
+  "dateOfBirth": {
+    "$date": "1987-05-12T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-10T09:13:54.654Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T09:13:54.654Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686f851d8bba644b2c4ebad7"
+  },
+  "accountId": {
+    "$oid": "686f851d8bba644b2c4ebad5"
+  },
+  "dateOfBirth": {
+    "$date": "2004-04-15T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-10T09:17:17.604Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T09:17:17.604Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686fbe11f6427b9aae183b13"
+  },
+  "accountId": {
+    "$oid": "686fbe11f6427b9aae183b11"
+  },
+  "dateOfBirth": {
+    "$date": "2004-02-04T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-10T13:20:17.277Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T13:20:17.277Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687105d7768bb5e2b3f8ff47"
+  },
+  "accountId": {
+    "$oid": "687105d6768bb5e2b3f8ff45"
+  },
+  "dateOfBirth": {
+    "$date": "2000-10-02T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-11T12:38:47.095Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-11T12:38:47.095Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68714e68cc6cab9229f49300"
+  },
+  "accountId": {
+    "$oid": "68714e68cc6cab9229f492fe"
+  },
+  "dateOfBirth": {
+    "$date": "2000-10-13T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-11T17:48:24.311Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-11T17:48:24.311Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873b8f8c966cc53c7f84f80"
+  },
+  "accountId": {
+    "$oid": "6873b8f8c966cc53c7f84f7e"
+  },
+  "dateOfBirth": {
+    "$date": "2004-11-11T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-13T13:47:36.695Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T13:47:36.695Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873bc24248758d822f4a52f"
+  },
+  "accountId": {
+    "$oid": "6873ab00248758d822f4a52a"
+  },
+  "dateOfBirth": {
+    "$date": "2004-11-11T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-13T13:47:36.695Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T13:47:36.695Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873bc31248758d822f4a530"
+  },
+  "accountId": {
+    "$oid": "6873a7da248758d822f4a523"
+  },
+  "dateOfBirth": {
+    "$date": "2004-11-11T00:00:00.000Z"
+  },
+  "address": "",
+  "createdAt": {
+    "$date": "2025-07-13T13:47:36.695Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T13:47:36.695Z"
+  },
+  "__v": 0
+}]

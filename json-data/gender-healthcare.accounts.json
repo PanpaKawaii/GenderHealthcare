@@ -1,0 +1,746 @@
+[{
+  "_id": {
+    "$oid": "68456014dac56f0e269df366"
+  },
+  "name": "Bé Khoa",
+  "image": "",
+  "gender": "Male",
+  "email": "bekhoa@gmail.com",
+  "phone": "0987654321",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "createdAt": {
+    "$date": "2025-06-08T10:04:04.033Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-12T12:14:02.415Z"
+  },
+  "__v": 0,
+  "isActive": true
+},
+{
+  "_id": {
+    "$oid": "6849df28f1d95d1740fd40a0"
+  },
+  "name": "Huỳnh Hà Minh Khang",
+  "image": "",
+  "gender": "Other",
+  "email": "huynhhaminhkhang@gmail.com",
+  "phone": "0987654321",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "isVerified": false,
+  "createdAt": {
+    "$date": "2025-06-11T19:55:20.137Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T19:55:20.137Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "name": "Le Minh Khoa",
+  "image": "https://i.pinimg.com/1200x/f3/ef/03/f3ef034c5e860e643eae45c5c8d41ed4.jpg",
+  "gender": "Male",
+  "email": "customer123@example.com",
+  "phone": "1234567890",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "isVerified": false,
+  "createdAt": {
+    "$date": "2025-06-12T00:13:42.493Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T00:13:42.493Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "684a668a5ac02b8ce290a725"
+  },
+  "name": "Vạn Lý Trường Thành",
+  "image": "",
+  "gender": "Male",
+  "email": "vanlytruongthanh@gmail.com",
+  "phone": "0987654321",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "isVerified": false,
+  "createdAt": {
+    "$date": "2025-06-12T05:32:58.897Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T05:32:58.897Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68512c72350513a95e27e64f"
+  },
+  "name": "Vạn Hào",
+  "image": "",
+  "gender": "Male",
+  "email": "hao@gmail.com",
+  "phone": "1234567890",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "createdAt": {
+    "$date": "2025-06-17T08:50:58.305Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-17T08:50:58.305Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68522d0c3ee0e68001c94346"
+  },
+  "name": "Admin",
+  "image": "",
+  "gender": "Male",
+  "email": "admin@gmail.com",
+  "phone": "0987654321",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Admin",
+  "isVerified": false,
+  "createdAt": {
+    "$date": "2025-06-12T05:32:58.897Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T05:32:58.897Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "684ae06b6335fb74f1ccdbd7"
+  },
+  "name": "User Mai",
+  "image": "",
+  "gender": "Female",
+  "email": "user6@example.com",
+  "phone": "090000006",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "isVerified": "true"
+},
+{
+  "_id": {
+    "$oid": "684ae06b6335fb74f1ccdbd8"
+  },
+  "name": "User Binh",
+  "image": "",
+  "gender": "Male",
+  "email": "user7@example.com",
+  "phone": "090000007",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "isVerified": "true"
+},
+{
+  "_id": {
+    "$oid": "684ae06b6335fb74f1ccdbd9"
+  },
+  "name": "User Truc",
+  "image": "",
+  "gender": "Female",
+  "email": "user8@example.com",
+  "phone": "090000008",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "isVerified": "true"
+},
+{
+  "_id": {
+    "$oid": "684ae06b6335fb74f1ccdbda"
+  },
+  "name": "User Tan",
+  "image": "",
+  "gender": "Male",
+  "email": "user9@example.com",
+  "phone": "090000009",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "isVerified": "true"
+},
+{
+  "_id": {
+    "$oid": "684ae06b6335fb74f1ccdbdb"
+  },
+  "name": "User Vy",
+  "image": "",
+  "gender": "Female",
+  "email": "user10@example.com",
+  "phone": "0900000010",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "createdAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-12T06:58:01.392Z"
+  },
+  "isVerified": "true"
+},
+{
+  "_id": {
+    "$oid": "685500390ea659ceeb7906ba"
+  },
+  "name": "111223",
+  "image": "",
+  "gender": "Other",
+  "email": "1@gmail.com",
+  "phone": "",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "isVerified": false,
+  "createdAt": {
+    "$date": "2025-06-20T06:31:21.437Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:06:29.637Z"
+  },
+  "__v": 0,
+  "isActive": false
+},
+{
+  "_id": {
+    "$oid": "685a01e34415410ca025e95c"
+  },
+  "name": "Regular User",
+  "email": "user@example.com",
+  "password": "$2b$10$y8rgiwCuQs0TJhsxLGo.1.VLARYscVZz70/8fgpTAlGZwNyTHnkI2",
+  "role": "Customer",
+  "admin": false,
+  "isVerified": true,
+  "createdAt": {
+    "$date": "2025-06-24T01:39:47.170Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-24T01:39:47.170Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685a09e8d3db25bad0fbffc5"
+  },
+  "name": "admin",
+  "email": "admin123@example.com",
+  "password": "$2b$10$NkiFvzRoUOR0yEKpHxc8K./4kqX0e3iCCcayrDjxvyhW.Q8V4nu/u",
+  "role": "Admin",
+  "isVerified": false,
+  "createdAt": {
+    "$date": "2025-06-24T02:14:00.393Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-24T02:14:00.393Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686691ab968eaa6a8fc933cd"
+  },
+  "name": "BS. Phan Ngọc Lan",
+  "image": "https://randomuser.me/api/portraits/women/44.jpg",
+  "gender": "Female",
+  "email": "counselor@example.com",
+  "phone": "0933265773",
+  "password": "$2b$10$kLOo3vdjN7VGBmRjDDDk9eAAPSFmbxNGLODesvdbLryskwhoI.e/.",
+  "role": "Counselor",
+  "createdAt": {
+    "$date": "2025-07-03T14:20:27.410Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:17:57.366Z"
+  },
+  "__v": 0,
+  "isActive": true,
+  "isVerified": true,
+  "lastLogin": {
+    "$date": "2025-07-13T14:17:57.365Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686693816d73eab790a39902"
+  },
+  "name": "Minh Khoa",
+  "image": "",
+  "gender": "Male",
+  "email": "customer@example.com",
+  "phone": "1234567890",
+  "password": "$2b$10$jvEbq2GPCkOEbXUbyOQnP.3Pn4Dy6JTayBDzI7bogYVGN4Fmk9/nW",
+  "role": "Customer",
+  "isVerified": false,
+  "createdAt": {
+    "$date": "2025-07-03T14:28:17.656Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-03T14:28:17.656Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a4d5a49c69ed00e2a26d5"
+  },
+  "name": "Hoàng Uyên",
+  "email": "uyen@example.com",
+  "password": "$2b$10$XWu5ZZlkWose9INJOjkzres1pCA//EgB8Z500asMz2vogUC6cuULS",
+  "role": "Customer",
+  "isVerified": false,
+  "createdAt": {
+    "$date": "2025-07-06T10:18:02.503Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T10:18:16.581Z"
+  },
+  "__v": 0,
+  "gender": "Female",
+  "image": "https://i.pinimg.com/736x/0f/fd/d5/0ffdd510b11cae10e4c883859ada1b3a.jpg",
+  "phone": "1234567890"
+},
+{
+  "_id": {
+    "$oid": "686dca70e2f26b0631d33f75"
+  },
+  "name": "Minh Khoa",
+  "image": "https://i.pinimg.com/736x/db/15/26/db15263fc826c8906b351ef7ab3e998d.jpg",
+  "gender": "Male",
+  "email": "minhkhoa@example.com",
+  "phone": "1234567890",
+  "password": "$2b$10$XWu5ZZlkWose9INJOjkzres1pCA//EgB8Z500asMz2vogUC6cuULS",
+  "role": "Customer",
+  "isVerified": false,
+  "isActive": false,
+  "createdAt": {
+    "$date": "2025-07-09T01:48:32.695Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-12T12:14:06.627Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-09T01:51:02.406Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686de8c347aafa6bcd5a48f4"
+  },
+  "name": "Khoa Khoa",
+  "image": "https://i.pinimg.com/736x/48/ea/5e/48ea5eafea5270386ffba33e7d51297b.jpg",
+  "gender": "Male",
+  "email": "khoakhoa@example.com",
+  "phone": "1234567890",
+  "password": "$2b$10$PtYrESWNjekIF3gT0UlxDO9FAIF71Hl32HyDpji/IHOWufvH9JHPC",
+  "role": "Customer",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-09T03:57:55.592Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:15:12.895Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-13T14:15:12.891Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686e70ff4e84738ffe1677a3"
+  },
+  "name": "BS. Trần Thị Bích Ngọc",
+  "image": "https://randomuser.me/api/portraits/women/29.jpg",
+  "gender": "Female",
+  "email": "doctorb@example.com",
+  "phone": "0912345678",
+  "password": "$2b$10$OSmODh/UOvzzqaSfQvMoYezNAWRJYl9idy.Sq0dK6vdrcoqVpU8jK",
+  "role": "Counselor",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-09T13:39:11.213Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-09T13:39:11.213Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686e97383c4060239f5c953d"
+  },
+  "name": "BS. Lê Min Koa",
+  "image": "https://randomuser.me/api/portraits/men/30.jpg",
+  "gender": "Male",
+  "email": "a@example.com",
+  "phone": "0988123456",
+  "password": "$2b$10$kLOo3vdjN7VGBmRjDDDk9eAAPSFmbxNGLODesvdbLryskwhoI.e/.",
+  "role": "Counselor",
+  "isVerified": true,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-09T16:22:16.104Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-12T11:03:49.493Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-12T11:03:49.486Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686f20077dc9f20202bc89c0"
+  },
+  "name": "Admin",
+  "image": "",
+  "gender": "Male",
+  "email": "admin@example.com",
+  "phone": "1234567890",
+  "password": "$2b$10$q9VuIehkcMpROCkNa3L96ebm2jdgrC7JpM/KY5B5Dp1hruE/eUjHe",
+  "role": "Admin",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-10T02:05:59.681Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:22:11.523Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-13T14:22:11.523Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686f20ef7dc9f20202bc8a38"
+  },
+  "name": "BS. Nguyễn Minh Hà",
+  "email": "testcounselor@example.com",
+  "password": "$2b$10$npIg3qTOILPghiw7YRUppObZChgcJlDjywUIimSiDXF3CqaJ4mzsG",
+  "role": "Counselor",
+  "isVerified": true,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-10T02:09:51.932Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T02:10:39.932Z"
+  },
+  "__v": 0,
+  "image": "https://randomuser.me/api/portraits/women/70.jpg",
+  "phone": "0388741821"
+},
+{
+  "_id": {
+    "$oid": "686f83328bba644b2c4ebac6"
+  },
+  "name": "BS. Nguyễn Minh Hoàng",
+  "image": "https://randomuser.me/api/portraits/men/31.jpg",
+  "gender": "Male",
+  "email": "hoang@gmail.com",
+  "phone": "0395827367",
+  "password": "$2b$10$MoPrKoXRB0Ss4qSIMD0roehNfzT5Nu2oyPdkCrlc16eHtnD7J6doi",
+  "role": "Counselor",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-10T09:09:06.873Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T09:09:06.873Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686f83e38bba644b2c4ebacb"
+  },
+  "name": "BS. Đỗ Thanh Tuyền",
+  "image": "https://randomuser.me/api/portraits/women/55.jpg",
+  "gender": "Female",
+  "email": "tuyen@gmail.com",
+  "phone": "0339881237",
+  "password": "$2b$10$TnPtW1sH5g.1dNhgHaYIzupZu5jzK095uDnQeYO745x/N3s8OBy/q",
+  "role": "Counselor",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-10T09:12:03.235Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T09:12:03.235Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686f84528bba644b2c4ebad0"
+  },
+  "name": "BS. Cao Chí Cường",
+  "image": "https://randomuser.me/api/portraits/men/32.jpg",
+  "gender": "Male",
+  "email": "cuong@gmail.com",
+  "phone": "0332148593",
+  "password": "$2b$10$ysbP9mi.pmHjV/em3QrCD.Hb5GTCLC/DSR1WTOnU9Hl7NRT2e./jO",
+  "role": "Counselor",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-10T09:13:54.492Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T09:13:54.492Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686f851d8bba644b2c4ebad5"
+  },
+  "name": "Kim Khang",
+  "image": "https://randomuser.me/api/portraits/women/89.jpg",
+  "gender": "Other",
+  "email": "khang@gmail.com",
+  "phone": "0335739972",
+  "password": "$2b$10$6d4YTtstlYmlUKzRoby9U.bZM3avrtXHkxWX08rb5GGAaSEo9lBue",
+  "role": "Customer",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-10T09:17:17.428Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:10:10.556Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-13T14:10:10.540Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686fbe11f6427b9aae183b11"
+  },
+  "name": "Đặng Ngọc Hải Triều",
+  "image": "",
+  "gender": "Male",
+  "email": "dngngchitriu2004@gmail.com",
+  "phone": "0338370030",
+  "password": "$2b$10$QnvWMNWAA1ajLlaVi3Cek.cQi9gKUF68fh4FIfwA0zCAgrQs3A3S.",
+  "role": "Customer",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-10T13:20:17.104Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:07:53.487Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-13T14:07:53.486Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686fea96a14d40c36bdcc3a8"
+  },
+  "name": "NGuyễn Văn A",
+  "email": "hao1@gmail.com",
+  "phone": "1231231231",
+  "password": "$2b$10$QzoviGVppx1qMT4uykJrQeJcVrlVbOZLDajKudJCosQAQl./cXU8O",
+  "role": "Doctor",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-10T16:30:14.316Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T16:30:56.125Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-10T16:30:56.124Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "687105d6768bb5e2b3f8ff45"
+  },
+  "name": "hao",
+  "image": "",
+  "gender": "Male",
+  "email": "hao123@gmail.com",
+  "phone": "1234567890",
+  "password": "$2b$10$8HdPvPlvOpT.nnELnzBIKOPt/L/e2UeMUMtVHkpk/lahg/fMzjKZa",
+  "role": "Customer",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-11T12:38:46.984Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-11T17:43:55.381Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-11T17:43:55.374Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68714db2cc6cab9229f492ed"
+  },
+  "name": "doctorHao",
+  "email": "doctor@example.com",
+  "phone": "1",
+  "password": "$2b$10$5bsNNVHDolI5XcAD0B5Z3OEKR2yxbl/YI99PUXr4uyNsnzolNNzvO",
+  "role": "Doctor",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-11T17:45:22.515Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:24:29.922Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-13T14:24:29.921Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68714e68cc6cab9229f492fe"
+  },
+  "name": "customerHao",
+  "image": "",
+  "gender": "Male",
+  "email": "customer@gmail.com",
+  "phone": "1123123213",
+  "password": "$2b$10$m59f7bqFtIYG7tt2WrZhv.ykXQ3bpinqoMqRsYdlwv8KGjn73w9iG",
+  "role": "Customer",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-11T17:48:24.210Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T08:27:40.946Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-13T08:27:40.945Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6873a7da248758d822f4a523"
+  },
+  "name": "Huỳnh Anh Kiệt",
+  "image": "https://i.pinimg.com/736x/ac/4e/7f/ac4e7f06c2c534518d0405abc9cdff2f.jpg",
+  "gender": "Male",
+  "email": "anhkiet@gmail.com",
+  "phone": "1234567890",
+  "password": "$2b$10$XWu5ZZlkWose9INJOjkzres1pCA//EgB8Z500asMz2vogUC6cuULS",
+  "role": "Customer",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-09T01:48:32.695Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:03:04.308Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-13T14:03:04.306Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6873ab00248758d822f4a52a"
+  },
+  "name": "Huỳnh Quyên",
+  "image": "https://i.pinimg.com/736x/9f/54/71/9f5471f9949bae7c33bf18610497b209.jpg",
+  "gender": "Female",
+  "email": "quyen@gmail.com",
+  "phone": "1234567890",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-09T01:48:32.695Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:01:35.877Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-13T14:01:35.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6873b8f8c966cc53c7f84f7e"
+  },
+  "name": "Thanh An",
+  "image": "",
+  "gender": "Other",
+  "email": "an@example.com",
+  "phone": "1234567890",
+  "password": "$2b$10$ioR4do3thf.1Hlhjfpnu0OAGBEG2H0konL19Utto9F4G4qihPSIWa",
+  "role": "Customer",
+  "isVerified": false,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-13T13:47:36.534Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T13:47:47.617Z"
+  },
+  "__v": 0,
+  "lastLogin": {
+    "$date": "2025-07-13T13:47:47.617Z"
+  }
+}]

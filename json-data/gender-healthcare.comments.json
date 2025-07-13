@@ -1,0 +1,1385 @@
+[{
+  "_id": {
+    "$oid": "6852332fc74d15e7b3d7cdd0"
+  },
+  "content": "Xin chào",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "6851400a0017bca6963bdb5f"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T03:31:59.595Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T06:22:16.775Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68523339c74d15e7b3d7ce00"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "6851400a0017bca6963bdb5f"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": {
+    "$oid": "6852332fc74d15e7b3d7cdd0"
+  },
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T03:32:09.168Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T06:22:17.350Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685237bff2f9c2688d405ae7"
+  },
+  "content": "Chào",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "6851400a0017bca6963bdb5f"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T03:51:27.094Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T03:51:27.094Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685237caf2f9c2688d405b11"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "6851400a0017bca6963bdb5f"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T03:51:38.629Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T06:22:17.733Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6852393bf2f9c2688d405b3a"
+  },
+  "content": "hehe",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "6851400a0017bca6963bdb5f"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T03:57:47.103Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T03:57:47.103Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68523a1e5e826c6adbbc79ff"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "6851400a0017bca6963bdb5f"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T04:01:34.645Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T06:22:18.053Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68523b835e826c6adbbc7a75"
+  },
+  "content": "Tệ quá",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "685140210017bca6963bdb66"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T04:07:31.659Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T04:07:31.659Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68523b8a5e826c6adbbc7a7b"
+  },
+  "content": "Mình đặt báo thức mỗi ngày lúc 9h tối, đến giờ là tự động quen luôn á. Quan trọng là phải uống đúng giờ đó!",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "685140210017bca6963bdb66"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T04:07:38.376Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T04:10:41.015Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68523b995e826c6adbbc7a80"
+  },
+  "content": "sao tệ",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "685140210017bca6963bdb66"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": {
+    "$oid": "68523b835e826c6adbbc7a75"
+  },
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T04:07:53.589Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T06:22:19.374Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68523ece5e826c6adbbc7afb"
+  },
+  "content": "hello teej",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "685140210017bca6963bdb66"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": {
+    "$oid": "68523b835e826c6adbbc7a75"
+  },
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T04:21:34.178Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T06:22:19.596Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6852460af30a67d694d58d12"
+  },
+  "content": ".",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "685140210017bca6963bdb66"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": {
+    "$oid": "68523b835e826c6adbbc7a75"
+  },
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T04:52:26.365Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T04:52:26.365Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68524616f30a67d694d58d42"
+  },
+  "content": ".",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "685140210017bca6963bdb66"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": {
+    "$oid": "6852460af30a67d694d58d12"
+  },
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T04:52:38.472Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T04:52:38.472Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68524c35f30a67d694d58db1"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "685140210017bca6963bdb66"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T05:18:45.716Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T06:22:19.974Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68524cd2f30a67d694d58de4"
+  },
+  "content": "1",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "685140210017bca6963bdb66"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": {
+    "$oid": "6852460af30a67d694d58d12"
+  },
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T05:21:22.292Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T05:21:22.292Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68524cd8f30a67d694d58ded"
+  },
+  "content": "1",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "685140210017bca6963bdb66"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": {
+    "$oid": "68523b8a5e826c6adbbc7a7b"
+  },
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T05:21:28.136Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T05:21:28.136Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68524cdcf30a67d694d58df6"
+  },
+  "content": "1",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "685140210017bca6963bdb66"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": {
+    "$oid": "68524cd8f30a67d694d58ded"
+  },
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T05:21:32.402Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T05:21:32.402Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68524da1f30a67d694d58e02"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "685140210017bca6963bdb66"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": {
+    "$oid": "68524cd8f30a67d694d58ded"
+  },
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T05:24:49.917Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T06:22:20.686Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68524daef30a67d694d58e31"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "685140210017bca6963bdb66"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T05:25:02.148Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T06:22:20.892Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68524f510d26e656d1d1ca21"
+  },
+  "content": "1",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "68513f1b0017bca6963bdadd"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T05:32:01.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T05:32:01.391Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68524f550d26e656d1d1ca27"
+  },
+  "content": "2",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "68513f1b0017bca6963bdadd"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": {
+    "$oid": "68524f510d26e656d1d1ca21"
+  },
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T05:32:05.921Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T05:32:05.921Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68524f5e0d26e656d1d1ca30"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "68513f1b0017bca6963bdadd"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": {
+    "$oid": "68524f510d26e656d1d1ca21"
+  },
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T05:32:14.400Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T06:22:21.149Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68526191141ad2ab1cd52eb6"
+  },
+  "content": "Chào bạn",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "6852611f141ad2ab1cd52dfb"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T06:49:53.093Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T06:49:53.093Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685261a3141ad2ab1cd52ebc"
+  },
+  "content": "Cái XXX gì đây",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "6852611f141ad2ab1cd52dfb"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T06:50:11.296Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T06:50:43.330Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6852697d29d3834871ed915e"
+  },
+  "content": "Chào bạn, kết thúc một mối quan hệ độc hại không chỉ là hành động dũng cảm mà còn là bước đầu tiên trong quá trình chữa lành. Những cảm giác như trống rỗng, mệt mỏi, thậm chí là mất phương hướng hoàn toàn là phản ứng bình thường của tâm trí khi vừa thoát khỏi sự kiểm soát hoặc tổn thương lâu dài.\n\nBạn có thể thử một vài phương pháp sau:\n\n🌱 Viết lại cảm xúc mỗi ngày (dù chỉ vài dòng), điều này giúp bạn hiểu mình hơn và giải tỏa nỗi lòng.\n\n🧘‍♀️ Tập trung vào cơ thể: vận động nhẹ, ngủ đủ giấc, ăn uống đều đặn – đó là cách nói với bản thân rằng bạn đang quay về với chính mình.\n\n🤝 Nói chuyện với người bạn tin tưởng, hoặc nếu cần, gặp chuyên gia tâm lý để có không gian an toàn cho cảm xúc.",
+  "accountId": {
+    "$oid": "686691ab968eaa6a8fc933cd"
+  },
+  "postId": {
+    "$oid": "6851400a0017bca6963bdb5f"
+  },
+  "voteUp": [
+    {
+      "$oid": "684a1ac7dfae966e9818e290"
+    }
+  ],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T07:23:41.980Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T08:12:25.154Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6852699529d3834871ed9189"
+  },
+  "content": "Chào bạn",
+  "accountId": {
+    "$oid": "68526944054ebd8abf5a7ec1"
+  },
+  "postId": {
+    "$oid": "6852620e141ad2ab1cd52f10"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T07:24:05.948Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T07:24:05.948Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68526b1b12b37e04eeeb8f86"
+  },
+  "content": "wow",
+  "accountId": {
+    "$oid": "68512c72350513a95e27e64f"
+  },
+  "postId": {
+    "$oid": "6851400a0017bca6963bdb5f"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T07:30:35.795Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T06:22:22.094Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68526e0944e88e82caa1633b"
+  },
+  "content": "1",
+  "accountId": {
+    "$oid": "68526944054ebd8abf5a7ec1"
+  },
+  "postId": {
+    "$oid": "6852620e141ad2ab1cd52f10"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T07:43:05.818Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T07:43:05.818Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685270ce15ac6c0f3e2ca839"
+  },
+  "content": "Mình đặt báo thức mỗi ngày lúc 9h tối, đến giờ là tự động quen luôn á. Quan trọng là phải uống đúng giờ đó!",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "68526ecc44e88e82caa16475"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-18T07:54:54.193Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-18T07:55:39.488Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68538db63a0563d299a1908c"
+  },
+  "content": ".",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "68538d5b3a0563d299a19001"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-19T04:10:30.835Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T04:10:30.835Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68538dba3a0563d299a19093"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "68538d5b3a0563d299a19001"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-19T04:10:34.506Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T08:54:24.492Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685392a4d3e5c0e7602ee9ee"
+  },
+  "content": "Chào em,\nCảm ơn em đã chia sẻ rất chân thành về tình trạng mà em đang gặp phải. Những gì em mô tả – đau bụng dữ dội mỗi kỳ kinh, kèm theo buồn nôn và chóng mặt – có thể là dấu hiệu của tình trạng đau bụng kinh nguyên phát hoặc thứ phát. Để Mây giải thích rõ một chút nhé:\n\nĐau bụng kinh có bình thường không?\n\nMột chút đau nhẹ, âm ỉ ở vùng bụng dưới khi hành kinh là điều hoàn toàn bình thường, do cơ tử cung co bóp để đẩy máu kinh ra ngoài.\n\nTuy nhiên, nếu cơn đau khiến em không thể học hành, sinh hoạt, hoặc đi kèm với các triệu chứng như buồn nôn, chóng mặt, toát mồ hôi lạnh… thì đây là cơn đau cấp độ nặng, cần được quan tâm đúng mức.",
+  "accountId": {
+    "$oid": "686e70ff4e84738ffe1677a3"
+  },
+  "postId": {
+    "$oid": "685391d7d3e5c0e7602ee95a"
+  },
+  "voteUp": [
+    {
+      "$oid": "684a1ac7dfae966e9818e290"
+    }
+  ],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-19T04:31:32.540Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-20T01:23:45.195Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6853aac5cf40cb3c91b76bef"
+  },
+  "content": "Nếu bạn quên uống trong vòng 12 tiếng thì nên uống bổ sung càng sớm càng tốt. Còn nếu quá 12 tiếng thì nên xem hướng dẫn cụ thể của loại thuốc bạn đang dùng, hoặc hỏi dược sĩ nhé.\n\nNếu cần, mình có thể gửi cho bạn một mẫu \"thẻ theo dõi uống thuốc\" đơn giản hàng tháng để dễ ghi nhớ hơn. ",
+  "accountId": {
+    "$oid": "686e97383c4060239f5c953d"
+  },
+  "postId": {
+    "$oid": "68526ecc44e88e82caa16475"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-19T06:14:29.993Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T06:14:29.993Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6853d027f5c83867a792f80b"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "68538d5b3a0563d299a19001"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-19T08:53:59.025Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T08:54:25.417Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6853d02df5c83867a792f810"
+  },
+  "content": "hello",
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "postId": {
+    "$oid": "68538d5b3a0563d299a19001"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-19T08:54:05.342Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T08:54:05.342Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685d664e41ba3fd9e7730220"
+  },
+  "content": "Lần sau chú ý nghỉ ngơi",
+  "accountId": {
+    "$oid": "6859fa921cbeadb44fdadd07"
+  },
+  "postId": {
+    "$oid": "685391d7d3e5c0e7602ee95a"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-06-26T15:25:02.710Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-26T15:26:39.574Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68664111958d43db8bbd3883"
+  },
+  "content": "11",
+  "accountId": {
+    "$oid": "6865c09c6a8e494bd14ccb21"
+  },
+  "postId": {
+    "$oid": "68664011958d43db8bbd387b"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-03T08:36:33.287Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:34:39.978Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a0bacc99d1264ddbb383f"
+  },
+  "content": "Chào bạn, cảm ơn bạn đã chia sẻ một cách chân thật. Những dấu hiệu như buồn nôn, mệt mỏi, căng ngực... đúng là có thể xuất hiện sớm ở giai đoạn đầu mang thai, nhưng cũng dễ bị nhầm lẫn với các tình trạng khác như tiền kinh nguyệt, stress, hay rối loạn nội tiết.\n\nNếu bạn đã quan hệ không bảo vệ, cách tốt nhất là đợi sau khoảng 7–10 ngày kể từ ngày quan hệ để dùng que thử thai vào buổi sáng sớm, khi hormone hCG rõ ràng nhất. Nếu kết quả không rõ ràng, bạn có thể thử lại sau vài ngày hoặc đến cơ sở y tế để xét nghiệm máu chính xác hơn.\n\nNếu bạn chưa sẵn sàng có thai, cũng nên trao đổi với người bạn đời và cân nhắc biện pháp bảo vệ trong tương lai nhé. Mây ở đây nếu bạn cần thêm hỗ trợ tâm lý hoặc thông tin y tế.",
+  "accountId": {
+    "$oid": "686f20ef7dc9f20202bc8a38"
+  },
+  "postId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T05:37:48.915Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T05:37:48.915Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a3ca1155cc3d2db14db66"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "postId": {
+    "$oid": "6869fd63e6cbc357969fbba0"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T09:06:41.950Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:40:44.044Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a41d049c69ed00e2a2431"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "postId": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "pending",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T09:28:48.554Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:28:48.554Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a41d349c69ed00e2a2436"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "postId": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "pending",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T09:28:51.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:28:51.391Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a41d649c69ed00e2a243b"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "postId": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "pending",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T09:28:54.148Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:28:54.148Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a41d849c69ed00e2a2440"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "postId": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "pending",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T09:28:56.714Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:28:56.714Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a41db49c69ed00e2a2445"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "postId": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "pending",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T09:28:59.235Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:28:59.235Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a41dd49c69ed00e2a244a"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "postId": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "pending",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T09:29:01.794Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:29:01.794Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a41e049c69ed00e2a244f"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "postId": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "pending",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T09:29:04.594Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:29:04.594Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a41e349c69ed00e2a2454"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "postId": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "pending",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T09:29:07.247Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:29:07.247Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a41e549c69ed00e2a2459"
+  },
+  "content": "xxx",
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "postId": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "pending",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T09:29:09.814Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:29:09.814Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a420649c69ed00e2a2483"
+  },
+  "content": "fuck",
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "postId": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "rejected",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T09:29:42.346Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:34:30.724Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686a439149c69ed00e2a251f"
+  },
+  "content": "fuck",
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "postId": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "pending",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-06T09:36:17.066Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:36:17.066Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68723cd9adb277988fae091b"
+  },
+  "content": "Em thấy thật mệt mỏiiiiiiiiiiiiiiiii",
+  "accountId": {
+    "$oid": "686de8c347aafa6bcd5a48f4"
+  },
+  "postId": {
+    "$oid": "68723c6cadb277988fae0884"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-12T10:45:45.962Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T12:50:48.196Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "68723d71adb277988fae097a"
+  },
+  "content": "Chào em,\nCảm ơn em vì đã can đảm chia sẻ những điều rất sâu thẳm trong lòng mình. Việc viết ra những dòng này không dễ dàng đâu – điều đó cho thấy em vẫn còn mong muốn được hiểu, được kết nối, được sống thật với cảm xúc của mình. Và điều đó rất, rất quan trọng.",
+  "accountId": {
+    "$oid": "686f83328bba644b2c4ebac6"
+  },
+  "postId": {
+    "$oid": "68723c6cadb277988fae0884"
+  },
+  "voteUp": [
+    {
+      "$oid": "686691ab968eaa6a8fc933cd"
+    },
+    {
+      "$oid": "686de8c347aafa6bcd5a48f4"
+    }
+  ],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-12T10:48:17.708Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T12:50:49.072Z"
+  },
+  "__v": 16
+},
+{
+  "_id": {
+    "$oid": "6873b4e0c966cc53c7f84c30"
+  },
+  "content": "Mình đi trị liệu tâm lý, ban đầu còn ngại nhưng thật sự giúp rất nhiều. Quan trọng là đừng tự đổ lỗi cho bản thân",
+  "accountId": {
+    "$oid": "686de8c347aafa6bcd5a48f4"
+  },
+  "postId": {
+    "$oid": "6851400a0017bca6963bdb5f"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-13T13:30:08.405Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T13:30:08.405Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873b668c966cc53c7f84cdf"
+  },
+  "content": "Mình thường hay đi dạo nên ngủ cũng ngon  á",
+  "accountId": {
+    "$oid": "686de8c347aafa6bcd5a48f4"
+  },
+  "postId": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "voteUp": [
+    {
+      "$oid": "686de8c347aafa6bcd5a48f4"
+    }
+  ],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-13T13:36:40.122Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T13:36:53.790Z"
+  },
+  "__v": 5
+},
+{
+  "_id": {
+    "$oid": "6873b7bec966cc53c7f84e76"
+  },
+  "content": "Cho em xin được quảng cáo thuốc 3 đời nhà em một xíu ạ",
+  "accountId": {
+    "$oid": "686de8c347aafa6bcd5a48f4"
+  },
+  "postId": {
+    "$oid": "68538cfd3a0563d299a18fef"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "pending",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-13T13:42:22.695Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T13:42:22.695Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873b825c966cc53c7f84ea3"
+  },
+  "content": "Em cũng có bán thuốc giảm cân nữa...",
+  "accountId": {
+    "$oid": "686de8c347aafa6bcd5a48f4"
+  },
+  "postId": {
+    "$oid": "68538cfd3a0563d299a18fef"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "pending",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-13T13:44:05.212Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T13:44:05.212Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873be93a63013bdf5193ad8"
+  },
+  "content": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!",
+  "accountId": {
+    "$oid": "686fbe11f6427b9aae183b11"
+  },
+  "postId": {
+    "$oid": "68723c6cadb277988fae0884"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "status": "approved",
+  "parentCommentId": null,
+  "isEdited": false,
+  "createdAt": {
+    "$date": "2025-07-13T14:11:31.172Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:11:31.172Z"
+  },
+  "__v": 0
+}]
