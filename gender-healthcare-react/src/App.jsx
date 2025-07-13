@@ -19,7 +19,7 @@ export default function App() {
   }, []);
   const { Id, token, Role, IsLogIn } = UserAuth();
   console.log("Id", Id);
-  console.log("Token", token);
+  console.log("token", token);
   console.log("Role", Role);
   console.log("IsLogIn", IsLogIn);
 
