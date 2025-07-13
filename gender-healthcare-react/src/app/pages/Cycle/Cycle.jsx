@@ -153,10 +153,10 @@ export default function CyclePage() {
             }}
           >
             <div>
-              <div className="title">Theo dõi chu kỳ kinh nguyệt</div>
+              <div className="title">Track your menstrual cycle</div>
               <div className="instruction">
-                Quản lý chu kỳ, dự đoán ngày rụng trứng và nhận nhắc nhở chăm
-                sóc sức khỏe.
+                Manage your cycle, predict ovulation, and receive health care
+                reminders.
               </div>
             </div>
             <button
@@ -178,14 +178,14 @@ export default function CyclePage() {
         </div>
         <div className="cycle-content">
           {loading ? (
-            <div className="loading">Đang tải dữ liệu...</div>
+            <div className="loading">Loading...</div>
           ) : !startDay ? (
             // Nếu chưa chọn ngày bắt đầu, chỉ hiện 1 lịch để chọn
             <div className="form-section">
               <div className="form-row">
                 <div className="form-group">
                   <span className="form-label">
-                    Chọn ngày bắt đầu kỳ kinh nguyệt đầu tiên:
+                    Select the start date of your first menstrual period:
                   </span>
                   <Calendar
                     onClickDay={handleStartDay}
@@ -201,7 +201,7 @@ export default function CyclePage() {
               <div className="form-section">
                 <div className="form-row">
                   <div className="form-group">
-                    <label className="form-label">Ngày bắt đầu</label>
+                    <label className="form-label">Start Date</label>
                     <input
                       className="form-input"
                       type="date"
@@ -212,7 +212,7 @@ export default function CyclePage() {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Ngày kết thúc</label>
+                    <label className="form-label">End Date</label>
                     <input
                       className="form-input"
                       type="date"
@@ -222,7 +222,7 @@ export default function CyclePage() {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Ghi chú</label>
+                    <label className="form-label">Notes</label>
                     <input
                       className="form-input"
                       type="text"
@@ -239,7 +239,7 @@ export default function CyclePage() {
                     onClick={handleSave}
                     disabled={loading}
                   >
-                    Lưu kỳ kinh nguyệt
+                    Save Menstrual Cycle
                   </button>
                 )}
               </div>
