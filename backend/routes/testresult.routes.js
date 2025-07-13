@@ -3,7 +3,7 @@ const ctrl = require('../controllers/testresult.controller');
 const { authenticate, authorize } = require('../middlewares/auth.middleware');
 const r = express.Router();
 
-r.post('/', authenticate, authorize('Admin', 'Doctor'), ctrl.create);
+r.post('/', authenticate, ctrl.create);
 r.get('/', authenticate, ctrl.getAll);
 r.get('/:id', authenticate, ctrl.getOne);
 r.put('/:id', authenticate, authorize('Admin', 'Doctor'), ctrl.update);

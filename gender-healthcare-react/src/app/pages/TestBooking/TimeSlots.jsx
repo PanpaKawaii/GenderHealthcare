@@ -43,7 +43,7 @@ export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot 
             <p className='script'>Available time slots for {S_Date}</p>
             <div className='timeslots-form'>
                 <div className='time-grid'>
-                    {Slot?.sort((a, b) => a.startTime - b.startTime).map((slot, i) => (
+                    {Slot?.sort((a, b) => a.startTime?.split(':')[0] - b.startTime?.split(':')[0]).map((slot, i) => (
                         <button
                             key={i}
                             className={`time-slot ${NoCancel_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id) ? 'booked' : ''}`}

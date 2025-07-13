@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 const initialState = {
     Id: null,
     token: null,
-    Role: null,
+    UserRole: null,
     IsLogIn: localStorage.getItem('IsLogIn'),
     login: () => { },
     logout: () => { },
@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
     const [Id, setId] = useState(null);
     const [token, setToken] = useState(null);
-    const [Role, setRole] = useState(null);
+    const [UserRole, setUserRole] = useState(null);
     const [IsLogIn, setIsLogIn] = useState(localStorage.getItem('IsLogIn'));
 
     useEffect(() => {
@@ -36,11 +36,11 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const UserId = localStorage.getItem('UserId');
         const token = localStorage.getItem('token');
-        const UserRole = localStorage.getItem('UserRole');
+        const Role = localStorage.getItem('UserRole');
 
         setId(UserId);
         setToken(token);
-        setRole(UserRole);
+        setUserRole(Role);
     }, [IsLogIn]);
 
     const login = () => {
@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ login, logout, Id, token, Role, IsLogIn }}>
+        <AuthContext.Provider value={{ login, logout, Id, token, UserRole, IsLogIn }}>
             {children}
         </AuthContext.Provider>
     );
