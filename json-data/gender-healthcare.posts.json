@@ -1,0 +1,641 @@
+[{
+  "_id": {
+    "$oid": "6851400a0017bca6963bdb5f"
+  },
+  "title": "Mối quan hệ độc hại ảnh hưởng đến sức khỏe tinh thần thế nào?",
+  "content": "Mình vừa kết thúc một mối quan hệ không lành mạnh. Cảm giác rất mệt mỏi và trống rỗng. Có ai từng trải qua cảm giác này không? Mọi người đã làm gì để hồi phục và lấy lại tinh thần?",
+  "category": "STI Prevention",
+  "tags": [
+    "resources",
+    "contraception",
+    "pregnancy"
+  ],
+  "accountId": {
+    "$oid": "6873a7da248758d822f4a523"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 1268,
+  "answerCount": 4,
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-06-18T10:14:34.494Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:18:05.333Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68526ecc44e88e82caa16475"
+  },
+  "title": "Lịch trình uống thuốc tránh thai hàng ngày",
+  "content": "Mình vừa bắt đầu sử dụng thuốc tránh thai hàng ngày nhưng vẫn chưa quen. Có ai có mẹo nào để nhớ uống thuốc đúng giờ không?",
+  "category": "Reproductive Health",
+  "tags": [
+    "support"
+  ],
+  "accountId": {
+    "$oid": "6873ab00248758d822f4a52a"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 764,
+  "answerCount": 1,
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-06-18T07:46:20.265Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:15:30.858Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68538a7b3a0563d299a18f53"
+  },
+  "title": "Em thấy mình thích cả nam và nữ, có sao không?",
+  "content": "Chào mọi người,\nEm năm nay 17 tuổi và gần đây em phát hiện mình có cảm xúc với cả bạn trai lẫn bạn gái. Em không biết có phải em là người song tính không. Em hơi hoang mang vì không ai xung quanh em giống vậy cả. Mọi người có ai từng trải qua cảm giác như em chưa? Mong được lắng nghe chia sẻ...",
+  "category": "General Health",
+  "tags": [
+    "advice",
+    "question"
+  ],
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 753,
+  "answerCount": 0,
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-06-19T03:56:43.089Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:18:05.329Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68538cc53a0563d299a18fad"
+  },
+  "title": "Tại sao em hay chóng mặt sau khi thức dậy?",
+  "content": "Em là sinh viên, thời gian gần đây mỗi lần ngủ dậy là đầu óc quay cuồng, phải ngồi một lúc mới đứng lên nổi. Em ăn uống khá thất thường và hay thức khuya. Không biết có liên quan đến sức khỏe chung không ạ?",
+  "category": "General Health",
+  "tags": [
+    "advice",
+    "support",
+    "question"
+  ],
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 747,
+  "answerCount": 0,
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-06-19T04:06:29.041Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:18:05.316Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68538cfd3a0563d299a18fef"
+  },
+  "title": "Em 22 tuổi mà chưa có kinh nguyệt, có sao không?",
+  "content": "Chuyện hơi tế nhị, nhưng em thực sự lo lắng. Em đã 22 tuổi rồi nhưng chưa bao giờ có kinh nguyệt. Em sợ bản thân có vấn đề về sinh sản. Có ai từng giống em không ạ? Em không dám nói với ba mẹ luôn...",
+  "category": "Reproductive Health",
+  "tags": [
+    "advice"
+  ],
+  "accountId": {
+    "$oid": "686f851d8bba644b2c4ebad5"
+  },
+  "voteUp": [
+    {
+      "$oid": "68669fb1b591049e40a8673f"
+    }
+  ],
+  "voteDown": [
+    {
+      "$oid": "684a1ac7dfae966e9818e290"
+    }
+  ],
+  "viewCount": 773,
+  "answerCount": 0,
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-06-19T04:07:25.224Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:18:05.290Z"
+  },
+  "__v": 13,
+  "isAnonymous": false
+},
+{
+  "_id": {
+    "$oid": "68538d5b3a0563d299a19001"
+  },
+  "title": "Bao cao su có giúp ngăn ngừa hoàn toàn bệnh tình dục không?",
+  "content": "Mọi người ơi, em và bạn gái đang tính \"tiến xa hơn\", em có tìm hiểu thì thấy bao cao su là biện pháp tốt. Nhưng có bài viết lại nói vẫn có nguy cơ. Em hơi lo, mong mọi người tư vấn thêm giúp em với.",
+  "category": "STI Prevention",
+  "tags": [
+    "relationships"
+  ],
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "voteUp": [
+    {
+      "$oid": "684a1ac7dfae966e9818e290"
+    }
+  ],
+  "voteDown": [],
+  "viewCount": 779,
+  "answerCount": 2,
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-06-19T04:08:59.751Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:18:05.293Z"
+  },
+  "__v": 8,
+  "isAnonymous": false
+},
+{
+  "_id": {
+    "$oid": "68538de13a0563d299a19097"
+  },
+  "title": "Em đang cảm thấy trống rỗng và không biết vì sao",
+  "content": "Dạo gần đây em cảm thấy rất kỳ lạ. Không phải là buồn, cũng không hẳn là vui. Chỉ là... trống rỗng. Mỗi sáng thức dậy, em không biết mình đang sống vì điều gì. Em vẫn đi học, vẫn ăn uống, nói chuyện với bạn bè, vẫn cười khi cần, nhưng bên trong em không còn cảm xúc gì cả.\n\nTrước đây em từng rất yêu thích vẽ tranh và viết lách, nhưng giờ em chẳng có động lực để đụng vào cây bút nữa. Có những ngày em nằm cả buổi trên giường, nhìn trần nhà mà đầu óc rỗng tuếch. Không phải vì em lười, mà vì em thật sự không có lý do nào để cố gắng. Khi em chia sẻ điều này với người thân, họ bảo em chỉ đang “quá nhạy cảm” hay “suy nghĩ tiêu cực”. Nhưng sự thật là em cũng không hiểu rõ chính mình đang bị gì.\n\nEm bắt đầu tránh né bạn bè, không trả lời tin nhắn, không muốn nói chuyện với ai. Có đôi lúc em nghĩ liệu cuộc sống này có ý nghĩa gì không. Nhưng rồi em lại thấy tội lỗi vì mình nghĩ như vậy.\n\nEm không muốn mình trở nên như vậy, nhưng em cũng không biết phải bắt đầu từ đâu để thoát ra. Có ai từng rơi vào trạng thái này chưa? Em rất cần một ai đó hiểu và không phán xét. Thật lòng em chỉ muốn được sống như trước kia – có cảm xúc, có đam mê, và có một lý do để tiếp tục mỗi ngày.",
+  "category": "Mental Health",
+  "tags": [
+    "mental-health",
+    "anxiety",
+    "depression"
+  ],
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "voteUp": [],
+  "voteDown": [
+    {
+      "$oid": "684a1ac7dfae966e9818e290"
+    },
+    {
+      "$oid": "68669fb1b591049e40a8673f"
+    }
+  ],
+  "viewCount": 752,
+  "answerCount": 0,
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-06-19T04:11:13.127Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:18:05.179Z"
+  },
+  "__v": 34,
+  "isAnonymous": false
+},
+{
+  "_id": {
+    "$oid": "685391d7d3e5c0e7602ee95a"
+  },
+  "title": "Mỗi lần tới kỳ là em đau bụng dữ dội",
+  "content": "Mỗi tháng em đều đau bụng đến mức không thể học hành gì được. Có khi còn buồn nôn và chóng mặt. Em nghe nói đó là đau bụng kinh nhưng không biết có bình thường không? Có cách nào làm giảm không ạ?a",
+  "category": "Reproductive Health",
+  "tags": [
+    "mental-health"
+  ],
+  "accountId": {
+    "$oid": "684a1ac7dfae966e9818e290"
+  },
+  "voteUp": [
+    {
+      "$oid": "6865b51f6a8e494bd14cc4d7"
+    },
+    {
+      "$oid": "684a1ac7dfae966e9818e290"
+    },
+    {
+      "$oid": "68669fb1b591049e40a8673f"
+    }
+  ],
+  "voteDown": [
+    {
+      "$oid": "68526944054ebd8abf5a7ec1"
+    }
+  ],
+  "viewCount": 781,
+  "answerCount": 2,
+  "isAnonymous": true,
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-06-19T04:28:07.355Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:15:16.236Z"
+  },
+  "__v": 279
+},
+{
+  "_id": {
+    "$oid": "6865c09c6a8e494bd14ccb21"
+  },
+  "title": "11",
+  "content": "11",
+  "category": "STI Prevention",
+  "tags": [
+    "contraception",
+    "pregnancy"
+  ],
+  "accountId": {
+    "$oid": "6865b51f6a8e494bd14cc4d7"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 0,
+  "answerCount": 0,
+  "isAnonymous": false,
+  "status": "rejected",
+  "createdAt": {
+    "$date": "2025-07-02T23:28:28.063Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T23:28:46.081Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68664011958d43db8bbd387b"
+  },
+  "title": "11",
+  "content": "11",
+  "category": "STI Prevention",
+  "tags": [
+    "contraception",
+    "pregnancy"
+  ],
+  "accountId": {
+    "$oid": "6865c09c6a8e494bd14ccb21"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 0,
+  "answerCount": 1,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-07-03T08:32:17.925Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-03T08:36:33.370Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68665a7e965ac5b70b0925b4"
+  },
+  "title": "1",
+  "content": "1",
+  "category": "Reproductive Health",
+  "tags": [],
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 59,
+  "answerCount": 0,
+  "isAnonymous": false,
+  "status": "rejected",
+  "createdAt": {
+    "$date": "2025-07-03T10:25:02.044Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:22:10.567Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6869fd63e6cbc357969fbba0"
+  },
+  "title": "Dấu hiệu có thai sau khi quan hệ không an toàn?",
+  "content": "Mình và bạn trai có quan hệ mà không dùng biện pháp an toàn. Hiện tại mình thấy buồn nôn nhẹ và mệt mỏi. Mình đang rất lo lắng. Có ai biết dấu hiệu sớm của việc mang thai là gì không?",
+  "category": "STI Prevention",
+  "tags": [
+    "relationships"
+  ],
+  "accountId": {
+    "$oid": "686a4d5a49c69ed00e2a26d5"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 106,
+  "answerCount": 0,
+  "isAnonymous": false,
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-07-06T04:36:51.854Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:18:05.177Z"
+  },
+  "__v": 4,
+  "editedAt": {
+    "$date": "2025-07-06T04:47:21.724Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686a015fafe4e7a13b4da812"
+  },
+  "title": "xxx",
+  "content": "trời ơi xxx",
+  "category": "STI Prevention",
+  "tags": [
+    "question",
+    "anxiety"
+  ],
+  "accountId": {
+    "$oid": "686573cbdb400c5b68baf34f"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 12,
+  "answerCount": 0,
+  "isAnonymous": false,
+  "status": "rejected",
+  "createdAt": {
+    "$date": "2025-07-06T04:53:51.674Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-06T09:21:19.808Z"
+  },
+  "__v": 0,
+  "editedAt": {
+    "$date": "2025-07-06T04:54:04.530Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686a023712c2163333ea7bde"
+  },
+  "title": "Làm sao để vượt qua cảm giác lo âu mỗi tối?",
+  "content": "Gần đây, mỗi tối trước khi ngủ mình thường cảm thấy lo âu và suy nghĩ tiêu cực. Mình không biết bắt đầu từ đâu để cải thiện tình trạng này. Có ai từng trải qua giống mình không? Có cách nào giúp mình thư giãn và ngủ ngon hơn không?",
+  "category": "Mental Health",
+  "tags": [
+    "question"
+  ],
+  "accountId": {
+    "$oid": "686dca70e2f26b0631d33f75"
+  },
+  "voteUp": [
+    {
+      "$oid": "686fbe11f6427b9aae183b11"
+    }
+  ],
+  "voteDown": [
+    {
+      "$oid": "686de8c347aafa6bcd5a48f4"
+    }
+  ],
+  "viewCount": 32,
+  "answerCount": 1,
+  "isAnonymous": false,
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-07-06T04:57:27.280Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:18:05.175Z"
+  },
+  "__v": 19
+},
+{
+  "_id": {
+    "$oid": "686f120c54eb83f0e2318305"
+  },
+  "title": "gender",
+  "content": "How many gender?",
+  "category": "General Health",
+  "tags": [
+    "question"
+  ],
+  "accountId": {
+    "$oid": "686e97383c4060239f5c953d"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 2,
+  "answerCount": 0,
+  "isAnonymous": false,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-07-10T01:06:20.830Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T01:09:21.624Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68711f44d41128907a8d9456"
+  },
+  "title": "q",
+  "content": "help me",
+  "category": "Reproductive Health",
+  "tags": [
+    "support"
+  ],
+  "accountId": {
+    "$oid": "686f851d8bba644b2c4ebad5"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 1,
+  "answerCount": 0,
+  "isAnonymous": true,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-07-11T14:27:16.525Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-11T14:27:23.699Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6871d6e82764bfb1c3504e5d"
+  },
+  "title": "1",
+  "content": "1",
+  "category": "Reproductive Health",
+  "tags": [
+    "support"
+  ],
+  "accountId": {
+    "$oid": "686de8c347aafa6bcd5a48f4"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 3,
+  "answerCount": 0,
+  "isAnonymous": false,
+  "status": "rejected",
+  "createdAt": {
+    "$date": "2025-07-12T03:30:48.886Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T13:38:20.197Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68723b53df1e1f317aad1510"
+  },
+  "title": "Em cảm thấy trống rỗng và không biết vì sao...",
+  "content": "Dạo gần đây em cảm thấy rất kỳ lạ. Không phải là buồn, cũng không hẳn là vui.",
+  "category": "Mental Health",
+  "tags": [
+    "treatment",
+    "mental-health",
+    "anxiety",
+    "depression"
+  ],
+  "accountId": {
+    "$oid": "686de8c347aafa6bcd5a48f4"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 1,
+  "answerCount": 0,
+  "isAnonymous": false,
+  "status": "rejected",
+  "createdAt": {
+    "$date": "2025-07-12T10:39:15.174Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-12T10:44:48.525Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68723c6cadb277988fae0884"
+  },
+  "title": "Em đang cảm thấy trống rỗng và không biết vì sao...",
+  "content": "Chỉ là... trống rỗng. Mỗi sáng thức dậy, em không biết mình đang sống vì điều gì. Em vẫn đi học, vẫn ăn uống, nói chuyện với bạn bè, vẫn cười khi cần, nhưng bên trong em không còn cảm xúc gì cả. Trước đây em từng rất yêu thích vẽ tranh và viết lách, nhưng giờ em chẳng có động lực để đụng vào cây bút nữa. Có những ngày em nằm cả buổi trên giường, nhìn trần nhà mà đầu óc rỗng tuếch. Không phải vì em lười, mà vì em thật sự không có lý do nào để cố gắng. Khi em chia sẻ điều này với người thân, họ bảo em chỉ đang “quá nhạy cảm” hay “suy nghĩ tiêu cực”. Nhưng sự thật là em cũng không hiểu rõ chính mình đang bị gì. Em bắt đầu tránh né bạn bè, không trả lời tin nhắn, không muốn nói chuyện với ai. Có đôi lúc em nghĩ liệu cuộc sống này có ý nghĩa gì không. Nhưng rồi em lại thấy tội lỗi vì mình nghĩ như vậy. Em không muốn mình trở nên như vậy, nhưng em cũng không biết phải bắt đầu từ đâu để thoát ra. Có ai từng rơi vào trạng thái này chưa? Em rất cần một ai đó hiểu và không phán xét. Thật lòng em chỉ muốn được sống như trước kia – có cảm xúc, có đam mê, và có một lý do để tiếp tục mỗi ngày.",
+  "category": "Mental Health",
+  "tags": [
+    "depression",
+    "anxiety",
+    "mental-health",
+    "treatment"
+  ],
+  "accountId": {
+    "$oid": "686de8c347aafa6bcd5a48f4"
+  },
+  "voteUp": [
+    {
+      "$oid": "686691ab968eaa6a8fc933cd"
+    },
+    {
+      "$oid": "686de8c347aafa6bcd5a48f4"
+    },
+    {
+      "$oid": "686fbe11f6427b9aae183b11"
+    }
+  ],
+  "voteDown": [],
+  "viewCount": 9,
+  "answerCount": 3,
+  "isAnonymous": false,
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-07-12T10:43:56.278Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:18:05.166Z"
+  },
+  "__v": 9
+},
+{
+  "_id": {
+    "$oid": "6873aa6548b631e4044b620a"
+  },
+  "title": "Cách hỗ trợ bạn đang bị trầm cảm",
+  "content": "Mình có một người bạn đang bị trầm cảm, bạn ấy thường tránh giao tiếp và than mệt mỏi. Mình muốn giúp nhưng không biết cách nào phù hợp. Ai có lời khuyên thực tế không?",
+  "category": "Mental Health",
+  "tags": [
+    "depression",
+    "support"
+  ],
+  "accountId": {
+    "$oid": "686de8c347aafa6bcd5a48f4"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 2,
+  "answerCount": 0,
+  "isAnonymous": true,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-07-13T12:45:25.886Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:29:20.119Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6873be4fa63013bdf5193a5a"
+  },
+  "title": "ABC",
+  "content": "xyz",
+  "category": "Pregnancy & Family Planning",
+  "tags": [
+    "advice",
+    "tips",
+    "pregnancy",
+    "contraception",
+    "experience"
+  ],
+  "accountId": {
+    "$oid": "686fbe11f6427b9aae183b11"
+  },
+  "voteUp": [],
+  "voteDown": [],
+  "viewCount": 1,
+  "answerCount": 0,
+  "isAnonymous": true,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-07-13T14:10:23.782Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T14:12:28.153Z"
+  },
+  "__v": 0,
+  "editedAt": {
+    "$date": "2025-07-13T14:12:28.153Z"
+  }
+}]
