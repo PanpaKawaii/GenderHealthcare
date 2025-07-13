@@ -17,20 +17,20 @@ export default function App() {
     // Setup interceptors to handle expired tokens
     setupAxiosInterceptors();
   }, []);
-  const { Id, token, Role, IsLogIn } = UserAuth();
+  const { Id, token, UserRole, IsLogIn } = UserAuth();
   console.log("Id", Id);
   console.log("token", token);
-  console.log("Role", Role);
+  console.log("UserRole", UserRole);
   console.log("IsLogIn", IsLogIn);
 
   // Sau này sẽ thêm AdminRoutes và DoctorRoutes
-  if (Role == "Counselor") {
+  if (UserRole == "Counselor") {
     return <CounselorRoutes />;
-  } else if (Role == "Customer") {
+  } else if (UserRole == "Customer") {
     return <CustomerRoutes />;
-  } else if (Role == 'Admin') {
+  } else if (UserRole == 'Admin') {
     return <AdminRoutes />;
-  }else if (Role == 'Doctor') {
+  }else if (UserRole == 'Doctor') {
     return <DoctorRoutes/>;
   }  
   else return <MainRoutes />;

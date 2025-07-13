@@ -72,7 +72,7 @@ export default function CustomerRoutes() {
           element={<DashboardMedicalfacility />}
         />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
       </Routes>
     </BrowserRouter>
   );
