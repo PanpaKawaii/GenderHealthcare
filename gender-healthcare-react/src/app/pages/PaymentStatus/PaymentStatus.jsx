@@ -38,7 +38,7 @@ export default function PaymentStatus() {
 
                     <div className='payment-active-button'>
                         <Link to='/'><button className='btn'>VỀ TRANG CHỦ</button></Link>
-                        <Link to='/user/booking'><button className='btn'>XEM CHI TIẾT</button></Link>
+                        <Link to='/profile'><button className='btn'>XEM CHI TIẾT</button></Link>
                     </div>
                 </div>
             </div>

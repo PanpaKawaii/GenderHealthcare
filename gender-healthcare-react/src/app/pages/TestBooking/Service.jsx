@@ -23,7 +23,7 @@ export default function Service() {
                     <div className='convenient'>60 minute comprehensive session</div>
                     <div className='note-1'>Most Popular</div>
                 </Link>
-                <Link to="/couselortestbooking" className='card card-hospital' style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link to="/testbooking" className='card card-hospital' style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className='icon icon-hospital'><i className='fa-solid fa-hospital'></i></div>
                     <h2>STI Testing & Screening</h2>
                     <p>Confidential and comprehensive sexually transmitted infection testing with rapid results. Professional, discreet service in a comfortable environment.</p>

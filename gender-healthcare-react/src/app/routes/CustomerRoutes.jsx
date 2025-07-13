@@ -49,7 +49,7 @@ export default function CustomerRoutes() {
           <Route path="/contact" element={<Contact />} />
           <Route path="bookings/:id" element={<BookingDetail />} />
           <Route path="/bookingservice" element={<BookingService />} />
-          <Route path="/couselortestbooking" element={<TestBooking />} />
+          <Route path="/testbooking" element={<TestBooking />} />
           <Route path='/paymentstatus' element={<PaymentStatus />} />
         </Route>
 

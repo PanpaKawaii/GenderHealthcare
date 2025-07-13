@@ -102,9 +102,9 @@ const Layout = () => {
               <Link to="/" className="text-gray-600 hover:text-gray-900">Home</Link>
               <Link to="/forum" className="text-gray-600 hover:text-gray-900">Forum</Link>
               <Link to="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
-              <Link to="/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng" className="text-gray-600 hover:text-gray-900">Payment</Link>
+              {/* <Link to="/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng" className="text-gray-600 hover:text-gray-900">Payment</Link> */}
               <Link to="/bookingservice" className="text-gray-600 hover:text-gray-900">Booking</Link>
-              <Link to="/parametermanager" className="text-gray-600 hover:text-gray-900">Parameter</Link>
+              {/* <Link to="/parametermanager" className="text-gray-600 hover:text-gray-900">Parameter</Link> */}
               <Link to="/contact" className="text-gray-600 hover:text-gray-900">
                 Contact
               </Link>
@@ -218,7 +218,7 @@ const Layout = () => {
                     Schedule online or in-person consultation
                   </p>
                   <Button className="w-full" asChild>
-                    <Link to="/consultations/book">Book Now</Link>
+                    <Link to="/booking">Book Now</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -231,7 +231,7 @@ const Layout = () => {
                     Book confidential STI testing
                   </p>
                   <Button className="w-full" asChild>
-                    <Link to="/testing/book">Schedule Test</Link>
+                    <Link to="/testbooking">Schedule Test</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -244,7 +244,7 @@ const Layout = () => {
                     Get answers from our experts
                   </p>
                   <Button className="w-full" asChild>
-                    <Link to="/questions/ask">Ask Now</Link>
+                    <Link to="/forum">Ask Now</Link>
                   </Button>
                 </CardContent>
               </Card>
