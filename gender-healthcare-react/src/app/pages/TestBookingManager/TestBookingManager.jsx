@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { fetchData, postData, putData, deleteData } from '../LoginRegister/api_register';
-import '../ParameterManager/ManagerStyles.css';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  fetchData,
+  postData,
+  putData,
+  deleteData,
+} from "../LoginRegister/api_register";
+import "../ParameterManager/ManagerStyles.css";
 
 export default function TestBookingManager() {
     const [bookings, setBookings] = useState([]);
@@ -75,54 +80,58 @@ export default function TestBookingManager() {
         }
     };
 
-    const DeleteBooking = async (id) => {
-        const token = localStorage.getItem('token');
-        try {
-            setLoading(true);
-            if (window.confirm('Xoá lịch đặt này?')) {
-                const BookingData = await deleteData(`/testbookings/${id}`, token);
-                console.log('Delete result:', BookingData);
-            }
-        } catch (error) {
-            console.error(error);
-            setError(true);
-        } finally {
-            setLoading(false);
-            setRefresh((p) => p + 1);
-        }
+  const DeleteBooking = async (id) => {
+    const token = localStorage.getItem("token");
+    try {
+      setLoading(true);
+      if (window.confirm("Xoá lịch đặt này?")) {
+        const BookingData = await deleteData(`/testbookings/${id}`, token);
+        console.log("Delete result:", BookingData);
+      }
+    } catch (error) {
+      console.error(error);
+      setError(true);
+    } finally {
+      setLoading(false);
+      setRefresh((p) => p + 1);
+    }
+  };
+
+  const EditBooking = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token");
+
+    const EditBookingData = {
+      bookingDate: editingBooking.bookingDate || null,
+      status: editingBooking.status || "Pending",
+      note: editingBooking.note || "",
     };
 
-    const EditBooking = async (e) => {
-        e.preventDefault();
-        const token = localStorage.getItem('token');
+    try {
+      setLoading(true);
+      const BookingData = await putData(
+        `/testbookings/${editingBooking._id}`,
+        token,
+        EditBookingData
+      );
+      console.log("Edit result:", BookingData);
+      setEditingBooking(null);
+    } catch (error) {
+      console.error(error);
+      setError(true);
+    } finally {
+      setLoading(false);
+      setRefresh((p) => p + 1);
+    }
+  };
 
-        const EditBookingData = {
-            bookingDate: editingBooking.bookingDate || null,
-            status: editingBooking.status || 'Pending',
-            note: editingBooking.note || '',
-        };
+  if (loading) return <div className="loading">Loading...</div>;
 
-        try {
-            setLoading(true);
-            const BookingData = await putData(`/testbookings/${editingBooking._id}`, token, EditBookingData);
-            console.log('Edit result:', BookingData);
-            setEditingBooking(null);
-        } catch (error) {
-            console.error(error);
-            setError(true);
-        } finally {
-            setLoading(false);
-            setRefresh((p) => p + 1);
-        }
-    };
+  return (
+    <div className="container">
+      <h2 className="title">🧪 Booking Manager</h2>
 
-    if (loading) return <div className="loading">Loading...</div>;
-
-    return (
-        <div className='container'>
-            <h2 className='title'>🧪 Booking Manager</h2>
-
-            {/* <form className='form' onSubmit={AddBooking}>
+      {/* <form className='form' onSubmit={AddBooking}>
                 <select required value={formData.doctorTestServiceId} onChange={(e) => setFormData({ ...formData, doctorTestServiceId: e.target.value })} >
                     <option value=''>-- Chọn khung giờ bác sĩ --</option>
                     {doctorTestServices.map((slot) => (
@@ -197,35 +206,40 @@ export default function TestBookingManager() {
                                 }
                             /> */}
 
-                            <label>Trạng thái</label>
-                            <select
-                                value={editingBooking.status}
-                                onChange={(e) =>
-                                    setEditingBooking({ ...editingBooking, status: e.target.value })
-                                }
-                            >
-                                <option value='Pending'>Pending</option>
-                                <option value='Approved'>Approved</option>
-                                <option value='Cancelled'>Cancelled</option>
-                            </select>
+              <label>Trạng thái</label>
+              <select
+                value={editingBooking.status}
+                onChange={(e) =>
+                  setEditingBooking({
+                    ...editingBooking,
+                    status: e.target.value,
+                  })
+                }
+              >
+                <option value="Pending">Pending</option>
+                <option value="Approved">Approved</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
 
-                            <label>Ghi chú</label>
-                            <input
-                                type='text'
-                                value={editingBooking.note || ''}
-                                onChange={(e) =>
-                                    setEditingBooking({ ...editingBooking, note: e.target.value })
-                                }
-                            />
+              <label>Ghi chú</label>
+              <input
+                type="text"
+                value={editingBooking.note || ""}
+                onChange={(e) =>
+                  setEditingBooking({ ...editingBooking, note: e.target.value })
+                }
+              />
 
-                            <div className='modal-actions'>
-                                <button type='submit'>Save</button>
-                                <button type='button' onClick={() => setEditingBooking(null)}>Cancel</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
+              <div className="modal-actions">
+                <button type="submit">Save</button>
+                <button type="button" onClick={() => setEditingBooking(null)}>
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-    )
+      )}
+    </div>
+  );
 }

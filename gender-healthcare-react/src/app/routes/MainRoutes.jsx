@@ -28,8 +28,7 @@ export default function MainRoutes() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/profile" element={<ProfilePage />} />
-                    <Route path="/booking" element={<TestBooking />} />
-          
+          <Route path="/booking" element={<TestBooking />} />
         </Route>
 
         <Route path="/counselorhome" element={<CounselorHome />} />
