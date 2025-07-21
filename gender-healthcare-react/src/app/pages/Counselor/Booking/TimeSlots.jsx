@@ -1,5 +1,4 @@
-// TimeSlots.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
@@ -7,9 +6,7 @@ import timezone from 'dayjs/plugin/timezone';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-export default function TimeSlots({ date, onSelectSlot }) {
-  const [selectedSlot, setSelectedSlot] = useState(null);
-
+export default function TimeSlots({ date, onSelectSlot, selectedSlot }) {
   const slotTimes = [
     { startTime: '09:00', endTime: '10:00' },
     { startTime: '10:00', endTime: '11:00' },
@@ -19,9 +16,8 @@ export default function TimeSlots({ date, onSelectSlot }) {
     { startTime: '16:00', endTime: '17:00' },
   ];
 
-  /* Kiểm tra slot đã qua chưa (chỉ khi đã chọn ngày) */
   const isSlotPast = (slotTime) => {
-    if (!date) return false; // chưa chọn ngày -> luôn có thể chọn
+    if (!date) return false;
     const slotDateTime = dayjs.tz(
       `${dayjs(date).format('YYYY-MM-DD')}T${slotTime}`,
       'Asia/Ho_Chi_Minh'
@@ -30,15 +26,12 @@ export default function TimeSlots({ date, onSelectSlot }) {
     return slotDateTime.isBefore(nowVN);
   };
 
-  /* Xử lý click slot (toggle) */
   const handleClick = (slot) => {
     if (isSlotPast(slot.startTime)) return;
 
     if (selectedSlot && selectedSlot.startTime === slot.startTime) {
-      setSelectedSlot(null);
       onSelectSlot(null);
     } else {
-      setSelectedSlot(slot);
       onSelectSlot(slot);
     }
   };
@@ -52,7 +45,7 @@ export default function TimeSlots({ date, onSelectSlot }) {
       <div className="p-6">
         <div className="grid grid-cols-6 gap-4 mb-6">
           {slotTimes.map((slot, i) => {
-            const disabled = isSlotPast(slot.startTime);   // chỉ disable khi đã chọn ngày và slot đã qua
+            const disabled = isSlotPast(slot.startTime);
             const isSelected = selectedSlot && selectedSlot.startTime === slot.startTime;
 
             const base = 'py-1 px-3 rounded-full font-medium border text-center transition';
@@ -75,12 +68,10 @@ export default function TimeSlots({ date, onSelectSlot }) {
 
         <div className="flex justify-center gap-8 text-sm text-gray-600">
           <span className="flex items-center gap-2">
-            
             <span className="w-4 h-4 border border-gray-300 rounded bg-[#2563eb]" />
             Selected
           </span>
           <span className="flex items-center gap-2">
-            
             <span className="w-4 h-4 border border-gray-300 rounded bg-white" />
             Available
           </span>

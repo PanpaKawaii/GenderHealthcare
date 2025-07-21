@@ -6,7 +6,7 @@ import {
   counselorBookAPI,
 } from '../../../services/api';
 
-export default function PaymentConfirm({ doctor, date, slot }) {
+export default function PaymentConfirm({ doctor, date, slot, onBack }) {
   const navigate = useNavigate();
 
   const start = slot?.startTime ? dayjs(slot.startTime) : null;
@@ -28,50 +28,44 @@ export default function PaymentConfirm({ doctor, date, slot }) {
       return;
     }
 
-try {
-  // 1️⃣ Gọi API lấy customerId từ accountId
-  const res = await counselorBookAPI.getCustomerIdByAccountId(accountId);
-  const customerId = res.data._id;
+    try {
+      const res = await counselorBookAPI.getCustomerIdByAccountId(accountId);
+      const customerId = res.data._id;
 
-  // 2️⃣ Tạo booking trước
-  const payload = {
-    customerId,
-    counselorId: doctor._id,
-    scheduleId: slot._id,
-    bookingDate: start ? start.toISOString() : new Date().toISOString(),
-    status: 'confirmed',
-    note: '',
-  };
+      const payload = {
+        customerId,
+        counselorId: doctor._id,
+        scheduleId: slot._id,
+        bookingDate: start ? start.toISOString() : new Date().toISOString(),
+        status: 'confirmed',
+        note: '',
+      };
 
-  console.log('📤 Booking payload gửi lên:', payload);
-  await counselorBookAPI.create(payload);
-  console.log('✅ Booking created');
+      console.log('📤 Booking payload gửi lên:', payload);
+      await counselorBookAPI.create(payload);
+      console.log('✅ Booking created');
 
-  // 3️⃣ Sau khi booking thành công mới update slot
-  await counselorScheduleAPI.update(slot._id, { status: 'booked' });
-  console.log('✔ Schedule updated → booked');
+      await counselorScheduleAPI.update(slot._id, { status: 'booked' });
+      console.log('✔ Schedule updated → booked');
 
-  navigate('/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng');
-  // alert('✅ Thanh toán thành công!');
-  // navigate('/profile?tab=appointments');
-}catch (err) {
-  console.error('❌ Lỗi khi thanh toán:', err);
-  if (err.response) {
-    console.error('🛑 Response data:', err.response.data);
-    console.error('🛑 Status:', err.response.status);
-    console.error('🛑 Headers:', err.response.headers);
-  }
-  alert('❌ Đã xảy ra lỗi khi thanh toán!');
-}
-
-
+      // ✅ Navigate to PaymentStatus with type=consultation
+      navigate('/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng&type=consultation');
+    } catch (err) {
+      console.error('❌ Lỗi khi thanh toán:', err);
+      if (err.response) {
+        console.error('🛑 Response data:', err.response.data);
+        console.error('🛑 Status:', err.response.status);
+        console.error('🛑 Headers:', err.response.headers);
+      }
+      alert('❌ Đã xảy ra lỗi khi thanh toán!');
+    }
   };
 
   return (
     <div className="max-w-2xl mx-auto bg-white shadow-md rounded-xl p-8 mt-10">
       <h1 className="text-2xl font-bold text-center text-gray-800 mb-2">
         Confirm &amp; Pay
-      </h1>Consultation Booking
+      </h1>
       <p className="text-center text-gray-500 mb-6">
         Review your booking details and complete payment
       </p>
@@ -112,6 +106,13 @@ try {
           className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-lg transition"
         >
           Pay {slot?.price || 0}.000 VND
+        </button>
+
+        <button
+          onClick={onBack}
+          className="w-full mt-3 bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg text-base transition"
+        >
+          ← Choose another counselor
         </button>
       </div>
     </div>

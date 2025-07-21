@@ -26,7 +26,14 @@ export default function HistoryBookings() {
             b.status === 'missed'
         );
 
-        setBookings(history);
+        // 🔁 Sort by latest startTime
+        const sorted = history.sort((a, b) => {
+          const aTime = new Date(a.scheduleId?.startTime);
+          const bTime = new Date(b.scheduleId?.startTime);
+          return bTime - aTime;
+        });
+
+        setBookings(sorted);
       } catch (err) {
         console.error('Error fetching history:', err);
       } finally {

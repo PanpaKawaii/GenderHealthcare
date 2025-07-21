@@ -1,0 +1,5016 @@
+[{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeddb"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-09T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.823Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:53:36.980Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeddf"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedf7"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "status": "booked",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-12T20:31:07.163Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedfa"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedfb"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedfc"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-09T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedfe"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee10"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee1e"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee3a"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee61"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T18:00:39.428Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee6f"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-12T19:36:57.962Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee7e"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee82"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee8e"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T10:00:00.000Z"
+  },
+  "status": "booked",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-12T20:40:20.929Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee9f"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeea3"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeea8"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aede9"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T17:55:25.092Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedeb"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee25"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee50"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-13T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee57"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee70"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee77"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-10T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee79"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee81"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee87"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee88"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee8f"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-09T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aede5"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedf1"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee12"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee14"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-13T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee2c"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-12T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee34"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee44"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-11T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee46"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee47"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-12T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee4c"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee58"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee5b"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee74"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-09T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee7f"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee8d"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeea5"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aede7"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-11T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T17:50:27.794Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee03"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee1b"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee5c"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-10T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee68"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-12T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-11T14:36:44.035Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee72"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee92"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-09T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee9d"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee01"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee18"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee1a"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-09T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee48"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-11T14:45:18.673Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee53"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-09T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee6c"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee7c"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee97"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee9b"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-11T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeea7"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-13T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeddc"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedf3"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-13T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedfd"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee0b"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-12T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee2d"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee5d"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee60"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee65"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-12T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee69"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee7a"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-10T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee9a"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee9e"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-11T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedf6"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-13T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee02"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-10T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee0c"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee11"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-13T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee17"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-09T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee1c"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee20"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-10T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee36"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee37"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee39"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee3c"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee6d"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee7b"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee91"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee9c"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeea0"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeeac"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T10:00:00.000Z"
+  },
+  "status": "booked",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T08:22:23.235Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedef"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedf2"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee04"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee08"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-11T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee0f"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee24"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee3b"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-10T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee43"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee45"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee63"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-11T04:45:00.456Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee67"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee78"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee7d"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-11T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee80"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-11T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee86"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-12T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee89"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-13T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee8b"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee95"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-10T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeeab"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aede4"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-10T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee26"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-11T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee3d"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee40"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee41"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-11T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T09:29:42.194Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee51"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee5e"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee64"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee6a"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee83"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-12T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee85"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee90"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee94"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeea4"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-12T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedde"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-09T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedf5"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedff"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-10T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee05"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-11T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee32"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-13T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee42"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee4d"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-13T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee75"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeddd"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aede0"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedf4"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedf9"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-09T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee13"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee28"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee30"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee35"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-09T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee4e"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee66"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee6b"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-13T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee6e"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-13T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee71"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-09T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee8c"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-13T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-09T01:29:48.386Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedee"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee1f"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee2a"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee2b"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee38"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-09T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee5f"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-11T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-10T18:19:33.861Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee62"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-11T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-11T04:45:16.315Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee93"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee98"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-10T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aede1"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-10T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aede8"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeded"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-12T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee06"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee09"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee1d"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-10T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee21"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee29"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-12T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee3e"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-10T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee49"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee4b"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee76"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-09T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee84"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aede2"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedea"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-11T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee00"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee0a"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-09T01:42:59.451Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee0d"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee15"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee3f"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee4a"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-12T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee4f"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee55"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee8a"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-13T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee96"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeea1"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-12T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aede3"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aede6"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedec"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee16"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T10:00:00.000Z"
+  },
+  "status": "booked",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-13T08:22:54.864Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee19"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee22"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee23"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-11T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee27"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-11T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee2e"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee33"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee52"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbde"
+  },
+  "startTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee54"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-09T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee59"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-10T02:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee73"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe0"
+  },
+  "startTime": {
+    "$date": "2025-07-09T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee99"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-10T08:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T09:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeea2"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-12T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeea9"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeeaa"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-13T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-09T01:32:20.201Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedf0"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-12T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aedf8"
+  },
+  "counselorId": {
+    "$oid": "68454646bcf21a30bec7c720"
+  },
+  "startTime": {
+    "$date": "2025-07-13T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee07"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-11T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-11T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 11/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee0e"
+  },
+  "counselorId": {
+    "$oid": "6845464ebcf21a30bec7c722"
+  },
+  "startTime": {
+    "$date": "2025-07-12T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee31"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdd"
+  },
+  "startTime": {
+    "$date": "2025-07-13T04:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-13T05:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 13/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee56"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-09T07:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-09T08:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 09/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aee5a"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbdf"
+  },
+  "startTime": {
+    "$date": "2025-07-10T03:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-10T04:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 10/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d68f5a53d4342964aeea6"
+  },
+  "counselorId": {
+    "$oid": "684ae1956335fb74f1ccdbe1"
+  },
+  "startTime": {
+    "$date": "2025-07-12T09:00:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-07-12T10:00:00.000Z"
+  },
+  "status": "available",
+  "note": "Auto generated 12/07/2025",
+  "price": 150,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T18:52:37.826Z"
+  }
+}]

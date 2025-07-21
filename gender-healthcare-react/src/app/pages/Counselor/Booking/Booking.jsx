@@ -1,4 +1,3 @@
-// Booking.jsx
 import React, { useState, useEffect } from 'react';
 import './Booking.css';
 import dayjs from 'dayjs';
@@ -33,34 +32,43 @@ export default function Booking() {
     }
   };
 
- const handleSelectSlot = (slot) => {
-  if (!slot) {
-    setSelectedSlot(null);
-    setSelectedDoctor(null);
-    setFinalSlot(null);
-    return;
-  }
+  const handleSelectSlot = (slot) => {
+    if (!slot) {
+      setSelectedSlot(null);
+      setSelectedDoctor(null);
+      setFinalSlot(null);
+      return;
+    }
 
-  if (selectedSlot && selectedSlot.startTime === slot.startTime) {
-    setSelectedSlot(null);
-    setSelectedDoctor(null);
-    setFinalSlot(null);
-  } else {
-    setSelectedSlot(slot);
-    setSelectedDoctor(null);
-    setFinalSlot(null);
-  }
-};
-
+    if (selectedSlot && selectedSlot.startTime === slot.startTime) {
+      setSelectedSlot(null);
+      setSelectedDoctor(null);
+      setFinalSlot(null);
+    } else {
+      setSelectedSlot(slot);
+      setSelectedDoctor(null);
+      setFinalSlot(null);
+    }
+  };
 
   const handleSelectDoctor = (doctor, realSlotFromDB) => {
     setSelectedDoctor(doctor);
     setFinalSlot(realSlotFromDB);
   };
 
+  const handleGoBack = () => {
+    setSelectedDoctor(null);
+    setFinalSlot(null);
+  };
+
   if (selectedDate && selectedSlot && selectedDoctor && finalSlot) {
     return (
-      <PaymentConfirm doctor={selectedDoctor} date={selectedDate} slot={finalSlot} />
+      <PaymentConfirm
+        doctor={selectedDoctor}
+        date={selectedDate}
+        slot={finalSlot}
+        onBack={handleGoBack}
+      />
     );
   }
 
@@ -71,11 +79,18 @@ export default function Booking() {
       <div className="counselor-booking-row">
         <div className="counselor-booking-left-column">
           <div className="counselor-step-box">
-            <PickingDate onSelectDate={handleSelectDate} />
+            <PickingDate
+              onSelectDate={handleSelectDate}
+              selectedDate={selectedDate}
+            />
           </div>
 
           <div className="counselor-step-box">
-            <TimeSlots date={selectedDate} onSelectSlot={handleSelectSlot} />
+            <TimeSlots
+              date={selectedDate}
+              onSelectSlot={handleSelectSlot}
+              selectedSlot={selectedSlot}
+            />
           </div>
         </div>
 
