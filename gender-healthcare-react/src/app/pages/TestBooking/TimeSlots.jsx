@@ -32,6 +32,16 @@ export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot 
         GetSlot();
     }, [S_Test, S_Doctor, S_Date]);
 
+
+    const today = new Date();
+    const inputDate = new Date(S_Date);
+    const isToday =
+        today.getFullYear() === inputDate.getFullYear() &&
+        today.getMonth() === inputDate.getMonth() &&
+        today.getDate() === inputDate.getDate();
+    console.log(isToday);
+
+
     const SameDate_Booking = TestBooking.filter(booking => booking.bookingDate?.split('T')[0] == S_Date);
     const NoCancel_Booking = SameDate_Booking.filter(booking => booking.status != 'Cancelled');
     console.log('NoCancel_Booking', NoCancel_Booking);
@@ -46,10 +56,10 @@ export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot 
                     {Slot?.sort((a, b) => a.startTime?.split(':')[0] - b.startTime?.split(':')[0]).map((slot, i) => (
                         <button
                             key={i}
-                            className={`time-slot ${NoCancel_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id) ? 'booked' : ''}`}
+                            className={`time-slot ${NoCancel_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id) ? 'booked' : ''} ${new Date(`${S_Date}T${slot.startTime}`) <= today ? 'booked' : ''}`}
                             style={{ backgroundColor: slot._id == S_Slot?._id ? '#28a74540' : '' }}
                             onClick={() => setS_Slot(p => p?._id == slot?._id ? null : slot)}
-                            disabled={NoCancel_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id)}
+                            disabled={NoCancel_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id) || new Date(`${S_Date}T${slot.startTime}`) <= today}
                         >
                             <i className='fa-regular fa-clock'></i> {slot.startTime} - {slot.endTime}
                         </button>
