@@ -41,6 +41,7 @@ const StatusBadge = ({ status }) => {
         confirmed: { icon: <ShieldCheck size={16} />, text: 'Confirmed', color: 'text-green-700 bg-green-100' },
         completed: { icon: <CheckCircle size={16} />, text: 'Completed', color: 'text-blue-700 bg-blue-100' },
         cancelled: { icon: <XCircle size={16} />, text: 'Cancelled', color: 'text-red-700 bg-red-100' },
+        missed: { icon: <XCircle size={16} />, text: 'Missed', color: 'text-orange-700 bg-orange-100' },
     };
     const currentStatus = statusStyles[status] || { text: 'Unknown', color: 'text-gray-600 bg-gray-100' };
 

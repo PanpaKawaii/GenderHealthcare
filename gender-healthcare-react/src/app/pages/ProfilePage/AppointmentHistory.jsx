@@ -9,7 +9,7 @@ import {
 import { Badge } from "../../components/ForumComponents/ui/badge";
 import { CalendarIcon, Clock, Loader2, Star } from "lucide-react";
 import { counselorBookAPI } from "../../services/api";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function AppointmentHistory() {
   const [appointments, setAppointments] = useState([]);
@@ -28,7 +28,30 @@ export default function AppointmentHistory() {
         const res = await counselorBookAPI.getByCustomerAccountId(accountId);
         const raw = res.data;
 
-        const mapped = raw.map((booking) => {
+        const now = new Date();
+        const updated = [];
+
+        // Auto-update status nếu đã quá giờ
+        for (const booking of raw) {
+          const endTime = new Date(booking?.scheduleId?.endTime);
+          if (
+            booking.status === "confirmed" &&
+            endTime < now
+          ) {
+            await counselorBookAPI.update(booking._id, { status: "missed" });
+            booking.status = "missed";
+            console.log(`⏰ Auto-marked ${booking._id} as missed`);
+          }
+          updated.push(booking);
+        }
+
+        const sorted = updated.sort((a, b) => {
+          const aTime = new Date(a.scheduleId?.startTime);
+          const bTime = new Date(b.scheduleId?.startTime);
+          return bTime - aTime;
+        });
+
+        const mapped = sorted.map((booking) => {
           const doctor = booking.scheduleId?.counselorId?.accountId;
           const start = booking.scheduleId?.startTime;
           const end = booking.scheduleId?.endTime;
@@ -37,14 +60,23 @@ export default function AppointmentHistory() {
             id: booking._id,
             doctor: doctor?.name || "Unknown",
             specialty: booking.scheduleId?.counselorId?.degree || "General",
-            date: start ? new Date(start).toLocaleDateString("vi-VN") : "N/A",
-            time: start && end
-              ? `${new Date(start).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" })} - ${new Date(end).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" })}`
+            date: start
+              ? new Date(start).toLocaleDateString("vi-VN")
               : "N/A",
+            time:
+              start && end
+                ? `${new Date(start).toLocaleTimeString("vi-VN", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })} - ${new Date(end).toLocaleTimeString("vi-VN", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}`
+                : "N/A",
             status: booking.status || "unknown",
             notes: booking.note || "",
             rating: booking.rating || 0,
-            feedback: booking.feedback || ""
+            feedback: booking.feedback || "",
           };
         });
 
@@ -61,21 +93,20 @@ export default function AppointmentHistory() {
   }, [accountId]);
 
   const getStatusBadge = (status) => {
-  switch (status) {
-    case "upcoming":
-    case "confirmed":
-      return <Badge className="bg-green-100 text-green-800">Upcoming</Badge>;
-    case "completed":
-      return <Badge className="bg-blue-100 text-blue-800">Completed</Badge>;
-    case "cancelled":
-      return <Badge className="bg-red-100 text-red-800">Cancelled</Badge>;
-    case "missed":
-      return <Badge className="bg-yellow-100 text-yellow-800">Missed</Badge>;
-    default:
-      return <Badge variant="outline">Unknown</Badge>;
-  }
-};
-
+    switch (status) {
+      case "upcoming":
+      case "confirmed":
+        return <Badge className="bg-green-100 text-green-800">Upcoming</Badge>;
+      case "completed":
+        return <Badge className="bg-blue-100 text-blue-800">Completed</Badge>;
+      case "cancelled":
+        return <Badge className="bg-red-100 text-red-800">Cancelled</Badge>;
+      case "missed":
+        return <Badge className="bg-yellow-100 text-yellow-800">Missed</Badge>;
+      default:
+        return <Badge variant="outline">Unknown</Badge>;
+    }
+  };
 
   const renderStars = (count) => (
     <div className="flex gap-1">
@@ -84,8 +115,11 @@ export default function AppointmentHistory() {
           key={i}
           size={16}
           strokeWidth={1.5}
-          className={`${i <= count ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
-            }`}
+          className={`${
+            i <= count
+              ? "fill-yellow-400 text-yellow-400"
+              : "text-gray-300"
+          }`}
         />
       ))}
     </div>
@@ -125,10 +159,14 @@ export default function AppointmentHistory() {
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                     <div className="w-full">
                       <div className="flex items-center justify-between">
-                        <h3 className="font-medium text-base">{appointment.doctor}</h3>
+                        <h3 className="font-medium text-base">
+                          {appointment.doctor}
+                        </h3>
                         {getStatusBadge(appointment.status)}
                       </div>
-                      <p className="text-sm text-gray-500">{appointment.specialty}</p>
+                      <p className="text-sm text-gray-500">
+                        {appointment.specialty}
+                      </p>
 
                       <div className="flex items-center gap-2 mt-2 text-sm text-gray-600">
                         <CalendarIcon className="h-4 w-4" />
@@ -139,24 +177,29 @@ export default function AppointmentHistory() {
 
                       {appointment.notes && (
                         <p className="mt-2 text-sm text-gray-700">
-                          <span className="font-medium">Notes:</span> {appointment.notes}
+                          <span className="font-medium">Notes:</span>{" "}
+                          {appointment.notes}
                         </p>
                       )}
+
                       <div className="mt-3 text-sm flex justify-between items-center">
                         {appointment.rating > 0 ? (
-                          <div className="flex">{renderStars(appointment.rating)}</div>
+                          <div className="flex">
+                            {renderStars(appointment.rating)}
+                          </div>
                         ) : (
-                          <div /> // vẫn chiếm chỗ bên trái nếu không có rating
+                          <div />
                         )}
 
                         <button
-                          onClick={() => navigate(`/bookings/${appointment.id}`)}
+                          onClick={() =>
+                            navigate(`/bookings/${appointment.id}`)
+                          }
                           className="text-sm text-indigo-600 font-medium hover:underline"
                         >
                           View Details
                         </button>
                       </div>
-
                     </div>
                   </div>
                 </div>
