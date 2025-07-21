@@ -1,10 +1,12 @@
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Heart, LogOut } from "lucide-react";
 import Sidebar from './pages/Sidebar'; // Đảm bảo import đúng đường dẫn
+import { UserAuth } from "../../hooks/Context/AuthContext.jsx";
 import React, { useState, useEffect } from 'react';
 
 const Layout = () => {
   const location = useLocation();
+  const { logout } = UserAuth();
   const isCounselorRoute = location.pathname.startsWith('/counselor');
   const navigate = useNavigate();
 
@@ -51,7 +53,8 @@ const Layout = () => {
     localStorage.removeItem('UserId');
     localStorage.removeItem('UserRole');
     localStorage.setItem('IsLogIn', 'false');
-    navigate('/login');
+    logout();
+    // navigate('/login');
   };
 
   return (

@@ -100,7 +100,7 @@ export default function TestBooking() {
                 }
             }
 
-            navigate('/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng');
+            navigate('/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng&type=tests');
         } catch (error) {
             setError(true);
         } finally {

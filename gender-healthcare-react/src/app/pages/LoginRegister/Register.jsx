@@ -311,7 +311,7 @@ export default function Register() {
                         </div>
 
                         <div className='last-form'>
-                            <a href='https://hotro.tiki.vn/s/article/dieu-khoan-su-dung' className='provision' target='_blank'>
+                            <a href='https://docs.google.com/document/d/1gpc5I74B66ldC76mSZsafEXuumeYlhSbV1ocqHCrrR4/edit?tab=t.0#heading=h.h7w8d9g4u4cj' className='provision' target='_blank'>
                                 Provision
                             </a>
                             <div className='form-accept'>
