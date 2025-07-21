@@ -77,7 +77,7 @@ export default function PickingDate({ S_Doctor, S_Date, setS_Date, S_Slot }) {
                             const vnDate = convertToVNTime(date);
                             const vnToday = convertToVNTime(today);
                             const maxDate = new Date(vnToday);
-                            maxDate.setDate(maxDate.getDate() + 6); // today + 6 = 7 ngày
+                            maxDate.setDate(maxDate.getDate() + 7); // today + 6 = 7 ngày
 
                             const isToday = formatDate(vnDate) === formatDate(vnToday);
                             const isSelected = (selectedDate && formatDate(vnDate) === formatDate(convertToVNTime(selectedDate))) ||
