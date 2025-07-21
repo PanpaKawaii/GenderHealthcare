@@ -116,9 +116,9 @@ const Layout = () => {
                     Login
                   </Button>
                 </Link>
-                <Link to="/dashboardDoctor">
+                {/* <Link to="/dashboardDoctor">
                   <Button asChild>Dashboard</Button>
-                </Link>
+                </Link> */}
               </div>
             ) : (
               <div className="flex items-center gap-4">
