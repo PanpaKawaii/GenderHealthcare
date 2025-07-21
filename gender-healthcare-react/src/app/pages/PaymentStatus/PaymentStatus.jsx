@@ -48,7 +48,7 @@ export default function PaymentStatus() {
             <Link to="/">
               <button className="btn">VỀ TRANG CHỦ</button>
             </Link>
-            <Link to={type === 'test' ? '/profile?tab=tests' : '/profile?tab=appointments'}>
+            <Link to={type === 'tests' ? '/profile?tab=tests' : '/profile?tab=appointments'}>
               <button className="btn">XEM CHI TIẾT</button>
             </Link>
           </div>
