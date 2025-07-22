@@ -135,7 +135,6 @@ export default function ProfilePage() {
     if (!dateString) return "N/A";
     return format(new Date(dateString), "MMMM yyyy");
   };
-
   return (
     <div className="max-w-3/4 mx-auto py-6 space-y-8">
       <div className="flex flex-col md:flex-row gap-6 items-start">
@@ -190,6 +189,28 @@ export default function ProfilePage() {
               )}
             </div>
 
+              <div
+              style={{
+                marginTop: 16,
+                backgroundColor: "#f5fab6",
+                padding: "12px 24px",
+                borderRadius: 12,
+                display: "inline-block",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                color: "#1d3557",
+                fontWeight: 600,
+                fontSize: 18,
+              }}
+            >
+                  Wallet balance: {
+                    userInfo.wallet !== undefined
+                      ? (userInfo.wallet === 0
+                          ? `${userInfo.wallet} VND`
+                          : `${userInfo.wallet}.000 VND`
+                        )
+                      : "Loading..."
+                  }
+          </div>
             {/* <div className="pt-2">
               <h4 className="text-sm font-medium mb-2">Hoàn thành hồ sơ</h4>
               <Progress value={userInfo?.image ? 100 : 80} className="h-2" />

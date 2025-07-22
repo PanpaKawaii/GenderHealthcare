@@ -15,6 +15,7 @@ import {
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../components/ForumComponents/ui/table"
 import { testbookingAPI, testresultAPI, testresultdetailAPI } from "../../services/api"
 import { format } from "date-fns"
+import accountAPI from "../../services/accountAPI"
 
 export default function TestResults() {
   const [testBookings, setTestBookings] = useState([])
@@ -26,6 +27,29 @@ export default function TestResults() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   
   const customerId = localStorage.getItem("UserId")
+  const [user, setUser] = useState (null)
+  
+  useEffect(() => {
+          const fetchUserInfo = async () => {
+            try {
+              const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+              const userId = localStorage.getItem("UserId");
+              const token = localStorage.getItem("token");
+      
+              const res = await fetch(`${API_URL}/accounts/${userId}`, {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              });
+              const data = await res.json()
+              setUser(data)
+            } catch (err) {
+              console.error("❌ Error fetching user info:", err);
+            }
+          };
+      
+          fetchUserInfo();
+        }, []);
 
   useEffect(() => {
     const fetchTestBookings = async () => {
@@ -51,6 +75,45 @@ export default function TestResults() {
     
     fetchTestBookings()
   }, [customerId])
+
+  // Xử lý hoàn tiền
+  const handleRefund = async (booking) => {
+  if (!user) {
+    alert("User data not loaded, please try again later.");
+    return;
+  }
+
+  if (booking.isRefund) {
+    alert("This booking has already been refunded.");
+    return;
+  }
+
+  const price = booking.doctorTestServiceId?.testServiceId?.price || 0;
+  if (price <= 0) {
+    alert("This booking has no refundable amount.");
+    return;
+  }
+
+  try {
+    // Gọi API refund, backend xử lý hoàn tiền
+    await testbookingAPI.refund(booking._id);
+
+    // Lấy lại danh sách booking để cập nhật
+    const response = await testbookingAPI.getAll();
+    const customerBookings = response.data.filter((b) => b.customerId?.accountId === customerId);
+    setTestBookings(customerBookings);
+
+    // Lấy lại thông tin ví user sau refund (backend đã update)
+    const userResponse = await accountAPI.getProfile(user._id);  // hoặc getProfile(), tùy API bạn có
+    setUser(userResponse.data);
+
+    alert(`Refunded ${price} VND to your wallet for booking #${booking._id}`);
+  } catch (err) {
+    console.error("Refund failed:", err);
+    alert("Failed to process refund, please try again later.");
+  }
+};
+
 
   const handleViewDetails = async (testBookingId) => {
     setDetailsLoading(true)
@@ -125,7 +188,11 @@ export default function TestResults() {
             <div className="text-center text-red-500 py-8">{error}</div>
           ) : testBookings.length > 0 ? (
             <div className="space-y-4">
-              {testBookings.map((booking) => (
+              {testBookings.map((booking) => {
+                const statusLower = (booking.status || "").toLowerCase();
+                const isCancelled = statusLower === "canceled" || statusLower === "cancelled";
+                const hasBeenRefunded = booking.isRefund;
+                return (
                 <div key={booking._id} className="p-4 border rounded-lg bg-white hover:bg-gray-50">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                     <div>
@@ -158,10 +225,19 @@ export default function TestResults() {
                         <FileText className="h-4 w-4 mr-1" />
                         View Details
                       </Button>
+                       {isCancelled && !hasBeenRefunded && (
+                          <Button size="sm" variant="destructive" onClick={() => handleRefund(booking)}>
+                            Refund
+                          </Button>
+                        )}
+                        {hasBeenRefunded && (
+                          <span className="ml-2 text-green-600 text-sm font-semibold">Refunded</span>
+                        )}
                     </div>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <div className="text-center py-8 text-gray-500">

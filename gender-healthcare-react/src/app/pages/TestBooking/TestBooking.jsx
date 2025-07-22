@@ -8,6 +8,7 @@ import { postData, fetchData } from '../LoginRegister/api_register';
 import { useNavigate } from 'react-router-dom';
 
 import './TestBooking.css';
+import accountAPI from '../../services/accountAPI';
 
 export default function TestBooking() {
     const navigate = useNavigate();
@@ -23,6 +24,30 @@ export default function TestBooking() {
     const [S_Slot, setS_Slot] = React.useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [user, setUser] = useState(null);
+
+    // Lấy thông tin user để biết số dư ví khi component mount
+  useEffect(() => {
+          const fetchUserInfo = async () => {
+            try {
+              const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+              const userId = localStorage.getItem("UserId");
+              const token = localStorage.getItem("token");
+      
+              const res = await fetch(`${API_URL}/accounts/${userId}`, {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              });
+              const data = await res.json()
+              setUser(data)
+            } catch (err) {
+              console.error("❌ Error fetching user info:", err);
+            }
+          };
+      
+          fetchUserInfo();
+        }, []);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -52,6 +77,13 @@ export default function TestBooking() {
     }, []);
 
     const BookingTestFunction = async (S_Date, S_Slot) => {
+
+        const price = S_Slot?.testServiceId?.price || 0;
+    if (user.wallet === undefined || user.wallet < price) {
+      alert('Wallet balance is not enough to pay.');
+      navigate('/'); // hoặc trang nạp tiền
+      return;
+    }
 
         const BookingData = {
             customerId: localStorage.getItem('CustomerId'),
@@ -99,6 +131,11 @@ export default function TestBooking() {
                     }
                 }
             }
+
+                    // Trừ tiền trong ví sau khi booking thành công
+                    const newBalance = user.wallet - price;
+                    await accountAPI.updateProfile(user._id, { wallet: newBalance });
+                    setUser(prev => ({ ...prev, wallet: newBalance }));
 
             navigate('/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng&type=tests');
         } catch (error) {

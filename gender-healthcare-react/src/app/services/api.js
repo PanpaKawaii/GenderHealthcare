@@ -121,6 +121,7 @@ export const testserviceAPI = {
   create: (data) => api.post("/testservices", data),
   update: (id, data) => api.put(`/testservices/${id}`, data),
   delete: (id) => api.delete(`/testservices/${id}`),
+  getById: (id) => api.get(`/testservices/${id}`),
 };
 
 // medicalfacilities
@@ -137,6 +138,7 @@ export const doctortestserviceAPI = {
   create: (data) => api.post("/doctortestservices", data),
   update: (id, data) => api.put(`/doctortestservices/${id}`, data),
   delete: (id) => api.delete(`/doctortestservices/${id}`),
+  getById: (id) => api.get(`/doctortestservices/${id}`),
 };
 
 export const parameterAPI = {
@@ -152,6 +154,7 @@ export const testbookingAPI = {
   create: (data) => api.post("/testbookings", data),
   update: (id, data) => api.put(`/testbookings/${id}`, data),
   delete: (id) => api.delete(`/testbookings/${id}`),
+  refund: (id) => api.put(`/testbookings/${id}/refund`, {})
 };
 export const testresultAPI = {
   getAll: () => api.get("/testresults"),

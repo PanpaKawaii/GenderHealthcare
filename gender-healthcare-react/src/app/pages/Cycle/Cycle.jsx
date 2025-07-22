@@ -100,14 +100,39 @@ export default function CyclePage() {
     : { predictedPeriodDays: [], predictedFertileDays: [] };
 
   const tileClassName = ({ date }) => {
-    const d = dayjs(date).format("YYYY-MM-DD");
-    if (periodDays.includes(d)) return "period-day";
-    if (fertileDays.includes(d)) return "fertile-day";
-    if (predictedPeriodDays.includes(d)) return "predicted-period-day";
-    if (predictedFertileDays.includes(d)) return "predicted-fertile-day";
-    if (d === dayjs().format("YYYY-MM-DD")) return "today";
-    return "";
-  };
+  const d = dayjs(date).format("YYYY-MM-DD");
+  const today = dayjs();
+
+  // Ngày kỳ kinh thực tế
+  if (periodDays.includes(d)) return "period-day"; // màu đậm hồng
+
+  // Ngày kỳ kinh dự đoán đã đến hoặc đã qua -> tự động chuyển thành màu đậm
+  if (predictedPeriodDays.includes(d) && dayjs(d).isBefore(today.add(1, "day"))) {
+    return "period-day";
+  }
+
+  // Ngày khả năng thụ thai thực tế
+  if (fertileDays.includes(d)) return "fertile-day"; // màu đậm xanh
+
+  // Ngày khả năng thụ thai dự đoán đã đến hoặc đã qua -> chuyển màu đậm xanh
+  if (predictedFertileDays.includes(d) && dayjs(d).isBefore(today.add(1, "day"))) {
+    return "fertile-day";
+  }
+
+  // Ngày kỳ kinh dự đoán tương lai (chưa đến) - giữ màu nhạt hồng
+  if (predictedPeriodDays.includes(d)) return "predicted-period-day";
+
+  // Ngày fertil dự đoán tương lai (chưa đến) - giữ màu nhạt xanh
+  if (predictedFertileDays.includes(d)) return "predicted-fertile-day";
+
+  // Ngày hôm nay có thể có style riêng
+  if (d === today.format("YYYY-MM-DD")) return "today";
+
+  return "";
+};
+
+
+
 
   const handleSave = async () => {
     if (!startDay || !endDay) return;
