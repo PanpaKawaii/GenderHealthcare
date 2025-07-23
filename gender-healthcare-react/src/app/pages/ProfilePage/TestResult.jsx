@@ -99,7 +99,7 @@ export default function TestResults() {
     await testbookingAPI.refund(booking._id);
 
     // Lấy lại danh sách booking để cập nhật
-    const response = await testbookingAPI.getAllBooking();
+    const response = await testbookingAPI.getAll();
     const customerBookings = response.data.filter((b) => b.customerId?.accountId === customerId);
     setTestBookings(customerBookings);
 

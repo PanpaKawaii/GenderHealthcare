@@ -21,7 +21,7 @@ export default function TestResultDetailManager({ resultId }) {
                 ]);
                 console.log('details', details);
 
-                setTestResultDetails(details.filter(trd => trd.testResultId?._id == resultId));
+                setTestResultDetails(details.filter(trd => trd.testResultId?._id.toString() == resultId.toString()));
                 setParameters(params);
             } catch (err) {
                 console.error(err);

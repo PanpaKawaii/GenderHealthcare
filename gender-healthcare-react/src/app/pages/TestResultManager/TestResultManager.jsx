@@ -74,17 +74,17 @@ export default function TestResultManager() {
         }
     };
 
-    const doctorTestServiceId = testResults[0]?.testBookingId?.doctorTestServiceId;
+    const doctorTestServiceId = testResults[0]?.testBookingId?.doctorTestServiceId._id || testResults[0]?.testBookingId?.doctorTestServiceId;
     // console.log('doctorTestServiceId', doctorTestServiceId);
-    const testServiceId = testBookings.find(tb => tb.doctorTestServiceId?._id == doctorTestServiceId)?.doctorTestServiceId?.testServiceId
+    const testServiceId = testBookings.find(tb => tb.doctorTestServiceId?._id == doctorTestServiceId?.toString())?.doctorTestServiceId?.testServiceId._id
     // console.log('testServiceId', testServiceId);
-    const Parameter = testServiceParameters.filter(tsp => tsp.testServiceId?._id == testServiceId);
+    const Parameter = testServiceParameters.filter(tsp => tsp.testServiceId?._id.toString() == testServiceId.toString());
     // console.log('Parameter', Parameter);
 
 
     const testBookingId = testResults[0]?.testBookingId?._id;
     console.log('testBookingId', testBookingId);
-    const ServiceName = testServiceParameters.find(tsp => tsp.testServiceId?._id == testServiceId)?.testServiceId?.name;
+    const ServiceName = testServiceParameters.find(tsp => tsp.testServiceId?._id?.toString() == testServiceId?.toString())?.testServiceId?.name || 'N/A';
     console.log('ServiceName', ServiceName);
 
 
