@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import heroesImage from "../../assets/heroes.jpg";
 import doctorImage from "../../assets/doctor.jpg";
 import { Link } from "react-router-dom";
 
 function HomePage() {
+  const [user, setUser] = useState ([])
+
+  useEffect(() => {
+      const fetchUserInfo = async () => {
+        try {
+          const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+          const userId = localStorage.getItem("UserId");
+          const token = localStorage.getItem("token");
+  
+          const res = await fetch(`${API_URL}/accounts/${userId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          const data = await res.json()
+          setUser(data)
+        } catch (err) {
+          console.error("❌ Error fetching user info:", err);
+        }
+      };
+  
+      fetchUserInfo();
+    }, []);
+
   return (
     <main
       style={{
@@ -49,6 +73,7 @@ function HomePage() {
                   Join Now
                 </Link>
               </div>
+              {user.gender === "Female" && (
               <div style={{ marginTop: 32, marginLeft: 10 }}>
                 <Link
                   to="/cycle"
@@ -64,6 +89,7 @@ function HomePage() {
                   My cycle
                 </Link>
               </div>
+              )}
             </div>
           </div>
           <img

@@ -1,4 +1,6 @@
 const TestBooking = require('../models/testbooking.model');
+const Customer = require('../models/customer.model');
+const Account = require('../models/account.model');
 
 exports.create = async (req, res) => {
   try {
@@ -9,7 +11,7 @@ exports.create = async (req, res) => {
     res.status(400).json({ message: e.message });
   }
 };
-exports.getAll = async (req, res) => res.json(await TestBooking.find().populate('customerId').populate('doctorTestServiceId'));
+//exports.getAll = async (req, res) => res.json(await TestBooking.find().populate('customerId').populate('doctorTestServiceId'));
 exports.getOne = async (req, res) => {
   const testbooking = await TestBooking.findById(req.params.id).populate('customerId').populate('doctorTestServiceId');
   if (!testbooking) return res.sendStatus(404);
@@ -24,3 +26,60 @@ exports.remove = async (req, res) => {
   const c = await TestBooking.findByIdAndDelete(req.params.id);
   res.json({ deleted: !!c });
 };
+
+exports.getAll = async (req, res) => {
+  try {
+    const bookings = await TestBooking.find().populate('customerId').populate({path: 'doctorTestServiceId',populate: {path: 'testServiceId',}});
+    res.json(bookings);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.updateRefund = async (req, res) => {
+  try {
+    const bookingId = req.params.id;
+    const updateData = req.body || {};
+
+    const existingBooking = await TestBooking.findById(bookingId).populate({
+      path: 'doctorTestServiceId',
+      populate: { path: 'testServiceId' }
+    });
+
+    if (!existingBooking) return res.sendStatus(404);
+
+    if (
+      existingBooking.status !== 'Canceled' &&
+      !existingBooking.isRefund
+    ) {
+      const price = existingBooking.doctorTestServiceId?.testServiceId?.price || 0;
+
+      if (price > 0) {
+        const customer = await Customer.findById(existingBooking.customerId);
+        if (!customer) {
+          return res.status(404).json({ message: "Customer not found" });
+        }
+
+        const account = await Account.findById(customer.accountId);
+        if (!account) {
+          return res.status(404).json({ message: "Account not found" });
+        }
+
+        // Cộng tiền vào ví
+        account.wallet = (account.wallet || 0) + price;
+        await account.save();
+
+        updateData.isRefund = true;
+      }
+    }
+
+    updateData.status = 'Canceled';
+    const updatedBooking = await TestBooking.findByIdAndUpdate(bookingId, updateData, { new: true });
+
+    res.json(updatedBooking);
+  } catch (error) {
+    console.error('Error updating booking:', error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
