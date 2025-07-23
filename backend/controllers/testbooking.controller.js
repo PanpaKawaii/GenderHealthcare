@@ -11,7 +11,7 @@ exports.create = async (req, res) => {
     res.status(400).json({ message: e.message });
   }
 };
-// exports.getAll = async (req, res) => res.json(await TestBooking.find().populate('customerId').populate('doctorTestServiceId'));
+exports.getAll = async (req, res) => res.json(await TestBooking.find().populate('customerId').populate('doctorTestServiceId'));
 exports.getOne = async (req, res) => {
   const testbooking = await TestBooking.findById(req.params.id).populate('customerId').populate('doctorTestServiceId');
   if (!testbooking) return res.sendStatus(404);
@@ -27,7 +27,7 @@ exports.remove = async (req, res) => {
   res.json({ deleted: !!c });
 };
 
-exports.getAll = async (req, res) => {
+exports.getAllBooking = async (req, res) => {
   try {
     const bookings = await TestBooking.find().populate('customerId').populate({path: 'doctorTestServiceId',populate: {path: 'testServiceId',}});
     res.json(bookings);

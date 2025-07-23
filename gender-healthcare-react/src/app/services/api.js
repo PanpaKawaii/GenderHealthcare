@@ -154,7 +154,8 @@ export const testbookingAPI = {
   create: (data) => api.post("/testbookings", data),
   update: (id, data) => api.put(`/testbookings/${id}`, data),
   delete: (id) => api.delete(`/testbookings/${id}`),
-  refund: (id) => api.put(`/testbookings/${id}/refund`, {})
+  refund: (id) => api.put(`/testbookings/${id}/refund`, {}),
+  getAllBooking: () => api.get("/testbookings")
 };
 export const testresultAPI = {
   getAll: () => api.get("/testresults"),
