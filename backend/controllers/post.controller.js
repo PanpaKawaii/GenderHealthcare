@@ -281,8 +281,10 @@ exports.updatePost = async (req, res) => {
   try {
     const postId = req.params.postId;
     const updatedPost = await Post.findByIdAndUpdate(postId, req.body, {
+      status:"pending",
       new: true,
     });
+    console.log("Updated post:", req.body);
     if (!updatedPost)
       return res.status(404).json({ message: "Post not found!" });
     res.json(updatedPost);
@@ -350,7 +352,7 @@ exports.editPost = async (req, res) => {
       { 
         title, 
         content, 
-        
+        status: "pending",
         editedAt: new Date() 
       }, 
       { new: true }
