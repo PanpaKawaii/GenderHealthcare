@@ -351,7 +351,7 @@ exports.editPost = async (req, res) => {
       postId, 
       { 
         title, 
-        content, 
+        content,  
         status: "pending",
         editedAt: new Date() 
       }, 
