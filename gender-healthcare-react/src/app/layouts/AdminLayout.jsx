@@ -33,6 +33,11 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
       path: '/admin/users',
       name: 'Users',
       icon: <LayoutDashboard size={20} />
+    }   ,
+    {
+      path: '/admin/transactions',
+      name: 'Transactions',
+      icon: <LayoutDashboard size={20} />
     }   
     
   ];
