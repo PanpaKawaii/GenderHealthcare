@@ -64,6 +64,7 @@ export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot,
 
 
     const SameDate_Booking = TestBooking.filter(booking => booking.bookingDate?.split('T')[0] == S_Date);
+    const User_SameDate_Booking = UserTestBooking.filter(booking => booking.bookingDate?.split('T')[0] == S_Date);
     const NoCancel_Booking = SameDate_Booking.filter(booking => booking.status != 'Cancelled' && booking.status != 'cancelled' && booking.status != 'Canceled' && booking.status != 'canceled');
     console.log('NoCancel_Booking', NoCancel_Booking);
 
@@ -75,15 +76,21 @@ export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot,
             <div className='timeslots-form'>
                 <div className='time-grid'>
                     {Slot?.sort((a, b) => a.startTime?.split(':')[0] - b.startTime?.split(':')[0]).map((slot, i) => (
-                        <button
-                            key={i}
-                            className={`time-slot ${NoCancel_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id) ? 'booked' : ''} ${new Date(`${S_Date}T${slot.startTime}`) <= today ? 'booked' : ''}`}
-                            style={{ backgroundColor: slot._id == S_Slot?._id ? '#28a74540' : '' }}
-                            onClick={() => setS_Slot(p => p?._id == slot?._id ? null : slot)}
-                            disabled={NoCancel_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id) || new Date(`${S_Date}T${slot.startTime}`) <= today}
-                        >
-                            <i className='fa-regular fa-clock'></i> {slot.startTime} - {slot.endTime}
-                        </button>
+                        <div
+                            title={User_SameDate_Booking.filter(sdb => sdb.doctorTestServiceId?._id == slot._id)?.length >= 2 ? 'This slot was cancelled twice or more, you cannot book this slot anymore!' : ''}>
+                            <button
+                                key={i}
+                                className={`time-slot ${NoCancel_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id) ? 'booked' : ''} ${new Date(`${S_Date}T${slot.startTime}`) <= today ? 'booked' : ''} ${User_SameDate_Booking.filter(sdb => sdb.doctorTestServiceId?._id == slot._id)?.length >= 2 ? 'booked' : ''}`}
+                                style={{ backgroundColor: slot._id == S_Slot?._id ? '#28a74540' : '' }}
+                                onClick={() => setS_Slot(p => p?._id == slot?._id ? null : slot)}
+                                disabled={
+                                    NoCancel_Booking.some(sdb => sdb.doctorTestServiceId?._id == slot._id) ||
+                                    User_SameDate_Booking.filter(sdb => sdb.doctorTestServiceId?._id == slot._id)?.length >= 2 ||
+                                    new Date(`${S_Date}T${slot.startTime}`) <= today}
+                            >
+                                <i className='fa-regular fa-clock'></i> {slot.startTime} - {slot.endTime}
+                            </button>
+                        </div>
                     ))}
                 </div>
 
