@@ -40,7 +40,7 @@ export default function TestService({ S_Test, setS_Test, S_Doctor }) {
                             <div>*{ts.instructions}*</div>
                         </div>
                         <div className='buttons'>
-                            <div>{ts.price.toLocaleString('vn')} VND</div>
+                            <div>{ts.price.toLocaleString('vn')}.000 VND</div>
                             <button className='btn' onClick={() => setS_Test(p => p?._id == ts?._id ? null : ts)}>Select</button>
                         </div>
                     </div>

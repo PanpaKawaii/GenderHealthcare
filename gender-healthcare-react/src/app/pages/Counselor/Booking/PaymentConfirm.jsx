@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { useNavigate } from 'react-router-dom';
 import {
   counselorScheduleAPI,
   counselorBookAPI,
 } from '../../../services/api';
+import accountAPI from '../../../services/accountAPI';
 
 export default function PaymentConfirm({ doctor, date, slot, onBack }) {
   const navigate = useNavigate();
+  const [user, setUser] = useState([])
 
   const start = slot?.startTime ? dayjs(slot.startTime) : null;
   const end = slot?.endTime ? dayjs(slot.endTime) : null;
@@ -17,6 +19,13 @@ export default function PaymentConfirm({ doctor, date, slot, onBack }) {
   const handleSubmit = async (e) => {
     console.log('🚀 Bắt đầu thanh toán');
     e.preventDefault();
+
+    const price = slot?.price || 0;
+  if (user.wallet < price) {
+    alert('Wallet balance is not enough to pay.');
+    navigate('/'); 
+    return; 
+  }
 
     if (!accountId || !slot?._id || !doctor?._id) {
       console.warn('❗Thiếu thông tin:', {
@@ -48,18 +57,43 @@ export default function PaymentConfirm({ doctor, date, slot, onBack }) {
       await counselorScheduleAPI.update(slot._id, { status: 'booked' });
       console.log('✔ Schedule updated → booked');
 
+      const newBalance = user.wallet - slot.price;
+      await accountAPI.updateProfile(accountId, { wallet: newBalance });
+
       // ✅ Navigate to PaymentStatus with type=consultation
       navigate('/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng&type=consultation');
     } catch (err) {
       console.error('❌ Lỗi khi thanh toán:', err);
       if (err.response) {
         console.error('🛑 Response data:', err.response.data);
-        console.error('🛑 Status:', err.response.status);
+        console.error('🛑  Status:', err.response.status);
         console.error('🛑 Headers:', err.response.headers);
       }
       alert('❌ Đã xảy ra lỗi khi thanh toán!');
     }
   };
+
+  useEffect(() => {
+        const fetchUserInfo = async () => {
+          try {
+            const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+            const userId = localStorage.getItem("UserId");
+            const token = localStorage.getItem("token");
+    
+            const res = await fetch(`${API_URL}/accounts/${userId}`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
+            const data = await res.json()
+            setUser(data)
+          } catch (err) {
+            console.error("❌ Error fetching user info:", err);
+          }
+        };
+    
+        fetchUserInfo();
+      }, []);
 
   return (
     <div className="max-w-2xl mx-auto bg-white shadow-md rounded-xl p-8 mt-10">

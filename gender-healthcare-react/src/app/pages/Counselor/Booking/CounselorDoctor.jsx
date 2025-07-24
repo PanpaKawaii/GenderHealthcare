@@ -95,7 +95,7 @@ export default function CounselorDoctor({ date, slot, onSelectDoctor }) {
       {!loading && (
         <div className="text-sm text-gray-500 text-center">
           {filteredDoctors.length > 0
-            ? `Found ${filteredDoctors.length} counselor${filteredDoctors.length > 1 ? 's. Scroll to view.' : ''}`
+            ? `Found ${filteredDoctors.length} counselor`
             : ''}
         </div>
       )}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import { counselorBookAPI, counselorScheduleAPI } from "../../services/api";
 import { Loader2, Star, ArrowLeft, Calendar, Clock, User, Stethoscope, MessageSquare, CheckCircle, XCircle, ShieldCheck, Info } from 'lucide-react';
+import accountAPI from '../../services/accountAPI';
 
 // --- UI Components (Các thành phần giao diện) ---
 // Giữ lại các component UI đã được thiết kế để đảm bảo giao diện đẹp
@@ -128,6 +129,29 @@ export default function BookingDetail() {
     const [feedback, setFeedback] = useState("");
     const [saving, setSaving] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+            const fetchUserInfo = async () => {
+              try {
+                const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+                const userId = localStorage.getItem("UserId");
+                const token = localStorage.getItem("token");
+        
+                const res = await fetch(`${API_URL}/accounts/${userId}`, {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                });
+                const data = await res.json()
+                setUser(data)
+              } catch (err) {
+                console.error("❌ Error fetching user info:", err);
+              }
+            };
+        
+            fetchUserInfo();
+          }, []);
 
     // Giữ nguyên logic fetch dữ liệu ban đầu
     useEffect(() => {
@@ -175,7 +199,16 @@ export default function BookingDetail() {
                 await counselorScheduleAPI.update(scheduleId, { status: "available" });
             }
 
+            const price = booking.scheduleId?.price || 0;
+            if (price > 0) {
+            const newWalletBalance = (user.wallet || 0) + price;
+            await accountAPI.updateProfile(user._id, { wallet: newWalletBalance });
+            setUser(prev => ({ ...prev, wallet: newWalletBalance }));
+            alert(`Booking is cancelled. Money has been refunded to your wallet.`);
+            } else {
             alert("Appointment has been cancelled.");
+            }
+
             const res = await counselorBookAPI.getById(booking._id);
             setBooking(res.data);
         } catch (error) {
@@ -206,6 +239,7 @@ export default function BookingDetail() {
 
     // Phần xử lý dữ liệu thời gian được giữ nguyên
     const { scheduleId } = booking;
+    console.log("Priceeeeeeeeeeeeeeeeeeeeee", scheduleId.price);
     const startTime = scheduleId?.startTime ? new Date(scheduleId.startTime).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }) : "N/A";
     const endTime = scheduleId?.endTime ? new Date(scheduleId.endTime).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }) : "N/A";
     const date = scheduleId?.startTime ? new Date(scheduleId.startTime).toLocaleDateString("vi-VN", { year: 'numeric', month: 'long', day: 'numeric' }) : "N/A";

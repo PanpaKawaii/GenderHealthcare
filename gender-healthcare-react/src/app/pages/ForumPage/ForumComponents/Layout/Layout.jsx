@@ -99,13 +99,13 @@ const Layout = () => {
               </Link>
             </div>
             <div className="hidden md:flex items-center gap-6">
-              <Link to="/" className="text-gray-600 hover:text-gray-900">Home</Link>
-              <Link to="/forum" className="text-gray-600 hover:text-gray-900">Forum</Link>
-              <Link to="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
+              <Link to="/" className={`text-gray-600 hover:text-gray-900 `} style={{ fontWeight: location.pathname == '/' ? 'bold' : ''}}>Home</Link>
+              <Link to="/forum" className={`text-gray-600 hover:text-gray-900 `} style={{ fontWeight: location.pathname?.includes('forum') ? 'bold' : ''}}>Forum</Link>
+              <Link to="/blog" className={`text-gray-600 hover:text-gray-900 `} style={{ fontWeight: location.pathname?.includes('blog') ? 'bold' : ''}}>Blog</Link>
               {/* <Link to="/paymentstatus/?message=Thanh%20to%C3%A1n%20th%C3%A0nh%20c%C3%B4ng" className="text-gray-600 hover:text-gray-900">Payment</Link> */}
-              <Link to="/bookingservice" className="text-gray-600 hover:text-gray-900">Booking</Link>
+              <Link to="/bookingservice" className={`text-gray-600 hover:text-gray-900 `} style={{ fontWeight: location.pathname?.includes('bookingservice') ? 'bold' : ''}}>Booking</Link>
               {/* <Link to="/parametermanager" className="text-gray-600 hover:text-gray-900">Parameter</Link> */}
-              <Link to="/contact" className="text-gray-600 hover:text-gray-900">
+              <Link to="/contact" className={`text-gray-600 hover:text-gray-900 `} style={{ fontWeight: location.pathname?.includes('contact') ? 'bold' : ''}}>
                 Contact
               </Link>
             </div>

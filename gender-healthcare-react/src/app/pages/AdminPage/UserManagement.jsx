@@ -951,10 +951,10 @@ const UserManagement = () => {
                                 <span>Activate</span>
                               </DropdownMenuItem>
                             )}
-                            <DropdownMenuItem onClick={() => confirmDeleteUser(user)} className="cursor-pointer text-red-600">
+                            {/* <DropdownMenuItem onClick={() => confirmDeleteUser(user)} className="cursor-pointer text-red-600">
                               <Trash2 className="mr-2 h-4 w-4" />
                               <span>Delete</span>
-                            </DropdownMenuItem>
+                            </DropdownMenuItem> */}
                           </DropdownMenuContent>
                         </DropdownMenu>
                       </TableCell>

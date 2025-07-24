@@ -6,7 +6,8 @@ const testbookingSchema = new Schema({
   doctorTestServiceId:  { type: Schema.Types.ObjectId, ref: 'DoctorTestService', required: true },
   bookingDate:    Date,
   status:         { type: String, enum: ['Pending', 'Occurring', 'Finished', 'Canceled'], default: 'Pending' },
-  note:           String
+  note:           String,
+  isRefund:       {type: Boolean, default: false}
 },{
   timestamps: true
 });

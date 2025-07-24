@@ -12,7 +12,8 @@ const accountSchema = new Schema({
   role:      { type: String, enum: ['Customer', 'Counselor', 'Doctor', 'Manager', 'Admin'], required: true },
   isVerified: { type: Boolean, default: false },
   isActive: { type: Boolean, default: true },
-  lastLogin: { type: Date }
+  lastLogin: { type: Date },
+  wallet: { type: Number, default: 0}
 },
 {
   timestamps: true
