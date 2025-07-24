@@ -47,7 +47,7 @@ const generateSchedules = async () => {
 
   for (const counselorId of counselors) {
     for (let d = 0; d < 7; d++) {
-      const date = dayjs('2025-07-24').add(d, 'day'); // từ 09–13/07
+      const date = dayjs('2025-07-31').add(d, 'day'); // từ 09–13/07
 
       for (const slot of slotTimes) {
         bulk.push({

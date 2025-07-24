@@ -135,6 +135,8 @@ export default function ProfilePage() {
     if (!dateString) return "N/A";
     return format(new Date(dateString), "MMMM yyyy");
   };
+
+
   return (
     <div className="max-w-3/4 mx-auto py-6 space-y-8">
       <div className="flex flex-col md:flex-row gap-6 items-start">
@@ -206,7 +208,7 @@ export default function ProfilePage() {
                     userInfo.wallet !== undefined
                       ? (userInfo.wallet === 0
                           ? `${userInfo.wallet} VND`
-                          : `${userInfo.wallet}.000 VND`
+                          : `${userInfo.wallet?.toLocaleString()} VND`
                         )
                       : "Loading..."
                   }

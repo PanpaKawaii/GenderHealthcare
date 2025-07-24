@@ -137,15 +137,15 @@ export default function TestResultDetailManager({ resultId }) {
                                                 <td className="px-6 py-4">
                                                     <div className="relative">
                                                         <div className="flex items-center gap-2">
-  <input
-    type="number"
-    defaultValue={item.value}
-    onBlur={(e) => handleBlur(item._id, e.target.value)}
-    className="w-28 px-4 py-2 border-2 border-gray-200 rounded-lg text-lg font-semibold text-gray-900 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all duration-200 hover:border-gray-300"
-    step="any"
-  />
-  <span className="text-gray-500 font-medium text-sm">{item.parameterId?.unit || ''}</span>
-</div>
+                                                            <input
+                                                                type="number"
+                                                                defaultValue={item.value}
+                                                                onBlur={(e) => handleBlur(item._id, e.target.value)}
+                                                                className="w-28 px-4 py-2 border-2 border-gray-200 rounded-lg text-lg font-semibold text-gray-900 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all duration-200 hover:border-gray-300"
+                                                                step="any"
+                                                            />
+                                                            <span className="text-gray-500 font-medium text-sm">{item.parameterId?.unit || ''}</span>
+                                                        </div>
 
                                                     </div>
                                                 </td>

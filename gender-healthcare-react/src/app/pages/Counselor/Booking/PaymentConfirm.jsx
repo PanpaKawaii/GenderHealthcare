@@ -131,7 +131,7 @@ export default function PaymentConfirm({ doctor, date, slot, onBack }) {
 
           <div className="flex justify-between font-bold mt-4 border-t pt-3 text-base">
             <span>Total:</span>
-            <span>{slot?.price || 0}.000 VND</span>
+            <span>{slot?.price?.toLocaleString() || 0} VND</span>
           </div>
         </div>
 
@@ -139,7 +139,7 @@ export default function PaymentConfirm({ doctor, date, slot, onBack }) {
           onClick={handleSubmit}
           className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-lg transition"
         >
-          Pay {slot?.price || 0}.000 VND
+          Pay {slot?.price?.toLocaleString() || 0} VND
         </button>
 
         <button
