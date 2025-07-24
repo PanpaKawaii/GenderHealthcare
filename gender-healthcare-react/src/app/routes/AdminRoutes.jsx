@@ -8,6 +8,7 @@ import UserManagement from '../pages/AdminPage/UserManagement';
 // import CommentsManagement from '../pages/AdminPage/CommentsManagement';
 // import SettingsPage from '../pages/AdminPage/SettingsPage';
 import ModerationPage from '../pages/ModerationPage/ModerationPage';
+import TransactionList from '../pages/AdminPage/TransactionList';
 function AdminRoutes() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function AdminRoutes() {
           {/* <Route path="admin/posts" element={<PostsManagement />} />
           <Route path="admin/comments" element={<CommentsManagement />} /> */}
           <Route path="admin/moderation" element={<ModerationPage />} />
+          <Route path='admin/transactions' element={<TransactionList />} />
           {/* <Route path="admin/settings" element={<SettingsPage />} /> */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
