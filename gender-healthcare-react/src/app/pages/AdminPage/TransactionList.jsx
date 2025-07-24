@@ -226,44 +226,35 @@ function FinancialDashboard() {
   }
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px' }}>
-      <h1>Dashboard Doanh thu</h1>
+    <div style={{ fontFamily: 'Inter, Arial, sans-serif', background: '#f4f6fa', minHeight: '100vh', padding: '32px' }}>
+      <h1 style={{ fontWeight: 700, fontSize: '2rem', marginBottom: '32px', color: '#222' }}>Dashboard Doanh thu</h1>
 
-      {/* --- Phần Thống kê nhanh --- */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '20px',
-          marginBottom: '30px',
-        }}
-      >
-        <div style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
-          <h3>Tổng Doanh thu</h3>
-          <p style={{ fontSize: '24px', fontWeight: 'bold' }}>
-            {formatCurrency(financialData.totalRevenue)}
-          </p>
+      {/* Quick Stats */}
+      <div style={{ display: 'flex', gap: '24px', marginBottom: '32px' }}>
+        <div style={{ flex: 1, background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', borderRadius: '12px', padding: '28px 24px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <span style={{ fontSize: '1rem', fontWeight: 600, color: '#888', marginBottom: '8px' }}>Tổng Doanh thu</span>
+          <span style={{ fontSize: '2.2rem', fontWeight: 700, color: '#2d7cf0' }}>{formatCurrency(financialData.totalRevenue)}</span>
         </div>
-        <div style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
-          <h4>Doanh thu Tư vấn</h4>
-          <p style={{ fontSize: '20px', fontWeight: 'bold' }}>
-            {formatCurrency(financialData.consultationRevenue)}
-          </p>
+        <div style={{ flex: 1, background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', borderRadius: '12px', padding: '28px 24px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <span style={{ fontSize: '1rem', fontWeight: 600, color: '#888', marginBottom: '8px' }}>Doanh thu Tư vấn</span>
+          <span style={{ fontSize: '1.6rem', fontWeight: 700, color: '#2d7cf0' }}>{formatCurrency(financialData.consultationRevenue)}</span>
         </div>
-        <div style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
-          <h4>Doanh thu Xét nghiệm</h4>
-          <p style={{ fontSize: '20px', fontWeight: 'bold' }}>
-            {formatCurrency(financialData.testRevenue)}
-          </p>
+        <div style={{ flex: 1, background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', borderRadius: '12px', padding: '28px 24px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <span style={{ fontSize: '1rem', fontWeight: 600, color: '#888', marginBottom: '8px' }}>Doanh thu Xét nghiệm</span>
+          <span style={{ fontSize: '1.6rem', fontWeight: 700, color: '#2d7cf0' }}>{formatCurrency(financialData.testRevenue)}</span>
         </div>
       </div>
 
-      {/* --- Phần Biểu đồ --- */}
-      <div style={{ marginBottom: '30px', border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
-        <RevenueChart title="Doanh thu theo tháng" type="line" data={financialData.revenueByMonthChartData} />
-      </div>
-      <div style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
-        <RevenueChart title="Tỷ trọng doanh thu theo dịch vụ" type="bar" data={financialData.revenueByServiceChartData} />
+      {/* Charts Row */}
+      <div style={{ display: 'flex', gap: '24px', marginBottom: '32px' }}>
+        <div style={{ flex: 1, background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', borderRadius: '12px', padding: '32px 28px', minHeight: '420px', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '18px', color: '#222' }}>Doanh thu theo tháng</div>
+          <RevenueChart title="" type="line" data={financialData.revenueByMonthChartData} />
+        </div>
+        <div style={{ flex: 1, background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', borderRadius: '12px', padding: '32px 28px', minHeight: '420px', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '18px', color: '#222' }}>Tỷ trọng doanh thu theo dịch vụ</div>
+          <RevenueChart title="" type="bar" data={financialData.revenueByServiceChartData} />
+        </div>
       </div>
     </div>
   );
