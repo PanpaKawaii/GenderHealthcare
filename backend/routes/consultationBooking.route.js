@@ -27,7 +27,7 @@ router.get('/customers/byAccount/:accountId',
 // Admin xem tất cả bookings
 router.get('/',
   authenticate,
-  authorize('Admin'),
+  authorize('Admin', 'Customer'),
   consultationBooking.getAllBookings
 );
 

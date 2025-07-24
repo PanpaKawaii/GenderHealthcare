@@ -1,13 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import './TimeSlots.css';
+import { useEffect, useState } from 'react';
 import { fetchData } from '../LoginRegister/api_register';
+import './TimeSlots.css';
 
-export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot }) {
+export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot, setSameTime, setSameTimeBooking }) {
+    console.log('Slot Rerender');
+    const CustomerId = localStorage.getItem('CustomerId') || '';
 
     const [Slot, setSlot] = useState([]);
     const [TestBooking, setTestBooking] = useState([]);
+    const [UserTestBooking, setUserTestBooking] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+
+    useEffect(() => {
+        console.log('useEffect');
+        setSameTime(false);
+        console.log('S_Slot', S_Slot);
+        const User_NoCancel_Booking = UserTestBooking.filter(booking => booking.status != 'Cancelled' && booking.status != 'cancelled' && booking.status != 'Canceled' && booking.status != 'canceled');
+        console.log('User_NoCancel_Booking', User_NoCancel_Booking);
+        const User_SameDate_Booking = User_NoCancel_Booking.filter(booking => booking.bookingDate?.split('T')[0] == S_Date);
+        console.log('User_SameDate_Booking', User_SameDate_Booking);
+        const User_SameTime_Booking = User_SameDate_Booking.filter(booking => booking.doctorTestServiceId?.startTime == S_Slot?.startTime);
+        console.log('User_SameTime_Booking', User_SameTime_Booking);
+        if (User_SameTime_Booking?.length > 0) {
+            setSameTime(true);
+            setSameTimeBooking(User_SameTime_Booking);
+        }
+        console.log('useEffect End');
+    }, [S_Slot, S_Date]);
 
     useEffect(() => {
         const GetSlot = async () => {
@@ -19,6 +39,7 @@ export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot 
                     dts => dts.doctorId._id == S_Doctor?._id && dts.testServiceId._id == S_Test?._id
                 ));
                 setTestBooking(testbooking);
+                setUserTestBooking(testbooking.filter(booking => booking.customerId?._id == CustomerId));
                 setSlot(doctortestservices.filter(
                     dts => dts.doctorId._id == S_Doctor?._id && dts.testServiceId._id == S_Test?._id
                 ));
@@ -43,7 +64,7 @@ export default function TimeSlots({ S_Test, S_Doctor, S_Date, S_Slot, setS_Slot 
 
 
     const SameDate_Booking = TestBooking.filter(booking => booking.bookingDate?.split('T')[0] == S_Date);
-    const NoCancel_Booking = SameDate_Booking.filter(booking => booking.status != 'Cancelled');
+    const NoCancel_Booking = SameDate_Booking.filter(booking => booking.status != 'Cancelled' && booking.status != 'cancelled' && booking.status != 'Canceled' && booking.status != 'canceled');
     console.log('NoCancel_Booking', NoCancel_Booking);
 
 
