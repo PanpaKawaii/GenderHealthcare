@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
@@ -6,7 +6,7 @@ import timezone from 'dayjs/plugin/timezone';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-export default function TimeSlots({ date, onSelectSlot, selectedSlot }) {
+export default function TimeSlots({ date, onSelectSlot, selectedSlot, UserConsultationBooking, setSameTime, setSameTimeBooking }) {
   const slotTimes = [
     { startTime: '09:00', endTime: '10:00' },
     { startTime: '10:00', endTime: '11:00' },
@@ -15,6 +15,39 @@ export default function TimeSlots({ date, onSelectSlot, selectedSlot }) {
     { startTime: '15:00', endTime: '16:00' },
     { startTime: '16:00', endTime: '17:00' },
   ];
+
+  useEffect(() => {
+    console.log('useEffect');
+    setSameTime(false);
+    console.log('date', date);
+    const vnDate = new Date(date).toLocaleDateString('en-CA')
+    console.log('vnDate', vnDate);
+    console.log('selectedSlot', selectedSlot);
+    const User_NoCancel_Booking = UserConsultationBooking.filter(booking => booking.status != 'Cancelled' && booking.status != 'cancelled' && booking.status != 'Canceled' && booking.status != 'canceled');
+    console.log('User_NoCancel_Booking', User_NoCancel_Booking);
+    const User_SameDate_Booking = User_NoCancel_Booking.filter(booking => booking.bookingDate?.split('T')[0] == vnDate);
+    console.log('User_SameDate_Booking', User_SameDate_Booking);
+    // const User_SameTime_Booking = User_SameDate_Booking.filter(booking => booking.scheduleId?.startTime?.split('T')?[1]?.split(':00.') == selectedSlot?.startTime);
+    const User_SameTime_Booking = User_SameDate_Booking.filter(booking => {
+      const utcString = booking.scheduleId?.startTime;
+      if (!utcString) return false;
+
+      const date = new Date(utcString);
+      const timeInPlus7 = date.toLocaleTimeString('en-GB', {
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: 'Asia/Bangkok',
+      });
+
+      return timeInPlus7 == selectedSlot?.startTime;
+    });
+    console.log('User_SameTime_Booking', User_SameTime_Booking);
+    if (User_SameTime_Booking?.length > 0) {
+      setSameTime(true);
+      setSameTimeBooking(User_SameTime_Booking);
+    }
+    console.log('useEffect End');
+  }, [selectedSlot, date]);
 
   const isSlotPast = (slotTime) => {
     if (!date) return false;

@@ -5,12 +5,32 @@ import PickingDate from './PickingDate';
 import TimeSlots from './TimeSlots';
 import CounselorDoctor from './CounselorDoctor';
 import PaymentConfirm from './PaymentConfirm';
+import SameTimePopup from '../../../components/SameTimePopup/SameTimePopup';
+import { fetchData } from '../../LoginRegister/api_register';
 
 export default function Booking() {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [finalSlot, setFinalSlot] = useState(null);
+
+  const [SameTime, setSameTime] = useState(false);
+  const [SameTimeBooking, setSameTimeBooking] = useState([]);
+  const [UserConsultationBooking, setUserConsultationBooking] = useState([]);
+  const CustomerId = localStorage.getItem('CustomerId') || '';
+  useEffect(() => {
+    const GetSlot = async () => {
+      const token = localStorage.getItem('token') || '';
+      try {
+        const consultationbooking = await fetchData('/consultationbooking', token);
+        console.log('consultationbooking', consultationbooking);
+        setUserConsultationBooking(consultationbooking.filter(booking => booking.customerId?._id == CustomerId));
+        console.log('consultationbooking-F', consultationbooking.filter(booking => booking.customerId?._id == CustomerId));
+      } catch (error) { }
+    };
+
+    GetSlot();
+  }, [selectedDate, selectedSlot]);
 
   useEffect(() => {
     console.log({ selectedDate, selectedSlot, selectedDoctor, finalSlot });
@@ -90,6 +110,9 @@ export default function Booking() {
               date={selectedDate}
               onSelectSlot={handleSelectSlot}
               selectedSlot={selectedSlot}
+              UserConsultationBooking={UserConsultationBooking}
+              setSameTime={setSameTime}
+              setSameTimeBooking={setSameTimeBooking}
             />
           </div>
         </div>
@@ -111,6 +134,8 @@ export default function Booking() {
           </div>
         </div>
       </div>
+
+      {SameTime && <SameTimePopup Type={'Consultation'} SameTimeBooking={SameTimeBooking} setSameTime={setSameTime} />}
     </div>
   );
 }
