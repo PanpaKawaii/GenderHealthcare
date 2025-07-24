@@ -25,9 +25,9 @@ export default function PaymentConfirm({ loading, S_Test, S_Doctor, S_Date, S_Sl
                     </div>
                     <hr />
                     <div className='total'>
-                        Total: <span>{S_Slot?.testServiceId?.price.toLocaleString('vn')}.000 VND</span>
+                        Total: <span>{S_Slot?.testServiceId?.price.toLocaleString('vn')} VND</span>
                     </div>
-                    <button type='submit' className='pay-btn' onClick={() => handleBooking()} disabled={loading}>Pay {S_Slot?.testServiceId?.price.toLocaleString('vn')}.000 VND</button>
+                    <button type='submit' className='pay-btn' onClick={() => handleBooking()} disabled={loading}>Pay {S_Slot?.testServiceId?.price.toLocaleString('vn')} VND</button>
                 </div>
             </div>
         </div>

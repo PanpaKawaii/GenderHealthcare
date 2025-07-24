@@ -179,7 +179,7 @@ export default function TestBooking() {
             <PaymentConfirm loading={loading} S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} handleBooking={handleBooking} />
             {/* } */}
             
-            {SameTime && <SameTimePopup SameTimeBooking={SameTimeBooking} setSameTime={setSameTime} />}
+            {SameTime && <SameTimePopup Type={'Test'} SameTimeBooking={SameTimeBooking} setSameTime={setSameTime} />}
         </div>
     )
 }
