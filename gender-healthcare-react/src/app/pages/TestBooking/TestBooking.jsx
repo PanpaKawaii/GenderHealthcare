@@ -6,6 +6,7 @@ import TestService from './TestService';
 import TimeSlots from './TimeSlots';
 import { postData, fetchData } from '../LoginRegister/api_register';
 import { useNavigate } from 'react-router-dom';
+import SameTimePopup from '../../components/SameTimePopup/SameTimePopup';
 
 import './TestBooking.css';
 import accountAPI from '../../services/accountAPI';
@@ -152,6 +153,9 @@ export default function TestBooking() {
             S_Slot,
         );
     }
+    
+    const [SameTime, setSameTime] = useState(false);
+    const [SameTimeBooking, setSameTimeBooking] = useState([]);
 
     return (
         <div className='testbooking-container'>
@@ -168,12 +172,14 @@ export default function TestBooking() {
             {/* } */}
 
             {/* {S_Test && S_Doctor && S_Date && */}
-            <TimeSlots S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} setS_Slot={setS_Slot} />
+            <TimeSlots S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} setS_Slot={setS_Slot} setSameTime={setSameTime} setSameTimeBooking={setSameTimeBooking} />
             {/* } */}
 
             {/* {S_Slot && */}
             <PaymentConfirm loading={loading} S_Test={S_Test} S_Doctor={S_Doctor} S_Date={S_Date} S_Slot={S_Slot} handleBooking={handleBooking} />
             {/* } */}
+            
+            {SameTime && <SameTimePopup SameTimeBooking={SameTimeBooking} setSameTime={setSameTime} />}
         </div>
     )
 }
